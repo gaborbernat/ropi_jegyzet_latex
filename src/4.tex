@@ -1,0 +1,97 @@
+\newpage
+\section{A lineáris programozás dualitás tétele (két alakban). A lineáris programozás alapfeladatának bonyolultsága.}
+
+\subsection{A lineáris programozás dualitás tétele (két alakban)}
+A tétel kijelenti, hogy ha: 
+
+$ \begin{rcases}
+\mbox{LP: max}\left\{cx:Ax \leq b\right\} \\
+\mbox{megoldható} \\
+\mbox{felülről korlátos}
+\end{rcases} \Rightarrow$ $\begin{cases}
+\circled{1} \begin{cases}
+\mbox{DP: min} \left\{ yb:yA - c, y \geq 0 \right\} \\
+	\mbox{megoldható} \\ 
+	\mbox{alulról korlátos}  
+\end{cases} \\
+\circled{2} \begin{cases}
+\mbox{LP--nek } \exists \mbox{ maximuma} \\
+\mbox{DP--nek } \exists \mbox{ minimuma} 
+\end{cases}\\
+\circled{3} \mbox{ maximum } = \mbox{ minimum}
+\end{cases}$
+
+Ezzel ekvivalens alakja az LP és a DP-nek a:
+\begin{align*}
+\mbox{LP: max} &\left\{ cx:Ax \leq b, x \geq 0 \right\} \\
+\mbox{DP: min} &\left\{ yb:yA \geq c, y \geq 0 \right\}.
+\end{align*}
+
+Az \circled{1}--est bizonyitottuk az LP korlátoságánal, a \circled{2} és 
+\circled{3}--hoz felhasználjuk a következő \emph{lemmát}:
+
+\[
+\begin{rcases}
+Ax \leq b \mbox{ megoldható} \\
+t \in \mathbb{R} \\
+Ax \leq b \mbox{--nek } \exists~x \mbox{ megoldása, hogy } cx \geq t
+\end{rcases} \Rightarrow
+\parbox[t]{6cm}{
+$\{yA=c, y \geq 0\}$--nak $\exists$ olyan megoldása amelyre  $yb < t$.}
+\]
+A lemma \emph{bizonyitáshoz}, kiindulunk abból, hogy az $\begin{cases}
+Ax \leq b \\
+-cx \leq -t
+\end{cases}$ rendszer nem megoldható. Alkalmazzuk rá a Farkas--lemmát, ennek második
+alakja felírható mint ($\lambda \geq 0, y \geq 0$):
+\begin{align*}
+\begin{bmatrix} y & \lambda\end{bmatrix}
+\begin{bmatrix} A \\ -c \end{bmatrix} = yA - \lambda c = 0 &\Rightarrow 
+yA = \lambda c, \\
+\begin{bmatrix} y & \lambda\end{bmatrix}
+\begin{bmatrix} b \\ -t \end{bmatrix} =yb~ - \lambda t < 0 &\Rightarrow 
+yb < \lambda t
+\end{align*}
+
+Ha $\lambda=0 \Rightarrow \begin{rcases}
+yA = 0, \\
+y \geq 0, \\
+yb <  0 \end{rcases} \xRightarrow{\text{Farkas--lemma}}$ $Ax \leq b$ nem
+megoldható, de ez ellentmondás az állitásnak, tehát $\lambda$ nem lehet nulla
+($\lambda \neq 0$). Legyen $y'=\frac{1}{\lambda}y$ így az egyenletrendszer
+$y'A=c,~y'\geq0,~y'b<t$ alakú lesz és ezzel megadtunk minden $y$--ra egy
+$y'$--et amely teljesiti az állitást.
+
+A \circled{2} \emph{bizonyitásához} tegyük fel, hogy $\not \exists$ maximum
+LP--n, ekkor legyen $t=\mbox{sup}\left\{cx:Ax \leq b \right\}$ (hisszen bármely
+$x \subseteq R, x \neq \emptyset, x$ felülről korlátosnak $\exists$ szuprémuma,
+legkisebb felső korlátja). Ha $t$ nem maximum $\Rightarrow Ax \leq b$--nek $\not
+\exists cx \geq t$--t teljesitő megoldása. Ekkor:
+
+\[ cx = (yA)\cdot x = y (Ax) \leq yb < t.\]
+
+Így $yb~t$-nél kisebb felső korlát $cx$-re, de ez ellentmondás, tehát t szuprémum és
+feltevéssünk hamis volt. A DP--n történő bizonyitáshoz használjuk fel az LP bizonyitást, 
+átírva a feladatott max--ra ($E$ -- egység mátrix):
+
+\[ max \left\{ (-b)^T y^T : A^T y^T \leq c^T, (-A^T) y^T \leq (-c^T),
+(-E)y^T \leq 0 \right\} \]
+ 
+A \circled{3} \emph{bizonyitásához} már láttuk, hogy a \[ \mbox{max}\left\{
+cx:Ax \leq b \right\} \leq
+   \mbox{min}\left\{ yb:yA = c, y \geq 0 \right\}=t
+\] fenáll. Tehát ekkor az LP--nek $\not\!\exists~cx \geq t$ kifejezést teljesitő
+megoldása, amire $yb<t$, de ez ellentmondás t választásának.
+
+\subsection{LP bonyolultság}
+
+Az LP feladat megfogalmazható mint eldöntési probléma: $\exists?$ az $Ac \leq
+b$--t kielégitő x vektor amelyre $cx\geq t$? A probléma NP--beli. Tanú egy ilyen
+$x$. Ugyanakkor coNP--beli is, a duális feladat megoldása tanú erre. $x, y$
+mérete véges.
+
+\begin{description}
+  \item[1947 -- Szimplex módszer] Hatékony gyakorlati feladatokon, de exponenciális komplexitású.
+  \item[1979 --  Hacsijan -- ellipszoid módszer] Polinomiális komplexitás, de gyakorlatban lassú.
+  \item[1984 --  Karmakar -- belső pontos módszer] Szintén polinomiális, de ez is gyakorlatban lassú.
+\end{description}

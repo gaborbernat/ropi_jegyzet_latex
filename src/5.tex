@@ -1,0 +1,112 @@
+\newpage
+\section{Egészértékű programozás: a feladat bonyolultsága, korlátozás és szétválasztás (Branch and Bound).}
+
+\subsection{Egészértékű programozás}
+A feladat:
+\begin{align*}
+IP &: \mbox{max }{cx: Ax \leq b, x \mbox{ egész}} \\
+DIP &: \mbox{min }{yb: yA=c, y \geq 0, y \mbox{ egész}}
+\end{align*}
+\[ \mbox{max(IP)} \leq \mbox{max(LP)}= \mbox{min(DLP)} \leq \mbox{min(DIP)} \]
+
+A feladat bonyolultságának meghatarázásához fogalmazzuk át eldöntési problémára:
+$\exists?~Ax \leq b,~ x$ egész között olyan vektor, amelyre $cx \geq t?$ Az IP
+feladat NP--teljes. NP--beli mert x tanú. A dualitás tétel nem alkalmazható
+mivel max(IP)~$<$~min(DIP) fent állhat, tehát a probléma nem coNP--beli. \emph{NP
+teljes}, visszavezethető a $3$--SAT problémára.
+
+A bizonyitáshoz megadjuk a visszavezetést: definiálunk egy eljárást amely tetszőleges
+logikai függvényhez megad egy olyan IP problémát, melyre akkor és csak akkor igenlő a
+válasz, ha a függvény kielégithető. A függvény alakja:
+
+\[ f(x_1, x_2, \cdots, x_k) = \bigwedge_{i=1}^{d}{\left( x_{i_1}^{e_{i_1}} \vee 
+x_{i_2}^{e_{i_2}} \vee x_{i_3}^{e_{i_3}}\right).} 
+\]
+Az IP probléma ismeretlenjei legyen $z_{i=\overline{1,k}}$ egyenlőtlenségek, ahol 
+$0 \leq z_{i=\overline{1,k}} \leq 1$. Továbbá minden diszjunkcióra is felirunk egy
+egyenlőtlenséget:
+
+
+\begin{align*}
+z_{i_1} &+ z_{i_2} &+      z_{i_3}  &\geq 1 & \mbox{ ha }~~x_{i_1} \vee~~x_{i_2}\vee~~x_{i_3}& \\
+z_{i_1} &+ z_{i_2} &+ (1 - z_{i_3}) &\geq 1 & \mbox{ ha }~~x_{i_1} \vee~~x_{i_2} \vee \neg x_{i_3}& \\
+z_{i_1} &+ (1-z_{i_2}) &+ (1 - z_{i_3})  &\geq 1 & \mbox{ ha }~~x_{i_1} \vee \neg x_{i_2} \vee\neg x_{i_3}&\\
+(1-z_{i_1}) &+ (1-z_{i_2}) &+ (1 - z_{i_3})  &\geq 1 & \mbox{ ha } \neg x_{i_1} \vee \neg x_{i_2} \vee \neg x_{i_3}&
+\end{align*}
+
+Ha $f$ kielégithető, akkor $z_i=1 \Leftrightarrow x_i=$ ,,igaz''. Ez lesz az
+egyenletrendszer egészértékű megoldása. 
+
+Megfordítva, ha az egyenlőtlenségrendszert egész $z_i$ értékkel ki tudjuk
+elégíteni akkor -- mivel minden egész vagy $0$, vagy $1$ -- az $x_i$=,,igaz''
+$\Leftrightarrow z_i=1$ választással $f$--et kielégítő értéket adtunk a logikai
+változonak.
+
+Eközben a $\sum_{i=1}^{k}{z_i}$ összeg értétek valahol $0$ és $k$ között adódik,
+tehát $c=(1,1,\cdots,1)$ választással tulajdonképpen a \emph{,,Van-e az
+$(1a-1b$) és a $*(2a-2d$ feltételeket kielégítő (egész) vektorok között olyan,
+melyre $cx \geq 0$?''} kérdést tesszük fel. Az így kapott IP feladatra a válasz
+akkor és csak akkor igenlő, ha az f kielégithető.
+
+\subsection{A korlátozás és szétválasztás az IP feladatra}
+
+Alakja $\mbox{max} \left\{cx:Ax \leq b, f \leq x \leq g| x,f,g \in \mathbb{Z}^n
+\right\},$ ahol az $f$ és $g$ korlátok amelyek biztósitják, hogy a feladat véges
+lépésben megoldható. A metódus kulcs gondolata, hogy az IP feladat megoldásához elöször
+megoldjuk mint LP, ha az eredmény egész megvagyunk, egyébbként tovább bontjuk két kisebb
+IP feladatra. Legyen $z^*=cx^*$, az egyenlőtlenség mindig $Ax \leq b$ marad.
+
+Az algoritmus folyamata:
+
+\begin{enumerate}
+  \setcounter{enumi}{-1}
+  \item $\overbrace{L=\left\{ \left(
+  \overbrace{f}^{\text{alsó}},\overbrace{g}^{\text{felső}},\overbrace{\infty}^{w
+  \text{ -- maximum értéke}} \right) \right\}}^{\text{IP részfeladatok}},
+  \overbrace{z^*=-\infty}^{\text{eddigi legjobb célfüggvényérték}},
+  \overbrace{x^*}^{\text{legjobb megoldás}}$
+  \item Ha $L=\emptyset \Rightarrow$ \emph{vége} és a megoldás az aktuális $z^*$
+  és $x^*$.
+  
+  Egyébbként $L$--ből vegyük ki IP$_i$ feladatott.
+  \item Ha $w_i \leq z^*$, IP$_i$--nek a megoldása nem lehet $z*$--nál jobb,
+  folytassuk az első ponttol (ez a \emph{Bound} lépés).
+  \item Oldjuk meg a relaxált IP$_i$ feladatott (LP$_i$--t).
+  \\ Ha $\not \exists$ megoldás visszalépünk az első ponthoz.
+  \\ Egyébbként: $z_i$ -- maximum érték,  $x_i$ -- maximum hely.
+  \item Ha $z_i \leq z^*$, IP$_i$ feladat és részfeladatai maximumértéke is
+  legfeljebb $z^*$, lépjünk vissza az első ponthoz.
+  \item Ha $z_i > z^* \mbox{ és } x_i \in \mathbb{Z}^{n}$ akkor $ z^* = z_i, x^* =
+  x_i$ (adat frissités) és visszalépünk az első ponthoz.
+  \item Választunk egy közbelső értéket $(f_{i_j} \leq t \leq g_{i_j})$ és egy
+  ezt meghatározó $x_j$ elágazás változót $x_i$--ből ($j$ egy pozició $x$
+  vektorban, $i$ az IP feladat sorszámát jelőli). Ezután $L$--ben elhelyezzünk
+  két új feladatott:  $(t+1, g, z_i)$ és $(f, t, z_i)$. Lépjünk vissza az első
+  ponthoz (\emph{Branch} lépés).
+\end{enumerate} 
+
+Az algoritmus véges sok lépésben leáll és megtalálja a feladat optimumát. A
+véges sok lépést $f$ és $g$ vektor garantálja, hisszen a kezdetben kitűzött
+feladatnak csak véges sok részprobémája lehet a felhasznált korlátok miatt. Az
+optimális részt indirekt bizonyitjuk: legyen $z_0$ az optimum, de az eljárás
+$z*<z_0$--t kapta.
+
+Állitjuk, hogy $L$--ben mindig kellet, hogy legyen olyan IP$_i$ feladat amelynek
+az optimum értéke $z_0$. Ez kezdetben fent áll, és az algoritmus egy ilyen IP
+feladattal a $5.$--ik vagy $6.$--ik lépéshez jut el. Ha az ötödikbe jut akkor az
+algoritmus mégis csak megtalálja a $z_0$ optimumot, ami ellentmondás.
+
+Ha a hatodik lépés következik be, akkor a két keletkező IP feladat közül az
+egyikre teljesül, hogy a vizsgált tartományában a $z_0$--hoz tartozó optimum
+benne van, így $z_0$ optimumot mindenképp megtalálljuk. Tehát az eljárás során a
+lista sosem ürült ki, de ekkor az algoritmus sose állhatot volna le, ami a
+keresett elentmondás.
+
+\subsection{Gyakorlati tanácsok}
+\begin{itemize}
+  \item LIFO alapú új feladatt választás $L$--ből, mert a megoldás várhatóan
+  mélyen van a fába és ez tud legmélyebre leggyorsabban lenyulni.
+  \item Elágazásnál a legkevésbé egész $x_j$--t válasszuk elágazási változonak
+  (amelynek törtrésze $\frac{1}{2}$-höz legközelebb van), közbülső értéknek
+  peddig ennek egész értékét.
+\end{itemize}

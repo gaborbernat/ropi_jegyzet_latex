@@ -1,0 +1,69 @@
+\documentclass[a4paper,12pt,oneside,openright]{report}
+
+
+\usepackage[a4paper]{geometry}
+\usepackage[T1]    {fontenc }% Allow accented output charachters
+\usepackage[utf8]  {inputenc}% Allow accented input charachters 
+\usepackage        {lmodern }% Modern output font	
+\def\magyarOptions{suggestions=no}
+\usepackage[magyar]{babel}	   % Set document language to use
+\usepackage		 {amsmath}%Math mode additions
+\usepackage		 {amsfonts}
+\usepackage		 {floatrow}% Append additional information to images (source)
+\usepackage		{mathtools}
+\usepackage[pdftex]{graphicx}% Adds the ability to include images 
+\usepackage		 {xcolor   }% Colors are fun :)
+\usepackage        {colortbl}% Named even more. 
+\usepackage        {url     }% Makes urls clickable 
+\usepackage		{array}
+\usepackage		 {tikz	  }% Latex drawn figures
+\usepackage		{wrapfig}
+\usetikzlibrary	 {matrix  }
+\usepackage        {scalefnt }% Scale the latex drawn figure elements
+\usepackage[pdf]{pstricks}
+\usepackage{subfigure}
+
+% The csquotes should be used with bable to help with the references formating 
+\usepackage[style=english]{csquotes} 
+% Biblatex
+\usepackage[style=ieee,
+backend=biber,babel=other*, language=english, sorting=none,
+backref=false]{biblatex} \DeclareSourcemap{ % Unfortunetly the
+% bibtex currently knows of online type, not webpage. For now just map it.
+  \maps[datatype=bibtex]{
+    \map{
+      \step[typesource=webpage, typetarget=online]
+    }
+  }
+}
+
+\input{smiley.tex}
+% Background highlight color used for the source code and the tables
+\definecolor{bgSrc}{rgb}{0.95,0.95,0.95}
+
+\usepackage	  {hyperref}% - Add links between the doc
+\usepackage[all]{hypcap}   %Let the links point above figures and not below
+\usepackage[numbered,
+			  open, 
+			  openlevel=2,
+			  atend]{bookmark}% - We want numbers
+
+\hyphenation{MonetDB}
+\hyphenation{BigTable}
+\hyphenation{MapReduce}
+\hyphenation{Amazon}
+\begin{document}
+
+% A címlap
+\input{cimlap.tex}
+
+\tableofcontents
+\chapter{Lineáris programozás}
+\input{1.tex}
+\input{2.tex}
+\input{3.tex}
+\input{4.tex}
+\input{5.tex}
+\input{6.tex}
+\input{7.tex}
+\end{document}

@@ -1,0 +1,24 @@
+% Smiley commands
+\newcommand{\smiley}{\tikz[baseline=-0.75ex,green]{
+    \draw circle (2mm);
+\node[fill,circle,inner sep=0.5pt] (left eye) at (135:0.8mm) {};
+\node[fill,circle,inner sep=0.5pt] (right eye) at (45:0.8mm) {}; \draw
+(-145:0.9mm) arc (-120:-60:1.5mm);
+    }
+}
+
+\newcommand{\frownie}{\tikz[baseline=-0.75ex,orange]{
+    \draw circle (2mm);
+\node[fill,circle,inner sep=0.5pt] (left eye) at (135:0.8mm) {};
+\node[fill,circle,inner sep=0.5pt] (right eye) at (45:0.8mm) {}; \draw
+(-145:0.9mm) arc (120:60:1.5mm);
+    }
+}
+
+\newcommand{\neutranie}{\tikz[baseline=-0.75ex,black]{
+    \draw circle (2mm);
+\node[fill,circle,inner sep=0.5pt] (left eye) at (135:0.8mm) {};
+\node[fill,circle,inner sep=0.5pt] (right eye) at (45:0.8mm) {}; \draw
+(-135:0.9mm) -- (-45:0.9mm);
+    }
+}

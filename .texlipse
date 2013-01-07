@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Sat Jan 05 15:53:03 CET 2013
+markTmpDer=true
+builderNum=2
+outputDir=out/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=main.tex
+outputFile=rendszeroptimizalas_vizsgajegyzet.pdf
+langSpell=hu
+markDer=true
+srcDir=src/
