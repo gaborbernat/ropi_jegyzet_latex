@@ -1,10 +1,10 @@
-\hyphenation{Egerváry}
+﻿\hyphenation{Egerváry}
 \section{Egerváry algoritmusa, az optimális hozzárendelés problémája}
 
 Az optimális hozzárendelés problémája a következő kérdésre keresi a választ:
-hogyan rendelünk egymáshoz két halmaz elemeit valamilyen optimalitási kritérium
-szerint? Ilyen kritériumok lehetnek a maximális párositás, minimális idő igény
-és így tovább. Grafikusan ábrázolva, legyen:
+hogyan rendelünk egymáshoz két halmaz elemeit valamilyen optimum kritérium
+szerint? Ilyen kritériumok lehetnek a maximális párosítás, minimális idő igény
+És így tovább. Grafikusan ábrázolva, legyen:
 
 \begin{figure}[ht]
 \caption{Egy optimális hozzárendelés probléma}
@@ -34,24 +34,24 @@ szerint? Ilyen kritériumok lehetnek a maximális párositás, minimális idő i
 \end{figure}
 
 Gráf alakban megfogalmazva, adott $G=(V, E)$ gráf, ahol $V=(A, B)$ és $E=(x,y)$,
-ahol $x \in A$ és $ y \in B$. Megkülönböztetűnk $3$ fajta helyzetett:
+ahol $x \in A$ és $ y \in B$. Megkülönböztetünk $3$ fajta helyzetet:
 \begin{description}
-  \item[Maximális párositás problémája] Ekkor azt szeretnénk, hogy a párositások
-  száma minnél nagyobb legyen.
-  \item[Maximális sulyú párositás problémája] Ekkor létezzik minden párositásnak
+  \item[Maximális párosítás problémája] Ekkor azt szeretnénk, hogy a párosítások
+  száma minél nagyobb legyen.
+  \item[Maximális súlyú párosítás problémája] Ekkor létezik minden párosításnak
   egy jósági tényezője, egy súlya: $w:E\rightarrow\mathbb{R}$; egy adott $M$
-  párositás esetén $(M\subset E)$ keressük azt, amely maximális összeget ad:
+  párosítás esetén $(M\subset E)$ keressük azt, amely maximális összeget ad:
   $\mbox{max}\left\{\sum_{e\in M}{w(e)}\right\}$.
-  \item[Maximális teljes párositás problémája] Most olyan párositás halmazt
-  keressünk amely a lehető legtőbb párositást létrehoz, a lehető legnagyobb
+  \item[Maximális teljes párosítás problémája] Most olyan párosítás halmazt
+  keressünk, amely a lehető legtöbb párosítást létrehoz, a lehető legnagyobb
   összeggel. Azt, hogy ez nem ekvivalens a korábbi feladattal
-  \aref{fig:OptMaxNemEkv} ábra szemlélteti. Ekkor a maximális sulyú párositást
-  az $a_2-b_2$ adja, mig a maximális teljes párositás problémájára a helyes válasz
-  az $a_1-b_2$ és $a_2-b_1$ élpárok. 
+  \aref{fig:OptMaxNemEkv} ábra szemlélteti. Ekkor a maximális súlyú párosítást
+  az $a_2-b_2$ adja, míg a maximális teljes párosítás problémájára a helyes válasz
+  az $a_1-b_2$ és $a_2-b_1$ él párok. 
 \end{description}
 
 \begin{figure}[htb]
-\caption{Maximális sulyú és teljes párositás probléma}
+\caption{Maximális súlyú és teljes párosítás probléma}
 \label{fig:OptMaxNemEkv}
 \centering
 \begin{tikzpicture}[scale=1.7]
@@ -72,27 +72,27 @@ ahol $x \in A$ és $ y \in B$. Megkülönböztetűnk $3$ fajta helyzetett:
 \end{tikzpicture} 
 \end{figure}
 
-A maximális sulyú párositás problémája \emph{visszavezethető} a maximális sulyú
-párositás problémájára. A transzformációhoz a kevesebb csucsú halmazt ($A$ és
-$B$ közül) egészitsűk ki, majd a hiányzó és negativ sulyú éleken legyen $w=0$.
+A maximális súlyú párosítás problémája \emph{visszavezethető} a maximális súlyú
+párosítás problémájára. A transzformációhoz a kevesebb csúcsú halmazt ($A$ és
+$B$ közül) egészítsük ki, majd a hiányzó és negatív súlyú éleken legyen $w=0$.
 
 \subsection{Magyar módszer}
 
 \begin{description}
-  \item[Alternáló út] olyan élsorozat (séte) amely $A$-ból indul és minden második 
-  él párositás beli.
+  \item[Alternáló út] olyan él sorozat (séta) amely $A$-ból indul és minden második 
+  él párosítás belli.
   \item[Javító út] olyan alternáló út amely $B$-ben végződik.  
 \end{description}
 
 A magyar módszer lépései:
 \begin{enumerate}
-  \item Keresünk egy javitó útat
+  \item Keresünk egy javító utat
   \item Cseréljük meg az út menetén a szerepeket:
   	\begin{itemize}
-  	\item párositásbeli élek kivétele
-  	\item nem párositásbeli élek betétele 
+  	\item párosításbeli élek kivétele
+  	\item nem párosításbeli élek betétele 
 	\end{itemize}
-  \item Lépjünk vissza az első lépéshez ameddig létezik javitó út.
+  \item Lépjünk, vissza az első lépéshez ameddig létezik javító út.
 \end{enumerate}
 
 \colorlet{ColorPink}{red!10}
@@ -151,39 +151,39 @@ A magyar módszer lépései:
 \end{tikzpicture} 
 \end{figure} 
 
-Az algoritmus helyeségének belátásához vegyük \aref{fig:MagyModHelyeseg} ábrát,
-amely egy köztes állapotot szemléltett. Legyen:
+Az algoritmus helyességének belátásához vegyük \aref{fig:MagyModHelyeseg} ábrát,
+amely egy köztes állapotot szemléltet. Legyen:
 \begin{description}
-  \item[$(B_2)$] -- $A_1$--ből alternáló útón elérhető csucsok halmaza,
-  \item[$(A_2)$] -- $B_2$--hőz tartozó párositás, \item[$(A_1)$] -- azon csucsók
-  halamaza amelyet az $M$ párositás le nem fedett.
+  \item[$(B_2)$] -- $A_1$--ből alternáló útón elérhető csúcsok halmaza,
+  \item[$(A_2)$] -- $B_2$--hőz tartozó párosítás, \item[$(A_1)$] -- azon csúcsok
+  halmaza, amelyet az $M$ párosítás le nem fedett.
 \end{description}
 
-Amenyiben az algoritmus leállt $B_2$ halmaz csúcsainak végpontja $A_2$ és $A_1$
+Amennyiben az algoritmus leállt $B_2$ halmaz csúcsainak végpontja $A_2$ és $A_1$
 halmazból induló éleknek, azaz $B_2$ lefogó pontja az $A_1 \cup A_1$ halmaznak.
-Azaz elmondható, hogy $A_3$ és $B_2$ lefogópontja a gráfnak, ugyanakkor $A_3$ és
-$B_2$ elemszáma megegyezik a párositás számával. A \emph{König tétel} \footnote{
+Azaz elmondható, hogy $A_3$ és $B_2$ lefogó pontja a gráfnak, ugyanakkor $A_3$ és
+$B_2$ elemszáma megegyezik a párosítás számával. A \emph{König tétel} \footnote{
 A tétel Kőnig Dénestől származik. Legyen egy $G$ páros gráf, ekkor
-$\nu(G)=\tau(G)$ (azaz a legnagyobb független élhalmaznak ugyanannyi eleme van,
+$\nu(G)=\tau(G)$ (azaz a legnagyobb független él halmaznak ugyanannyi eleme van,
 mint a legkisebb lefogó ponthalmaznak) és ha $G$--ben nincs izolált pont akkor
-$\rho(G)=\alpha(G)$ (azaz a legkisebb lefogó élhalmaz azonos méretű a legnagyobb
-független ponthalmazzal).} értelmében ezért a párositás maximális.
+$\rho(G)=\alpha(G)$ (azaz a legkisebb lefogó él halmaz azonos méretű a legnagyobb
+független ponthalmazzal).} értelmében ezért a párosítás maximális.
 
 \subsection{Egerváry algoritmusa}
 
-Elöszőr defináljuk a címkézés műveletet: minden csucshóz rendelünk egy valós
-értéket ($c:V \rightarrow \mathbb{R}$) úgy, hogy minden élpár esetén ($\forall
+Először definiáljuk a címkézés műveletet: minden csúcshoz rendelünk egy valós
+értéket ($c:V \rightarrow \mathbb{R}$) úgy, hogy minden él pár esetén ($\forall
 \left\{x,y\right\} \in E | x \in A, y \in B$)  igaz a következő kifejezés:
-$c(x)+c(y)>=w(e).$ Amenyibben $c(x)+c(y)=w(e)$ legyen az él piros. Ekkor a
-maximális összsulyú teljes párositás összsúlya kisebb mint a cimkézés ősszege.
+$c(x)+c(y)>=w(e).$ Amenyiben $c(x)+c(y)=w(e)$ legyen az él piros. Ekkor az
+maximális összsúlyú teljes párosítás összsúlya kisebb, mint a címkézés ősszege.
 
-Bizonyitás:
+Bizonyítás:
 
 \begin{displaymath}
 \sum_M{w} \leq \sum_M{\left[c(x)+c(y)\right]} = \sum_V{c(v)}
 \end{displaymath}
 
-\emph{Lemma}: Ha $M$--ben $\forall$ él piros, a párositás maximális.
+\emph{Lemma}: Ha $M$--ben $\forall$ él piros, a párosítás maximális.
 
 \subsection{Az algoritmus}
 \begin{enumerate}
@@ -194,9 +194,9 @@ Bizonyitás:
   0             & v \in B.
   \end{cases} 
   \end{displaymath}
-  \item lépés: keressük meg a maximális elemszámú párositást a piros részgráfban
-  javitó utakkal.
-  Legyen ez a párositás $M'$. Ha ez maximális megállunk.
+  \item lépés: keressük meg a maximális elemszámú párosítást a piros részgráfban
+  javító utakkal.
+  Legyen ez a párosítás $M'$. Ha ez maximális megállunk.
   \item lépesben legyen:
   \begin{displaymath}
   \begin{rcases}
@@ -216,16 +216,16 @@ Bizonyitás:
   Végül legyen $M=M'$ és $c=c'$ és folytassuk az első lépéstől.
 \end{enumerate} 
 
-Az algoritmus helyeségének belátásához be kell látnunk, hogy:
+Az algoritmus helyességének belátásához be kell látnunk, hogy:
 
 \begin{enumerate}
-  \item A nulladik lépés cimkézés.
+  \item A nulladik lépés címkézés.
   \item Létezik $\left\{x,y\right\}$ a második lépésben. Ez igaz, mert ha nem
   lenne akkor $A_1 \cup A_2$ bármely szomszédja $B_2$--ben volna és a
   \emph{Hall--feltétel} \footnote{$ \forall~x_0 \subseteq A$--ra az $|N(x_0)|
-  \geq |x_0|$ egyenlőtlenségnek teljesülnie kell, másképp nem létezik párositás
-  ($N~x_0$ szomszédainak halmazát fedi).} alapján nem létezne párositás.
-  \item $c'$ cimkézés e? Ehhez figyeljük meg, hogy $\sigma$ hogyan változhat:
+  \geq |x_0|$ egyenlőtlenségnek teljesülnie kell, másképp nem létezik párosítás
+  ($N~x_0$ szomszédinak halmazát fedi).} alapján nem létezne párosítás.
+  \item $c'$ címkézés e? Ehhez figyeljük meg, hogy $\sigma$ hogyan változhat:
   
   \begin{tabular}{ l |  c c }
                   & $A_1 \cup A_2$ & $A_3$ \\
@@ -234,13 +234,13 @@ Az algoritmus helyeségének belátásához be kell látnunk, hogy:
   $B_1 \cup B_3$ & $-\sigma$      & $0$ \\
   \end{tabular}
   
-  Tehát a cimkézés csak egy helyt csökken (ami elronthatná a cimkézést), de itt
-  csak a maximális csőkkenthető értékkel csökken, tehát a cimkézés tulajdonsága 
+  Tehát a címkézés csak egy helyt csökken (ami elronthatná a címkézést), de itt
+  csak a maximális csökkenthető értékkel csökken, tehát a címkézés tulajdonsága 
   megmarad.
-  \item Ahol $\sigma$ minimális ott egy piros él keletkezik. Ez igaz hisszen ahol ez
-  igaz ott vagy megnő $M$ élszáma (ekkor $\in B$) vagy megszűnik a piros él
-  ($\in A_3 \ cup B_2$), de helyete egy új keletekezik.
-  \item $B_3$ legfeljebb n lépésből elfogy. A következő lépsben $B_1$--beli a
-  piros él, tehát nő a párositás $\Rightarrow n^2$ iterációba legfeljebb
+  \item Ahol $\sigma$ minimális ott egy piros él keletkezik. Ez igaz, hiszen ahol ez
+  igaz ott vagy megnő $M$ él száma (ekkor $\in B$) vagy megszűnik a piros él
+  ($\in A_3 \ cup B_2$), de helyette egy új keletkezik.
+  \item $B_3$ legfeljebb n lépésből elfogy. A következő lépésben $B_1$--belli a
+  piros él, tehát nő a párosítás $\Rightarrow n^2$ iterációba legfeljebb
   megvagyunk.
   \end{enumerate}

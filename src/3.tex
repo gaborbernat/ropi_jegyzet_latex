@@ -1,8 +1,8 @@
-\newpage
+﻿\newpage
 \section{Farkas-lemma (két alakban). A lineáris program célfüggvény korlátossága.}
 
 A következő egyenletekből csak a jobb vagy csak a bal egyenletrendszereknek
-létezzik egyidőben megoldása:
+létezik egy időben megoldása:
 
 \begin{enumerate}
   \item alak: \begin{align*}
@@ -25,16 +25,16 @@ Legyen az alábbi mérettel rendelkező mátrixok:
 \]
 
 \subsection{1--es alak}
-Az első alak két egyenletrendszere nem megoldható egyidőben mert:
+Az első alak két egyenletrendszere nem megoldható egy időben mert:
 \[ 0 = 0x = (yA) \cdot x = y(Ax) \leq yb.\] E utolsó egyenlőtlenség nem
 egyértelmű, ellenőrizni kell, hogy:
 \[ Ax \leq b \Rightarrow y(Ax) \leq (yb).\] Szerencsére ez igaz lesz a mátrix
-szorzás disztributiv tulajdonsága miatt. Majd tovább futatva a korábbi
-gondolatunkat $yb<0$ amely elentmond a kiinduló feltételeknek.
+szorzás disztributív tulajdonsága miatt. Majd tovább futatva a korábbi
+gondolatunkat $yb<0$ amely ellentmond a kiinduló feltételeknek.
 
-Defináljuk a következő $C$ halmazt, amely egy sorvektorok halmaza:
+Definiáljuk a következő $C$ halmazt, amely egy sorvektorok halmaza:
 \[ C= \left\{ z \in \mathbb{R}^{n+1}, z = y (A|b), y \geq 0 \right\}, \].
-Célunk bizonyitani, hogy létezzik $C$-ben $(0, \cdots, 0 , <0)$ alakú sorvektor,
+Célunk bizonyítani, hogy létezik $C$-ben $(0, \cdots, 0 , <0)$ alakú sorvektor,
 ha az egyenletrendszer nem megoldható.
 
 A halmaz zártságára az alábbi lemmák igazak ($z_1, z_2 \in C, \lambda>0$):
@@ -47,7 +47,7 @@ A halmaz zártságára az alábbi lemmák igazak ($z_1, z_2 \in C, \lambda>0$):
   z=y(A|b) \Rightarrow \lambda z = \lambda y (A|b)$ ahol igaz, hogy $\lambda y \geq 0$.
 \end{itemize}
 
-$(A|b)$ sorai $\in C$ mert $y(i)=1$--el felvételet nyernek $C$--be. Most hajtsuk végre a
+$(A|b)$ sorai $\in C$ mert $y(i)=1$--el felvételt nyernek $C$--be. Most hajtsuk végre a
 Fourier-Motzkin eliminációt $(A|b)$--re, úgy, hogy a nullákat nem töröljük:
 
 \begin{displaymath}
@@ -85,12 +85,12 @@ A &  & &  &b \\
 \end{array}}_{\mbox{sorai } \in~C}
 \end{displaymath}
 
-A zártsági lemmma miatt az elimináció során a mátrix sorai $C$ halmazon belül
+A zártsági lemma miatt az elimináció során a mátrix sorai $C$ halmazon belül
 maradnak. Továbbá ha a feladat eredetileg nem megoldható a végén sem lesz az, ez 
-meg két féle képpen történhet meg:
+meg két féle képen történhet meg:
 
 \begin{itemize}
-  \item Létezzik $0 \cdot x_n \leq gamma$ egyenlet, ahol $\gamma < 0$. Ennek alakja 
+  \item Létezik $0 \cdot x_n \leq gamma$ egyenlet, ahol $\gamma < 0$. Ennek alakja 
   $(0,0, \cdots, 0, <0),$ tehát a sor $\in C$.
   \item $\begin{rcases}
   +1 \cdot x_n \leq \alpha_i \\ 
@@ -105,8 +105,8 @@ meg két féle képpen történhet meg:
 
 \subsection{2--es alak}
 
-Az, hogy a két egyenletrendszer ($B1$ és $B2$) közzűl csak az egyik megoldható
-egyidőben indirekt bizonyitjuk. Legyen $x,y$ egy--egy megoldás:
+Az, hogy a két egyenletrendszer ($B1$ és $B2$) közül csak az egyik megoldható
+egy időben indirekt bizonyítjuk. Legyen $x,y$ egy--egy megoldás:
 
 \[ 0 \leq \underbrace{
 		   \underbrace{(yA)}_{\mbox{sorvektor}}x = 
@@ -115,8 +115,8 @@ egyidőben indirekt bizonyitjuk. Legyen $x,y$ egy--egy megoldás:
 
 
 
-Az hogy ha az egyik nem megoldható a másik igen visszavezetéssel bizonyitjuk az
-$1$--es alakra. Ehhez először is kibontjuka $B1$ alakot:
+Az hogy ha az egyik nem megoldható a másik igen visszavezetéssel bizonyítjuk az
+$1$--es alakra. Ehhez először is kibontjuk a $B1$ alakot:
 \begin{displaymath}
 \underbrace{
 \begin{array}{|c|c|c|}
@@ -147,7 +147,7 @@ b \\
 \end{array}}_{b'}
 \end{displaymath}
 
-Azt állitjuk, hogy ha ez nem megoldható akkor a $ yA \geq 0$, $yb \leq 0$ páros
+Azt állítjuk, hogy ha ez nem megoldható, akkor a $ yA \geq 0$, $yb \leq 0$ páros
 igen.
 
 \begin{align*}
@@ -181,10 +181,10 @@ Az alábbi három kijelentés ekvivalens:
   \end{cases}$ egyenletrendszernek.
 \end{enumerate}
 
-A tétel bizonyitását \aref{fig:KorBizKor} ábra szerint fogjuk belátni.
+A tétel bizonyítását \aref{fig:KorBizKor} ábra szerint fogjuk belátni.
  
 \begin{figure}[htbp]
-\caption{A korlátosság bizonyitási kőrre}
+\caption{A korlátosság bizonyítási kőrre}
 \label{fig:KorBizKor}
 \centering \begin{tikzpicture}[scale=1.7]
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.3cm},
@@ -206,15 +206,15 @@ A tétel bizonyitását \aref{fig:KorBizKor} ábra szerint fogjuk belátni.
             
 \begin{description}
   \item[($\star$) -- \circled{1} $\Rightarrow$ \circled{2}:]  Legyen $x_0$
-  megoldása az $Ax \leq b$--nek és tegyük fel, hogy mégis létezzik megoldása
+  megoldása az $Ax \leq b$--nek és tegyük fel, hogy mégis létezik megoldása
   \circled{2}--nek. Ekkor legyen $\lambda > 0$, $x_0 + \lambda z$ is megoldása
   az $Ax \leq b$--nek, mert:
   \[ A(x_0+ \lambda z) = Ax_0 + \lambda (Az) \leq A x_0 + 0 \leq b \] Továbbá
   $c(x_0 + \lambda z ) = c x_0 + \lambda (cz)$, és mivel $cz>0$ a $\lambda$
   alkalmas megválasztásával ez tetszőleges nagyá tehető. Ez meg ellentmond
-  \circled{1}--nek, tehát feltevéssünk hamis volt.
+  \circled{1}--nek, tehát feltevésünk hamis volt.
   \item[($\cdot$) -- \circled{3} $\Rightarrow$ \circled{1}:]  Legyen egy $y$
-  ami teljesiti \circled{3}--at és $x$ ami megoldása \circled{1}--nek. 
+  ami teljesíti \circled{3}--at és $x$ ami megoldása \circled{1}--nek. 
   \[ cx = (yA)x = y(Ax) \leq yb \]
   Ekkor $yb$ felső korlát az $Ax$ megoldás halmazán $cx-re$, tehát \circled{3}--ból
   következik \circled{1}.

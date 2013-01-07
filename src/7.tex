@@ -1,10 +1,10 @@
-\newpage
+﻿\newpage
 \section{A lineáris és egészértékű programozás alkalmazása hálózati folyamproblémákra.}
 
 \[
 \begin{rcases} 
-G(V,E) \mbox{ irányitott gráf} \\
-s,t \in V \mbox{ két kutűntet csúcs} \\
+G(V,E) \mbox{ irányított gráf} \\
+s,t \in V \mbox{ két kitűntet csúcs} \\
 c : E \mapsto \mathbb{R}^+ \mbox{ nem negatív kapacitásfüggvény}\\
 x : E \mapsto \mathbb{R}^+ \mbox{ tetszőleges függvény}\\
 \rho_x(v) \mbox{ -- } v\mbox{--be belépő élek összege } x \mbox{ szerint} \\
@@ -20,13 +20,13 @@ x : E \mapsto \mathbb{R}^+ \mbox{ tetszőleges függvény}\\
 
 \emph{Tétel. Ford Fulkerson: A maximális folyam értéke megegyezik a minimális vágás értékével.}
 
-A bizonyitáshoz először figyeljük meg a kővetkező lemmát: ha $x \in E \mapsto
+A bizonyításhoz először figyeljük meg a kővetkező lemmát: ha $x \in E \mapsto
 \mathbb{R}^+$ és $\forall v \in V - \{s,t\}$ esetén $ \delta_x(v) \leq \rho_x(v)$
 és $\delta_x(s) \leq \rho_x(t)$ akkor $x$ egy folyam. 
 
-Ez igaz mert, ha $\forall v \in V-\{s,t\}$ csúcshóz felveszünk egy új terminálba
-mutató élet amelyekhez hozzárendeljük az $x'(e)=\rho_x(v)-\delta_x(v) \geq 0$
-egyenletlőnséget (a belépők többségbe vannak a kilépőkhöz képest). A többi élen
+Ez igaz mert, ha $\forall v \in V-\{s,t\}$ csúcshoz felveszünk egy új terminálba
+mutató élet, amelyekhez hozzárendeljük az $x'(e)=\rho_x(v)-\delta_x(v) \geq 0$
+egyenletlőtlenséget (a belépők többségbe vannak a kilépőkhöz képest). A többi élen
 maradjon meg a korábbi értékek, $x(e)=x'(e)$. 
 
 Az így konstruált $x$ folyamhoz tartozik $G'$ gráf.  Mivel ez is folyam igaz,
@@ -78,20 +78,20 @@ c\\
   \end{center}
 \end{wrapfigure}
 
-AZ LP felíráshoz elöszőr is egészitsűk ki a gráfot egy $e^*=(t,s)$ pszeudó éllel, ez lesz 
+AZ LP felíráshoz először is egészítsük ki a gráfot egy $e^*=(t,s)$ pszeudó éllel, ez lesz 
 később majd a folyamértéke, $\mu$. Az így kapott gráf illeszkedési mátrixa legyen $B^*$.
-Minden $v \in V - \{s,t\}$ csúcshoz tartozik egy sor amelyre teljesül a $b_vx\leq 0$ feltétel 
+Minden $v \in V - \{s,t\}$ csúcshoz tartozik egy sor, amelyre teljesül a $b_vx\leq 0$ feltétel 
 (azaz a belépő élek ősszege nem kisebb, mint a kilépőké, mert $\delta_x(v) - \rho_x(v) \leq 
 0 \rightarrow \delta_x(v) \leq \rho_x(v)$). 
 
 A $B^*x^* \leq 0$ rendszer alapján $\begin{rcases} \delta_x(s)-\mu \leq 0 \\
 \mu - \rho_x(t) \leq 0 \end{rcases} \Rightarrow \delta_x(s) \leq \mu \leq
-\rho_x(t)$. Az előző lemmábol meg kővetkezik, hogy $\delta_x(s)=\mu=\rho_x(t)$, 
+\rho_x(t)$. Az előző lemmából meg következik, hogy $\delta_x(s)=\mu=\rho_x(t)$, 
 vagyis, hogy a folyam értéke $\mu$. 
 
 A maximális folyam max$\{ (0, \cdots,0,1)x^* : B^*x^* \leq 0; x^* \geq 0;$ $x
-\leq c \}$. Az utolsó feltételt is hozzávesszük a mátrixhoz mint az $E$ egy
-egységvektor és a hozzát tartozó $c$ rész a $M$ vektorban.
+\leq c \}$. Az utolsó feltételt is hozzávesszük a mátrixhoz, mint az $E$ egy
+egységvektor és a hozzá tartozó $c$ rész a $M$ vektorban.
 
 A feladat duálisa min$\{ y(0, 0, \cdots, 0, c) :yM \geq (0, 0, \cdots, 0, 1);$
 $y \geq 0 \}$. Fejezzük ki $y$--t mint $\left( \pi\left(v\right) |
@@ -101,16 +101,16 @@ Ekkor: $\begin{cases}
 (2)~\mbox{minden } e = (u,v) \mbox{ élre }  \pi(u)-w(e) \geq 0, \\
 (3)~\pi(t)-\pi(s) \geq 1. \end{cases}$ 
 
-A duális változói közül $\pi$ a csúcsohkhoz (menyivel nőt a potenciál), $w$ az
-élekhez rendelhető (menyibe kerül nekem a szálitás az él mentén). A duális
+A duális változói közül $\pi$ a csúcsokhoz (menyivel nőt a potenciál), $w$ az
+élekhez rendelhető (menyibe kerül nekem a szállitás az él mentén). A duális
 feladat célja a $m_{\text{DLP}}= \mbox{min} \left\{ \sum_{e\in E}^{}
-w(e)c(e)\right\}$ alak minimalizálása. Állitjuk, hogy ez megegyezik a hálozati
+w(e)c(e)\right\}$ alak minimalizálása. Állítjuk, hogy ez megegyezik a hálózati
 folyam minimális vágásának értékével (legyen ez $m_{\text{C}}$).
 
 Bármely adott $m_{\mbox{C}}$ vágáshoz könnyen készíthető olyan $\pi$ és $w$
 amelyre az $m_{\text{C}}= \mbox{min} \left\{ \sum_{e\in E}^{} w(e)c(e)\right\}$
-következik. Bizonyitásként adunk egy módszert ehhez: legyen $S$ (tartalmaza a
-forrás pontot) és $T$ (tartalmazza a terminál csúcsot) diszjunkt halmazok, ekkor:
+következik. Bizonyításként adunk egy módszert ehhez: legyen $S$ (tartalmazza a
+forráspontot) és $T$ (tartalmazza a terminál csúcsot) diszjunkt halmazok, ekkor:
 $\begin{cases}
 v \in S &\Rightarrow \pi(v)=0, \\
 v \in T &\Rightarrow \pi(v)=1, \\
@@ -120,17 +120,17 @@ e \in (S,T) \mbox{ él } &\Rightarrow w(e)=1, \\
 
 Erre teljesül a $m_{\text{C}}= \mbox{min} \left\{ \sum_{e\in E}^{}
 w(e)c(e)\right\}$, amiből adódik az $m_{\mbox{DLP}} \leq m_{\mbox{C}}$, már csak
-a másik irányú egyenlőtlenséget kell beállitani. Az $M$ mátrix totálisan
+a másik irányú egyenlőtlenséget kell beállítani. Az $M$ mátrix totálisan
 unimoduláris, tehát $y$ is egész értékű elemekből áll (mivel a duális
 feladatban, min$\left\{ yb:yA=c; y\geq 0 \right\}$, szereplő $c$ is az).
 
 Legyen adott $(\pi,w)$ optimális, egészértékű megoldás, ebből kiindulva
-elkészitünk egy $(\pi',w')~0$ vagy $1$ értékű optimális megoldást. Definiáljuk a
+elkészítünk egy $(\pi',w')~0$ vagy $1$ értékű optimális megoldást. Definiáljuk a
 következő függvényeket:
 $\pi'(v)=
 \begin{cases}
 0, &\mbox{ha } \pi(v) \leq \pi(s), \\
-1, &\mbox{egyébbként}, 
+1, &\mbox{egyébként}, 
 \end{cases}$ és
 $w'(e)=
 \begin{cases}
@@ -138,7 +138,7 @@ $w'(e)=
 1, &\mbox{ha } w(e) \geq 1.
 \end{cases}$ 
 
-Ekkor $(\pi',w')$--re $(1)$ és $(3)$ teljesül. A $(2)$-öt indirekt bizonyitjuk.
+Ekkor $(\pi',w')$--re $(1)$ és $(3)$ teljesül. A $(2)$-öt indirekt bizonyítjuk.
 Tegyük fel, hogy egy adott $e=(u,v)$ él esetén $\pi'(u)-\pi'(w)+w'(e)<0$, ekkor
 a $0-1$ érétkűségük miatt $\pi'(u)=w'(e)=0$. Ez $\pi'(v)=1$ esetben valósulna
 meg, amikor $\pi'$ definíniciója miatt $\pi(v) > \pi(s) \geq \pi(u)$, ami
@@ -147,31 +147,31 @@ optimális mert $\sum w'(e)c(e) \leq \sum w(e)c(e)$, mivel $w'(e) \leq w(e)$.
 
 Most visszatérve az $S$ és $T$ halmazainkra legyen, $S=\{v \in V: \pi'(v)=0\} $
 és $T=\{v \in V: \pi'(v)=1\}$. Egy adott $e=(u \in S, v \in T)$ élre $w'(e)=1$.
-Minden más élen $w$ csak akkor lehet egy, ha $c(e)=0$, mert egyébbként $w'(e)=0$
-változtatása után a feltételek továbbra is fenállnának, de a $\sum w'(e)c(e)$
+Minden más élen $w$ csak akkor lehet egy, ha $c(e)=0$, mert egyébként $w'(e)=0$
+változtatása után a feltételek továbbra is fennállnának, de a $\sum w'(e)c(e)$
 csökkenne. Ezért $S$ és $T$ között feszülő élek alkotta vágás értéke
 $m_{\mbox{DLP}}$, így $m_{\mbox{c}} \leq m_{\mbox{DLP}}$.
 
-Ezzel egy általános bizonyitást adtunk a Ford--Fulkerson tételre, amely így
+Ezzel egy általános bizonyítást adtunk a Ford--Fulkerson tételre, amely így
 átfogalmazott alakban általánosabb kérdések megválaszolására is alkalmazható.
 
 \subsection{Minimális költségű folyam keresése}
 
 Minden élhez rendeljünk egy k költséget, amely kifejezi, hogy egy egységnyi folyam
 átviteli azon menyibe kerül. Ekkor kitűzhető egy olyan feladat, ami a legalább $M$
-nagyságú folyamok között keres minimális kőltségűt. Lineáris programozás alakban:
+nagyságú folyamok között keres minimális költségűt. Lineáris programozás alakban:
 
 \[ \mbox{min} \left\{kx: B^*x^* \leq 0, x^* \geq 0, x \leq c,mu \geq M \right\}. \]
 
-Ha az élek kapacitásai egész értékűek akkor egész értékű folyam is választható.
-Ha az élek költsége is egészértékű akkor ismert hatékony algoritmus megoldására,
+Ha az élek kapacitásai egész értékűek, akkor egész értékű folyam is választható.
+Ha az élek költsége is egészértékű, akkor ismert hatékony algoritmus megoldására,
 Ford--Fulkersontól.
 
 \subsection{Többtermékes folyam}
 
 Adott egy $G=(V,E)$ irányított gráf és abban k darab pontpár:
 $(s_i,t_i)_{i = \overline{1,k}}$. $G$--t továbbra is képzelhetjük út-- vagy
-csőhálozatnak, az $(s_i, t_i)$ pontpárok pedig a $k$ darab szállítandó termék
+csőhálózatnak, az $(s_i, t_i)$ pontpárok pedig a $k$ darab szállítandó termék
 termelő--, illetve fogyasztóhelyének felelnek meg. Végül legyen adott egy $c:E
 \mapsto \mathbb{R}^+$ kapacitásfüggvény.
 
@@ -179,6 +179,6 @@ A feladat egy megoldása abból áll, hogy minden élhez $k$ darab számot fogun
 hozzárendelni, megmondva, hogy az egyes termékből ott éppen mennyi halad át.
 Erre az esetre is alkalmazható a lineáris programozás, sőt a legalább két
 termékes folyamoknál már az egyetlen ismert hatékony algoritmus ($k=1$--re a
-javitó utas algoritmus egész értékű megoldást ad polinomiális időben). Az egész
-értékű feladat visszont már itt is NP nehéz (mivel a feladatott leíró mátrix nem
-totálisan unimoduláros ekkor).
+javító utas algoritmus egész értékű megoldást ad polinomiális időben). Az egész
+értékű feladat viszont már itt is NP nehéz (mivel a feladatott leíró mátrix nem
+totálisan unimoduláris ekkor).

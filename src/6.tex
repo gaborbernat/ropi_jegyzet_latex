@@ -1,7 +1,7 @@
-\newpage
+﻿\newpage
 \section{Totálisan unimoduláris mátrixok és alkalmazásai}
 
-Egy totálisan unimoduláris mátrixn minden négyzetes részmátrixának determinánsa
+Egy totálisan unimoduláris mátrixon minden négyzetes részmátrixának determinánsa
 $0, 1$ vagy $-1$. Ehhez szükséges (de nem elégséges) feltétel, hogy a mátrix
 elemei is csak $0, 1$ vagy $-1$ lehetnek.
 
@@ -27,52 +27,52 @@ maximuma megegyezik az IP feladat maximumával.}
   kifejtésből azonnal látszik, hogy a determináns megegyezik az eredeti mátrix
   egy négyzetes részmátrixának determinánsával vagy annak ellentettjével, így
   értéke $0, 1$ vagy $-1$.
-  \item[sor vagy oszlop ismétlés] $\Rightarrow$ ha a kiválasztott részmátrixba
+  \item[sor vagy oszlopismétlés] $\Rightarrow$ ha a kiválasztott részmátrixba
   az eredeti is szerepel a determináns nulla lesz, ha csak az egyik marad, akkor
   előáll az eredeti mátrixból képzett részmátrix, amely determinánsának értéke
   megmarad $0, 1$ vagy $-1$. 
-  \item[transzponáljuk] $\Rightarrow$ megmarad a determináns definiciójának
+  \item[transzponáljuk] $\Rightarrow$ megmarad a determináns definíciójának
   következményeként.
 \end{description}
 
-\emph{Tétel. Bármely irányitott gráf illekszkedés mátrixa~\footnote{$ 
+\emph{Tétel. Bármely irányított gráf illeszkedés mátrixa~\footnote{$ 
 B(G_{(V,E)})=
 b_{i_{\in V}j_{\in E}}=
 \begin{cases}
-0  & \text{ha a } j \text{--edik él nem illleszkedik az } i \text{--edik ponthoz,} \\
+0  & \text{ha a } j \text{--edik él nem illeszkedik az } i \text{--edik ponthoz,} \\
 +1  & \text{ha a } j \text{--edik élnek az } i \text{--edik pont kezdőpontja,} \\
 -1  & \text{ha a } j \text{--edik élnek az } i \text{--edik pont a végpontja,} \\
 +1  & \text{ha a } j \text{--edik él az } i \text{--edik ponthoz illeszkedő hurokél.} \\
 \end{cases}$} totálisan unimoduláris.}.\\
 
-Irányitott illeszkedési mátrixnál az oszlopban $1$ van amely pontból indul az
-él, $-1$ ahove mutat; hurokél esetébben egyetlen $1$--es található. A
-bizonyitást teljes indukcióval. Legyen $M \in \mathbb{M}_{k\times k}$ méretű
-részmátrix. Ha $k=1$ az állitás nyilvánvaló. Ha $k \geq 2$ és létezzik egy darab
-oszlop amelybe legfeljebb egy nem nulla elem van, akkor kifejtés aszerint és az
-indukció adja a többit. Másképp minden oszlopábban egy darab $+1$ és egy darab
-$-1$ van. Így $M$ sorainak összege nullvektor $\Rightarrow$ det$M=0$.\\
+Irányított illeszkedési mátrixnál az oszlopban $1$ van, amely pontból indul az
+él, $-1$ ahova mutat; hurokél esetében egyetlen $1$--es található. A
+bizonyítást teljes indukcióval. Legyen $M \in \mathbb{M}_{k\times k}$ méretű
+részmátrix. Ha $k=1$ az állítás nyilvánvaló. Ha $k \geq 2$ és létezik egy darab
+oszlop, amelybe legfeljebb egy nem nulla elem van, akkor kifejtés a szerint és az
+indukció adja a többit. Másképp minden oszlopában egy darab $+1$ és egy darab
+$-1$ van. Így $M$ sorainak összege null vektor $\Rightarrow$ det$M=0$.\\
 
 \emph{Tétel. Páros gráf~\footnote{Páros gráfnak nevezünk egy $G$ gráfot, ha
 csúcsainak halmazát fel tudjuk úgy osztani egy $A$ és $B$ halmazra, hogy az
 összes $G$-beli élre teljesül, hogy az egyik végpontja $A$-ban van, a másik
 pedig $B$-ben.} illeszkedési mátrixa totálisan unimoduláris.}\\ 
 
-Mutason minden él $A$--ból $B$--be. Irányított gráf illeszkedési mátrixe TU. Az
-eredeti illeszkedési mátriszának megkapásához $B$ csúcsainak megfelelő sorokat
+Mutasson minden él $A$--ból $B$--be. Irányított gráf illeszkedési mátrixa TU. Az
+eredeti illeszkedési mátrixának megkapásához $B$ csúcsainak megfelelő sorokat
 $-1$--el szorozzuk.
 
-\subsection{Maximális összsulyú párositás IP feladatként}
+\subsection{Maximális összsúlyú párosítás IP feladatként}
 
-Legyen $x$ indikátor, hogy az él benne van e párositásban, $w$ egy tetszőleges
+Legyen $x$ indikátor, hogy az él benne van e párosításban, $w$ egy tetszőleges
 él súlyfüggvény és $B$ az illeszkedési mátrix (amely páros gráf lévén totálisan
-unimoduláris). A \emph{feladat}, megfogalmazható mint max$\left\{ wx:Bx <= (1,
+unimoduláris). A \emph{feladat}, megfogalmazható, mint max$\left\{ wx:Bx <= (1,
 \cdots, 1)^T, x \geq 0 \right\}$. Az $x \geq 0 $ feltételt bevisszük $B$
-mátrixba kiegészitve azt egy $m \times m$--es egységmátrix ellentettjével, de ez
+mátrixba kiegészítve azt egy $m \times m$--es egységmátrix ellentettjével, de ez
 nem változtat TU tulajdonságon. 
 
-Az egyenlőtlenség így azt fejezi ki, hogy egy csucsból legfeljebb egy kiinduló
-élet választunk ki, ami adja a párositás feladatát. 
+Az egyenlőtlenség így azt fejezi ki, hogy egy csúcsból legfeljebb egy kiinduló
+élet választunk ki, ami adja a párosítás feladatát. 
 
 \[
 \begin{rcases}
@@ -83,7 +83,7 @@ b \text{ egész}
 
 A max$\left\{ wx : Bx \leq (1,\cdots,1)^T, x \geq 0 \right\}$ duálisa
 min$\{ y(1,\cdots,1)^T : yB \geq w,$ $y~\geq~0\}$. Az $y$ megoldás
-minden $v$ csúcshoz $c(v)$ címkét rendel, ahogy Egerváry Jenő párositás
+minden $v$ csúcshoz $c(v)$ címkét rendel, ahogy Egerváry Jenő párosítás
 algoritmusa is:
 
 \[ yB \geq w \Rightarrow c(a) + c(b) \geq w(e), \forall e=\{a,b\}\in E.\]
@@ -92,43 +92,43 @@ algoritmusa is:
 
 A számegyenes véges sok intervallum alkossa egy gráf csúcshalmazát, és két csúcs
 akkor legyen szomszédos, ha a megfelelő intervallumok metszők; az így
-meghatározott gráf az intervallumgráf. Felthető, hogy a gráfot meghatározó
+meghatározott gráf az intervallumgráf. Feltehető, hogy a gráfot meghatározó
 intervallumok $n$--re az $[1,n]$ egész végpontú, zárt részintervallumai.
 
 Legyen az $I=\left\{I_1, I_2, \cdots, I_n\right\}$ intervallumrendszer.
 Rendeljük ehhez $n \times m$--es $A(I)$ mátrixot: sorai feleljenek meg az
-$1,2,\cdots,n$ egészeknek, oszlopai peddig az I intervallumainak. Az $i$--ik sor
-és a $j$--ik oszlop kereszteződésben akkor álljon $1$--es, ha $i \in I_j$, és
+$1,2,\cdots,n$ egészeknek, oszlopai pedig az I intervallumainak. Az $i$--ik sor
+és a $j$--ik oszlopkereszteződésben akkor álljon $1$--es, ha $i \in I_j$, és
 minden más helyen álljon $0$. \\
 
 \emph{Tétel. Az így definiált A(I) mátrix totálisan unimoduláris.} \\
 
-A bizonyitáshoz kiválasztunk egy tetszőleges $k \times k$ részmátrixot, majd
+A bizonyításhoz kiválasztunk egy tetszőleges $k \times k$ részmátrixot, majd
 teljes indukciót használunk az egyesek darabszáma szerint. Ha nulla darab
-egyesből áll a mátrix az nyilván TU. Ha ven benne két oszlop amelyben az első
-egyes azonos helyen áll, akkor a nagyobb egyes darabszámúból kivonjuk a kisedd
-darabszámot. Ez az egyesek darabszámát csökkenti, de a detereminását nem
+egyesből áll a mátrix az nyilván TU. Ha van benne két oszlop, amelyben az első
+egyes azonos helyen áll, akkor a nagyobb egyes darabszámúból kivonjuk, a kisedd
+darabszámot. Ez az egyesek darabszámát csökkenti, de a detereminánsát nem
 változtatja.
 
-Ha nincs ilyen szolop, de van csupa null oszlop, akkor a determináns nulla. Ha
-egyik sem teljesül, akkor pedig be tudjuk rendezni az oszlopkat úgy, hogy az
+Ha nincs ilyen oszlop, de van csupa nulla oszlop, akkor a determináns nulla. Ha
+egyik sem teljesül, akkor pedig be tudjuk rendezni az oszlopokat úgy, hogy az
 alsó háromszögmátrixot kapunk oszlop cserével. Ez a művelet a determinánst csak
-előjelbe változtatja meg, így a determináns egy vagy minusz egy marad. \\
+előjelbe változtatja meg, így a determináns egy vagy mínusz egy marad. \\
 
-\emph{Tétel. Az intervallumgráfok tetszőleges k színre megszinezhetőek
+\emph{Tétel. Az intervallumgráfok tetszőleges k színre megszínezhetőek
 egyenletesen.}\\ 
 
 Az egyenletesen alatt azt értjük, hogy ha $i$--t tartalmazó intervallumok száma
-$d_i$, akkor ezek közül minden felhasznált szín esetén az ilyen szinű
+$d_i$, akkor ezek közül minden felhasznált szín esetén az ilyen színű
 intervallumok száma $\lceil \frac{d_i}{k} \rceil$~\footnote{felső egészrész}
 vagy $\lfloor \frac{d_i}{k} \rfloor$~\footnote{alsó egészrész}.
 
-Elég bebizonyitani, hogy az intervallumok közül kiválasztható néhány úgy, hogy
+Elég bebizonyítani, hogy az intervallumok közül kiválasztható néhány úgy, hogy
 az intervallum közül kiválasztható néhány úgy, hogy bármely $1 \leq i \leq n$
 esetén az $i$--t tartalmazó intervallumgráfok között $\lceil \frac{d_i}{k}
 \rceil$ vagy $\lfloor \frac{d_i}{k} \rfloor$ darab kiválasztott legyen. Ekkor a
-kiválasztott intervallumokat megszínezzük egy szsínnel majd elhagyuk őket, a
-megmaradt intervalumra meg ugyanaz $k-1$--el.
+kiválasztott intervallumokat megszínezzük egy színnel majd elhagyjuk őket, a
+megmaradt intervallumra meg ugyanaz $k-1$--el.
 
 Legyen:
 \[\begin{rcases}
@@ -141,7 +141,7 @@ d = n \text{ dimenziós vektor } i \text{--ik komponense } d_i \\
 TU $\Rightarrow \exists$ egészértékű megoldás.} 
 \]
 
-$x$--ben $0$ és $1$ közötti elemek vannak, és egy komponense oszlop öszegge
+$x$--ben $0$ és $1$ közötti elemek vannak, és egy komponense oszlop összege
 $\lceil \frac{d}{k} \rceil$ és $ \lfloor \frac{d}{k} \rfloor$ között van. Így
-ezeknap az oszlopoknak megfelelő intervalumukat kiválasztva valóbban $\lceil
+ezeknek az oszlopoknak megfelelő intervallumukat kiválasztva valóbban $\lceil
 \frac{d_i}{k} \rceil$ vagy $ \lfloor \frac{d_i}{k} \rfloor$ illeszkedi $i$--re.
