@@ -2,17 +2,18 @@
 \section{Farkas-lemma (két alakban), a lineáris program célfüggvény korlátossága}
 
 A következő egyenletekből csak a jobb vagy csak a bal egyenletrendszereknek
-létezik egy időben megoldása:
+létezik egyidőben megoldása (a Farkas~\footnote{Farkas Gyula, 1902.} lemma két
+alakja):
 
 \begin{enumerate}
   \item alak: \begin{align*}
   \overbrace{Ax \leq b}^{A1}  && \overbrace{yA= 0}^{A2}\\
    			 && y\geq 0 \\
-             && yb\leq 0
+             && yb< 0
   \end{align*}
   \item alak:\begin{align*}
   \overbrace{Ax = b }^{B1}   && \overbrace{yA \geq 0}^{B2}\\
-  x \geq 0 && yb \leq 0 
+  x \geq 0 && yb < 0 
   \end{align*}
 \end{enumerate}
 
@@ -25,17 +26,27 @@ Legyen az alábbi mérettel rendelkező mátrixok:
 \]
 
 \subsection{1--es alak}
-Az első alak két egyenletrendszere nem megoldható egy időben mert:
-\[ 0 = 0x = (yA) \cdot x = y(Ax) \leq yb.\] E utolsó egyenlőtlenség nem
-egyértelmű, ellenőrizni kell, hogy:
-\[ Ax \leq b \Rightarrow y(Ax) \leq (yb).\] Szerencsére ez igaz lesz a mátrix
-szorzás disztributív tulajdonsága miatt. Majd tovább futtatva a korábbi
-gondolatunkat $yb<0$ amely ellentmond a kiinduló feltételeknek.
+Az első alak két egyenletrendszere nem megoldható egyidőben mert:
+\[ 0 = 0x = (yA) \cdot x = y(Ax) \leq yb.\] Az átcsoportositást megtehetjük a
+szorzás asszociativitása miatt, míg az utolsó egyenlőtlenséget is át kell
+gondolni: \[ Ax \leq b \Rightarrow y(Ax) \leq yb.\] Szerencsére ez igaz lesz
+mivel $Ax$ elemei legyenek $\alpha_i$, $b$ elemei $\beta_i$ és $y$ elemei
+$\gamma_i$.
+$\sum\gamma_i \alpha_i \leq \sum \gamma_i \beta_i \Rightarrow y(Ax) \leq y(b)$,
+mivel adott $y \geq 0$ feltétel (tehát $\gamma_i \geq 0$). Majd tovább futtatva a
+korábbi gondolatunkat $yb<0$ amely ellentmond a kiinduló feltételeknek ($0=yAx \leq yb<0$). 
 
-Definiáljuk a következő $C$ halmazt, amely egy sorvektorok halmaza:
-\[ C= \left\{ z \in \mathbb{R}^{n+1}, z = y (A|b), y \geq 0 \right\}, \].
-Célunk bizonyítani, hogy létezik $C$-ben $(0, \cdots, 0 , <0)$ alakú sorvektor,
-ha az egyenletrendszer nem megoldható.
+Vizsgáljuk meg, hogy mi történik, ha $A1$ nem megoldható (ezt tegyük fel),
+következik e ebből, hogy az $A2$ igen? Definiáljuk a következő $C$ halmazt,
+amely egy sorvektorok halmaza, és az $A2$ alak egyenleteire épül: \[ C= \left\{
+z \in \mathbb{R}^{n+1} | z = y (A|b), y \geq 0 \right\}\].
+
+Célunk bizonyítani, hogy létezik $C$-ben $(0, \cdots, 0 , <0)$ alakú sorvektor
+(ez azt jelentené, hogy az $A2$--nek létezzik egy $y$ megoldása), ha az $A1$
+($Ax \leq b$) egyenletrendszer nem megoldható.A megoldáshoz indukciót
+használunk, felhasználva a Fourier--Motzkin eliminációt. Lássuk be, hogy az
+elimináció során felhasznált műveletek (szorzás pozítiv skalárral és vektorok
+összeadása) nem vezetnek ki a halmazból.
 
 A halmaz zártságára az alábbi lemmák igazak ($z_1, z_2 \in C, \lambda>0$):
 
@@ -47,8 +58,12 @@ A halmaz zártságára az alábbi lemmák igazak ($z_1, z_2 \in C, \lambda>0$):
   z=y(A|b) \Rightarrow \lambda z = \lambda y (A|b)$ ahol igaz, hogy $\lambda y \geq 0$.
 \end{itemize}
 
-$(A|b)$ sorai $\in C$ mert $y(i)=1$--el felvételt nyernek $C$--be. Most hajtsuk végre a
-Fourier-Motzkin eliminációt $(A|b)$--re, úgy, hogy a nullákat nem töröljük:
+Bizonyitjuk, hogy az eliminációval párhuzamosan mindig létre tudunk hozni ilyen
+elemet a $C$--ben, ha $A1$--nek nincs megoldása (mint a kezdeti halmaz elemek
+egy lineáris kombinációja). Kiindulunk kezdeti $(A|b)$ mátrixból, amely sorai
+$\in C$, mert $y_i=1$--el (máshol a vektor $0$) felvételt nyernek $C$--be. Most
+hajtsuk végre a Fourier-Motzkin eliminációt $(A|b)$--re, úgy, hogy a nullákat
+nem töröljük:
 
 \begin{displaymath}
 \underbrace{
@@ -86,11 +101,12 @@ A &  & &  &b \\
 \end{displaymath}
 
 A zártsági lemma miatt az elimináció során a mátrix sorai $C$ halmazon belül
-maradnak. Továbbá ha a feladat eredetileg nem megoldható a végén sem lesz az, ez 
-meg két típus képen történhet meg:
+maradnak. Végezzük el az eliminációt ismét és ismét amíg egy változós alakra nem
+jutunk. Ha a feladat eredetileg nem volt megoldható, ezt a tulajdonságot az
+elimináció megtartja, a végén sem lesz az, ez meg két feltétel melett történhet meg:
 
 \begin{itemize}
-  \item Létezik $0 \cdot x_n \leq gamma$ egyenlet, ahol $\gamma < 0$. Ennek alakja 
+  \item Létezik $0 \cdot x_n \leq \gamma$ egyenlet, ahol $\gamma < 0$. Ennek alakja 
   $(0,0, \cdots, 0, <0),$ tehát a sor $\in C$.
   \item $\begin{rcases}
   +1 \cdot x_n \leq \alpha_i \\ 
@@ -113,11 +129,36 @@ egy időben indirekt bizonyítjuk. Legyen $x,y$ egy--egy megoldás:
 		  y\underbrace{(Ax)}_{\mbox{oszlopvektor}}}
 		  _{\mbox{nem triviális lépés}}=yb<0\] ahol ellentmondáshoz jutunk.
 
-
-
 Az hogy ha az egyik nem megoldható a másik igen visszavezetéssel bizonyítjuk az
 $1$--es alakra. Ehhez először is kibontjuk a $B1$ alakot:
+\[ 
+\begin{rcases}
+Ax =b \\
+x \geq 0
+\end{rcases} \Rightarrow
+\begin{cases}
+A x    &\leq b \\
+(-A x) &\leq -b \\
+(-E x) &\leq 0
+\end{cases}
+\]
+Most ennek az $A1$ alaknak felírjuk $B1$ alakját mint: 
+
 \begin{displaymath}
+\begin{array}{|c|c|c|}
+\hline
+A \\ \hline
+-A \\ \hline
+-E\\  \hline
+\end{array}
+~ x\leq
+\begin{array}{|c|c|c|}
+\hline
+0 \\ \hline
+0 \\ \hline
+0  \\  \hline
+\end{array}
+\Rightarrow
 \underbrace{
 \begin{array}{|c|c|c|}
 \hline
@@ -134,36 +175,64 @@ A \\
 -I \\
 \hline
 \end{array}}_{A'}
-\leq
-\underbrace{
+=0,~
 \begin{array}{|c|}
 \hline
-b \\
+y_1\\\hline
+y_2\\\hline
+y_3\\
 \hline
--b\\
+\end{array}^T
+\geq
+\begin{array}{|c|}
 \hline
-0 \\
+0\\\hline
+0\\\hline
+0\\
 \hline
-\end{array}}_{b'}
+\end{array}^T,~
+~
+\begin{array}{|c|c|c|}
+\hline
+y_1&
+y_2&
+y_3 \\
+\hline
+\end{array}
+~
+\begin{array}{|c|}
+\hline
+b\\\hline
+-b\\\hline
+0\\
+\hline
+\end{array}
+<0
 \end{displaymath}
 
 Azt állítjuk, hogy ha ez nem megoldható, akkor a $ yA \geq 0$, $yb \leq 0$ páros
 igen.
 
 \begin{align*}
-\exists~y' &> 0 \\
 y_1 A + y_2 (-A) + y_3(-I) &= 0 \\
-y_1 \cdot b - y_2 \cdot b + y_3 \cdot 0 &<0
+y_1 \cdot b - y_2 \cdot b + y_3 \cdot 0 &<0, \\
+y_1, y_2, y_3 &\geq 0
 \end{align*}
 
 Tehát:
-\begin{align*}
-(y_1 - y_2) \cdot A &= y_3 \\
-(y_1 - y_2) \cdot B &< 0.
-\end{align*}
-
-Ekkor legyen $y=y_1-y_2$ és ezzel megkaptuk a $B2$ alakot, azaz igaz, hogy ez
-megoldható.
+\[
+\begin{rcases}
+(y_1 - y_2) \cdot A &= y_3 \\ 
+(y_1 - y_2) \cdot B &< 0 \\
+y_1, y_2, y_3 &\geq 0
+\end{rcases} \xRightarrow{y=y_1-y_2} 
+\begin{cases}
+y \cdot A &\geq 0 \\ 
+y \cdot B &< 0
+\end{cases}
+\]
+Ezzel felírtuk $B2$ alakot, azaz a $B1\xRightarrow{?}B2$ bizonyitását
+visszavezetük $A1 \Rightarrow A2$--re.
 
 \subsection{Korlátosság}
 
@@ -216,6 +285,6 @@ A tétel bizonyítását \aref{fig:KorBizKor} ábra szerint fogjuk belátni.
   \item[($\cdot$) -- \circled{3} $\Rightarrow$ \circled{1}:]  Legyen egy $y$
   ami teljesíti \circled{3}--at és $x$ ami megoldása \circled{1}--nek. 
   \[ cx = (yA)x = y(Ax) \leq yb \]
-  Ekkor $yb$ felső korlát az $Ax$ megoldás halmazán $cx-re$, tehát \circled{3}--ból
-  következik \circled{1}.
+  Ekkor $yb$ a keresett felső korlát az $Ax$ megoldás halmazán $cx-re$, tehát
+  \circled{3}--ból következik \circled{1}.
 \end{description}

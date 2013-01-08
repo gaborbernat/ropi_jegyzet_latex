@@ -24,13 +24,18 @@ Ha az egyenletnek, vagy a feladat más alakban van megadva átalakítható az
 következő összefűggések alapján:
 \begin{align*}
 \alpha x \geq \beta  \Rightarrow  &-\alpha x \leq -\beta \\
-\alpha x  =    \beta \Rightarrow  & -\alpha x \leq-\beta \\
-									 & +\alpha x \leq+\beta \\
+\alpha x  =    \beta \Rightarrow  & \begin{cases}
+-\alpha x \leq-\beta \\
++\alpha x \leq+\beta \\
+\end{cases}\\ 
 min(cx:Ax \leq b)	 \Rightarrow    & max((-c)x:Ax \leq b)
 \end{align*}
 
-A minimumos egyenlet megoldása a maximum egyenlet megoldásának az ellentéte lesz.
-A kérdések, amelyre választ keressünk:
+A minimumos egyenlet megoldása a maximum egyenlet megoldásának az ellentéte
+lesz. Ha olyan egyenletünk van, ahol szigorú egyenlőtlenség van ( $<$ vagy $>$)
+akkor ezeket elhagyjuk, mert a valós számok halmazán nem tudunk hipersik közeli
+értéket keresni. A kérdés amire keressük a válaszokat:
+
 \begin{itemize}
   \item Létezik e $Ax \leq b$ egyenletnek megoldása?
   \item $cx$ korlátos e a megoldás halmazon?
@@ -51,17 +56,21 @@ megoldás halmazt.
 \caption{Kétváltozós feladat grafikus megoldása} \label{fig:KetValtGraf}
 \end{figure}
 
-Ha a célfüggvényt különböző $x$--re felrajzoljuk meghatározható az optimális megoldás és az
-ehhez tartozó $x$ értékek.
+Ha a célfüggvényt különböző $x$--re felrajzoljuk meghatározható az optimális
+megoldás és az ehhez tartozó $x$ értékek. Egy alternativ megkőzelités, hogy
+vesszük célfügvény irányvektor normálját és ennek irányából pásztázunk végig a
+meghatározott konvex sokszögben, a metszőpontok mentén. A megoldást az utolsó
+megvizsgált metszőpont adja.
 
 \subsection{Fourier-Motzkin elimináció}
 
-Ennek segítségével megvizsgálhatjuk az egyenlet megoldhatóságát: $n$ változós egyenletet
-visszavezetjük $n-1$ változóra, iteratívan, amíg egy változós egyenletrendszert nem kapunk;
-erre könnyű megoldhatóságot vizsgálni. A folyamat:
+Ennek segítségével megvizsgálhatjuk az egyenlet megoldhatóságát: $n$ változós
+egyenletet visszavezetjük $n-1$ változóra, iteratívan, amíg egy változós
+egyenletrendszert nem kapunk; erre könnyű megoldhatóságot vizsgálni. A folyamat:
 
 \begin{enumerate}
-  \item Minden egyenlet $\alpha \in \mathbb{R}^+$ szorzással az alábbi alakra hozható:
+  \item Minden egyenlet $\alpha \in \mathbb{R}^+$ szorzással az alábbi alakra
+  hozható:
   \begin{displaymath}
   \begin{bmatrix}
   1  & A_+ \\
@@ -117,3 +126,6 @@ erre könnyű megoldhatóságot vizsgálni. A folyamat:
  \end{align*} 
   Ha $n \geq 1$ folytassuk a $2$--es lépéstől.
 \end{enumerate} 
+
+A Gauss eliminációval szemben itt csak pozítiv skalárral szorozhatjuk be a sort,
+az egyenlőtlenség miatt.
