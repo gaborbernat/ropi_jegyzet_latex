@@ -1,4 +1,4 @@
-﻿\newpage
+\newpage
 \section{Totálisan unimoduláris mátrixok és alkalmazásai}
 
 Egy totálisan unimoduláris mátrixon minden négyzetes részmátrixának determinánsa
@@ -27,7 +27,7 @@ maximuma megegyezik az IP feladat maximumával.}
   kifejtésből azonnal látszik, hogy a determináns megegyezik az eredeti mátrix
   egy négyzetes részmátrixának determinánsával vagy annak ellentettjével, így
   értéke $0, 1$ vagy $-1$.
-  \item[sor vagy oszlopismétlés] $\Rightarrow$ ha a kiválasztott részmátrixba
+  \item[sor vagy oszlop ismétlés] $\Rightarrow$ ha a kiválasztott részmátrixba
   az eredeti is szerepel a determináns nulla lesz, ha csak az egyik marad, akkor
   előáll az eredeti mátrixból képzett részmátrix, amely determinánsának értéke
   megmarad $0, 1$ vagy $-1$. 
@@ -43,20 +43,23 @@ b_{i_{\in V}j_{\in E}}=
 +1  & \text{ha a } j \text{--edik élnek az } i \text{--edik pont kezdőpontja,} \\
 -1  & \text{ha a } j \text{--edik élnek az } i \text{--edik pont a végpontja,} \\
 +1  & \text{ha a } j \text{--edik él az } i \text{--edik ponthoz illeszkedő hurokél.} \\
-\end{cases}$} totálisan unimoduláris.}.\\
+\end{cases}$} totálisan unimoduláris.}.
+\vspace{0.4cm}
 
 Irányított illeszkedési mátrixnál az oszlopban $1$ van, amely pontból indul az
-él, $-1$ ahova mutat; hurokél esetében egyetlen $1$--es található. A
+él, $-1$ ahova mutat; hurok--él esetében egyetlen $1$--es található. A
 bizonyítást teljes indukcióval. Legyen $M \in \mathbb{M}_{k\times k}$ méretű
 részmátrix. Ha $k=1$ az állítás nyilvánvaló. Ha $k \geq 2$ és létezik egy darab
 oszlop, amelybe legfeljebb egy nem nulla elem van, akkor kifejtés a szerint és az
 indukció adja a többit. Másképp minden oszlopában egy darab $+1$ és egy darab
-$-1$ van. Így $M$ sorainak összege null vektor $\Rightarrow$ det$M=0$.\\
+$-1$ van. Így $M$ sorainak összege null vektor $\Rightarrow$ det$M=0$.
+\vspace{0.4cm}
 
 \emph{Tétel. Páros gráf~\footnote{Páros gráfnak nevezünk egy $G$ gráfot, ha
 csúcsainak halmazát fel tudjuk úgy osztani egy $A$ és $B$ halmazra, hogy az
 összes $G$-beli élre teljesül, hogy az egyik végpontja $A$-ban van, a másik
-pedig $B$-ben.} illeszkedési mátrixa totálisan unimoduláris.}\\ 
+pedig $B$-ben.} illeszkedési mátrixa totálisan unimoduláris.}
+\vspace{0.4cm}
 
 Mutasson minden él $A$--ból $B$--be. Irányított gráf illeszkedési mátrixa TU. Az
 eredeti illeszkedési mátrixának megkapásához $B$ csúcsainak megfelelő sorokat
@@ -98,30 +101,34 @@ intervallumok $n$--re az $[1,n]$ egész végpontú, zárt részintervallumai.
 Legyen az $I=\left\{I_1, I_2, \cdots, I_n\right\}$ intervallumrendszer.
 Rendeljük ehhez $n \times m$--es $A(I)$ mátrixot: sorai feleljenek meg az
 $1,2,\cdots,n$ egészeknek, oszlopai pedig az I intervallumainak. Az $i$--ik sor
-és a $j$--ik oszlopkereszteződésben akkor álljon $1$--es, ha $i \in I_j$, és
-minden más helyen álljon $0$. \\
+és a $j$--ik oszlop kereszteződésben akkor álljon $1$--es, ha $i \in I_j$, és
+minden más helyen álljon $0$.
+\vspace{0.4cm}
 
-\emph{Tétel. Az így definiált A(I) mátrix totálisan unimoduláris.} \\
+\emph{Tétel. Az így definiált A(I) mátrix totálisan unimoduláris.}
+\vspace{0.4cm}
 
 A bizonyításhoz kiválasztunk egy tetszőleges $k \times k$ részmátrixot, majd
 teljes indukciót használunk az egyesek darabszáma szerint. Ha nulla darab
 egyesből áll a mátrix az nyilván TU. Ha van benne két oszlop, amelyben az első
-egyes azonos helyen áll, akkor a nagyobb egyes darabszámúból kivonjuk, a kisedd
-darabszámot. Ez az egyesek darabszámát csökkenti, de a detereminánsát nem
+egyes azonos helyen áll, akkor a nagyobb egyes darabszámúból kivonjuk, a kisebb
+darabszámot. Ez az egyesek darabszámát csökkenti, de a determinánsát nem
 változtatja.
 
 Ha nincs ilyen oszlop, de van csupa nulla oszlop, akkor a determináns nulla. Ha
 egyik sem teljesül, akkor pedig be tudjuk rendezni az oszlopokat úgy, hogy az
-alsó háromszögmátrixot kapunk oszlop cserével. Ez a művelet a determinánst csak
-előjelbe változtatja meg, így a determináns egy vagy mínusz egy marad. \\
+alsóháromszög mátrixot kapunk oszlop cserével. Ez a művelet a determinánst csak
+előjelbe változtatja meg, így a determináns egy vagy mínusz egy marad.
+\vspace{0.4cm}
 
 \emph{Tétel. Az intervallumgráfok tetszőleges k színre megszínezhetőek
-egyenletesen.}\\ 
+egyenletesen.}
+\vspace{0.4cm}
 
 Az egyenletesen alatt azt értjük, hogy ha $i$--t tartalmazó intervallumok száma
 $d_i$, akkor ezek közül minden felhasznált szín esetén az ilyen színű
-intervallumok száma $\lceil \frac{d_i}{k} \rceil$~\footnote{felső egészrész}
-vagy $\lfloor \frac{d_i}{k} \rfloor$~\footnote{alsó egészrész}.
+intervallumok száma $\lceil \frac{d_i}{k} \rceil$~\footnote{felső egész rész}
+vagy $\lfloor \frac{d_i}{k} \rfloor$~\footnote{alsó egész rész}.
 
 Elég bebizonyítani, hogy az intervallumok közül kiválasztható néhány úgy, hogy
 az intervallum közül kiválasztható néhány úgy, hogy bármely $1 \leq i \leq n$
@@ -144,4 +151,4 @@ TU $\Rightarrow \exists$ egészértékű megoldás.}
 $x$--ben $0$ és $1$ közötti elemek vannak, és egy komponense oszlop összege
 $\lceil \frac{d}{k} \rceil$ és $ \lfloor \frac{d}{k} \rfloor$ között van. Így
 ezeknek az oszlopoknak megfelelő intervallumukat kiválasztva valóbban $\lceil
-\frac{d_i}{k} \rceil$ vagy $ \lfloor \frac{d_i}{k} \rfloor$ illeszkedi $i$--re.
+\frac{d_i}{k} \rceil$ vagy $ \lfloor \frac{d_i}{k} \rfloor$ illeszkedik $i$--re.

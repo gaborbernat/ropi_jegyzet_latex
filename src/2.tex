@@ -1,4 +1,4 @@
-﻿\newpage
+\newpage
 \section{A lineáris programozás alapfeladata, kétváltozós grafikus megoldás és Fourier-Motzkin elimináció}
 
 Egy egyenlőtlenségrendszer megoldásai közül kiválasztani azt, amely valamilyen
@@ -29,7 +29,7 @@ következő összefűggések alapján:
 min(cx:Ax \leq b)	 \Rightarrow    & max((-c)x:Ax \leq b)
 \end{align*}
 
-A minimumos egyenlet megoldása a maximum egyenlet megoldásának az ellentétje lesz.
+A minimumos egyenlet megoldása a maximum egyenlet megoldásának az ellentéte lesz.
 A kérdések, amelyre választ keressünk:
 \begin{itemize}
   \item Létezik e $Ax \leq b$ egyenletnek megoldása?
@@ -39,7 +39,7 @@ A kérdések, amelyre választ keressünk:
 
 \subsection{Kétváltozós feladat grafikus megoldása}
 
-$\alpha x \leq \beta$ egyenlet meghatároz egy fél sikot, amelyet $\alpha x = \beta$
+$\alpha x \leq \beta$ egyenlet meghatároz egy félsíkot, amelyet $\alpha x = \beta$
 határol. Ha a félsíkok metszete véges, egy konvex sokszöget alkotnak, amely megadja a
 megoldás halmazt.
 
@@ -57,7 +57,7 @@ ehhez tartozó $x$ értékek.
 \subsection{Fourier-Motzkin elimináció}
 
 Ennek segítségével megvizsgálhatjuk az egyenlet megoldhatóságát: $n$ változós egyenletet
-visszavezetjük $n-1$ változóra, iteratívan, amíg egyváltozós egyenletrendszert nem kapunk;
+visszavezetjük $n-1$ változóra, iteratívan, amíg egy változós egyenletrendszert nem kapunk;
 erre könnyű megoldhatóságot vizsgálni. A folyamat:
 
 \begin{enumerate}
@@ -101,7 +101,7 @@ erre könnyű megoldhatóságot vizsgálni. A folyamat:
   	Ezután $A_-$ elhagyható.
   	\item Ha $A_- \neq \emptyset$ és $A_+ \neq \emptyset$ akkor legyen 
   	$i \in A_-$ egy sora, $j \in A_+$ egy sora, és képezzük az összes sora az
-  	alábbi ősszeget (ez exponenciális egyenletszaporodást jelent, e miatt az algoritmus
+  	alábbi ősszeget (ez exponenciális egyenlet szaporodást jelent, e miatt az algoritmus
   	futási ideje is exponenciális):
   	\[
   	\left( \alpha_i + \alpha_j \right) \cdot x' \leq b_i + b_j 

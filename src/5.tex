@@ -1,5 +1,5 @@
-﻿\newpage
-\section{Egészértékű programozás: a feladat bonyolultsága, korlátozás és szétválasztás (Branch and Bound).}
+\newpage
+\section{Egészértékű programozás: a feladat bonyolultsága, korlátozás és szétválasztás (Branch and Bound)}
 
 \subsection{Egészértékű programozás}
 A feladat:
@@ -37,7 +37,7 @@ z_{i_1} &+ (1-z_{i_2}) &+ (1 - z_{i_3})  &\geq 1 & \mbox{ ha }~~x_{i_1} \vee \ne
 Ha $f$ kielégíthető, akkor $z_i=1 \Leftrightarrow x_i=$ ,,igaz''. Ez lesz az
 egyenletrendszer egészértékű megoldása. 
 
-Megfordítva, ha az egyenlőtlenségrendszert egész $z_i$ értékkel ki tudjuk
+Megfordítva, ha az egyenlőtlenség--rendszert egész $z_i$ értékkel ki tudjuk
 elégíteni akkor -- mivel minden egész vagy $0$, vagy $1$ -- az $x_i$=,,igaz''
 $\Leftrightarrow z_i=1$ választással $f$--et kielégítő értéket adtunk a logikai
 változónak.
@@ -74,11 +74,11 @@ Az algoritmus folyamata:
   \item Oldjuk meg a relaxált IP$_i$ feladatott (LP$_i$--t).
   \\ Ha $\not \exists$ megoldás visszalépünk az első ponthoz.
   \\ Egyébként: $z_i$ -- maximum érték,  $x_i$ -- maximum hely.
-  \item Ha $z_i \leq z^*$, IP$_i$ feladat és részfeladatai maximumértéke is
+  \item Ha $z_i \leq z^*$, IP$_i$ feladat és rész feladatai maximum értéke is
   legfeljebb $z^*$, lépjünk vissza az első ponthoz.
   \item Ha $z_i > z^* \mbox{ és } x_i \in \mathbb{Z}^{n}$ akkor $ z^* = z_i, x^* =
   x_i$ (adat frissítés) és visszalépünk az első ponthoz.
-  \item Választunk egy közbelső értéket $(f_{i_j} \leq t \leq g_{i_j})$ és egy
+  \item Választunk egy közbenső értéket $(f_{i_j} \leq t \leq g_{i_j})$ és egy
   ezt meghatározó $x_j$ elágazás változót $x_i$--ből ($j$ egy pozíció $x$
   vektorban, $i$ az IP feladat sorszámát jelöli). Ezután $L$--ben elhelyezzünk
   két új feladatott:  $(t+1, g, z_i)$ és $(f, t, z_i)$. Lépjünk vissza az első
@@ -87,7 +87,7 @@ Az algoritmus folyamata:
 
 Az algoritmus véges sok lépésben leáll és megtalálja a feladat optimumát. A
 véges sok lépést $f$ és $k$ vektor garantálja, hiszen a kezdetben kitűzött
-feladatnak csak véges sok részproblémája lehet a felhasznált korlátok miatt. Az
+feladatnak csak véges sok rész problémája lehet a felhasznált korlátok miatt. Az
 optimális részt indirekt bizonyítjuk: legyen $z_0$ az optimum, de az eljárás
 $z*<z_0$--t kapta.
 

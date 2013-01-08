@@ -1,5 +1,5 @@
-﻿\newpage
-\section{A lineáris és egészértékű programozás alkalmazása hálózati folyamproblémákra.}
+\newpage
+\section{A lineáris és egészértékű programozás alkalmazása hálózati folyamproblémákra}
 
 \[
 \begin{rcases} 
@@ -20,13 +20,13 @@ x : E \mapsto \mathbb{R}^+ \mbox{ tetszőleges függvény}\\
 
 \emph{Tétel. Ford Fulkerson: A maximális folyam értéke megegyezik a minimális vágás értékével.}
 
-A bizonyításhoz először figyeljük meg a kővetkező lemmát: ha $x \in E \mapsto
+A bizonyításhoz először figyeljük meg a következő lemmát: ha $x \in E \mapsto
 \mathbb{R}^+$ és $\forall v \in V - \{s,t\}$ esetén $ \delta_x(v) \leq \rho_x(v)$
 és $\delta_x(s) \leq \rho_x(t)$ akkor $x$ egy folyam. 
 
 Ez igaz mert, ha $\forall v \in V-\{s,t\}$ csúcshoz felveszünk egy új terminálba
 mutató élet, amelyekhez hozzárendeljük az $x'(e)=\rho_x(v)-\delta_x(v) \geq 0$
-egyenletlőtlenséget (a belépők többségbe vannak a kilépőkhöz képest). A többi élen
+egyenlőtlenséget (a belépők többségbe vannak a kilépőkhöz képest). A többi élen
 maradjon meg a korábbi értékek, $x(e)=x'(e)$. 
 
 Az így konstruált $x$ folyamhoz tartozik $G'$ gráf.  Mivel ez is folyam igaz,
@@ -79,9 +79,9 @@ c\\
 \end{wrapfigure}
 
 AZ LP felíráshoz először is egészítsük ki a gráfot egy $e^*=(t,s)$ pszeudó éllel, ez lesz 
-később majd a folyamértéke, $\mu$. Az így kapott gráf illeszkedési mátrixa legyen $B^*$.
+később majd a folyam értéke, $\mu$. Az így kapott gráf illeszkedési mátrixa legyen $B^*$.
 Minden $v \in V - \{s,t\}$ csúcshoz tartozik egy sor, amelyre teljesül a $b_vx\leq 0$ feltétel 
-(azaz a belépő élek ősszege nem kisebb, mint a kilépőké, mert $\delta_x(v) - \rho_x(v) \leq 
+(azaz a belépő élek összege nem kisebb, mint a kilépőké, mert $\delta_x(v) - \rho_x(v) \leq 
 0 \rightarrow \delta_x(v) \leq \rho_x(v)$). 
 
 A $B^*x^* \leq 0$ rendszer alapján $\begin{rcases} \delta_x(s)-\mu \leq 0 \\
@@ -102,7 +102,7 @@ Ekkor: $\begin{cases}
 (3)~\pi(t)-\pi(s) \geq 1. \end{cases}$ 
 
 A duális változói közül $\pi$ a csúcsokhoz (menyivel nőt a potenciál), $w$ az
-élekhez rendelhető (menyibe kerül nekem a szállitás az él mentén). A duális
+élekhez rendelhető (menyibe kerül nekem a szállítás az él mentén). A duális
 feladat célja a $m_{\text{DLP}}= \mbox{min} \left\{ \sum_{e\in E}^{}
 w(e)c(e)\right\}$ alak minimalizálása. Állítjuk, hogy ez megegyezik a hálózati
 folyam minimális vágásának értékével (legyen ez $m_{\text{C}}$).
@@ -140,8 +140,8 @@ $w'(e)=
 
 Ekkor $(\pi',w')$--re $(1)$ és $(3)$ teljesül. A $(2)$-öt indirekt bizonyítjuk.
 Tegyük fel, hogy egy adott $e=(u,v)$ él esetén $\pi'(u)-\pi'(w)+w'(e)<0$, ekkor
-a $0-1$ érétkűségük miatt $\pi'(u)=w'(e)=0$. Ez $\pi'(v)=1$ esetben valósulna
-meg, amikor $\pi'$ definíniciója miatt $\pi(v) > \pi(s) \geq \pi(u)$, ami
+a $0-1$ értékűségük miatt $\pi'(u)=w'(e)=0$. Ez $\pi'(v)=1$ esetben valósulna
+meg, amikor $\pi'$ definíciója miatt $\pi(v) > \pi(s) \geq \pi(u)$, ami
 ellentmondana $(2)$--nek, mert $w'$ definíciója miatt $w(e)=0$. A megoldás
 optimális mert $\sum w'(e)c(e) \leq \sum w(e)c(e)$, mivel $w'(e) \leq w(e)$.
 
@@ -167,13 +167,13 @@ Ha az élek kapacitásai egész értékűek, akkor egész értékű folyam is v�
 Ha az élek költsége is egészértékű, akkor ismert hatékony algoritmus megoldására,
 Ford--Fulkersontól.
 
-\subsection{Többtermékes folyam}
+\subsection{Több termékes folyam}
 
-Adott egy $G=(V,E)$ irányított gráf és abban k darab pontpár:
+Adott egy $G=(V,E)$ irányított gráf és abban k darab pont pár:
 $(s_i,t_i)_{i = \overline{1,k}}$. $G$--t továbbra is képzelhetjük út-- vagy
-csőhálózatnak, az $(s_i, t_i)$ pontpárok pedig a $k$ darab szállítandó termék
-termelő--, illetve fogyasztóhelyének felelnek meg. Végül legyen adott egy $c:E
-\mapsto \mathbb{R}^+$ kapacitásfüggvény.
+csőhálózatnak, az $(s_i, t_i)$ pont párok pedig a $k$ darab szállítandó termék
+termelő--, illetve fogyasztó helyének felelnek meg. Végül legyen adott egy $c:E
+\mapsto \mathbb{R}^+$ kapacitás függvény.
 
 A feladat egy megoldása abból áll, hogy minden élhez $k$ darab számot fogunk
 hozzárendelni, megmondva, hogy az egyes termékből ott éppen mennyi halad át.

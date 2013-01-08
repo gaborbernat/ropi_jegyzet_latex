@@ -1,4 +1,4 @@
-﻿\hyphenation{Egerváry}
+\hyphenation{Egerváry}
 \section{Egerváry algoritmusa, az optimális hozzárendelés problémája}
 
 Az optimális hozzárendelés problémája a következő kérdésre keresi a választ:
@@ -38,7 +38,7 @@ ahol $x \in A$ és $ y \in B$. Megkülönböztetünk $3$ fajta helyzetet:
 \begin{description}
   \item[Maximális párosítás problémája] Ekkor azt szeretnénk, hogy a párosítások
   száma minél nagyobb legyen.
-  \item[Maximális súlyú párosítás problémája] Ekkor létezik minden párosításnak
+  \item[Maximális súlyú párosítás problémája] Itt létezik minden párosításnak
   egy jósági tényezője, egy súlya: $w:E\rightarrow\mathbb{R}$; egy adott $M$
   párosítás esetén $(M\subset E)$ keressük azt, amely maximális összeget ad:
   $\mbox{max}\left\{\sum_{e\in M}{w(e)}\right\}$.
@@ -154,7 +154,7 @@ A magyar módszer lépései:
 Az algoritmus helyességének belátásához vegyük \aref{fig:MagyModHelyeseg} ábrát,
 amely egy köztes állapotot szemléltet. Legyen:
 \begin{description}
-  \item[$(B_2)$] -- $A_1$--ből alternáló útón elérhető csúcsok halmaza,
+  \item[$(B_2)$] -- $A_1$--ből alternáló úton elérhető csúcsok halmaza,
   \item[$(A_2)$] -- $B_2$--hőz tartozó párosítás, \item[$(A_1)$] -- azon csúcsok
   halmaza, amelyet az $M$ párosítás le nem fedett.
 \end{description}
@@ -162,19 +162,19 @@ amely egy köztes állapotot szemléltet. Legyen:
 Amennyiben az algoritmus leállt $B_2$ halmaz csúcsainak végpontja $A_2$ és $A_1$
 halmazból induló éleknek, azaz $B_2$ lefogó pontja az $A_1 \cup A_1$ halmaznak.
 Azaz elmondható, hogy $A_3$ és $B_2$ lefogó pontja a gráfnak, ugyanakkor $A_3$ és
-$B_2$ elemszáma megegyezik a párosítás számával. A \emph{König tétel} \footnote{
+$B_2$ elem--száma megegyezik a párosítás számával. A \emph{König tétel} \footnote{
 A tétel Kőnig Dénestől származik. Legyen egy $G$ páros gráf, ekkor
 $\nu(G)=\tau(G)$ (azaz a legnagyobb független él halmaznak ugyanannyi eleme van,
-mint a legkisebb lefogó ponthalmaznak) és ha $G$--ben nincs izolált pont akkor
+mint a legkisebb lefogó pont halmaznak) és ha $G$--ben nincs izolált pont akkor
 $\rho(G)=\alpha(G)$ (azaz a legkisebb lefogó él halmaz azonos méretű a legnagyobb
-független ponthalmazzal).} értelmében ezért a párosítás maximális.
+független pont halmazzal).} értelmében ezért a párosítás maximális.
 
 \subsection{Egerváry algoritmusa}
 
 Először definiáljuk a címkézés műveletet: minden csúcshoz rendelünk egy valós
 értéket ($c:V \rightarrow \mathbb{R}$) úgy, hogy minden él pár esetén ($\forall
 \left\{x,y\right\} \in E | x \in A, y \in B$)  igaz a következő kifejezés:
-$c(x)+c(y)>=w(e).$ Amenyiben $c(x)+c(y)=w(e)$ legyen az él piros. Ekkor az
+$c(x)+c(y)>=w(e).$ Amennyiben $c(x)+c(y)=w(e)$ legyen az él piros. Ekkor az
 maximális összsúlyú teljes párosítás összsúlya kisebb, mint a címkézés ősszege.
 
 Bizonyítás:
@@ -194,7 +194,7 @@ Bizonyítás:
   0             & v \in B.
   \end{cases} 
   \end{displaymath}
-  \item lépés: keressük meg a maximális elemszámú párosítást a piros részgráfban
+  \item lépés: keressük meg a maximális elem--számú párosítást a piros részgráfban
   javító utakkal.
   Legyen ez a párosítás $M'$. Ha ez maximális megállunk.
   \item lépesben legyen:
