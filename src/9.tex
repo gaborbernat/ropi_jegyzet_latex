@@ -3,15 +3,19 @@
 
 \[
 \begin{rcases}
-M=(E,F) \mbox{matroid}, \\ 
+M=(E,F) \mbox{ matroid}, \\ 
 w : E \mapsto \mathbb{R}^+
 \end{rcases}
-\xRightarrow{?} \parbox[t]{9cm}{mekkora a maximális összsulyú független halmaz,
-azaz max$\left\{\sum_{e \in X}w(e)\right\}$ ha $X \in F$--re?}
+\xRightarrow{?} \parbox[L]{9.8cm}{mekkora a maximális összsulyú független halmaz,
+azaz max$\left\{\sum_{e \in X}w(e)\right\}$ ha $X \in F$, és mely ez az $X$?}
 \]
 
+\vspace{0.4cm}
 \emph{A mohó algoritmus tetszőleges matroid és súlyfüggvényre optimális
-megoldást ad.}
+megoldást ad a fenti kérdésre, a $\emptyset \in F$--ből kiindulva, maximális
+sulyú elemeket csökenő sorrendbe véve (amik nem sértik a halmaz
+függetlenségét).}
+\vspace{0.4cm}
 
 A bizonyitás indirekt történik, tegyük fel, hogy nem. Legyen ekkor $Y$ az
 optimumot meghatározó halmaz, $X$ pedig amit a mohó algoritmus adott. Tudjuk,

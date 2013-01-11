@@ -1,8 +1,8 @@
 \section{Matroid definiciója és a rangfüggvény szubmodularitása}
 
 A matroidot definiálhatjuk a függetlenségi axiómákkal mint, legyen $E$ egy
-tetszőleges és véges alaphalmaz. Ugyanakkor $F \subseteq  2^E$ egy leszáló
-halmaz. Egy adott $M=(E,F)$ struktúra matroid, ha teljesül, hogy:
+tetszőleges és véges alaphalmaz. Ugyanakkor $F \subseteq  2^E$ egy halmaz
+rendszer. Egy adott $M=(E,F)$ struktúra matroid, ha teljesül, hogy:
 
 \[
 \begin{cases}
@@ -10,17 +10,17 @@ halmaz. Egy adott $M=(E,F)$ struktúra matroid, ha teljesül, hogy:
 \mbox{F2}) &\begin{rcases}
 X \in F \\ 
 Y \subseteq X 
-\end{rcases} \Rightarrow \parbox[L]{10cm}{$Y \in F$
-(\emph{leszálló halmaz} -- ha egy halmaz benne van $F$--ben akkor annak összes
-részhalmaza is benne van $F$--ben).
+\end{rcases} \Rightarrow \parbox[L]{11cm}{$Y \in F$
+($F$ \emph{leszálló halmazrendszer} -- ha egy halmaz benne van $F$--ben akkor annak összes
+részhalmaza is benne van $F$--ben, ehhez szükséges az F$1$ axióma).
 } \\
 \mbox{F3}) &\begin{rcases}
 X,Y \in F\\
 |X| > |Y| \\
-\end{rcases} \Rightarrow\parbox[t]{10cm}{ $\exists~x \in X-Y$,hogy $Y \cup \{x\}
-\in F ($ \emph{szubmodularitás, kölcsönösen bővithetőség} -- legyen két leszáló
-halmaz a matroidból, ahol ez egyik számoságban több elemet tartalmaz; ha e több
-elemesben létezik olyan elem amely a kisebbikben nem, akkor ezzel a kisebbiket
+\end{rcases} \Rightarrow\parbox[t]{10.5cm}{ $\exists~x \in X-Y$,~hogy $Y \cup \{x\}
+\in F~($\emph{szubmodularitás, kölcsönösen bővithetőség} -- legyen két halmazrendszer
+a matroidból, ahol ez egyik számoságban több elemet tartalmaz; ha e több
+eleműben létezik olyan elem amely a kisebbikben nincs, akkor ezzel a kisebbiket
 kiegésztive szintén $F$--beli elemet kapunk).}
 \end{cases}
 \]
@@ -41,7 +41,7 @@ Egy $M=(E,F)$ matroidban:
   \item[hurok] az egyelemű kör. 
   \item[a halmaz rangja] egy $X\subseteq E$ halmaznak az $X$ maximális
   független részhalmazának mérete, elemszáma. Jelölése: $r(X)$.
-  \item[a matroid rangja] az alaphalmaz rangja, azaz $r(E)$.
+  \item[a matroid rangja] az alaphalmaz rangja, azaz $r(E)$, ahol $r:2^E \mapsto \mathbb{Z}^+$.
 \end{description}
 
 \emph{Legyen $M=(E,F)$ matroid ahol $A\subseteq E$ és $X_1,X_2 \in A$ maximális
@@ -130,18 +130,20 @@ $
 \end{table}
  \begin{description}
   \item[Grafikus matroid] egy $G$ gráf által leírt $M=(G$ élei, $G$ --beli erdők). A bázis fogalma
-  megfelel a feszítő erdőnek.
+  megfelel a feszítő erdőnek. Jelőlése $M(G)$ és még körmatroidnak is nevezzük.
   \item[Lineáris matroid] egy mátrix által indukált matroid $M=(A$ oszlopai, $A$ lineárisan
-  független oszlopai).
+  független oszlopai). Mátrixmatroid név alatt is ismeretes.
   \item[Uniform matroid] egy $M=($ tetszőleges véges halmaz, a halmaz lefeljebb
   $k$ elemű részhalmazai). Legyen $n=|E|$. Ekkor $U_{n,k}$--val jelöljük az
   uniform matroidot. $U_{n,n}$ a teljes/szabad matroid (grafikusan egy csillag
-  alakzat). $U_{n,0}$ a triviális matroid, amelyben csak az üres halmaz
-  független (grafikusan minden éle egy hurok).
+  alakzat), ha összes részhalmaza független. $U_{n,0}$ a triviális matroid,
+  amelyben csak az üres halmaz független (grafikusan minden éle egy hurok).
 \end{description}
 
 \subsection{Rangfüggvény szubmodularitása}
-Bármely $X, Y \subseteq E$--re igaz, ha $r$ egy matroid rangfüggvénye, hogy:
+Bármely $X, Y \subseteq E$--re igaz, ha $r:2^E \mapsto \mathbb{Z}^+$ egy matroid
+rangfüggvénye, akkor:
+
 \[
 \begin{cases}
 \mbox{R1)}& r(\emptyset) = 0 \\
