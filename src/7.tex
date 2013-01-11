@@ -2,53 +2,71 @@
 \section{A lineáris és egészértékű programozás alkalmazása hálózati folyamproblémákra}
 
 \[
-\begin{rcases} 
+\begin{rcases}
 G(V,E) \mbox{ irányított gráf} \\
 s,t \in V \mbox{ két kitűntet csúcs} \\
 c : E \mapsto \mathbb{R}^+ \mbox{ nem negatív kapacitásfüggvény}\\
-x : E \mapsto \mathbb{R}^+ \mbox{ tetszőleges függvény}\\
 \rho_x(v) \mbox{ -- } v\mbox{--be belépő élek összege } x \mbox{ szerint} \\
-\delta_x(v) \mbox{ -- } v\mbox{--ből kilépő élek összege } x \mbox{ szerint}
-\end{rcases} \parbox[c]{6.2cm}{ 
+\delta_x(v) \mbox{ -- } v\mbox{--ből kilépő élek összege } x \mbox{ szerint}\\
+\mbox{Legyen }x : E \mapsto \mathbb{R}^+ \mbox{ tetszőleges függvény}
+\end{rcases} \parbox[c]{6.2cm}{
 \begin{itemize}
   \item $x$ függvény akkor \emph{folyam}, ha \\ $\forall~v~\in~V - \{s,t\}$--re: \\ $\rho_x(v)=\delta_x(v)$
   \item $x$ megengedett, ha $\forall e \in E$--re $x(e) \leq c(e)$
   \item A folyam értéke: \\ $\delta_x(s)-\rho_x(s)=\rho_x(t)-\delta_x(t)$
 \end{itemize}
- }
+}
 \]
 
+Keressük a maximális folyamértéket, ami: $\sum_{e \in s}x(e)=\sum_{e \in t}x(e)$. 
+
+\vspace{0.4cm}
 \emph{Tétel. Ford Fulkerson: A maximális folyam értéke megegyezik a minimális vágás értékével.}
+\vspace{0.4cm}
 
-A bizonyításhoz először figyeljük meg a következő lemmát: ha $x \in E \mapsto
-\mathbb{R}^+$ és $\forall v \in V - \{s,t\}$ esetén $ \delta_x(v) \leq \rho_x(v)$
-és $\delta_x(s) \leq \rho_x(t)$ akkor $x$ egy folyam. 
+A bizonyításhoz először figyeljük meg a következő lemmát: 
 
-Ez igaz mert, ha $\forall v \in V-\{s,t\}$ csúcshoz felveszünk egy új terminálba
-mutató élet, amelyekhez hozzárendeljük az $x'(e)=\rho_x(v)-\delta_x(v) \geq 0$
+\[
+\begin{rcases}
+\mbox{Adott } x \in E \mapsto \mathbb{R}^+\\
+\forall v \in V - \{s,t\} \begin{cases}
+\delta_x(v) \leq \rho_x(v) \\
+\delta_x(s) \leq \rho_x(t)
+\end{cases} 
+\end{rcases}
+\Rightarrow  x \mbox{ egy folyam}
+\]
+
+Azaz a folyamban a pontokban érték elvesztődhet, de nem keletkezik új.
+$\forall v \in V-\{s,t\}$ csúcshoz felveszünk egy új terminálba mutató élet,
+amelyekhez hozzárendeljük az $x'(e)=\rho_x(v)-\delta_x(v) \geq 0$
 egyenlőtlenséget (a belépők többségbe vannak a kilépőkhöz képest). A többi élen
-maradjon meg a korábbi értékek, $x(e)=x'(e)$. 
+maradjon meg a korábbi értékek, $x(e)=x'(e)$.
 
 Az így konstruált $x$ folyamhoz tartozik $G'$ gráf.  Mivel ez is folyam igaz,
-hogy $\delta_{x'}(t) = \rho_{x'}(t)$. Ugyanakkor $ \rho_{x'}(t) \geq \rho_x(t)$
-és $\delta_{x'}=\delta_{x}s$. Mivel csak egyenlőség állhat, ezért
-$\rho_{x'}(t)=\rho_{x}(t)$. Hogy ez igaz legyen $x$ folyam kell, hogy legyen.
+hogy:
 
+\[\rho_{x}(t) \geq \delta_{x}(s) = \delta_{x'}(s) \geq \rho_{x'}(t) \geq 
+\rho_{x}(t)\]. 
 
+Mivel csak egyenlőség állhat, ezért $\rho_{x'}(t)=\rho_{x}(t)$, ami csak akkor 
+teljesülhet ha $x$ folyam.
+
+\vspace{0.4cm}
 \begin{wrapfigure}{L}{0.35\textwidth}
-  \begin{center}
-    \vspace{-1.3cm}
+\begin{center}
+\vspace{-1.3cm}
 \begin{displaymath}
 \underbrace{
 \begin{array}{c|ccc|c|}
 \cline{2-5}
-   &   & & & \\
-   &  B& & & \\
- s &   & & &-1 \\
- t &   & & & 1 \\ 
- \cline{2-5}
-   &   & & & 0 \\
-   & E & & & 0 \\
+&   & & & \\
+&  B& & & \\
+s &   & & &-1 \\
+t &   & & & 1 \\
+\cline{2-5}
+&   & & & 0 \\
+& E & & & 0 \\
 \cline{2-5}
 \end{array}}_{B^*}
 \underbrace{
@@ -74,20 +92,20 @@ c\\
 \hline
 \end{array}}_{M}
 \end{displaymath}
-  \vspace{-1.3cm}
-  \end{center}
+\vspace{-1.3cm}
+\end{center}
 \end{wrapfigure}
 
-AZ LP felíráshoz először is egészítsük ki a gráfot egy $e^*=(t,s)$ pszeudó éllel, ez lesz 
+AZ LP felíráshoz először is egészítsük ki a gráfot egy $e^*=(t,s)$ pszeudó éllel, ez lesz
 később majd a folyam értéke, $\mu$. Az így kapott gráf illeszkedési mátrixa legyen $B^*$.
-Minden $v \in V - \{s,t\}$ csúcshoz tartozik egy sor, amelyre teljesül a $b_vx\leq 0$ feltétel 
-(azaz a belépő élek összege nem kisebb, mint a kilépőké, mert $\delta_x(v) - \rho_x(v) \leq 
-0 \rightarrow \delta_x(v) \leq \rho_x(v)$). 
+Minden $v \in V - \{s,t\}$ csúcshoz tartozik egy sor, amelyre teljesül a $b_vx\leq 0$ feltétel
+(azaz a belépő élek összege nem kisebb, mint a kilépőké, mert $\delta_x(v) - \rho_x(v) \leq
+0 \rightarrow \delta_x(v) \leq \rho_x(v)$).
 
 A $B^*x^* \leq 0$ rendszer alapján $\begin{rcases} \delta_x(s)-\mu \leq 0 \\
 \mu - \rho_x(t) \leq 0 \end{rcases} \Rightarrow \delta_x(s) \leq \mu \leq
-\rho_x(t)$. Az előző lemmából meg következik, hogy $\delta_x(s)=\mu=\rho_x(t)$, 
-vagyis, hogy a folyam értéke $\mu$. 
+\rho_x(t)$. Az előző lemmából meg következik, hogy $\delta_x(s)=\mu=\rho_x(t)$,
+vagyis, hogy a folyam értéke $\mu$.
 
 A maximális folyam max$\{ (0, \cdots,0,1)x^* : B^*x^* \leq 0; x^* \geq 0;$ $x
 \leq c \}$. Az utolsó feltételt is hozzávesszük a mátrixhoz, mint az $E$ egy
@@ -96,10 +114,10 @@ egységvektor és a hozzá tartozó $c$ rész a $M$ vektorban.
 A feladat duálisa min$\{ y(0, 0, \cdots, 0, c) :yM \geq (0, 0, \cdots, 0, 1);$
 $y \geq 0 \}$. Fejezzük ki $y$--t mint $\left( \pi\left(v\right) |
 w\left(e\right)\right)$.
-Ekkor: $\begin{cases} 
+Ekkor: $\begin{cases}
 (1)~\pi(v) \geq 0 \mbox{ és } w(e) \geq 0, \\
 (2)~\mbox{minden } e = (u,v) \mbox{ élre }  \pi(u)-w(e) \geq 0, \\
-(3)~\pi(t)-\pi(s) \geq 1. \end{cases}$ 
+(3)~\pi(t)-\pi(s) \geq 1. \end{cases}$
 
 A duális változói közül $\pi$ a csúcsokhoz (menyivel nőt a potenciál), $w$ az
 élekhez rendelhető (menyibe kerül nekem a szállítás az él mentén). A duális
@@ -130,13 +148,13 @@ következő függvényeket:
 $\pi'(v)=
 \begin{cases}
 0, &\mbox{ha } \pi(v) \leq \pi(s), \\
-1, &\mbox{egyébként}, 
+1, &\mbox{egyébként},
 \end{cases}$ és
 $w'(e)=
 \begin{cases}
 0, &\mbox{ha } w(e)=0, \\
 1, &\mbox{ha } w(e) \geq 1.
-\end{cases}$ 
+\end{cases}$
 
 Ekkor $(\pi',w')$--re $(1)$ és $(3)$ teljesül. A $(2)$-öt indirekt bizonyítjuk.
 Tegyük fel, hogy egy adott $e=(u,v)$ él esetén $\pi'(u)-\pi'(w)+w'(e)<0$, ekkor
@@ -161,7 +179,7 @@ Minden élhez rendeljünk egy k költséget, amely kifejezi, hogy egy egységnyi
 átviteli azon menyibe kerül. Ekkor kitűzhető egy olyan feladat, ami a legalább $M$
 nagyságú folyamok között keres minimális költségűt. Lineáris programozás alakban:
 
-\[ \mbox{min} \left\{kx: B^*x^* \leq 0, x^* \geq 0, x \leq c,mu \geq M \right\}. \]
+\[ \mbox{min} \left\{kx: B^*x^* \leq 0, x^* \geq 0, x \leq c,\mu \geq M \right\}. \]
 
 Ha az élek kapacitásai egész értékűek, akkor egész értékű folyam is választható.
 Ha az élek költsége is egészértékű, akkor ismert hatékony algoritmus megoldására,

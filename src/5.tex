@@ -4,8 +4,8 @@
 \subsection{Egészértékű programozás}
 A feladat:
 \begin{align*}
-IP &: \mbox{max }{cx: Ax \leq b, x \mbox{ egész}} \\
-DIP &: \mbox{min }{yb: yA=c, y \geq 0, y \mbox{ egész}}
+IP &: \left\{\mbox{max }{cx: Ax \leq b, x \mbox{ egész}}\right\} \\
+DIP &: \left\{ \mbox{min }{yb: yA=c, y \geq 0, y \mbox{ egész}}\right\}
 \end{align*}
 \[ \mbox{max(IP)} \leq \mbox{max(LP)}= \mbox{min(DLP)} \leq \mbox{min(DIP)} \]
 
@@ -13,7 +13,7 @@ A feladat bonyolultságának meghatározásához fogalmazzuk át eldöntési pro
 $\exists?~Ax \leq b,~ x$ egész között olyan vektor, amelyre $cx \geq t?$ Az IP
 feladat NP--teljes. NP--beli mert x tanú. A dualitás tétel nem alkalmazható
 mivel max(IP)~$<$~min(DIP) fent állhat, tehát a probléma nem coNP--beli. \emph{NP
-teljes}, visszavezethető a $3$--SAT problémára.
+teljes}, mivel visszavezethető a $3$--SAT problémára.
 
 A bizonyításhoz megadjuk a visszavezetést: definiálunk egy eljárást, amely tetszőleges
 logikai függvényhez megad egy olyan IP problémát, melyre akkor és csak akkor igenlő a
@@ -43,8 +43,8 @@ $\Leftrightarrow z_i=1$ választással $f$--et kielégítő értéket adtunk a l
 változónak.
 
 Eközben a $\sum_{i=1}^{k}{z_i}$ összeg értétek valahol $0$ és $k$ között adódik,
-tehát $c=(1,1,\cdots,1)$ választással tulajdonképpen a \emph{,,Van-e az
-$(1a-1b$) és a $*(2a-2d$ feltételeket kielégítő (egész) vektorok között olyan,
+tehát $c=(1,1,\cdots,1)$ választással tulajdonképpen a \emph{,,Van-e a fenti
+egyenlőtlenség renszerek feltételeit kielégítő (egész) vektorok között olyan,
 melyre $cx \geq 0$?''} kérdést tesszük fel. Az így kapott IP feladatra a válasz
 akkor és csak akkor igenlő, ha az f kielégíthető.
 
@@ -68,7 +68,7 @@ Az algoritmus folyamata:
   \item Ha $L=\emptyset \Rightarrow$ \emph{vége} és a megoldás az aktuális $z^*$
   és $x^*$.
   
-  Egyébként $L$--ből vegyük ki IP$_i$ feladatott.
+  Egyébként $L$--ből vegyük ki IP$_i$ feladatott $\Rightarrow (f_i, g_i, w_i)$.
   \item Ha $w_i \leq z^*$, IP$_i$--nek a megoldása nem lehet $z*$--nál jobb,
   folytassuk az első ponttól (ez a \emph{Bound} lépés).
   \item Oldjuk meg a relaxált IP$_i$ feladatott (LP$_i$--t).
@@ -86,7 +86,7 @@ Az algoritmus folyamata:
 \end{enumerate} 
 
 Az algoritmus véges sok lépésben leáll és megtalálja a feladat optimumát. A
-véges sok lépést $f$ és $k$ vektor garantálja, hiszen a kezdetben kitűzött
+véges sok lépést $f$ és $g$ vektor garantálja, hiszen a kezdetben kitűzött
 feladatnak csak véges sok rész problémája lehet a felhasznált korlátok miatt. Az
 optimális részt indirekt bizonyítjuk: legyen $z_0$ az optimum, de az eljárás
 $z*<z_0$--t kapta.
@@ -98,15 +98,61 @@ algoritmus mégis csak megtalálja a $z_0$ optimumot, ami ellentmondás.
 
 Ha a hatodik lépés következik be, akkor a két keletkező IP feladat közül az
 egyikre teljesül, hogy a vizsgált tartományában a $z_0$--hoz tartozó optimum
-benne van, így $z_0$ optimumot mindenképp megtaláljuk. Tehát az eljárás során a
-lista sosem ürült ki, de ekkor az algoritmus sose állhatott volna le, ami a
-keresett ellentmondás.
+benne van, így $z_0$ optimumot mindenképp megtaláljuk. Tehát már csak az lehet,
+hogy az eljárás során a lista sosem ürült ki, de ekkor az algoritmus sose
+állhatott volna le, ami a keresett ellentmondás.
 
 \subsection{Gyakorlati tanácsok}
 \begin{itemize}
   \item LIFO alapú új feladat választás $L$--ből, mert a megoldás várhatóan
-  mélyen van a fába és ez tud legmélyebbre leggyorsabban lenyúlni.
+  mélyen van a fába és ez tud legmélyebbre leggyorsabban lenyúlni. Ugyanakkor a
+  duál szimplex módszerrel lehetséges így a korábbi számitások újra felhasználása.
   \item Elágazásnál a legkevésbé egész $x_j$--t válasszuk elágazási változónak
-  (amelynek törtrésze $\frac{1}{2}$-höz legközelebb van), közbülső értéknek
-  pedig ennek egész értékét.
+  (ez a relaxált IP feladatt megoldásának helyvektora, azaz azt az indexet ahol
+  e vektor elemének törtrésze $\frac{1}{2}$-höz legközelebb van), közbülső
+  értéknek pedig ennek egész értékét (lefele kerekitve) válasszuk. Ez azt
+  jelenti, hogy az $f$ és a $g$ vektorban csak ez az indexen levő értéket
+  modósitsuk,a többi feltétel marad a korábbi.
+  
+  \[
+  f=\begin{bmatrix}
+  1 \\
+  2 \\
+  3 
+  \end{bmatrix},
+  g = \begin{bmatrix}
+  4 \\
+  5 \\
+  6 
+  \end{bmatrix},
+  x_0 = \begin{bmatrix}
+  1.2 \\
+  3.6 \\
+  5.7 
+  \end{bmatrix}
+  \Rightarrow
+  f_b=\begin{bmatrix}
+  1 \\
+  2 \\
+  3 
+  \end{bmatrix},
+  g_b = \begin{bmatrix}
+  4 \\
+  3 \\
+  6 
+  \end{bmatrix},
+  f_j=\begin{bmatrix}
+  1 \\
+  4 \\
+  3 
+  \end{bmatrix},
+  g_j = \begin{bmatrix}
+  4 \\
+  5 \\
+  6 
+  \end{bmatrix}
+  \] A fenti példában $x_0$ a talált optimum helyvektora. A $.5$-hőz leggközeleb a
+  $3.6$ van, ez a második változó indexet jelenti, és értéke lekerekitve $3$. A
+  többi megkőtés ($f$ és $g$ vektor elemei) marad a korábbi. Tehát $t=3$ és $f$ és 
+  $g$ vektort ennek megfelelően modósitjúk $t$ és $t+1$ értékkekel. 
 \end{itemize}

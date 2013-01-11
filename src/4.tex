@@ -11,7 +11,7 @@ $ \begin{rcases}
 \mbox{felülről korlátos}
 \end{rcases} \Rightarrow$ $\begin{cases}
 \circled{1} \begin{cases}
-\mbox{DP: min} \left\{ yb:yA - c, y \geq 0 \right\} \\
+\mbox{DP: min} \left\{ yb:yA = c, y \geq 0 \right\} \\
 	\mbox{megoldható} \\ 
 	\mbox{alulról korlátos}  
 \end{cases} \\
@@ -35,16 +35,17 @@ Az \circled{1}--est bizonyítottuk az LP korlátosságánál, a \circled{2} és
 \begin{rcases}
 Ax \leq b \mbox{ megoldható} \\
 t \in \mathbb{R} \\
-Ax \leq b \mbox{--nek } \exists~x \mbox{ megoldása, hogy } cx \geq t
+Ax \leq b \mbox{--nek } \not \exists~x \mbox{ megoldása, hogy } cx \geq t
 \end{rcases} \Rightarrow
 \parbox[t]{6cm}{
 $\{yA=c, y \geq 0\}$--nak $\exists$ olyan megoldása amelyre  $yb < t$.}
-\]
-A lemma \emph{bizonyításhoz}, kiindulunk abból, hogy az $\begin{cases}
-Ax \leq b \\
--cx \leq -t
-\end{cases}$ rendszer nem megoldható. Alkalmazzuk rá a Farkas--lemmát, ennek második
-alakja felírható, mint ($\lambda \geq 0, y \geq 0$):
+\] A lemma \emph{bizonyításhoz}, átfogalmazzuk a bal oldalt mint egy Farkas
+lemma alak:
+$\begin{cases} Ax \leq b \\
+-cx \leq -t \end{cases}$, és tudjuk, hogy a rendszer nem megoldható (nem
+létezzik $x$ ami teljesiti). Alkalmazzuk rá a Farkas--lemmát, ennek második
+alakja felírható, mint ($\lambda \geq 0, y
+\geq 0$):
 \begin{align*}
 \begin{bmatrix} y & \lambda\end{bmatrix}
 \begin{bmatrix} A \\ -c \end{bmatrix} = yA - \lambda c = 0 &\Rightarrow 
@@ -61,38 +62,50 @@ yb <  0 \end{rcases} \xRightarrow{\text{Farkas--lemma}}$ $Ax \leq b$ nem
 megoldható, de ez ellentmondás az állításnak, tehát $\lambda$ nem lehet nulla
 ($\lambda \neq 0$). Legyen $y'=\frac{1}{\lambda}y$ így az egyenletrendszer
 $y'A=c,~y'\geq0,~y'b<t$ alakú lesz és ezzel megadtunk minden $y$--ra egy
-$y'$--et amely teljesíti az állítást.
+$y'$--et amely teljesíti a lemma kijelentését.
 
 A \circled{2} \emph{bizonyításához} tegyük fel, hogy $\not \exists$ maximum
 LP--n, ekkor legyen $t=\mbox{sup}\left\{cx:Ax \leq b \right\}$ (hiszen bármely
 $x \subseteq R, x \neq \emptyset, x$ felülről korlátosnak $\exists$ szuprémuma,
-legkisebb felső korlátja). Ha $t$ nem maximum $\Rightarrow Ax \leq b$--nek $\not
-\exists cx \geq t$--t teljesítő megoldása. Ekkor:
+legkisebb felső korlátja, ha még maximuma nincs is). Ha $t$ nem maximum
+$\Rightarrow Ax \leq b$--nek $\not \exists~cx \geq t$--t teljesítő megoldása.
+Ekkor:
 
 \[ cx = (yA)\cdot x = y (Ax) \leq yb < t.\]
 
-Így $yb~t$-nél kisebb felső korlát $cx$-re, de ez ellentmondás, tehát t szuprémum és
-feltevésünk hamis volt. A DP--n történő bizonyításhoz használjuk fel az LP bizonyítást, 
-átírva a feladatott max--ra ($E$ -- egység mátrix):
+Így $yb$ egy $t$-nél kisebb felső korlát $cx$-re, de ez ellentmondás, tehát t
+nem szuprémum és feltevésünk hamis volt, létezzik maximum LP--n. A DP--n történő
+bizonyításhoz használjuk fel az LP bizonyítást, átírva a feladatott max--ra ($E$
+-- egység mátrix):
 
-\[ max \left\{ (-b)^T y^T : A^T y^T \leq c^T, (-A^T) y^T \leq (-c^T),
-(-E)y^T \leq 0 \right\} \]
+\[ max \left\{ (-b)^T y^T :
+\begin{cases}
+(~~A^T)y^T    &\leq~~c^T \\
+(-A^T) y^T &\leq -c^T \\
+(-E~~)y^T    &\leq~~0 \\
+\end{cases}  \right\} \]
  
 A \circled{3} \emph{bizonyításához} már láttuk, hogy a \[ \mbox{max}\left\{
 cx:Ax \leq b \right\} \leq
-   \mbox{min}\left\{ yb:yA = c, y \geq 0 \right\}=t
-\] fennáll. Tehát ekkor az LP--nek $\not\!\exists~cx \geq t$ kifejezést teljesítő
-megoldása, amire $yb<t$, de ez ellentmondás t választásának.
+   \mbox{min}\left\{ yb:yA = c, y \geq 0 \right\}
+\] fennáll. Legyen $t=\mbox{min}\{ yb:yA~=~c, y~\geq~0 \}$ és tegyük fel, hogy a
+fenti egyenlőtlenségben nem egyenlőség áll.  Tehát ekkor az LP--nek
+$\not\!\exists~cx \geq t$ kifejezést teljesítő megoldása, amiből következik,
+hogy a duális feladatnak van olyan megoldása amire $yb<t$. De ez ellentmondás t
+választásának, tehát feltevéssünk hamis volt.
 
 \subsection{LP bonyolultság}
 
-Az LP feladat megfogalmazható, mint eldöntési probléma: $\exists?$ az $Ac \leq
+Az LP feladat megfogalmazható, mint eldöntési probléma: $\exists?$ az $Ax \leq
 b$--t kielégítő x vektor amelyre $cx\geq t$? A probléma NP--beli. Tanú egy ilyen
 $x$. Ugyanakkor coNP--beli is, a duális feladat megoldása tanú erre. $x, y$
 mérete véges.
 
 \begin{description}
-  \item[1947 -- Szimplex módszer] Hatékony gyakorlati feladatokon, de exponenciális komplexitású.
-  \item[1979 --  Hacsijan -- ellipszoid módszer] Polinomiális komplexitás, de gyakorlatban lassú.
-  \item[1984 --  Karmakar -- belső pontos módszer] Szintén polinomiális, de ez is gyakorlatban lassú.
+  \item[1947 -- Dantzig -- Szimplex módszer] Hatékony gyakorlati feladatokon, de
+  exponenciális komplexitású.
+  \item[1979 --  Hacsijan -- ellipszoid módszer] Polinomiális komplexitás, de
+  gyakorlatban lassú.
+  \item[1984 --  Karmakar -- belső pontos módszer] Szintén polinomiális,
+  hatékonyabb az ellipszoidnál, de ez is a gyakorlatban lassabb a szimplexnél.
 \end{description}
