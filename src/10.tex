@@ -107,13 +107,14 @@ egy egységmátrix alakuljon ki. Legyen ennek $r$ sorra, ekkor $E_r$ egységmát
 M egy bázisa, míg $A_0$ oszlopai a többi elemek. Megprobáljuk belátni, hogy $A'=(-A_0^T|E_{n-r})$
 is reprezentálja a duális matroidot.
 
+\colorlet{ColorGreyish}{black!10}
 \[ 
 M=
 \begin{array}{|cc|c|c|rc|}
 \hline
 1       &  0     & \multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}0} & \multicolumn{1}{>{\columncolor{gray}}l}{\color{white}C} &     &\\
 \vdots &  1     & \multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}0} &  \multicolumn{1}{>{\columncolor{gray}}l}{\color{white}} & A_0 &\\
-0       &  \cdots  & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}1} &\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}}   &     &\\
+0       &  \cdots  & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}1} &\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}}   &     &\\
 \hline
 \end{array}
 \Rightarrow
@@ -123,9 +124,9 @@ M^*=
 \multicolumn{1}{>{\columncolor{gray}}l}{\color{white}}        & & 1&  &\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}0} & \multicolumn{2}{>{\columncolor{lightgray}}l}{\color{black}}  \\
 \multicolumn{1}{>{\columncolor{gray}}l}{\color{white}-C^T}    & &  & 1&\multicolumn{2}{>{\columncolor{lightgray}}l}{\color{black}} &\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}0}  \\
 \cline{1-1} \cline{5-7}
-\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}}   & &  &  & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}1} & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}} &\multicolumn{1}{>{\columncolor{green}}l}{\color{black}0}  \\
-\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}A_0^T}     & &  && \multicolumn{1}{>{\columncolor{green}}l}{\color{black}}  & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}1}   & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}} \\
-\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}} & &  &  & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}0}  & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}}  & \multicolumn{1}{>{\columncolor{green}}l}{\color{black}1} \\ \hline
+\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}}   & &  &  & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}1} & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}} &\multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}0}  \\
+\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}A_0^T}     & &  && \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}}  & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}1}   & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}} \\
+\multicolumn{1}{>{\columncolor{lightgray}}l}{\color{black}} & &  &  & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}0}  & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}}  & \multicolumn{1}{>{\columncolor{ColorGreyish}}l}{\color{black}1} \\ \hline
 \multicolumn{1}{c}{\mathsmaller{r-t}} & \multicolumn{1}{c}{\mathsmaller{t}} & \multicolumn{2}{c}{\mathsmaller{r-t}} & \multicolumn{3}{c}{\mathsmaller{n-2r+t}}
 \end{array} 
 \]
