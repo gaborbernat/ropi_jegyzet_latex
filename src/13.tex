@@ -1,0 +1,118 @@
+\newpage
+\section{$k$-matroidpartíciós probléma ($\mathrm{MPP}_k$)}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\F}{\mathcal{F}}
+\theoremstyle{definition}
+\newtheorem*{definicio}{Definíció} \newtheorem*{tetel}{Tétel}
+\newtheorem*{allitas}{Állítás} \newtheorem*{algoritmus}{Algoritmus}
+\newtheorem*{pelda}{Példa}
+
+$\mathrm{MPP}_k$ P-beli probléma.
+
+input: $k$ matroid: $\M_i = (E, \F_i), i=1,\ldots,k$
+
+kérdés: (az alábbi két kérdés ekvivalens)
+
+\begin{itemize}
+  \item $\bigvee_{i=1}^k \M_i = (E, 2^E)$
+  \item $E = E_1 \cupdot \ldots \cupdot E_k$ úgy, hogy $\forall i E_i \in
+  \F_i$-re. Feltehetõ, hogy az $E_i$ halmazok diszjunktak, ezért hívják a
+  feladatot matroid partíciós problémának.
+\end{itemize}
+
+output:
+
+\begin{figure}[hb]
+\centering
+%\includegraphics[width=120mm,keepaspectratio]{figures/M1M2.pdf}
+\caption{Példa, hogy a mohó algoritmus miért nem mûködik: $E_1 = \{2\}$,
+$E_2 = \{3\}$ állapotban nem tudunk újabb élt belevenni egyik halmazba sem. 
+Jó partícionálás: $E_1 = \{1\}$, $E_2 = \{2, 3\}$.}
+\label{fig:M1M2}
+\end{figure}
+
+\begin{itemize}
+  \item ,,igen'' és a partíció
+  \item ,,nem'' és $X \subseteq E$ úgy, hogy $|X|; \sum_{i=1}^k r_i(X)$. (Ez
+  a tanú bizonyítja, hogy nincs jó partíció)
+\end{itemize}
+
+\begin{algoritmus}
+Az algoritmus kezdetén $\forall i: E_i = \emptyset$ ($E_1, \ldots, E_n$
+halmazok)
+
+Minden lépésben készítünk egy $G'(V', E')$ segédgráfot. $V' = E \cup \{p_1, p_2,
+\ldots, p_k\}$. $|E|=n$ esetén $|V|=n+k$.
+
+A gráf élei: $(\overrightarrow{xy}) \in E' \Leftrightarrow$
+
+\begin{itemize}
+  \item vagy $x \in E, y = p_i, x \not\in E_i, E_i \cup \{x\} \in \F_i$ (az ábra
+  felsõ részen a $p_i$-kbe mutató élek)\\
+  Egy ilyen él azt jelenti, hogy $x$-et hozzávehetjük $E_i$-hez.
+  \item vagy $x,y \in E, x \not\in E_i, y \in E_i$, $E_i \cup \{x\} \not\in
+  \F_i, E_i \cup \{x\} - \{y\} \in \F_i$ (az ábra alsó részén lévõ élek)\\ Egy
+  ilyen él azt jelenti, hogy $E_i$-hez hozzávehetjük $x$-et, ha $y$-t elhagyjuk
+  belöle.
+\end{itemize}
+
+\begin{figure}[hb]
+\centering
+%\includegraphics[width=30mm,keepaspectratio]{figures/futas1.pdf}
+\caption{}
+\label{fig:futas1}
+\end{figure}
+
+Ha létezik irányított út $E-(\bigcup_i E_i)$-bõl $\{p_1, p_2, \ldots p_k\}$-ba,
+akkor ez meghatároz egy módosítás-sorozatot, hogy melyik $E_i$-t hogyan kell
+módosítanunk. Az út utolsó éle egy $p_j$-be megy, a többi $E$-beli elemek
+között, vagyis összesen 1-gyel növeljük $E_i$-k össz. elemszámát. Ha egy {\it
+legrövidebb} ilyen út mentén javítunk, akkor bizonyítható, hogy $E_i$-k a
+módosítások után függetlenek maradnak (mi nem bizonyítjuk). Ezután az algoritmus
+folytatódik, újra megcsináljuk a segédgráfot stb.
+
+\end{algoritmus}
+
+A futás eredménye:
+
+\begin{itemize}
+  \item ,,igen'' válasz: ha bevettünk minden pontot, az algoritmus megadja a partíciókat.
+  \item ,,nem'' válasz: ha elakadtunk valahol.
+\end{itemize}
+
+,,Nem'' válasz esetén bizonyíték, hogy nincs jó partíció: $X$ az $E - \bigcup_i
+E_i$-bõl elérhetõ pontok halmaza.
+
+\[
+|X| \sum_{i=1}^k |X \cap E_i| = \sum_{i=1}^k r_i(X \cap E_i) = \sum_{i=1}^k r_i(X)
+\]
+
+$\forall i$-re $r_i(X \cap E_i) = r_i(X)$, mert: $r_i(X) \geq r_i(X \cap E_i)$
+triviális, $r_i(X) \leq r_i(X \cap E_i)$ pedig azért igaz, mert ha ha $r_i(X)
+> r_i(X \cap E_i)$ lenne, akkor $(F_3)$ miatt $X \cap E_i$ kiegészíthetõ
+lenne egy $u \in X - E_i$ elemmel úgy, hogy $\F_i$-ben továbbra is független
+legyen: $(X \cap E_i) \cup \{u\} \in \F_i$, ezért:
+
+\begin{itemize}
+  \item vagy $E_i \cup \{u\} \in \F_i$, ekkor $u \rightarrow p_i$ él be lenne
+  húzva a gráfba és mivel $u$ elérhetõ $E - \bigcup_i E_i$-bõl ($X$ definíciója
+  miatt), ezért $p_i$ is, tehát nem álltunk volna meg, ellentmondás.
+  \item vagy $E_i \cup \{u\} \not\in \F_i$, akkor van benne kör, ez a kör csak
+  olyan lehet, ami $E_i-X$-be belemetsz (mivel ha $X$-ben lenne az egész kör,
+  akkor $(E_i \cup \{u\})\cap X = (X \cap E_i) \cup \{u\}$ is összefüggõ lenne,
+  de nem az). Legyen a körnek egy $E_i-X$-beli eleme $v$, ekkor $E_i \cup \{u\}
+  - \{v\}$ független (mert független + 1 elemû halmazban csak egy kör lehet, ha
+  ezt megszüntetjük, újra független lesz), tehát lenne $u \rightarrow v$ él a
+  gráfban. Ez ellentmondás, mert akkor $v$ $X$-beli lenne.
+\end{itemize}
+
+Mindkét eset ellentmondás, tehát $r_i(X) = r_i(X \cap E_i)$, így $X$ tényleg jó
+tanú arra, hogy nincs jó partíció.
+
+\begin{figure}[hbt]
+\centering
+%\includegraphics[width=75mm,keepaspectratio]{figures/futas2.pdf}
+\caption{}
+\label{fig:futas2}
+\end{figure}
