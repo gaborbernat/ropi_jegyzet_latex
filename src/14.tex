@@ -1,0 +1,106 @@
+\newpage
+\section{\texorpdfstring{$k$--polimatroid}
+		 {k--polimatroid}}
+
+Egy  $f:2^E \mapsto \mathbb{N}$ egy $k$--polimatroid rangfüggvénye, ha tejlesül:
+
+\[
+\begin{cases}
+\mbox{KP1})& r(\emptyset)=0\\
+\mbox{KP2})& r(\{X\}) \leq k, \mbox{ ekvivalens alak } r(X) \leq k |X|  \\
+\mbox{KP3})& X \subseteq Y \Rightarrow r(X) \leq r(Y)\\
+\mbox{KP4})& r(X \cup Y) + r (X \cap Y) \leq r(X) + r(Y) \Leftrightarrow r(X \cup Y) \leq r(X) + k|Y| \\
+\end{cases}
+\]
+
+Ha $r(\{X\}) \leq 1$, tehát $k=1$ akkor $r$ egy matroid rangfüggvénye. 
+
+\subsection{\texorpdfstring{$k$--polimatroid matching probléma}
+		 {k--polimatroid matching probléma}}
+
+
+Ha $r$ egy $k$--polimatroid rangfüggvény és $X\subseteq E$--re $r(X)=k|X|$,
+akkor $X$--et egy $k$--matching halmaznak nevezzük. A $k$--polimatroid matching
+probléma felírható mint:
+
+\[
+\begin{rcases}
+E \mbox{ alap halmaz} \\
+r \mbox{ egy } k \mbox{--polimatroid rangfüggvény} \\
+p \in \mathbb{N} \\
+\end{rcases}  \xRightarrow {?\exists X \subseteq E}
+\begin{cases}
+r(X)=k|X| \mbox{, tehát X } k \mbox{--matching} \\
+|X| \geq p 
+\end{cases}
+\]
+
+Figyeljük meg pár speciális esetét a problémának:
+
+\begin{itemize}
+  \item Adott egy $G$ gráf és egy $t \in \mathbb{N}$. $\nu(G) \geq t$? \footnote{
+   $\nu(G)$ a $G$ gráfban található független élek maximális száma.
+  } A probléma $2$--polimatroid matchingként: $r(X)=|X$
+  által lefedett pontok halmaza$| \leq 2|X|$.
+  \item $\begin{rcases}
+  \mbox{két matroid} \\
+  t \in \mathbb{N}
+  \end{rcases}$ létezik  e $X \subseteq E$: $\begin{cases}
+  |X| \geq t \\
+  X \in F_1 \cap F_2~(\mbox{matroid metszet probléma})
+  \end{cases}$ 
+  $2$--polimatroid matchingént megfogalmazva: $f(X)=r_1(X)+r_2(X) \leq 2|X|$
+  \item A két korábbi problémát összevonva $\nu(G)$ egy adott $G$ páros gráfban?
+  
+  Hogy megfogalmazzuk $k$--polimatroid problémának felhasználjuk a fenti két
+  feladatott. A páros gráf két csúcs halmaza legyen $A$ és $B$. $M_1$ grafikus
+  matroidban két él párhuzamos ha létezzük közös pontjuk $A$ ponthalmazban.
+  $M_2$ hasonlóan van definiálva $B$--re. 
+\end{itemize}
+
+\subsection{Bonyolultság}
+Teljes általánoságban a probléma nem oldható meg polinom időben. Az általánosság
+a függvény megadási modjára vontakozik. $\forall x \subseteq E$--re egységnyi
+idő alatt $r(X)$ értéke megtudható, de ettől eltekintve a $2$ polimatroid
+rangfüggvényéről semmit sem tudunk.
+
+Ennek bizonyitásához induljunk ki egy $|E|=2n$ alaphalmazból és ennek egy
+$|E_0|=n$ részhalmaza. Továbbá legyen az alábbi két polimatroid rangfüggvény:
+
+\[
+\begin{cases}
+\forall X \subseteq E \mbox{ és } |X|<n, & r_1(X)=r_2(X)=2|X| \\
+\forall X \subseteq E \mbox{ és } |X|>n, & r_1(X)=r_2(X)=2n \\
+\forall X \subseteq E \mbox{ és } |X|=n \mbox{ és } X = E_0, & r_1(X)=r_2(X)=2n-1\\
+\forall X \subseteq E \mbox{ és } |X|=n \mbox{ és } X \neq E_0, & r_1(X)=2n-1 \mbox{ és }r_2(X)=2n\\
+\end{cases}
+\]
+
+Mindkét függvény $2$--polimatroid (a szubmodularitás tulajdonság bizonyitását
+nem részletezzük). Legyen most $p=n$. Arra a kérdésre, hogy van-e legalább
+p-elemű $2$-matching, a válasz nyílván nemleges lesz az $r_1$ és igenlő az $r_2$
+input függvény esetén. 
+
+Ha egy algoritmus teljes általánosságban meg tudja oldani a matroidpárosítási
+problémát, akkor a legrosszabb esetben mind $\dbinom{2n}{n}$ darab $n$ elemű n
+elemű részhalmazra meg kell kérdeznie az $r_i$ függvény értékét.
+
+Hiszen, ha csak egy híján mindegyikre kérdezné meg és mindig $2n-1$ választ
+kapna, akkor még nem tudhatná, hogy melyik esetünkről van szó ($r_1$ vagy
+$r_2$). Ez pedig már $n$ függvényében exponenciálisan sok lépés (az analízisből
+ismert, hogy $\dbinom{2n}{n}$ aszimptotikusan egyenlő $\frac{4^n}{\sqrt{\pi
+n}}$--nel).
+
+\subsection{Lovász--tétel}
+
+Vegyünk egy $\mathbb{M}_{k \times 2n}$ mátrixot. Oszlopai legyenek rendre
+$\{a_1, b_1, \cdots, a_n, b_n \}$ majd definiáljunk az $I=\{1,2,\cdots,n\}$
+indexhalmazon egy $r$ függvényt. $r(X)$ értéke egy adott $X\subseteq I$ legyen
+az $\cup_{i \in X}\{a_i, b_i\}$ vektorhalmaz által kifeszített altér dimenziója
+(hány független elem van a mátrixból kiválasztott oszlopok közül).
+Ilyenkor $r$ egy $2$--polimatroid rangfüggvény.
+
+\vspace{0.4cm}
+\emph{
+A matroidpárosítási probléma polinomidőben megoldható, ha a 2-polimatroid
+rangfüggvény egy adott valós elemű M mátrixból a fent leírt módon nyerhető.}
