@@ -1,0 +1,127 @@
+\newpage
+\section{Teljesen polinomiális approximációs séma a részösszeg problémára}
+
+Egy probléma polinomiális approximációs sémával közelíthető, ha
+$\forall~\epsilon>0$--ra van rá $(1+\epsilon)$-approximáció. Ez nem mindig elég,
+mert ha a közelítő algoritmus lépésszáma például $2^{\frac{1}{\epsilon}}n^4$,
+még mindig exponenciálisan hosszú ideig fut. Ilyenkor ugyanis rögzített
+$\epsilon$--ra polinomiális az algoritmus, tehát a feltételnek megfelel.
+
+Egy probléma \emph{teljesen} polinomiális approximációs sémával közelíthető, ha
+$\forall~\epsilon>0$--ra van rá $(1+\epsilon)$-approximáció, ami
+$\frac{1}{\epsilon}$--ban is polinomiális. Például a metrikus utazó ügynök
+problémára nincs P approximációs séma, de az euklideszi utazó ügynök problémára
+van teljesen P approximációs séma.
+
+\subsection{Részösszeg probléma}
+
+\[
+\begin{rcases}
+A=\{a_1, a_2, \cdots a_n\} \\
+a_{i=\overline{1,n}},~t \in F
+\end{rcases} \Rightarrow \exists ?~B \subseteq A,  \mbox{ hogy } \sum b_i =t 
+\]
+
+Particiós problémáról beszélünk, ha $t = \frac{\sum a_i}{2}$. Mindkét esetben a
+feladat NP--teljes. A résszösszeg optimizálási probléma, ha azzon $B$--re
+vagyunk kiváncsiak amelyre $\sum b_i$ maximális és $\sum b_i \leq t$ . A feladat
+NP nehéz, mert a részösszeg probléma visszavezethető rá: ha találunk olyan B
+halmazt, amire $\sum bi = t$, akkor igen a válasz a részösszeg problémára,
+különben nem. A feladat nem NP-beli, mert nem eldöntési probléma, tehát nem is
+NP-teljes.
+
+\vspace{0.4cm}
+\emph{A részösszeg probléma probléma teljesen polinomiális sémával közelíthető.}
+ \vspace{0.4cm}
+ 
+A bizonyítás egy konkrét algoritmus lesz:
+
+\begin{enumerate}
+  \item \emph{Pontos megoldást adó algoritmus}\\
+Ez az algoritmus gyakorlatilag nem más, mint egy „brute-force” megoldó, amely
+minden lehetséges részösszeget kiszámol. Legyen $a_1 \leq a_2 \leq \cdots \leq
+a_n$. Definiáljunk két halmazsorozatott:
+\begin{align*}
+L_i' = \{ I + a_i | I \in L_i\}, \mbox{ ahol } L_0 = \{ 0\} \\
+L_i+1=L_i \cup L_i'
+\end{align*} 
+
+Az optimális részletösszeg max$\{I|I \in L_n \mbox{ és } I \leq t\}$ lesz.
+
+Például, ha $a_1=3~a_2=5~a_3=7$:
+{ 
+\begin{align*}
+    &&~L_0 &= \{ 0 \} \\
+L_0'&= \{ 3 \} &~ L_1 &= \{ 0, 3\} \\
+L_1'&= \{ 5,8 \} &~ L_2 &= \{ 0, 3, 5, 8\} \\
+L_2'&= \{ 7, 10, 12, 15 \} &~ L_3 &= \{ 0, 3, 5, 7, 8, 10, 12, 15\} \\
+\end{align*}}  
+  \item \emph{Polinomiális közelítő algoritmus} \\
+  Egyrészt vegyük észre, hogy az $L_i'$ halmazokból nincs szükségünk a $t$--nél
+  nagyobb elemekre. Töröljűk ki ezeket: $L_i' = (L_i+a_i) \cap [0 \cdots t]$.
+  
+  Ugyanakkor, ritkitsuk a halmazt $\delta$--val: legyen $L$ a növekvő sorrendbe
+  rendezett halmaz. Ezután a halmaz minden elemét vizsgáljuk meg, növekvő
+  sorrendben, ha létezzik kisebb elem ($m$) az aktuálisnál ($l$) amelyre
+  $l<m(1+\delta)$ (az aktuális $1+\delta$--szor nagyobb) akkor dobjuk ki az
+  aktuálist ($l$--et). A ritkítás után bármely két szomszédos elem hányadosa
+  legalább $1+\delta$. A ritkított halmaz mérete felülről becsülhető:
+  $|L_{\mbox{ritkított}}| \leq \log_{1+\delta}{t+2}$.
+  \item Ha a fenti algoritmus során a halmazok $t$--nél nagyobb elemeit minden
+  lépésben levágjuk és az eredményt $\delta = \frac{\epsilon}{2n}$--vel
+  ritkítjuk, $(1+\epsilon)$--approximációt kapunk a problémára, és a lépésszám
+  $n$--ben, $\log t$--ben és $\frac{1}{\epsilon}$--ban is polinomiális lesz.
+\end{enumerate}
+
+Az $1+\epsilon$ approximációs tulajdonságot lássuk be. Ehez elöszőr figyeljük
+meg a következő lemmát:
+\[ \ln{(1+X)} \geq \frac{X}{1+X}, \mbox{ ha } X \geq 0.\]
+
+Ha $X=0$ mindkét oldal nulla lesz, tehát az állitás igaz. Ha $X \geq 0$:
+
+\[ \left( \ln{(1+X)} - \frac{X}{1+X}\right)' = \frac{1}{1+X} - \frac{(1+X)-X}{(1+X)^2} =
+\frac{1}{1+X} - \frac{1}{(1+X)^2} > 0 
+\]
+Tehát a derivált pozitiv, amiből következik, hogy a függvény monotonan nő, tehát
+a lemma igaz.
+
+Most az algoritmus lépészámát vizsgálva, a kapott halmaz mérete:
+
+\[ \log_{1+\delta}{t}=\log_{1+\frac{\epsilon}{2n} }{t} = \frac{\ln{t}}{\ln(1+\frac{\epsilon}{2n})}
+\leq \frac{\ln{t}}{\frac{\frac{\epsilon}{2n}}{1+\frac{\epsilon}{2n}}} 
+= \left(1 + \frac{\epsilon}{2n} \right) \cdot 2n \cdot \frac{\ln{t}}{\epsilon} \]
+
+Az egyenlőtlenséghez felhasználtuk a lemmát $\left(\ln(1+\dfrac{\epsilon}{2n})
+\geq \dfrac{\dfrac{\epsilon}{2n}}{1+\dfrac{\epsilon}{2n}}\right)$.
+Megfigyelhetjük, hogy a lépésszám mind $n$--ben, $\log t$--ben és
+$\frac{1}{\epsilon}$ is polinomiális.
+
+Az algoritmus során $n$ darab lista összefésülését kell elvégezni, aminek a
+komplexitása O$(\sum |L_i|)=$O$(n \cdot |L_i|)$. Felhasználva a korábbi
+becslésünket az algoritmus $n$--ben négyzetes, $\log{t}$--ben lineáris, azaz
+mindkét esetbben polinomiális. Most olyan megoldást keressönk, amely az
+approximációs séma követelményeit teljesíti, azaz megoldása $\geq
+\dfrac{\mbox{OPT}}{1+\epsilon}$.
+
+A kapott válasz relatív hibájának kis értékére való bizonyitásához vegyük
+figyelembe, hogy $L_i$ lista ritkitásakor legfeljebb $\frac{\epsilon}{n}$
+nagyságú hibát okozunk a megmaradó képviselő érték és a ritkitás előtti érték
+között. $i$--re vonatkozó teljes indukcióval bizonyitható, hogy:
+
+\[ L = \frac{\mbox{OPT}}{(1+ \frac{\epsilon}{2n})^n} \leq \mbox{ kapott érték }
+\leq \mbox{ OPT. }\]
+
+Ahhoz, hogy a bal oldal teljesüljön $(1+\frac{\epsilon}{2n})^n \leq 1 + \epsilon$ 
+is igaz kell legyen. Lássuk be, hogy ez igaz:
+
+\begin{align*}
+\left(1+\frac{\epsilon}{2n}\right)^n &= 
+\sum_{i=0}^{n}\left(\frac{\epsilon}{2n}\right)^i \cdot 1^{n-i} \cdot \binom{n}{i} = 
+ \sum_{i=0}^{n}\left(\frac{\epsilon}{2n}\right)^i \cdot \frac{n!}{i!(n-i)!}
+ \leq 1 + \sum_{i=0}^{n}\left(\frac{\epsilon}{2n}\right)^i \cdot n^i \\
+ &\leq 1 + \sum_{i=1}^{n}\left(\frac{\epsilon}{2}\right)^i = 1 + \frac{\epsilon}{2}
+ + \frac{\epsilon}{4} + \cdots + \frac{\epsilon}{2^n} \leq 1 + \epsilon
+\end{align*}
+
+A bizonyítás során felhasználásra került a binomiális tétel és a mértani sor
+összegképlete.

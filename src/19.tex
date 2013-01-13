@@ -1,0 +1,68 @@
+\newpage
+\section{Ütemezési algoritmusok}
+
+Az ütemezési feladatt megfogalmazható mint:
+\[
+\begin{rcases}
+J_i \mbox{ -- munkák} \\
+P_i \mbox{ -- megmunkálási idő} \\
+w_i \mbox{ -- súly} \\
+d_i \mbox{ -- határidő} \\
+r_i \mbox{ -- rendelkezésre álló idő} \\
+C_i \mbox{ -- befejezési idő} \\
+\end{rcases}
+\Rightarrow 
+\parbox[t]{9cm}{ $+$ egy adott időben egy gépen egy munka folyik \\
+és létezik egy célfügvény amire nézve optimális ütemezést keresünk.}
+\]
+
+Egy halmazfeladat gyors leírására a következő struktúrt használjuk:
+\[
+\underbrace{\alpha}_{\mbox{gépi infó}} | \underbrace{\beta}_{\mbox{ütemezési infó}
+} | \underbrace{\gamma}_{\mbox{optimalizálási kritérium}}
+\]
+
+\begin{description}
+  \item[gépi infórmáció] alatt a rendelkezésre álló gép számosságot értjük. Lehet:
+  \begin{itemize}
+  \item $1$ -- egy gép áll rendelkezésre.
+  \item $P_m$ -- $m$ darab párhuzamosan futó gép
+  \item $P$ -- a párhuzamosan futó gépek száma nincs rögzitve, tartalmazza az $1,2,\cdots$ feladatokat is.
+\end{itemize}
+  \item[ütemezési infórmáció] azt mondja meg, hogy milyen ütemezést illető
+  megkötéseink vannak a halmaz elemeire:
+  \begin{itemize}
+  \item \emph{prec} -- létezzik egy írányitott aciklikus gráf amely
+  meghatározza, hogy a munka elkezdéséhez mely munkák kellet már befejeződjenek.
+  \item $r_j$ -- egy--egy munkának tudjuk, hogy mely időpontól ál rendelkezésünkre.
+  \item $P_j$ -- tudjuk, hogy egy--egy munka elvégzése mennyi időtvesz igénybe
+  (ez mindig adott).
+\end{itemize}
+  \item[optimalizálási kritérium] arra vonatkozik, hogy a célfüggvényben mire
+  fektetünk hangsúlyt:
+  \begin{itemize}
+  \item $C_{\mbox{max}}=\mbox{max}(C_j)$ -- utolsó munka befejezési ideje legyen minnél
+  kisebb (gyorsan befejezni a csomagot).
+  \item $\sum C_j = \sum \frac{C_j}{n}$ -- a munka átlagos befejezési ideje
+  legyen a lehető legkisebb (átlagosan kevesett várjunk a gépekre).
+\end{itemize}
+\end{description} 
+
+\subsection{ \texorpdfstring {$ 1||C_{max} $} {1||Cmax} }
+
+Egy gépre teljes átfutási idő szerint optimizálunk. $C_{\mbox{max}}=\sum_{i=1}^{n}
+P_i \Rightarrow$ tehát csak felrakjuk a munkákat sorba, ügyelve arra, hogy ne 
+létezzen pillanat amikor a gép áll és optimális megoldást kapunk.
+
+\subsection{ \texorpdfstring {$ 1|prec|C_{max} $} {1|prec|Cmax} }
+
+Most olyan sorrendben végezzük el a felrakást, hogy ne legyen munka amire a
+függőség még nem fejezödőt be. Ez a sorrend egy irányitott aciklikus gráfban
+(DAG) nem mást mint a topologikus sorrend. Tehát első pontnak vegyünk egy forrás
+pontot a precedencia gráfból, ezt töröljük és ismételjűk e folyamatott amig
+létezzik pont a gráfban. Ez polinomiális időben optimális megoldást ad.
+
+\subsubsection{Topologikus sorrend meghatározása}
+
+Adjunk hozzá a bemeneti DAG--hoz egy extra $s$ élet amelyet a végén törölni 
+fogunk. Minden $s \mapsto v, v \in V$ élt rakjuk be a gráfba.
