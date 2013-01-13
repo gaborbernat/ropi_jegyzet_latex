@@ -1,0 +1,173 @@
+\section{NP-nehéz feladatok polinomiális esetei, additív és multiplikativ hiba}
+
+\begin{description}
+  \item[Független élhalmaznak] nevezzük a gráf éleinek egy olyan halmazát
+  amelyben semelyik két élnek nincs közös pontja -- $\nu(G)$ jelöli a legnagyobb
+  független élhalmaz elemszámát.
+  \item[Független ponthalmaz]  a csúcsók olyan részhalmaza amelyik semelyik két
+  pont nincs közös élen -- $\alpha(G)$ jelöli a legnagyobb független ponthalmaz
+  elemszámát.
+  \item[Lefogó ponthalmaz] a gráf pontjainak egy halamza amely a gráf minden
+  élének legalább egyik élét tartalmaza -- $\tau(G)$ a legkisebb lefogó
+  ponthalmaz elemszáma.
+  \item[Lefogó élhalmaz] az élek egy halmaza, ha a gráf minden pontjára legalább
+  egy elem illeszkedik -- $\rho(G)$ a legkisebb lefogó élhalmaz elemszáma.
+  \item[Gallai tétel] $\forall~G$ gráf ahol a gráf: \begin{itemize}
+  		\item hurokmentes $\Rightarrow \tau(G)+\alpha(G) = |V(G)|$. 
+  		\item izoláltpont mentes $\Rightarrow \nu(G) +\rho(G) = |V(G)|$.
+   \end{itemize} 
+   \item[König tétel] $\forall~G$ gráf ahol a gráf: \begin{itemize}
+     \item páros $\Rightarrow \tau(G)=\nu(G)$,
+     \item izoláltpont mentes $\Rightarrow \rho(G) = \alpha(G)$,
+   \end{itemize}
+   és a magyar módszer megtalálja mind a négy halmazt.
+   \item[König tétel] $G=(A,B,E)$ páros gráfban $\Rightarrow \chi(G) =
+   \Delta(G)$, azaz az élkromatikus szám~\footnote{A gráf élkromatikus száma
+   $k$, ha a gráf élei $k$  színnel kiszinezhető, úgy, hogy $\forall~2$
+   szomszédos él különböző szinű. } megegyezik a maximális fokszámmal.
+\end{description}
+
+Az utóbbi bizonyitása az algoritmus megadásával történik, mely segitségével
+bármely $G$ páros gráfban $\Delta(G)$ darab színnel az élek kiszinezhetőek;
+hatékonyan, nagy méretű gráfra is. Jelölje $G$ éleit $E=\{ e_i \}$, ahol legyen
+$|E|=m$. Az algoritmus egymás után szinezi az éleket $\Delta(G)$ szín valamelyikével.
+Eközben előfordul, hogy szint kell cserélni egy élen, de azt szintelené tenni nem.
+
+Tegyük fel, hogy $e_1, \cdots, e_{i-1}$ már ki van színezve és legyen
+$e_i=\{u,v\}$, ahol $u \in A$ és $u \in B$. $u$ és $v$ csúcsra is legfeljebb
+$\Delta(G)$ él illekszkedik, de ezek közül $e_i$ még biztos, hogy színtelen.
+Tehát mindkét csúcsban van még legalább egy szabad szín (olyan szinű él oda még
+nem kapcsolodik). Ha ez a szín azonos $u$ és $v$--ben akkor használjuk azt, és
+készen vagyunk $e_i$--vel.
+
+Ha a szín nem közös, akkor tegyük fel, hogy $u$ szabad színe piros, míg $v$
+szabad színe kék. Legyen $C$ a $G$ gráf azon részgráfja amely felveszi $G$
+összes csúcsát, de az élek közül csak a piros vagy kék szinűeket. $C$
+részgráfban minden minden pont foka legfeljebb $2$ (hisszen minden csúcsra
+legfeljebb egy piros és egy kék illeszkedhet). Ekkor $C$ diszjunk utakból és
+körökből épül fel.
+
+Ugyanakkor $u$ és $v$ csúcs foka $C$--ben csak egy lehet hisszen $u$--nak piros,
+$v$--nek kék a szabad színe. Ezért $u$ és $v$ is egy $C$--beli út végpontja.
+Legyen $P_u$ az út melyenek végpontja $u$. $v$ nincs rajta ezen, mert másképp az
+út másik végpontja pont $v$ lenne. Ekkor $P_u$ páratlan sok élből állna, hiszen 
+a gráf páros, az egyik osztályból indul ($A$) és másikban ér véget ($B$). 
+
+Tehát $P_u$--nak az élei váltakozó szinűek, kezdete kék, tehát az utolsó él is
+kék szinű kell, hogy legyen. Így $P_u$ végpontja nem lehet $v$, mert arra nem
+illeszkedik kék él. Fessük át $P_u$ kék éleit pirosra és piros éleit kékre.
+Ezzel a szinezést nem rontjuk el, de most $u$--nak kék lett a szabad színe. Most
+már $u$ szabad színe megegyezik $v \not \in P_u$ szabad színnével (kék),
+színezzük meg ezzel az $e_i$ élet és megvagyunk.
+
+\subsection{Probléma osztályok}
+\begin{description}
+  \item[P] a polinomiális időben megoldható problémák.
+  \item[NP] azon eldöntési problémák amelyre létezzik az igen válaszra tanú.
+  \item[co--NP] azon eldöntési problémák amelyre létezzik a nem válaszra tanú.
+  \item[NP--nehéz] $\forall$ NP--beli probléma visszavezethető az ilyen problémára.
+\end{description}
+
+\begin{figure}[htbp]
+\caption{Probléma osztályok}
+\label{fig:ProbOszt}
+\centering
+\begin{tikzpicture}[scale=0.8]
+  \tikzset{venn circle/.style={draw,circle,minimum width=6,fill=#1,opacity=0.4}}
+  \node [venn circle = gray,minimum width=130] (NP) at (0,0) {~~~NP};
+  \node [venn circle = lightgray,minimum width=130] (coNP) at (3.5,-1) {co--NP};
+  \node [venn circle = black,minimum width=130] (NPn) at (-3.2,-1) {NP--nehéz~~~~~~~~~~~~~~~};
+  \node[] at (barycentric cs:NP=1/2,NPn=1/2 ) {NP--teljes}; 
+  \node[right] at (barycentric cs:NP=1/2,coNP=1/2 ) {P};   
+\end{tikzpicture}  
+\end{figure}
+
+\Aref{fig:ProbOszt} ábra mutatja a probléma osztályok közötti relációkat, nyílt
+kérdés, hogy $P=NP$ fen áll e vagy sem.
+
+\begin{table}
+\begin{tabular}{|m{6.5cm}|m{2cm}|m{3.5cm}|}
+\hline
+Feladat & Probléma & Algoritmus \\
+\hline\arrayrulecolor{lightgray}
+Összefüggöség & P & mélységi bejárás és széleségi bejárás \\  \hline
+$\exists$ ? teljes párositás gráfban & P & javító útak \\\hline
+$\exists$ ? $2$ szinezés gráfban & P & mélyésgi bejárás \\\hline
+$\exists$ ? $3$ szinezés gráfban & NP--teljes &\\\hline
+síkbarajzolhatóság & P & Kuratowski--tétel\\\hline
+klikk & NP--nehéz & \\\hline
+MAXFTL & NP--nehéz &\\\hline
+MAXFTL páros gráfban & P & magyar--módszer\\\hline
+Hamilton kör & NP--teljes & \\\hline
+utazó ügynők problémája & NP--nehéz & \\\hline
+maximális élszámú vágás keresése & NP--nehéz &\\\hline
+maximális élszámú vágás keresése, ha a hálozat síkba rajzólható& NP--nehéz &\\\hline
+$\alpha(G), \tau(G), \chi(G), \chi_e(G)$ & NP--nehéz & \\\hline
+$\alpha(G), \tau(G), \chi(G), \chi_e(G)$ ha G páros & P & \\\hline
+leghosszabb irányitott út & NP--nehéz & \\\hline
+leghosszabb irányitott út páros gráfban & P & mélységi bejárás \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Additív hiba}
+
+Legyen egy $f(X)$ minimalizálandó célfüggvény $X_I$ halmazon, amely $I$ bemeneten 
+értelmezett. Egy algoritmus $c$ addítiv hibával kőzelitve old meg egy minimizálási 
+problémát, ha bármely $I$--re polinom időben ad egy $y_I \in X_I$ megoldást, amire teljesül, hogy:
+
+\[
+f(y_I) = \underbrace{(\mbox{min}_{X \in X_I} f(X))}_{\mbox{optimum}} + \underbrace{c}_{\mbox{hiba}}.
+\]
+
+Például  határozzuk meg egy $G$ gráfban (amelybe nincs hurokél, többszörös él és
+irányitott él) az \emph{élkromatikus számot}. Ekkor tudjuk, hogy $\Delta(G)=k$ és a
+Vizing tétel alapján az élkromatikus szám $k$ vagy $k+1$. Hogy melyik azt
+eldönteni egy NP--teljes feladat, de a tétel bizonyitása alapján polinom időben
+megkapható egy $k+1$ szinezés, azaz $1$ additív hibájú az algoritmus.
+
+Egy másik példa a \emph{kromatikus szám} (szinezés) keresése egy gráfban. Az öt szín
+tétel alapján polinomiális időben beszinezhető bármely gráf. Tehát egy adott
+sikgráfon az optimális szinezés legyen $1$ ha az üres, $2$ ha az páros, és $5$
+másképpen. E utolsó esetben $\chi(G) \geq 3$, tehát a hiba $\leq 2$.
+
+De például egy gráfban a \emph{leghosszabb út megkeresésének} problémája (amely
+NP-teljes, hiszen a Hamilton-út keresését magába foglalja) semmilyen additív $c$
+konstanssal közelítő algoritmussal nem oldható meg (ha csak P$=$NP nem teljesül). 
+Ennek belátásához tegyük fel, hogy lenne egy olyan $A_c$ algoritmus, amely
+tetszőleges $G$ gráfra eldöntené, van-e benne egy olyan út, melynek pontszáma
+legfeljebb $c$-vel kisebb a leghosszabb út hosszánál.
+
+Megmutatjuk, hogy erre polinomrendben visszavezethető lenne arra a problémára,
+hogy adott $H$ gráfról döntsük el, van--e benne Hamilton--út. Egészítsük ki
+ugyanis a $H$ gráfot $c$ darab izolált ponttal, majd az így kapott $G$ gráfra
+alkalmazzuk az $A_c$ algoritmust. Nyílván akkor és csak akkor találna az
+algoritmus megfelelő utat $G$--ben, ha az annak megfelelő élek $H$--ban
+Hamilton-utat alkotnának.
+
+\subsection{Multiplikativ híba}
+
+Egy algoritmus $k>1$ multiplikativ hibával közelitve old meg egy minimalizálási
+problémát, ha $\forall~I$ bemenetre polinom időben ad egy $y_I \in X_I$
+megoldást amire:
+
+
+\[
+f(y_I) \leq \underbrace{k}_{\mbox{hiba}}  \cdot \underbrace{(\mbox{min}_{X \in X_I} f(X))}_{\mbox{optimum}}.
+\]
+
+Például keressük egy $G$ gráfban a \emph{minimális lefogó ponthalmazt} ($\tau(G)$).
+Válasszuk ki a független élek maximális rendszerét ($\nu$), mindkét végpontját
+tekintve egy $2\nu$ elemű ponthalmazt kapunk. Definíció szerint legfeljebb annyi
+független él választható ki, mint a lefogó pontok minimális száma ($\nu \leq
+\tau$), tehát egy $k=2$ multiplikatív hibával rendelkező algoritmusról van szó.
+
+A \emph{maximális páros részgráf} megállapitásához keressük az $n$ pontú gráf olyan 
+szétosztását, ahol a két pontosztály között a legtöbb él halad. Ez a feladat egy
+NP--nehéz probléma. Induljunk ki egy tetszőleges kettéosztásból és, ha egy pont
+áthelyezése növeli a vágás élszámát akkor azt helyezzük át.
+
+E naiv algoritmus a maximális vágás legalább felét kiadja, tehát ez is egy $k=2$
+multiplikativ hibával rendelkező algoritmus. Az algoritmus lépészám becslése
+$\mbox{max}_k\{k\cdot(n-k)\}\approx \dfrac{n^2}{4}$, ami polinom idejű, tehát teljesití
+a követelményeket.
