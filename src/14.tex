@@ -2,7 +2,7 @@
 \section{\texorpdfstring{$k$--polimatroid}
 		 {k--polimatroid}}
 
-Egy  $f:2^E \mapsto \mathbb{N}$ egy $k$--polimatroid rangfüggvénye, ha tejlesül:
+Egy  $f:2^E \mapsto \mathbb{N}$ egy $k$--polimatroid rangfüggvénye, ha teljesül:
 
 \[
 \begin{cases}
@@ -59,12 +59,12 @@ Figyeljük meg pár speciális esetét a problémának:
 \end{itemize}
 
 \subsection{Bonyolultság}
-Teljes általánoságban a probléma nem oldható meg polinom időben. Az általánosság
-a függvény megadási modjára vontakozik. $\forall x \subseteq E$--re egységnyi
+Teljes általánosságban a probléma nem oldható meg polinom időben. Az általánosság
+a függvény megadási módjára vonatkozik. $\forall x \subseteq E$--re egységnyi
 idő alatt $r(X)$ értéke megtudható, de ettől eltekintve a $2$ polimatroid
 rangfüggvényéről semmit sem tudunk.
 
-Ennek bizonyitásához induljunk ki egy $|E|=2n$ alaphalmazból és ennek egy
+Ennek bizonyításához induljunk ki egy $|E|=2n$ alaphalmazból és ennek egy
 $|E_0|=n$ részhalmaza. Továbbá legyen az alábbi két polimatroid rangfüggvény:
 
 \[
@@ -76,7 +76,7 @@ $|E_0|=n$ részhalmaza. Továbbá legyen az alábbi két polimatroid rangfüggv�
 \end{cases}
 \]
 
-Mindkét függvény $2$--polimatroid (a szubmodularitás tulajdonság bizonyitását
+Mindkét függvény $2$--polimatroid (a szubmodularitás tulajdonság bizonyítását
 nem részletezzük). Legyen most $p=n$. Arra a kérdésre, hogy van-e legalább
 p-elemű $2$-matching, a válasz nyílván nemleges lesz az $r_1$ és igenlő az $r_2$
 input függvény esetén. 
@@ -95,7 +95,7 @@ n}}$--nel).
 
 Vegyünk egy $\mathbb{M}_{k \times 2n}$ mátrixot amely $\mathbb{R}$ felett van
 koordinátázva. Oszlopai legyenek rendre $\{a_1, b_1, \cdots, a_n, b_n \}$ majd
-definiáljunk az $I=\{1,2,\cdots,n\}$ indexhalmazon egy $r$ függvényt. $r(X)$
+definiáljunk az $I=\{1,2,\cdots,n\}$ index halmazon egy $r$ függvényt. $r(X)$
 értéke egy adott $X\subseteq I$ legyen az $\cup_{i \in X}\{a_i, b_i\}$
 vektorhalmaz által kifeszített altér dimenziója (hány független elem van a
 mátrixból kiválasztott oszlopok közül). Ilyenkor $r$ egy $2$--polimatroid
@@ -104,5 +104,5 @@ párhuzamos $b_i$--vel).
 
 \vspace{0.4cm}
 \emph{
-A matroidpárosítási probléma polinomidőben megoldható, ha a 2-polimatroid
+A matroidpárosítási probléma polinom időben megoldható, ha a 2-polimatroid
 rangfüggvény egy adott valós elemű M mátrixból a fent leírt módon nyerhető.}

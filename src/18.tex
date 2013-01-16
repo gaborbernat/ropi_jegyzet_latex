@@ -22,9 +22,9 @@ a_{i=\overline{1,n}},~t \in F
 \end{rcases} \Rightarrow \exists ?~B \subseteq A,  \mbox{ hogy } \sum b_i =t 
 \]
 
-Particiós problémáról beszélünk, ha $t = \frac{\sum a_i}{2}$. Mindkét esetben a
-feladat NP--teljes. A résszösszeg optimizálási probléma, ha azzon $B$--re
-vagyunk kiváncsiak amelyre $\sum b_i$ maximális és $\sum b_i \leq t$ . A feladat
+Partíciós problémáról beszélünk, ha $t = \frac{\sum a_i}{2}$. Mindkét esetben a
+feladat NP--teljes. A részösszeg optimizálási probléma, ha azon $B$--re
+vagyunk kíváncsiak amelyre $\sum b_i$ maximális és $\sum b_i \leq t$ . A feladat
 NP nehéz, mert a részösszeg probléma visszavezethető rá: ha találunk olyan B
 halmazt, amire $\sum bi = t$, akkor igen a válasz a részösszeg problémára,
 különben nem. A feladat nem NP-beli, mert nem eldöntési probléma, tehát nem is
@@ -40,7 +40,7 @@ A bizonyítás egy konkrét algoritmus lesz:
   \item \emph{Pontos megoldást adó algoritmus}\\
 Ez az algoritmus gyakorlatilag nem más, mint egy „brute-force” megoldó, amely
 minden lehetséges részösszeget kiszámol. Legyen $a_1 \leq a_2 \leq \cdots \leq
-a_n$. Definiáljunk két halmazsorozatott:
+a_n$. Definiáljunk két halmazsorozatot:
 \begin{align*}
 L_i' = \{ I + a_i | I \in L_i\}, \mbox{ ahol } L_0 = \{ 0\} \\
 L_i+1=L_i \cup L_i'
@@ -58,11 +58,11 @@ L_2'&= \{ 7, 10, 12, 15 \} &~ L_3 &= \{ 0, 3, 5, 7, 8, 10, 12, 15\} \\
 \end{align*}}  
   \item \emph{Polinomiális közelítő algoritmus} \\
   Egyrészt vegyük észre, hogy az $L_i'$ halmazokból nincs szükségünk a $t$--nél
-  nagyobb elemekre. Töröljűk ki ezeket: $L_i' = (L_i+a_i) \cap [0 \cdots t]$.
+  nagyobb elemekre. Töröljük ki ezeket: $L_i' = (L_i+a_i) \cap [0 \cdots t]$.
   
-  Ugyanakkor, ritkitsuk a halmazt $\delta$--val: legyen $L$ a növekvő sorrendbe
+  Ugyanakkor, ritkítsuk a halmazt $\delta$--val: legyen $L$ a növekvő sorrendbe
   rendezett halmaz. Ezután a halmaz minden elemét vizsgáljuk meg, növekvő
-  sorrendben, ha létezzik kisebb elem ($m$) az aktuálisnál ($l$) amelyre
+  sorrendben, ha létezik kisebb elem ($m$) az aktuálisnál ($l$) amelyre
   $l<m(1+\delta)$ (az aktuális $1+\delta$--szor nagyobb) akkor dobjuk ki az
   aktuálist ($l$--et). A ritkítás után bármely két szomszédos elem hányadosa
   legalább $1+\delta$. A ritkított halmaz mérete felülről becsülhető:
@@ -73,16 +73,16 @@ L_2'&= \{ 7, 10, 12, 15 \} &~ L_3 &= \{ 0, 3, 5, 7, 8, 10, 12, 15\} \\
   $n$--ben, $\log t$--ben és $\frac{1}{\epsilon}$--ban is polinomiális lesz.
 \end{enumerate}
 
-Az $1+\epsilon$ approximációs tulajdonságot lássuk be. Ehez elöszőr figyeljük
+Az $1+\epsilon$ approximációs tulajdonságot lássuk be. Ehhez elősző figyeljük
 meg a következő lemmát:
 \[ \ln{(1+X)} \geq \frac{X}{1+X}, \mbox{ ha } X \geq 0.\]
 
-Ha $X=0$ mindkét oldal nulla lesz, tehát az állitás igaz. Ha $X \geq 0$:
+Ha $X=0$ mindkét oldal nulla lesz, tehát az állítás igaz. Ha $X \geq 0$:
 
 \[ \left( \ln{(1+X)} - \frac{X}{1+X}\right)' = \frac{1}{1+X} - \frac{(1+X)-X}{(1+X)^2} =
 \frac{1}{1+X} - \frac{1}{(1+X)^2} > 0 
 \]
-Tehát a derivált pozitiv, amiből következik, hogy a függvény monotonan nő, tehát
+Tehát a derivált pozitív, amiből következik, hogy a függvény monotonan nő, tehát
 a lemma igaz.
 
 Most az algoritmus lépészámát vizsgálva, a kapott halmaz mérete:
@@ -99,14 +99,14 @@ $\frac{1}{\epsilon}$ is polinomiális.
 Az algoritmus során $n$ darab lista összefésülését kell elvégezni, aminek a
 komplexitása O$(\sum |L_i|)=$O$(n \cdot |L_i|)$. Felhasználva a korábbi
 becslésünket az algoritmus $n$--ben négyzetes, $\log{t}$--ben lineáris, azaz
-mindkét esetbben polinomiális. Most olyan megoldást keressönk, amely az
+mindkét esetben polinomiális. Most olyan megoldást keressünk, amely az
 approximációs séma követelményeit teljesíti, azaz megoldása $\geq
 \dfrac{\mbox{OPT}}{1+\epsilon}$.
 
-A kapott válasz relatív hibájának kis értékére való bizonyitásához vegyük
-figyelembe, hogy $L_i$ lista ritkitásakor legfeljebb $\frac{\epsilon}{n}$
-nagyságú hibát okozunk a megmaradó képviselő érték és a ritkitás előtti érték
-között. $i$--re vonatkozó teljes indukcióval bizonyitható, hogy:
+A kapott válasz relatív hibájának kis értékére való bizonyításához vegyük
+figyelembe, hogy $L_i$ lista ritkításakor legfeljebb $\frac{\epsilon}{n}$
+nagyságú hibát okozunk a megmaradó képviselő érték és a ritkítás előtti érték
+között. $i$--re vonatkozó teljes indukcióval bizonyítható, hogy:
 
 \[ L = \frac{\mbox{OPT}}{(1+ \frac{\epsilon}{2n})^n} \leq \mbox{ kapott érték }
 \leq \mbox{ OPT. }\]

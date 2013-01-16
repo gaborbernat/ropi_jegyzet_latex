@@ -1,7 +1,7 @@
 \newpage
 \section{Ütemezési algoritmusok}
 
-Az ütemezési feladatt megfogalmazható mint:
+Az ütemezési feladat megfogalmazható mint:
 \[
 \begin{rcases}
 J_i \mbox{ -- munkák} \\
@@ -9,42 +9,42 @@ P_i \mbox{ -- megmunkálási idő} \\
 w_i \mbox{ -- súly} \\
 d_i \mbox{ -- határidő} \\
 r_i \mbox{ -- rendelkezésre álló idő} \\
-C_i \mbox{ -- befejezési idő} \\
+C_i \mbox{ -- befejezési iödő} \\
 \end{rcases}
 \Rightarrow 
 \parbox[t]{9cm}{ $+$ egy adott időben egy gépen egy munka folyik \\
 és létezik egy célfügvény amire nézve optimális ütemezést keresünk.}
 \]
 
-Egy halmazfeladat gyors leírására a következő struktúrt használjuk:
+Egy halmazfeladat gyors leírására a következő struktúrát használjuk:
 \[
 \underbrace{\alpha}_{\mbox{gépi infó}} | \underbrace{\beta}_{\mbox{ütemezési infó}
 } | \underbrace{\gamma}_{\mbox{optimalizálási kritérium}}
 \]
 
 \begin{description}
-  \item[gépi infórmáció] alatt a rendelkezésre álló gép számosságot értjük. Lehet:
+  \item[gépi információ] alatt a rendelkezésre álló gép számosságot értjük. Lehet:
   \begin{itemize}
   \item $1$ -- egy gép áll rendelkezésre.
   \item $P_m$ -- $m$ darab párhuzamosan futó gép
-  \item $P$ -- a párhuzamosan futó gépek száma nincs rögzitve, tartalmazza az $1,2,\cdots$ feladatokat is.
+  \item $P$ -- a párhuzamosan futó gépek száma nincs rögzítve, tartalmazza az $1,2,\cdots$ feladatokat is.
 \end{itemize}
-  \item[ütemezési infórmáció] azt mondja meg, hogy milyen ütemezést illető
+  \item[ütemezési információ] azt mondja meg, hogy milyen ütemezést illető
   megkötéseink vannak a halmaz elemeire:
   \begin{itemize}
-  \item \emph{prec} -- létezzik egy írányitott aciklikus gráf amely
+  \item \emph{prec} -- létezik egy irányított a--ciklikus gráf amely
   meghatározza, hogy a munka elkezdéséhez mely munkák kellet már befejeződjenek.
-  \item $r_j$ -- egy--egy munkának tudjuk, hogy mely időpontól ál rendelkezésünkre.
-  \item $P_j$ -- tudjuk, hogy egy--egy munka elvégzése mennyi időtvesz igénybe
+  \item $r_j$ -- egy--egy munkának tudjuk, hogy mely időponttól áll rendelkezésünkre.
+  \item $P_j$ -- tudjuk, hogy egy--egy munka elvégzése mennyi időt vesz igénybe
   (ez mindig adott).
 \end{itemize}
   \item[optimalizálási kritérium] arra vonatkozik, hogy a célfüggvényben mire
   fektetünk hangsúlyt:
   \begin{itemize}
-  \item $C_{\mbox{max}}=\mbox{max}(C_j)$ -- utolsó munka befejezési ideje legyen minnél
+  \item $C_{\mbox{max}}=\mbox{max}(C_j)$ -- utolsó munka befejezési ideje legyen minél
   kisebb (gyorsan befejezni a csomagot).
   \item $\sum C_j = \sum \frac{C_j}{n}$ -- a munka átlagos befejezési ideje
-  legyen a lehető legkisebb (átlagosan kevesett várjunk a gépekre).
+  legyen a lehető legkisebb (átlagosan keveset várjunk a gépekre).
 \end{itemize}
 \end{description} 
 
@@ -57,16 +57,16 @@ létezzen pillanat amikor a gép áll és optimális megoldást kapunk.
 \subsection{ \texorpdfstring {$ 1|prec|C_{max} $} {1|prec|Cmax} }
 
 Most olyan sorrendben végezzük el a felrakást, hogy ne legyen munka amire a
-függőség még nem fejezödőt be. Ez a sorrend egy irányitott aciklikus gráfban
+függőség még nem fejeződőt be. Ez a sorrend egy irányított a--ciklikus gráfban
 (DAG) nem mást mint a topologikus sorrend. Tehát első pontnak vegyünk egy forrás
-pontot a precedencia gráfból, ezt töröljük és ismételjűk e folyamatott amig
-létezzik pont a gráfban. Ez polinomiális időben optimális megoldást ad.
+pontot a precedencia gráfból, ezt töröljük és ismételjük e folyamatot amíg
+létezik pont a gráfban. Ez polinomiális időben optimális megoldást ad.
 
 \subsubsection{Topologikus sorrend meghatározása}
 
 Adjunk hozzá a bemeneti DAG--hoz egy extra $s$ élet amelyet a végén törölni
 fogunk. Minden $s \mapsto v, v \in V$ élt rakjuk be a gráfba. Minden pontra két
-cimkét vezessünk: az egyik azt mutatja, hogy a pont elért e, és ha igen mely
+címkét vezessünk: az egyik azt mutatja, hogy a pont elért e, és ha igen mely
 csúcsból; a másik érték meg azt jelzi, hogy a csúcs átvizsgált már e vagy sem.
 Kezdetben $s$ elért, de nem átvizsgált.
 
@@ -80,9 +80,9 @@ Amig létezik elért, de még nem átvizsgált él addig ismételjük:
   algoritmus éppen hányadik lépésnél tart.
 \end{itemize}
 
-Az átvizsglálási sorrend lesz a topologikus sorrend, ha $s$ nem tagja az eredeti
+Az átvizsgálási sorrend lesz a topologikus sorrend, ha $s$ nem tagja az eredeti
 gráfnak töröljük azt. Ha megfelelő adatstruktúrát használunk mindez az élszámmal
-arányos időt vesz igénybe. Példa feladatt:
+arányos időt vesz igénybe. Példa feladat:
 
 
 \[
@@ -96,8 +96,8 @@ V = \{ &T\mbox{--beli terminálok}, \\
 terminált tartalmazza és esetleg pár Steiner pontot is.} \]
 
 Ha $T=V$ (tehát a gráfban nem léteznek Steiner pontok) akkor a feladat mohó
-algoritmussal megoldható, egyébbként meg NP--nehéz. A metrikus Steiner fában
-a költségfüggvény kielégiti a háromszögegyenlőtlenséget:
+algoritmussal megoldható, egyébként meg NP--nehéz. A metrikus Steiner fában
+a költségfüggvény kielégíti a háromszög egyenlőtlenséget:
 
 
 \[ \parbox[l]{4cm}{
@@ -145,22 +145,22 @@ Az itt látható gráfnak több topologikus rendezése is van:
 \emph{A Shortest--Processing--Time optimális megoldást ad a feladatra.}
 \vspace{0.4cm}
 
-A bizonyitáshoz, tegyük fel, hogy az SPT nem ad optimális megoldást. Legyen
+A bizonyításhoz, tegyük fel, hogy az SPT nem ad optimális megoldást. Legyen
 $p_1, p_2, \cdots, p_n$ egy optimális megoldás, ami nem SPT típusú. Tehát
 létezik $p_i>p_{i+1}$ (szomszédos elemek). 
 
 Látszik, hogy az összegen ekkor csak $C_i$ és $C_{i+1}$ változik meg. Tehát a
-felcserélés végre hajtéséval a $\sum C_j$ csökken, de ez ellentmondás a
-feltevésünkenk, tehát az SPT optimális.
+felcserélés végre hajtásával a $\sum C_j$ csökken, de ez ellentmondás a
+feltevésünknek, tehát az SPT optimális.
 
 \subsection{ \texorpdfstring {$ P_2||C_max$} {P2||Cmax} }
 
-Ez egy NP--nehéz feladatt mivel visszavezethető a partició problémára. Legyen
-$a_1, a_2, \cdots, a_n \in \mathbb{Z}^*$. A kérdés, hogy létezzik e $I \subseteq
+Ez egy NP--nehéz feladatt mivel visszavezethető a partíció problémára. Legyen
+$a_1, a_2, \cdots, a_n \in \mathbb{Z}^*$. A kérdés, hogy létezik e $I \subseteq
 \{1,2, \cdots, n \}$ amire $\sum_{i \in I} a_i = \sum_{i \not \in I} a_i$. Ez
 meg a részösszeg speciális esete. Vegyük most a megmunkálási időket $\{p_1$, $p_2$,
-$\cdots$, $p_n\}$, ekkor, ha OPT$=\frac{\sum P_i}{2} \Leftrightarrow$ létezzik $p$
-számsorozatnak jó partició. 
+$\cdots$, $p_n\}$, ekkor, ha OPT$=\frac{\sum P_i}{2} \Leftrightarrow$ létezik $p$
+szám sorozatnak jó partíció. 
 
 Tehát nem létezik hatékony algoritmus a feladatra, ezért a problémának speciális
 eseteit és approximációs megoldásokat vizsgálunk meg.
@@ -169,11 +169,11 @@ eseteit és approximációs megoldásokat vizsgálunk meg.
 
 \begin{description}
   \item[List Scheduling -- LS -- listás ütemezés] Legyen $k$ gép és
-  $P_{i=\overline{1,n}}$ feladatt. Rakjuk fel ezeket sorrendben a gépekre, ha
+  $P_{i=\overline{1,n}}$ feladat. Rakjuk fel ezeket sorrendben a gépekre, ha
   valamely gép végez megkapja a listában a következő munkát.
 \end{description}
 
-Ez egy elég primitiv módszer hisszen gyakorlatilag csak arra ügyelünk, hogy a
+Ez egy elég primitív módszer hiszen gyakorlatilag csak arra ügyelünk, hogy a
 gépeink ne álljanak. Ennek ellenére, ha $m$ gép van  az LS egy $2 - \frac{1}{m}$
 approximációt ad. Ennek belátásához legyen $C^*_{\mbox{max}}$ az optimális
 ütemezés. Erre fent állnak a következő alsó becslések:
@@ -183,7 +183,7 @@ approximációt ad. Ennek belátásához legyen $C^*_{\mbox{max}}$ az optimális
 \]
 
 Most legyen $J_k$ az a munka melyet az LS ütemezés utoljára befejez. Ez egy $t$
-pillantban kezdödik el és tart $P_k$ idő intervallumot ($t+p_k=C_{\mbox{max}}$).
+pillanatban kezdődik el és tart $P_k$ idő intervallumot ($t+p_k=C_{\mbox{max}}$).
 E adott $t$ időpontig az összes gép dolgozik, megállás nélkül, mert, ha ez nem
 így lenne stratégiánk szerint a $P_k$ feladatott az a gép kapná meg. Tehát $t$
 pillanatig a $P$ halmaz teljesen le van fedve ($m$ darab gép, $t$ időn
@@ -203,38 +203,38 @@ C_{\mbox{max}} \leq C^*_{\mbox{max}} + \left(1-\frac{1}{m}\right) \cdot P_k
 =C^*_{\mbox{max}} \cdot \left(2-\frac{1}{m}\right)
 \]
 
-Látható a bizonyitásból, hogy a $P_k$ mérete döntően befolyásolja az ütemezés
+Látható a bizonyításból, hogy a $P_k$ mérete döntően befolyásolja az ütemezés
 hosszát, így ha ez kicsi javíthatunk az approximációs faktoron. 
 \begin{description}
-  \item[Longest Procesisng Time -- LPT ] Rakjuk ezért a munkákat csökenő
+  \item[Longest Procesisng Time -- LPT ] Rakjuk ezért a munkákat csökkenő
   sorrendbe, és e új lista szerint ütemezünk (a legrövidebb marad a végire).
 \end{description}
  
-Az LPT ütemezés appróximációs faktora $\left( \dfrac{4}{3} - \dfrac{1}{3m}
-\right)$. E jó appróximációs közelités annak köszönhető, hogy a gépek egyforma
+Az LPT ütemezés approximációs faktora $\left( \dfrac{4}{3} - \dfrac{1}{3m}
+\right)$. E jó approximációs közelítés annak köszönhető, hogy a gépek egyforma
 gyorsak, tudásuk azonos.
 
 \subsection{ \texorpdfstring {$ P|prec|C_{max} $} {P|prec|Cmax} -- Graham}
 
 Rendezzük listába a munkákat. Egy gép megkap egy munkát, ha áll és a következő
-munka elkezdhető. Ez egy $2-\frac{1}{m}$ appróximáció. Ezen való javitás kulcsa,
+munka elkezdhető. Ez egy $2-\frac{1}{m}$ approximáció. Ezen való javítás kulcsa,
 hogy hiába fejezzük be az utolsó feladathoz közeli feladatott mert a távoliak is
-be kell érjék ezeke ( feltéve, hogy ezek függenek egymástól). 
+be kell érjék ezeket ( feltéve, hogy ezek függenek egymástól). 
 
-Legyen $D$ írányitótt gráf a precedencia mátrixa a munkáknak. Ha bármely
-írányitott úton összeadjuk az utakat alkotó pontok megfelelő megmunkálási
-időeket, akkor alsó becslést kapunk egy optimális megmunkálási időre.
+Legyen $D$ irányított gráf a precedencia mátrixa a munkáknak. Ha bármely
+irányított úton összeadjuk az utakat alkotó pontok megfelelő megmunkálási
+időket, akkor alsó becslést kapunk egy optimális megmunkálási időre.
 
-Tehát egy pont szintje legyen a pontból kiinduló írányitott utak  mentén vett
+Tehát egy pont szintje legyen a pontból kiinduló irányított utak  mentén vett
 megmunkálási idők összegének maximuma. Ezt megkaphatjuk, ha topologikus
-sorrendbe állitjuk a munkákat, majd felfelé lépve számoljuk a szint értékeket.
-Rendezzük a munkákat a szintjük szerint csökenő sorrendbe, és e lista szerint
+sorrendbe állítjuk a munkákat, majd felfelé lépve számoljuk a szint értékeket.
+Rendezzük a munkákat a szintjük szerint csökkenő sorrendbe, és e lista szerint
 ütemezünk. 
 
-Jobb közelitést ez sem add, visszont ha az élszámunk magas jó eredményt szokott
+Jobb közelítést ez sem add, viszont ha az élszámunk magas jó eredményt szokott
 adni. Példa arra, hogy a leghosszabb út szerinti sorrend nem mindig optimális.
 Legyen \aref{fig:LegNemOpt} példa $8$ munkával, $3$ gépen. Ez nem $\frac{3}{2}$
-appróximáció mert az optimális és kapott arány $\frac{10}{6}=\frac{5}{2} \geq
+approximáció mert az optimális és kapott arány $\frac{10}{6}=\frac{5}{2} \geq
 \frac{3}{2}$.
 
 \begin{figure}[htbp]
@@ -320,9 +320,9 @@ appróximáció mert az optimális és kapott arány $\frac{10}{6}=\frac{5}{2} \
 
 \subsection{ \texorpdfstring {$ P|prec,p_i=1|C_{max} $} {P|prec,pi=1|Cmax}}
 
-Ebben az alakban a feladatt NP--nehéz. Ha $m=2$ gép ál rendelkezésünkre a
+Ebben az alakban a feladat NP--nehéz. Ha $m=2$ gép áll rendelkezésünkre a
 \emph{Coffman-Graham} algoritmus optimális megoldást ad. $D$ precedencia gráfon
-végezzük el a tranzitiv redukciót:
+végezzük el a tranzitív redukciót:
 
 \[ \parbox[l]{5cm}{
 
@@ -356,27 +356,27 @@ végezzük el a tranzitiv redukciót:
 }
 \]
 
-Majd bontsuk csoportokra a csúcsókat: az első szinten azon csoportban találhatók
+Majd bontsuk csoportokra a csúcsokat: az első szinten azon csoportban találhatók
 akik kifoka $0$, a másodikon akik kifoka $0$, ha elhagyjuk az első szinten levő
-elemeket és így tovább. Majd az első szinten számozuk meg a pontokat $1$--től
+elemeket és így tovább. Majd az első szinten számozzuk meg a pontokat $1$--től
 $k_1$--ig, csoporton belül a sorrend nem számit.
 
 A következő szinteken már a pontokat két körben számozzuk:
 \begin{itemize}
   \item első körben úgy számozzuk, hogy felsoroljuk mely pontokhoz van élük
-  csökenő sorrendben. E számozásokat lexikografikusan növekvő sorrendbe
-  rendezésse adja a csoporton belüli sorrendet.
+  csökkenő sorrendben. E számozásokat lexikografikusan növekvő sorrendbe
+  rendezése adja a csoporton belüli sorrendet.
   \item második körben a csoportbeli pontokat számozzuk át, folytatva a korábbi
-  csoport számozásától a kapott csoportbeli sorrendel.
+  csoport számozásától a kapott csoportbeli sorrenddel.
 \end{itemize}
  
-A kapott számozás szerint csökenő sorrendbe rakjuk fel a gépekre a munkákat mint
+A kapott számozás szerint csökkenő sorrendbe rakjuk fel a gépekre a munkákat mint
 egy listás ütemezés. Ez optimális megoldást ad. 
 
 
 \subsection{ \texorpdfstring {$ P|in\_tree, p_j=1|C_{max} $} {P|in-tree,pj=1|Cmax} -- Hu algoritmusa}
 
 Ha $D$ precedencia gráf egy $s$ gyökerű $F$--befenyő~\footnote{A befenyő egy
-olyan írányitott gyökeres fa, aminek az élei a gyökér felé vannak írányitva.},
-akkor a szint szerinti ütemezés (gyökértől levő úthosz csökenő sorrendben)
+olyan irányított gyökeres fa, aminek az élei a gyökér felé vannak irányítva.},
+akkor a szint szerinti ütemezés (gyökértől levő úthossz csökkenő sorrendben)
 optimális megoldást ad.

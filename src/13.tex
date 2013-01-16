@@ -6,14 +6,14 @@ Adott $k$ darab $M_i = (E, F_i),$ ahol $i={\overline{1,k}}$ matroid. A kérdés,
 hogy a matroidok összege ($\vee_{i=1}^{k}M_i$) a szabad matroidot ($E,2^E$) adja
 e? Másképp megfogalmazva előáll e az alaphalmaz $E$ az $\cup_{i=1}^{k} E_i$ alakban,
 ha $\forall i$-re $E_i \in F_i$. Feltehető, hogy az $E_i$ halmazok diszjunktak, így 
-egy partíciós problémához jutotunk.
+egy partíciós problémához jutottunk.
 
 \vspace{0.4cm}
 \emph{MPP$_k$ P-beli probléma.}
 \vspace{0.4cm}
 
 MPP$_k \in$ NP, mert ha a feladatnak van megoldása, az egy tanú, amely lineáris időben
-ellenőrizhető. MPP$_k \in$ coNP, mert ha a feladatnak nem létezzik megoldása, akkor
+ellenőrizhető. MPP$_k \in$ coNP, mert ha a feladatnak nem létezik megoldása, akkor
 adhatunk rá egy $X \subseteq E$ halmazt, ami biztosan összefüggő az összegben, azaz 
 $\sum r_i (X) < |X|$.
 
@@ -21,15 +21,15 @@ $\sum r_i (X) < |X|$.
 
 \subsection{Algoritmikus megoldás}
 
-Most adunk erre egy algoritmust amely megoldja a feladatott, ehez kiindul üres
-halmazokból és addig bőviti azokat amig uniójuk $E$ nem lesz. Ha egy adott
-pontnál nem bővithető tovább egyik halmaz sem, akkor az lesz a  keresett ellen
-példa, ami bizonyitás arra, hogy a matroidok nem partíciónálhatók.
+Most adunk erre egy algoritmust amely megoldja a feladatott, ehhez kiindul üres
+halmazokból és addig bővíti azokat amíg uniójuk $E$ nem lesz. Ha egy adott
+pontnál nem bővíthető tovább egyik halmaz sem, akkor az lesz a  keresett ellen
+példa, ami bizonyítás arra, hogy a matroidok nem particionálhatók.
 
 \begin{figure}[htbp]
 \caption{Példa, hogy a mohó algoritmus miért nem működik: 
 		  $E_1 = \{2\}$, $E_2 = \{3\}$ állapotban nem tudunk újabb élt 
-		  belevenni egyik halmazba sem. Egy jó partícionálás peddig a 
+		  belevenni egyik halmazba sem. Egy jó particionálás pedig a 
 		  $E_1 = \{ 1 \}$, $E_2 = \{ 2, 3 \}$ felosztás.}
 \label{fig:MPPMohoNem}
 \centering \begin{tikzpicture}[scale=0.8]
@@ -56,8 +56,8 @@ példa, ami bizonyitás arra, hogy a matroidok nem partíciónálhatók.
 \end{tikzpicture} 
 \end{figure}
 
-Az algoritmus egy $n+k$ pontú segédgráfal dolgozik ($|E|=n$ csúcs a halmazoknak
-és $k$ csúcs a particióknak), tehát $V' = E \cup \{p_1, p_2, \ldots, p_k\}$. A
+Az algoritmus egy $n+k$ pontú segédgráffal dolgozik ($|E|=n$ csúcs a halmazoknak
+és $k$ csúcs a partícióknak), tehát $V' = E \cup \{p_1, p_2, \ldots, p_k\}$. A
 gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
 
 \begin{figure}[htbp]
@@ -116,7 +116,7 @@ gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
     \item Ha létezik irányított út akkor ez meghatároz egy módosítás-sorozatot,
     hogy melyik $E_i$-t hogyan kell módosítanunk. Az út utolsó éle egy $p_j$-be
     megy, a többi $E$-beli elemek között, vagyis összesen 1-gyel növeljük
-    $E_i$-k elemszámát.  Ha egy {\it legrövidebb} ilyen út mentén javítunk,
+    $E_i$-k elem számát.  Ha egy {\it legrövidebb} ilyen út mentén javítunk,
     akkor bizonyítható, hogy $E_i$-k a módosítások után függetlenek maradnak (mi
     nem bizonyítjuk).
     \item Különben megállunk, nemleges a válasz, és a tanú $X$ az $E- \cup Ei$--ből
@@ -130,7 +130,7 @@ ellenpélda, indirekten. Tehát:
 \]
 
 $r_i(X) \leq r_i(X \cap E_i)$ mert ha $r_i(X) > r_i(X \cap E_i)$  lenne akkor
-(F$_3$) miatt $X \cap E_i$ kiegészíthetõ lenne egy $u \in X - E_i$ elemmel úgy,
+(F$_3$) miatt $X \cap E_i$ kiegészíthető lenne egy $u \in X - E_i$ elemmel úgy,
 hogy $F_i$-ben továbbra is független legyen. Ugyanakkor $r_i(X) \geq r_i(X \cap
 E_i)$ triviális, tehát $\forall i$-re $r_i(X \cap E_i) = r_i(X)$.
 
@@ -163,13 +163,13 @@ Tehát $(X \cap E_i) \cup \{u\} \in F_i$, ezért:
 
 \begin{itemize}
   \item vagy $E_i \cup \{u\} \in F_i$, ekkor $u \rightarrow p_i$ él be lenne
-  húzva a gráfba és mivel $u$ elérhetõ $E - \bigcup_i E_i$-bõl ($X$ definíciója
+  húzva a gráfba és mivel $u$ elérhető $E - \bigcup_i E_i$-ből ($X$ definíciója
   miatt), ezért $p_i$ is, tehát nem álltunk volna meg, ellentmondás.
   \item vagy $E_i \cup \{u\} \not\in F_i$, akkor van benne kör, ez a kör csak
   olyan lehet, ami $E_i-X$-be belemetsz (mivel ha $X$-ben lenne az egész kör,
-  akkor $(E_i \cup \{u\})\cap X = (X \cap E_i) \cup \{u\}$ is összefüggõ lenne,
+  akkor $(E_i \cup \{u\})\cap X = (X \cap E_i) \cup \{u\}$ is összefüggő lenne,
   de nem az). Legyen a körnek egy $E_i-X$-beli eleme $v$, ekkor $E_i \cup \{u\}
-  - \{v\}$ független (mert független + 1 elemû halmazban csak egy kör lehet, ha
+  - \{v\}$ független (mert független + 1 elemű halmazban csak egy kör lehet, ha
   ezt megszüntetjük, újra független lesz), tehát lenne $u \rightarrow v$ él a
   gráfban. Ez ellentmondás, mert akkor $v$ $X$-beli lenne.
 \end{itemize}
@@ -180,8 +180,8 @@ tanú arra, hogy nincs jó partíció.
 \subsection{2-matroid-metszet probléma}
 
 Adott $k$ matroid ($M_i=(E,F_i)$, ahol $i=\overline{1,k}$) és egy p egész szám.
-A kérdés, hogy létezzik e $F_i$--nek legalább $p$ méretű közös eleme?
+A kérdés, hogy létezik e $F_i$--nek legalább $p$ méretű közös eleme?
 
 Az így megfogalmazott probléma $k=2$--re MMP$_2$ komplexitása P--beli.
-MPP$_k$--ra már belátuk, hogy $P$--beli, MMP$_2$-őt meg megfogalmazhatjuk mint a
+MPP$_k$--ra már beláttuk, hogy $P$--beli, MMP$_2$-őt meg megfogalmazhatjuk mint a
 $M_1 \vee M_2^*$ összeg szabad matroid e?

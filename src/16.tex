@@ -3,11 +3,11 @@
 
 \subsection{Halmazfedés}
 A minimális lefogó ponthalmaz visszavezethető halmazfedésre, legyen a gráf élei
-a lefedendő alaphalmaz és a lefedő halmazokat pedig a csúcsók (így egy lefedő
+a lefedendő alaphalmaz és a lefedő halmazokat pedig a csúcsok (így egy lefedő
 halmaz elemei a csúcsból kiinduló élek -- alaphalmaz elemek). Minden lefedő
 halmaz költsége legyen egységnyi. Tehát a halmazfedés is egy NP--nehéz feladat.
 
-A minimális összköltségű fedés problémára adunk egy közelitő algoritmust:
+A minimális összköltségű fedés problémára adunk egy közelítő algoritmust:
 
 \[
 \begin{rcases}
@@ -22,9 +22,9 @@ elemek átlagos költsége) minimális.
 }
 \]
 
-Legyen $p(e)=\frac{c(S_i)}{|S_i-C|}$, ahol $S_i$ az a halmaz amely elöször fedte
-le az $e$ elemet. Ugyanakkor legyen az elemek lefedési sorendje $e_1, e_2,
-\cdots, e_n$. Állitjuk, hogy az $e_k$ elemek ára legfeljebb
+Legyen $p(e)=\frac{c(S_i)}{|S_i-C|}$, ahol $S_i$ az a halmaz amely először fedte
+le az $e$ elemet. Ugyanakkor legyen az elemek lefedési sorrendje $e_1, e_2,
+\cdots, e_n$. Állítjuk, hogy az $e_k$ elemek ára legfeljebb
 $p(e_k)=\frac{\mbox{OPT}}{n-k+1}$, minden $k=\overline{1,n}$--ra.
 
 Egy
@@ -49,7 +49,7 @@ egyelemű halmazból, valamint az $U$--ból. A költségfüggvény:
 i=\overline{1,n}\\
 c(U)=1 + \epsilon, & \epsilon \mbox{ kis pozitív szám} \end{cases}\]
 
-Ekkor az algoritmus az $n$ elemű halmazt válassza ki, peddig az optimális maga
+Ekkor az algoritmus az $n$ elemű halmazt válassza ki, pedig az optimális maga
 az $U$ halmaz lenne.
 
 \subsection{Steiner--fa probléma}
@@ -65,8 +65,8 @@ V = \{ &T\mbox{--beli terminálok}, \\
 terminált tartalmazza és esetleg pár Steiner pontot is.} \]
 
 Ha $T=V$ (tehát a gráfban nem léteznek Steiner pontok) akkor a feladat mohó
-algoritmussal megoldható, egyébbként meg NP--nehéz. A metrikus Steiner fában
-a költségfüggvény kielégiti a háromszögegyenlőtlenséget:
+algoritmussal megoldható, egyébként meg NP--nehéz. A metrikus Steiner fában
+a költségfüggvény kielégíti a háromszög egyenlőtlenséget:
 
 
 \[ \parbox[l]{2.5cm}{
@@ -85,34 +85,34 @@ a költségfüggvény kielégiti a háromszögegyenlőtlenséget:
   c(u,v) \leq c(u,w)+c(w,v). 
 \]
 
-Ilyenkor létezzik $k$--approximációs algoritmus, és az általános Steiner--fa
+Ilyenkor létezik $k$--approximációs algoritmus, és az általános Steiner--fa
 probléma visszavezethető a metrikus Steiner--fa problémára (polinom időben),
-úgy, hogy a $k$-- approximáció megmarad, tehát elégséges a metrikus esetett
+úgy, hogy a $k$-- approximáció megmarad, tehát elégséges a metrikus esetet
 vizsgálni.
 
-Az átalakitáshoz képezzük $G'$ teljes gráfot $V$ csúcshalmazon. Egy $G'$--beli
+Az átalakításhoz képezzük $G'$ teljes gráfot $V$ csúcs halmazon. Egy $G'$--beli
 $\{u,v\}$ él költsége -- $c'(u,v)$ -- legyen a legrövidebb út hossza $u$ és $v$
 csúcsok között az eredeti gráfban (ez polinomiális időben meghatározható a
 Dijkstra--algoritmussal). A terminál és Steiner pont felosztás maradjon azonos
 az új gráfban is. Minden élre $G'$--ben $c'(u,v) \leq c(u,v)$, tehát OPT$_{G'}
 \leq$ OPT$_{G}$.
 
-Legyen $F'$ egy $G'$--beli Steiner--fa. $F'$ éleit helyetesitjük $G$--ben a
+Legyen $F'$ egy $G'$--beli Steiner--fa. $F'$ éleit helyettesítjük $G$--ben a
 legrövidebb utakkal, hogy megkapjuk $F$ Steiner--fát. $G$ és $G'$ csupán élekben
 különbözik, ezért $F$ és $F'$ is tartalmazza az összes terminált; az
-összköltsége a két fánnak megegyezik -- $c(F)=c(F')$. $F$ eszerint $F'$--ből
-polinom időben számitható, tehát helyes visszavezetés.
+összköltsége a két fának megegyezik -- $c(F)=c(F')$. $F$ eszerint $F'$--ből
+polinom időben számítható, tehát helyes visszavezetés.
 
 \vspace{0.4cm}
-\emph{Ha $F$ egy minimális költségű feszitőfa a terminálok halmazán:  
+\emph{Ha $F$ egy minimális költségű feszítőfa a terminálok halmazán:  
 $c(F) \leq  2 \cdot $ OPT}
 \vspace{0.4cm}
 
 Vegyünk egy optimális Steiner fát. Ennek éleit megduplázva egy összefüggő 
-gráfot kapunk, ami minden terminált összekőt. Ebben keressünk Euleur--kört
-(erre létezzik hatékony algoritmus). Az így  kapott kör költsége $2$OPT. 
+gráfot kapunk, ami minden terminált összeköt. Ebben keressünk Euleur--kört
+(erre létezik hatékony algoritmus). Az így  kapott kör költsége $2$OPT. 
 Tegyük fel, hogy az Euleur kör a $p_1, p_2, \cdots, p_n=p_1$ sorrendben járja 
-be a csúcsókat, egyes pontoakt akkár többször is értintve.
+be a csúcsokat, egyes pontokat akár többször is érintve.
 
 A kör mentén körbehaladva a fölösleges pontokat levágva állitsunk elé egy
 Hamilton kört a terminálok halmazán. Tegyük fel, hogy $p_1, p_2, \cdots, p_t$
@@ -120,21 +120,21 @@ még csupa különböző terminál, de $p_{t+1}$ már Steiner--pont vagy egy kor
 terminál pont ( a korábbi pont indexe $i, 1 \geq i \geq t$). Legyen $p_{t+j}$ az
 első olyan terminál pont amely különbözik $p_{\overline{1,t}}~$--től.
 
-Helyetesitjük $p_t, p_{t+1}, \cdots, p_{t+j}$ pontsorozatott a $p_t, p_{t+j}$
-útlevágással. Ha nincs ilyen $p_{t+j}$ akkor a $p_t, p_{t+1}, \cdots, p_N$--ot
-helyetesitjük $p_t,p_1$--el. Mindezt addig ismételjük amig vissza nem jutunk
+Helyettesítjük $p_t, p_{t+1}, \cdots, p_{t+j}$ pont sorozatot a $p_t, p_{t+j}$
+út levágással. Ha nincs ilyen $p_{t+j}$ akkor a $p_t, p_{t+1}, \cdots, p_N$--ot
+helyettesítjük $p_t,p_1$--el. Mindezt addig ismételjük amíg vissza nem jutunk
 $p_1$ terminálhoz. 
 
-A háromszög egyenlőtlenségnek köszönhetően a levágássok nem növelik a séta
-költségét, ezért a kapott Hamilton kör valamenyi élét kitörölve egy ikyab
-Hamilton útat kapunk a terminálok halmazán, melynek költsége legfeljebb
+A háromszög egyenlőtlenségnek köszönhetően a levágásosok nem növelik a séta
+költségét, ezért a kapott Hamilton kör valamennyi élét kitörölve egy ikyab
+Hamilton utat kapunk a terminálok halmazán, melynek költsége legfeljebb
 $2\cdot$OPT. Ez az út a terminálokon feszítőfa, így legalább $c(F)$ költségű.
-Tehát $c(F) \leq 2 \cdot$OPT. A $2$ appróximációs algoritmus a metrikus esetben
+Tehát $c(F) \leq 2 \cdot$OPT. A $2$ approximációs algoritmus a metrikus esetben
 így tehát nem más mint a terminálok halmazán minimális költségű feszitőfa
 keresése.
 
-Azt, hogy az algoritmus ennél jobb appróxiámciót biztos nem ad, az alábbi éles
-példa bizonyitja:
+Azt, hogy az algoritmus ennél jobb approximációt biztos nem ad, az alábbi éles
+példa bizonyítja:
 
 \[
 \parbox[l]{3cm}{
@@ -188,6 +188,6 @@ n=3 \mbox{ és}
 \]
 
 Legyen az $n+1$ teljes gráfon $n$ terminál és egyetlen Steiner--pont. A
-Steiner--pontra illekszedő élek költsége $1$, a többi él legyen $2$ kőltségű. 
+Steiner--pontra illeszkedő élek költsége $1$, a többi él legyen $2$ költségű. 
 Itt az optimum $n$, a terminálokon vett minimális költségű feszitőfa költsége
-visszont $2(n-1)$.
+viszont $2(n-1)$.

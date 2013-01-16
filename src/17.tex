@@ -1,9 +1,9 @@
 \newpage
-\section{Az utazóügynők probléma}
+\section{Az utazóügynök probléma}
 
-Adott egy $G$ teljes gráf és egy $c:V \mapsto \mathbb{R}^+$ él sulyózás,
-keressünk minimális összsulyú Hamilton--kört. A probléma NP--nehéz. Az általános
-utazóügynők problémára nem létezik $k$--appróximációs algoritmus (feltéve, hogy
+Adott egy $G$ teljes gráf és egy $c:V \mapsto \mathbb{R}^+$ él súlyozás,
+keressünk minimális összsúlyú Hamilton--kört. A probléma NP--nehéz. Az általános
+utazóügynök problémára nem létezik $k$--approximációs algoritmus (feltéve, hogy
 P$\ne$NP), mivel a probléma visszavezethető egy nem teljes gráfban Hamilton--kör
 keresésére.
 
@@ -13,14 +13,14 @@ egyébként $kn$. Ha $G$-ben van Hamilton-kör, akkor $G'$-ben a minimális
 összsúlyú Hamilton-kör összsúlya $n$, egyébként legalább $n-1+kn$. 
 
 Mivel ez több, mint az optimum $k$--szorosa, ezért nincs ilyen közelítés.
-Egyébbként az algoritmus meg tudná különböztetni a Hamilton-körrel rendelkező és
+Egyébként az algoritmus meg tudná különböztetni a Hamilton-körrel rendelkező és
 nem rendelkező gráfokat. Ugyanez $kn$ helyett tetszőleges $f(n)$ függvénnyel,
 amely polinom időben kiszámolható, is igaz marad. Ezért a bemenettől függő
 approximáció sem létezik.
 
-\subsection{Metrikus utazó ügynők}
+\subsection{Metrikus utazó ügynök}
 
-\emph{A problémát egészitsük ki azzal a kikötéssel, hogy a háromszög
+\emph{A problémát egészítsük ki azzal a kikötéssel, hogy a háromszög
 egyenlőtlenség a pontok közti élre teljesül (csúcs $\mapsto$ sík pontjai, élek
 súlya $\mapsto$ pontok közti távolság). Erre már létezik approximációs
 algoritmus.}
@@ -30,15 +30,15 @@ algoritmus.}
 Ha egy $n$ pontú teljes gráfban ($G$):
 \begin{enumerate}
   \item vesszünk egy minimális $F$ feszítőfát\footnote{\emph{Kruskall algoritmusa} -- 
-rendezzük az éleket növekvő sorrendbe, majd csökenő sorrendbe vegyünk be $n-1$ élet
+rendezzük az éleket növekvő sorrendbe, majd csökkenő sorrendbe vegyünk be $n-1$ élet
 amely a gráfban nem hoz létre kört.},
   \item duplázzuk meg $F$ éleit, majd keresünk egy Euler--kört,
-  \item az ismétlödő pontokat a körből vágjuk le, elkészitve egy Hamilton-kört.
+  \item az ismétlődő pontokat a körből vágjuk le, elkészítve egy Hamilton-kört.
 \end{enumerate}
 
-Ha létezzik a Hamilton--kör legyen ennek költésge OPT. Ebből, ha elhagyunk egy
+Ha létezik a Hamilton--kör legyen ennek költsége OPT. Ebből, ha elhagyunk egy
 élet, kapunk egy utat amely egy Hamilton--út, értéke kisebb mint OPT és
-feszitőfa is. Az algoritmus első lépésébben megkaptuk az optimális feszitőfát,
+feszitőfa is. Az algoritmus első lépésében megkaptuk az optimális feszitőfát,
 amely e OPT--nál biztos kisebb (vagy egyenlő).
 
 Ennek megduplázásával $2 \cdot$ OPT költségű zárt élsorozatott kaptunk, amely
@@ -59,15 +59,15 @@ tehát az algoritmus által talált összköltség $\leq 2 \cdot$OPT.
 
 \begin{enumerate}[(a)]
 \item vegyük a feszitőfa páratlan foku pontjait. Ebből $2m$ darab van, tehát
-páros sok. $G$--ből elhagyjuk azon pointjait amelyek nincsenek benne ebben a
+páros sok. $G$--ből elhagyjuk azon pontjait amelyek nincsenek benne ebben a
 halmazban. Legyen $H$ az így kapott gráf.
-\item keressünk egy minimális összsulyú teljes párositást $H$--ban. A párositás
-éleit egészitsük ki (adjuk hozzá) a feszitőfához. $F$ most egy $n-1+m$ élű gráf.
-Ebben keressük az Euleur kört.
+\item keressünk egy minimális összsúlyú teljes párosítást $H$--ban. A párosítás
+éleit egészítsük ki (adjuk hozzá) a feszitőfához. $F$ most egy $n-1+m$ élű gráf.
+Ebben keressük az Euler kört.
 \end{enumerate}
 
 Tudjuk, hogy $F$ súlya $\leq$OPT. Tehát ahhoz, hogy az approximáció igaz legyen
-a fenti procedúrával kapott párositás legfeljebb $\frac{1}{2}$OPT értékű lehet.
+a fenti procedúrával kapott párosítás legfeljebb $\frac{1}{2}$OPT értékű lehet.
 Jelöljük a minimális Hamilton-kört $G$ gráfban $H$--val, $G'$ segédgráfban
 $H'$--vel. 
 
@@ -81,7 +81,7 @@ kettő költségének összege $c(H')$, tehát van legfeljebb $\frac{c(H')}{2}$
 összköltségű párosítás, aminél nem nagyobb a minimális összsúlyú teljes
 párosítás.
 
-Mig a $2$--approximáció időigénye $cn^2$, addig a Christofidesé $cn^3$.
-Láthatjuk, hogy a jobb közelités ára a nagyobb időigény. A Hamilton--kör
-további javitásával a pontosság még tovább csiszolható, például a Lin--Kernighan
+Mig a $2$--approximáció idő igénye $cn^2$, addig a Christofidesé $cn^3$.
+Láthatjuk, hogy a jobb közelítés ára a nagyobb idő igény. A Hamilton--kör
+további javításával a pontosság még tovább csiszolható, például a Lin--Kernighan
 módszerrel $1-2$~\% is elérhető. 
