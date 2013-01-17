@@ -1,5 +1,4 @@
-\documentclass[a4paper,12pt,oneside,openright]{report}
-
+\documentclass[a4paper,12pt,twoside,openright]{book}
 
 \usepackage[a4paper]{geometry}
 \usepackage[T1]    {fontenc }% Allow accented output charachters
@@ -30,6 +29,9 @@
 \usepackage{subfigure}
 \usepackage{enumerate}
 
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
 % The csquotes should be used with bable to help with the references formating 
 \usepackage[style=english]{csquotes} 
 % Biblatex
@@ -56,14 +58,44 @@ backref=false]{biblatex} \DeclareSourcemap{ % Unfortunetly the
 			  openlevel=2,
 			  atend]{bookmark}% - We want numbers
 
-\hyphenation{MonetDB}
-\hyphenation{BigTable}
-\hyphenation{MapReduce}
-\hyphenation{Amazon}
+\usepackage{fancyhdr}
+\setlength{\headheight}{30pt}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{ \nouppercase{\leftmark}} }
+\fancyhead[LO]{\textit{ \nouppercase{\rightmark}} }
+
+\fancypagestyle{plain}{ %
+  \fancyhf{} % remove everything
+  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\usepackage{changepage,ifthen}
+\newcommand\skiptooddpage{%
+   \checkoddpage
+   \ifthenelse{\boolean{oddpage}}%
+      {\null\clearpage \null \clearpage}%
+      {\null\clearpage}%
+}
+
+\usepackage{chngcntr}
+\counterwithout{section}{chapter}
+\counterwithout{footnote}{chapter}
+\counterwithout{figure}{chapter}
+
+\usepackage{tocbibind}
+
 \begin{document}
 
 % A címlap
 \input{cimlap.tex}
+
 \tableofcontents
 \chapter{Lineáris programozás}
 \input{1.tex}

@@ -122,7 +122,13 @@ f(y_I) = \underbrace{(\mbox{min}_{X \in X_I} f(X))}_{\mbox{optimum}} + \underbra
 
 Például  határozzuk meg egy $G$ gráfban (amelybe nincs hurokél, többszörös él és
 irányított él) az \emph{élkromatikus számot}. Ekkor tudjuk, hogy $\Delta(G)=k$ és a
-Vizing tétel alapján az élkromatikus szám $k$ vagy $k+1$. Hogy melyik azt
+Vizing tétel~\footnote{A Vizing-tétel alsó és felső korlátot ad egy egyszerű
+gráf élkromatikus számára. A tételt Vagyim Georgijevics Vizing 1964--ben
+bizonyította be. A tétel szerint egy egyszerű gráf élkromatikus száma legfeljebb
+eggyel nagyobb a maximális fokszámánál, azaz ha a gráf minden csúcsában k-nál
+kevesebb él találkozik, akkor ki tudjuk színezni az éleit legfeljebb k színnel:
+$\Delta(G) \leq \chi(G) \leq \Delta(G)+1.$}
+alapján az élkromatikus szám $k$ vagy $k+1$. Hogy melyik azt
 eldönteni egy NP--teljes feladat, de a tétel bizonyítása alapján polinom időben
 megkapható egy $k+1$ színezés, azaz $1$ additív hibájú az algoritmus.
 
@@ -133,17 +139,22 @@ másképpen. E utolsó esetben $\chi(G) \geq 3$, tehát a hiba $\leq 2$.
 
 De például egy gráfban a \emph{leghosszabb út megkeresésének} problémája (amely
 NP-teljes, hiszen a Hamilton-út keresését magába foglalja) semmilyen additív $c$
-konstanssal közelítő algoritmussal nem oldható meg (ha csak P$=$NP nem teljesül). 
-Ennek belátásához tegyük fel, hogy lenne egy olyan $A_c$ algoritmus, amely
-tetszőleges $G$ gráfra eldöntené, van-e benne egy olyan út, melynek pontszáma
-legfeljebb $c$-vel kisebb a leghosszabb út hosszánál.
+konstanssal közelítő algoritmussal nem oldható meg (ha csak P$=$NP nem
+teljesül). 
 
-Megmutatjuk, hogy erre polinom rendben visszavezethető lenne arra a problémára,
-hogy adott $H$ gráfról döntsük el, van--e benne Hamilton--út. Egészítsük ki
-ugyanis a $H$ gráfot $c$ darab izolált ponttal, majd az így kapott $G$ gráfra
-alkalmazzuk az $A_c$ algoritmust. Nyílván akkor és csak akkor találna az
-algoritmus megfelelő utat $G$--ben, ha az annak megfelelő élek $H$--ban
-Hamilton-utat alkotnának.
+Ennek belátásához tegyük fel, hogy lenne egy olyan $A_c$ algoritmus, amely
+tetszőleges $G$ gráfbaban megadna egy olyan kört, amelynek hossza legfeljebb
+$c$--vel kisebb a leghosszabb út hosszánál. Osszuk fel $G$ minden élét $c$ darab
+új ponttal, és a kapott gráfot jelöljük $H$--val. Beláthatjuk, hogy:
+\[ H\mbox{--ban leghosszab kör hossza} = (c+1) \cdot G\mbox{--ben leghosszab
+kör hossza} \]
+
+Tehát, $H$--ban leghosszab kör hossza egy $c+1$--el osztható egész szám.  Most
+futassuk le $A_c$ algoritmust $H$--ra, és a kapott eredményt kerekitsük fel a
+legközelebbi $c+1$--el osztható számhoz. Ezzel megadtuk $H$--beli maximális kör
+hosszát, és innen $G$--beli is kifejezhető. Ez egy hatékony algoritmus lenne
+pontos leghosszabb út megkeresésére. De ennek létezése elentmond annak, hogy a
+feladatt NP--nehéz, tehát indirekt bizonyitottuk állitásunk.
 
 \subsection{Multiplikatív hiba}
 
