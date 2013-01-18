@@ -165,7 +165,7 @@ Ekkor a magyar módszer algoritmus lépései:
 Az algoritmus helyességének belátásához térjünk vissza \aref{fig:MagyModHelyeseg} ábrához,
 amely egy köztes állapotot szemléltet. Legyen:
 \begin{description}
-  \item[$(A_1)$] -- azon csúcsok halmaza, amelyet az $M$ párosítás le nem fedett.
+  \item[$(A_1)$] -- azon csúcsok halmaza, amelyet az $M$ párosítás le nem fedett $A$--ban.
   \item[$(B_2)$] -- $A_1$--ből alternáló úton elérhető csúcsok halmaza,
   \item[$(A_2)$] -- $B_2$--hőz tartozó párosítás, 
 \end{description}
@@ -180,7 +180,8 @@ páros gráf, ekkor $\nu(G)=\tau(G)$ (azaz a legnagyobb független él halmaznak
 ugyanannyi eleme van, mint a legkisebb lefogó pont halmaznak) és ha $G$--ben
 nincs izolált pont akkor $\rho(G)=\alpha(G)$ (azaz a legkisebb lefogó él halmaz
 azonos méretű a legnagyobb független pont halmazzal).} értelmében ezért a
-párosítás maximális.
+párosítás maximális ($ |M|=|A_3 \cup B_2| \Rightarrow \nu(G) = \tau(G)$
+-- |max független élhalmaz| = |min lefogó ponthalmaz|).
 
 \subsection{Egerváry algoritmusa}
 
@@ -188,7 +189,7 @@ Az Egerváry~\footnote{Egerváry Jenő} algoritmus súlyozott páros gráfokra m
 a maximális összsúlyú teljes párosítást. Ehhez az algoritmus először definiálja
 a címkézés műveletet: minden csúcshoz rendel egy valós értéket ($c:V \rightarrow
 \mathbb{R}$) úgy, hogy minden él pár esetén ($\forall \left\{x,y\right\} \in E |
-x \in A, y \in B$) igaz a következő kifejezés: $c(x)+c(y)>=w(e)$. Amennyiben
+x \in A, y \in B$) igaz a következő kifejezés: $c(x)+c(y) \geq w(e)$. Amennyiben
 $c(x)+c(y)=w(e)$ legyen az él ,,piros.'' E címkézés mellet: $\sum_Mw(e) \leq
 \sum_Vc(v)$, azaz a maximális összsúlyú teljes párosítás összsúlya kisebb, mint
 a címkézés ősszege.
@@ -243,7 +244,8 @@ Az algoritmus helyességének alátámasztásához be kell látnunk, hogy:
   lenne akkor $A_1 \cup A_2$ bármely szomszédja $B_2$--ben volna és a
   \emph{Hall--feltétel} \footnote{$ \forall~x_0 \subseteq A$--ra az $|N(x_0)|
   \geq |x_0|$ egyenlőtlenségnek teljesülnie kell, másképp nem létezik párosítás
-  ($N~x_0$ szomszédinak halmazát fedi).} alapján nem létezne párosítás.
+  ($N~x_0$ szomszédinak halmazát fedi).} alapján nem létezne párosítás 
+  (mivel $|B_2| \geq |A_1 \cup A_2|$ nem teljesülne).
   \item $c'$ címkézés e? Ehhez figyeljük meg, hogy $\sigma$ hogyan változhat:
   
   \begin{tabular}{ l |  c c }

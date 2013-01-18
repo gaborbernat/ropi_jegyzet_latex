@@ -71,7 +71,7 @@ $-1$--el szorozzuk.
 
 Legyen $x$ indikátor, hogy az él benne van e párosításban, $w$ egy tetszőleges
 él súlyfüggvény és $B$ az illeszkedési mátrix (amely páros gráf lévén totálisan
-unimoduláris). A \emph{feladat}, megfogalmazható, mint max$\left\{ wx:Bx <= (1,
+unimoduláris). A \emph{feladat}, megfogalmazható, mint max$\left\{ wx:Bx \leq (1,
 \cdots, 1)^T, x \geq 0 \right\}$. Az $x \geq 0 $ feltételt bevisszük $B$
 mátrixba kiegészítve azt egy $m \times m$--es egységmátrix ellentettjével, de ez
 nem változtat TU tulajdonságon.
@@ -99,13 +99,18 @@ A számegyenes véges sok intervallum alkossa egy gráf csúcshalmazát, és ké
 akkor legyen szomszédos, ha a megfelelő intervallumok metszők; az így
 meghatározott gráf az intervallumgráf. Feltehető, hogy a gráfot meghatározó
 intervallumok $n$--re az $[1,n]$ egész végpontú, zárt részintervallumai.
-
 Legyen az $I=\left\{I_1, I_2, \cdots, I_m\right\}$ intervallumrendszer.
+
 Rendeljük ehhez $n \times m$--es $A(I)$ mátrixot: sorai feleljenek meg az
 $1,2,\cdots,n$ egészeknek, oszlopai pedig az I intervallumainak. Az $i$--ik sor
 és a $j$--ik oszlop kereszteződésben akkor álljon $1$--es, ha $i \in I_j$, és
 minden más helyen álljon $0$.
-\vspace{0.4cm}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{./kepek/intervalum_graf.png}
+\caption{Példa intervallum gráfra} \label{fig:int_graf}
+\end{figure}
 
 \emph{Tétel. Az így definiált A(I) mátrix totálisan unimoduláris.}
 \vspace{0.4cm}
@@ -160,8 +165,10 @@ intervallumukat kiválasztva valóbban $\lceil \frac{d_i}{k} \rceil$ vagy $
 
 A tétel következménye, hogy az intervallumgráfok \emph{perfektek}~\footnote{ Egy
 gráfot akkor nevezünk \emph{perfektnek} ha rá és minden F feszített részgráfjára
-teljesül, hogy $\chi(F) = \omega(F)$, azaz a kromatikus szám megegyezik a
-maximásis klikkmérettel.} (feltéve, hogy az intervallumgráf minden részgráfja is
-intervallumgráf). Ez igaz, mivel legyen $k=\omega(G)$. Ekkor alkalmazva a fenti
-tételt azt kapjuk, hogy a csúcsok jól színezhetőek $k$ színnel, vagyis
-$\omega(G)=\chi(G)$.
+teljesül, hogy $\chi(F) = \omega(F)$, azaz a kromatikus szám~\footnotemark{}
+megegyezik a maximásis klikkmérettel.}\footnotetext{$k$ színnel kiszinezhető de
+$k-1$--el már nem, ahol a kiszinhezhetőség azt jelenti, hogy minden csúcsot ki
+lehet színezni $k$ színnel úgy, hogy szomszédos csúcsók között nincs egyforma
+szinű} (feltéve, hogy az intervallumgráf minden részgráfja is intervallumgráf).
+Ez igaz, mivel legyen $k=\omega(G)$. Ekkor alkalmazva a fenti tételt azt kapjuk,
+hogy a csúcsok jól színezhetőek $k$ színnel, vagyis $\omega(G)=\chi(G)$.
