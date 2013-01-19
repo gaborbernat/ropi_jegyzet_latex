@@ -1,5 +1,4 @@
 \skiptooddpage 
-\skiptooddpage 
 \section{Matroid osztályok}
 
 A következő matroid osztályokat különböztetjük meg: 
@@ -98,6 +97,53 @@ kell, hogy létezzen. Azaz egy pontra két él illeszkedik, amely szerint minden
 ilyen pont foka nagyobb mint $2$.  Egy adott részgráfban, ahol minden csúcs foka
 nagyobb mint kettő, biztosan létezik kör.
 
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	\tikzstyle{vertex}=[draw,circle,fill=white,minimum size=3pt, inner sep=0pt]
+ 	\begin{scope}
+		\draw (0,0) node[vertex] (1){} -- ++(-90:1cm) node[vertex] (2){};
+		\foreach \x in {20, 40, 60, 80, 100} {
+    		\draw (1) -- ++(-30-\x:1cm) node[vertex] {};
+		}
+		\draw (2cm,-0.5cm) node[anchor=mid]{$n$ darab él};
+		\draw (-2cm,-0.5cm) node[anchor=mid]{$U_{n,n}$};
+	\end{scope}
+ 	\begin{scope}[yshift=-2cm]
+		\begin{scope}[xshift=-0.45cm]
+		\draw (0,0) node[vertex] (1){} 
+			-- ++(0:1cm) node[vertex] (2){} 
+			-- ++(-72:1cm) node[vertex] {}
+			-- ++(-2*72:1cm) node[vertex] {}
+			-- ++(-3*72:1cm) node[vertex] {}
+			-- ++(-4*72:1cm) node[vertex] {};
+		\end{scope}
+		\draw (2cm,-0.5cm) node[anchor=mid]{kör};
+		\draw (-2cm,-0.5cm) node[anchor=mid]{$U_{n,n-1}$};
+	\end{scope}
+ 	\begin{scope}[xshift=7cm, yshift=0cm]
+		\begin{scope}[xshift=-1cm, yshift=-0.5cm]
+		\draw (0,0) node[vertex] (1){} 	.. controls (1.0,0.4) ..++(0:2cm) node[vertex] (2){};
+		\draw (1) .. controls (1.0,0.2) .. (2);
+		\draw (1) .. controls (1.0,-0.2) .. (2);
+		\draw (1) .. controls (1.0,-0.4) .. (2);
+		\draw (1) .. controls (1.0,0.0) .. (2);
+		\end{scope}
+		\draw (-2cm,-0.5cm) node[anchor=mid]{$U_{n,1}$};
+	\end{scope}
+ 	\begin{scope}[xshift=7cm, yshift=-2.0cm]
+		\begin{scope}[xshift=0cm, yshift=-0.5cm]
+		\draw (0,0) node[vertex] (1){} 	.. controls ++(0:1cm) and ++(72:1cm) .. (1){};
+		\draw (0,0) node[vertex] (1){} 	.. controls ++(72:1cm) and ++(144:1cm) .. (1){};
+		\draw (0,0) node[vertex] (1){} 	.. controls ++(144:1cm) and ++(216:1cm) .. (1){};
+		\draw (0,0) node[vertex] (1){} 	.. controls ++(216:1cm) and ++(288:1cm) .. (1){};
+		\draw (0,0) node[vertex] (1){} 	.. controls ++(288:1cm) and ++(0:1cm) .. (1){};
+		\end{scope}
+		\draw (-2cm,-0.5cm) node[anchor=mid]{$U_{n,0}$};
+	\end{scope}
+\end{tikzpicture}
+\caption{Uniform matroidok}\label{fig:Unif}
+\end{figure}
 \subsection{Tuttle tételei}
 
 M matroid $\begin{cases}

@@ -161,7 +161,7 @@ megegyezik az alábbi egyenletrendszerrel:
 
 $\begin{cases}
 (1)~\pi(v) \geq 0 \mbox{ és } w(e) \geq 0, \\
-(2)~\mbox{minden } e = (u,v) \mbox{ élre }  \pi(u)-w(e) \geq 0, \\
+(2)~\mbox{minden } e = (u,v) \mbox{ élre }  \pi(u)-\pi(v)+w(e) \geq 0, \\
 (3)~\pi(t)-\pi(s) \geq 1. \end{cases}$
 
 A duális változói közül $\pi$ a csúcsokhoz (mekkora csúcs a potenciálja), $w$ az
@@ -189,7 +189,7 @@ Erre teljesül a $m_{\text{C}}= \mbox{min} \left\{ \sum_{e\in E}^{}
 w(e)c(e)\right\}$, amiből adódik az $m_{\mbox{DLP}} \leq m_{\mbox{C}}$, már csak
 a másik irányú egyenlőtlenséget kell beállítani. 
 
-$(B)$ Az $M$ mátrix totálisan unimoduláris, tehát $y$ is egész értékű elemekből
+$(B)$ Az $B^*$ mátrix totálisan unimoduláris, tehát $y$ is egész értékű elemekből
 áll (mivel a duális feladatban, min$\left\{ yb:yA=c; y\geq 0 \right\}$, szereplő
 $c$ is az). Legyen adott $(\pi,w)$ optimális, egészértékű megoldás, ebből
 kiindulva elkészítünk egy másik ugyancsak optimális megoldást, $(\pi',w')$--t
@@ -228,10 +228,10 @@ Ezzel egy általános bizonyítást adtunk a Ford--Fulkerson tételre, amely az 
 \subsection{Minimális költségű folyam keresése}
 
 Minden élhez rendeljünk egy k költséget, amely kifejezi, hogy egy egységnyi folyam
-átviteli azon menyibe kerül. Ekkor kitűzhető egy olyan feladat, ami a legalább $M$
+átviteli azon menyibe kerül. Ekkor kitűzhető egy olyan feladat, ami a legalább $m$
 nagyságú folyamok között keres minimális költségűt. Lineáris programozás alakban:
 
-\[ \mbox{min} \left\{kx: B^*x^* \leq 0, x^* \geq 0, x \leq c,\mu \geq M \right\}. \]
+\[ \mbox{min} \left\{kx: B^*x^* \leq 0, x^* \geq 0, x \leq c,\mu \geq m \right\}. \]
 
 Ha az élek kapacitásai egész értékűek, akkor egész értékű folyam is választható.
 Ha az élek költsége is egészértékű, akkor ismert hatékony algoritmus megoldására,

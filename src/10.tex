@@ -16,6 +16,62 @@ műveleteket:
   -- $X \cup Y = E$-- és kivett alaphalmaz különbségével).
 \end{description}
 
+\begin{figure}[htbp]
+\begin{tikzpicture}
+	\tikzstyle{vertex}=[draw,circle,fill=white,minimum size=3pt, inner sep=0pt]
+ 	\begin{scope}
+		\draw (0,0) node[vertex] (1){} -- ++(2cm,0) node[vertex](2){}
+		-- ++(-90:2cm) node[vertex](3){}
+		-- ++(-180:2cm) node[vertex](4){}
+		-- ++(-270:2cm) node[vertex](5){};
+		\draw (2) -- (4);
+		\draw (1,0.2) node{$a$};
+		\draw (-0.2,-1.0) node[anchor=mid]{$b$};
+		\draw (1.3,-1.0) node[anchor=mid]{$c$};
+		\draw (2.2,-1.0) node[anchor=mid]{$d$};
+		\draw (1,-2.3) node{$e$};
+	\end{scope}
+
+	\begin{scope}[line width=1pt,join=miter]
+		\draw[->] (3,-1) -- (6,-1) node[sloped, above, midway] {$e$ él elhagyása};
+	\end{scope}
+
+ 	\begin{scope}[xshift=7cm]
+		\draw (0,0) node[vertex] (1a){}
+			-- ++(2cm,0) node[vertex](2a){}
+			-- ++(-90:2cm) node[vertex](3a){};
+		\draw (0,-2) node[vertex](4a){};
+		\draw (4a) -- (1a);
+		\draw (2a) -- (4a);
+
+		\draw (1,0.2) node{$a$};
+		\draw (-0.2,-1.0) node[anchor=mid]{$b$};
+		\draw (1.3,-1.0) node[anchor=mid]{$c$};
+		\draw (2.2,-1.0) node[anchor=mid]{$d$};
+	\end{scope}
+
+	\begin{scope}[line width=1pt,join=miter]
+		\draw[->] (2.8,-2.5) -- (6,-4) node[midway, sloped, above] {$e$ él összehuzása};
+	\end{scope}
+%		\draw (0,0) node[vertex] (1){} 	.. controls ++(288:1cm) and ++(0:1cm) .. (1){};
+
+ 	\begin{scope}[xshift=7cm, yshift=-3.2cm]
+		\draw (0,0) node[vertex] (1b){}
+			-- ++(2cm,0) node[vertex](2b){};
+		\draw (0,-2) node[vertex](4b){};
+		\draw (4b) -- (1b);
+		\draw (2b) -- (4b);
+		\draw (2b) .. controls (1.8,-1.8) .. (4b) node[midway, below]{$d$};
+
+		\draw (1,0.2) node{a};
+		\draw (-0.2,-1.0) node[anchor=mid]{$b$};
+		\draw (1.3,-1.0) node[anchor=mid]{$c$};
+	\end{scope}
+\end{tikzpicture}
+\caption{Elhagyás és összehuzás művelet grafikus matroidban}\label{fig:ElhagyOssze}
+\end{figure}
+
+
 Az elagyások és az összehuzás műveletek prioritása azonos, tehát felcserélhető. $M$ matroid 
 \emph{minora} annak egy elhagyás és összehuzás sorozata. Bármely matroid minora előáll
 $N=(M \setminus A) / B$ alakban, ahol $A$ és $B$ diszjunkt halmazok.

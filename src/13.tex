@@ -136,27 +136,48 @@ E_i)$ triviális, tehát $\forall i$-re $r_i(X \cap E_i) = r_i(X)$.
 \begin{figure}[htbp]
 \caption{A halmazok}
 \label{fig:MPP_halm}
-\centering \begin{tikzpicture}[scale=1]
-  \tikzset{ p/.style={circle,black,fill=white,inner sep=0pt,minimum size=0.6cm},
-  }
-    \draw[line width=1pt, lightgray, fill=lightgray] 
-            (-0.5,-1.5) .. controls (1,-0.5) and (3,-0.5) .. (4.3,-1.5);
-    \draw[line width=1pt, lightgray, fill=lightgray] 
-            (-0.5,-1.5) .. controls (1,-2.5) and (3,-2.5) .. (4.3,-1.5);
-  \node[p, fill=lightgray] at (2,-1.9) {$X$};
-            
-  \node[p] at (0,1.7) {$p_1$};
-  \node[p] at (1,1.7) {$p_2$};
-  \node[p] at (2.5,1.7) {$\cdots$};
-  \node[p] at (3.9,1.7) {$p_k$};
-  
-  \node (rect) at (0,0) [gray,draw,thick,minimum width=1cm,minimum height=3cm] {$E_1$};
-  \node (rect) at (1,0) [gray,draw,thick,minimum width=1cm,minimum height=3cm] {$E_2$};
-  \node (rect) at (2.5,0) [gray,draw,thick,minimum width=2cm,minimum height=3cm] {$\cdots$};
-  \node (rect) at (3.9,0) [gray,draw,thick,minimum width=1,minimum height=3cm] {$E_k$};
-  
-\end{tikzpicture} 
-\end{figure}
+\centering \begin{tikzpicture}
+	\tikzstyle{vertex}=[draw,circle,fill=white,minimum size=3pt, inner sep=0pt]
+ 	\begin{scope}
+		\draw (0,0) -- ++(6cm,0)
+					-- ++(0,-3cm)
+					-- ++(-6cm,0)
+					-- (0,0);
+		\foreach \x in {1,2,3} {
+		\draw (\x*1.5,0) -- (\x*1.5,-3);
+		}
+		\draw (0.75,-1.0) node{$E_1$};
+		\draw (2.25,-1.0) node{$E_2$};
+		\draw (3.75,-1.0) node{$\dots$};
+		\draw (5.25,-1.0) node{$E_k$};
+		\draw (0,-3) .. controls (0,-5) and (6,-5) .. (6,-3);
+		
+		\draw (0.75, 0.5)  circle (0.5mm) node[above](1){$p_1$};
+		\draw (2.25, 0.5)  circle (0.5mm) node[above](2){$p_2$};
+		\draw (3.75, 0.5) node[above]{$\dots$};
+		\draw (5.25, 0.5)  circle (0.5mm) node[above]{$p_k$};
+
+		\draw (0.75, -2.0)  circle (0.5mm) node[left]{};
+		\draw (2.25, -2.0)  circle (0.5mm) node[left]{};
+		\draw (3.75, -2.0)  circle (0.5mm) node[left]{};
+		\draw (5.25, -2.0)  circle (0.5mm) node[left]{};
+
+		\draw (2.25, -4.0)  circle (0.5mm) node[left]{$x$};
+		\draw[color=gray, dashed] (-1,0.15) rectangle (6.5,-5);
+		\draw [color=gray] (-0.5,-2.4) node{$E$};
+		\begin{scope}[opacity=0.8,>=latex]
+			\draw (2.25, -4.0) [->, shorten >=2pt, shorten <=1pt, line width=1pt, color=green!70!black] -- (0.75,0.5);
+			\draw (2.25, -4.0) [->, shorten >=2pt, shorten <=1pt, line width=1pt, color=green!70!black] -- (5.25,0.5);
+			\draw (0.75, -2.0) [->, shorten >=2pt, shorten <=1pt, line width=1pt, color=green!70!black, loosely dotted] -- (0.75,0.5);
+			\draw (0.75, -2.0) [->, shorten >=2pt, shorten <=1pt, line width=1pt, color=green!70!black] -- (2.25,0.5);
+
+			\draw (0.75, -2.0) [->, shorten >=2pt, shorten <=1pt, line width=1pt, color=red!70!black] -- (2.25,-2);
+			\draw (2.25, -4.0) [->, shorten >=2pt, shorten <=1pt, line width=1pt, color=red!70!black] -- (0.75,-2);
+			\draw (2.25, -4.0) [->, shorten >=2pt, shorten <=1pt, line width=1pt, color=red!70!black, loosely dotted] .. controls (4.7,-2) .. (5.25,0.5);
+		
+		\end{scope}
+	\end{scope}
+\end{tikzpicture}\end{figure}
 
 Tehát $(X \cap E_i) \cup \{u\} \in F_i$, ezért:
 
