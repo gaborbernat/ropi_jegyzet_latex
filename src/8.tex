@@ -185,9 +185,9 @@ r(X) + r(Y) &\geq r(X \cup Y) + r(X \cap Y) \\
 	\draw (0,0) circle (5mm)  (-3mm,5mm) node{X};
 	\draw (7mm,0) circle (5mm)  (10mm,5mm) node[black]{Y};
 	\begin{scope}[opacity=0.7]
-    \filldraw[fill=green!40, draw=green] (6mm,0) circle (1.5mm) node[black, anchor=mid]{c};
- 	\filldraw[fill=red!40, draw=red]  (3.5mm,0) circle (1.5mm) node[black,anchor=mid]{b};
- 	\filldraw[fill=blue!40, draw=blue]  (1.0mm,0) circle (1.5mm) node[black,anchor=mid]{a};
+    \filldraw[fill=lightgray, draw=lightgray] (6mm,0) circle (1.5mm) node[black, anchor=mid]{$\beta$};
+ 	\filldraw[fill=gray, draw=gray]  (3.5mm,0) circle (1.5mm) node[black,anchor=mid]{$\alpha$};
+ 	\filldraw[fill=lightgray, draw=lightgray]  (1.0mm,0) circle (1.5mm) node[black,anchor=mid]{$\gamma$};
 	\end{scope}
 \end{tikzpicture}
 \caption{A rangfüggvény szubmodularitása}\label{fig:RangSzub}
@@ -205,9 +205,9 @@ Példa arra, hogy az egyenlőség nem mindig áll fent:
   \node[p] (3) at (+1 , -1) {};
   
   % the connection between the dots
-  \draw[-] (1) -- (2) node [midway, above] {$\gamma$}; 
-  \draw[-] (2) -- (3) node [midway, below] {$\alpha$}; 
-  \draw[-] (3) -- (1) node [midway, above] {$\beta$};
+  \draw[-] (1) -- (2) node [midway, above] {$c$}; 
+  \draw[-] (2) -- (3) node [midway, below] {$b$}; 
+  \draw[-] (3) -- (1) node [midway, above] {$a$};
 \end{tikzpicture} 
 & $
 \begin{cases}
