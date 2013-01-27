@@ -8,11 +8,11 @@ műveleteket:
 \begin{description}
   \item[elhagyás] az $M \setminus X=(E-X, F \setminus Y)$, ahol $F \backslash
   Y=\{Y\subseteq E-X, Y \in F\}$ (tehát az új matroidot úgy kapjuk, hogy
-  alaphalmazból elhagyjuk az $X$--beli elemekt és a halmazrendszerből meg azon
+  alaphalmazból elhagyjuk az $X$--beli elemeket és a halmazrendszerből meg azon
   elemeket amelybe ezek részt vesznek).
   \item[összehuzás]  az $M / X=(E-X, F / X)$, ahol az $M/X$ rangfüggvénye felírható
   $r(Y)=r(X \cup Y) - r(X), Y \in  E-X$ alakban (ha kivesszük az alaphalmazból az
-  összehuzott elemeket az új alaphalmaz -- $Y$ -- rangja egyenlő a teljes kezdeti alaphalmaz 
+  összehúzott elemeket az új alaphalmaz -- $Y$ -- rangja egyenlő a teljes kezdeti alaphalmaz 
   -- $X \cup Y = E$-- és kivett alaphalmaz különbségével).
 \end{description}
 
@@ -51,7 +51,7 @@ műveleteket:
 	\end{scope}
 
 	\begin{scope}[line width=1pt,join=miter]
-		\draw[->] (2.8,-2.5) -- (6,-4) node[midway, sloped, above] {$e$ él összehuzása};
+		\draw[->] (2.8,-2.5) -- (6,-4) node[midway, sloped, above] {$e$ él összehúzása};
 	\end{scope}
 %		\draw (0,0) node[vertex] (1){} 	.. controls ++(288:1cm) and ++(0:1cm) .. (1){};
 
@@ -72,18 +72,18 @@ műveleteket:
 \end{figure}
 
 
-Az elagyások és az összehuzás műveletek prioritása azonos, tehát felcserélhető. $M$ matroid 
-\emph{minora} annak egy elhagyás és összehuzás sorozata. Bármely matroid minora előáll
+Az elagyások és az összehúzás műveletek prioritása azonos, tehát felcserélhető. $M$ matroid 
+\emph{minora} annak egy elhagyás és összehúzás sorozata. Bármely matroid minora előáll
 $N=(M \setminus A) / B$ alakban, ahol $A$ és $B$ diszjunkt halmazok.
 
-\emph{Az elhagyás és az összehuzás duális művelet: $\begin{cases}
+\emph{Az elhagyás és az összehúzás duális művelet: $\begin{cases}
 M^*/X=(M \setminus X)^*, \\
 M^* \setminus X = (M / X)^*.
 \end{cases}$}
 
 A bizonyitáshoz elég az elsőt belátni, mert ha az igaz, mindkét oldal duálisát
 véve és $M$ helyet $M^*$--ra alkalmazva azt következik a második kijelentés.
-Tudjuk tehát, hogy az duális matroid összehuzásának ($M^*/X$) rangfüggvénye
+Tudjuk tehát, hogy az duális matroid összehúzásának ($M^*/X$) rangfüggvénye
 (legyen ez $r_1$):
 
 \begin{align*}
@@ -115,10 +115,10 @@ matroid megegyezik, s ezzel bizonyitásunk teljes.
   $T$ felett vektorok, és az ezek által meghatározott lináris matroid izomor $M$--el. 
 \end{description}
 
-Bármely $r=r(E), n=|E|$ matroidra létezzik $A \in \mathbb{M}_{r\times n}$ mátrix
-amelyel leírható $M=(E,F)$ matroid (és a mátrix sorai lineárisan függetlenek).
+Bármely $r=r(E), n=|E|$ matroidra létezik $A \in \mathbb{M}_{r\times n}$ mátrix
+amellyel leírható $M=(E,F)$ matroid (és a mátrix sorai lineárisan függetlenek).
 Az $A$ mátrix megalkotásához $r$ sorra van szükség, ha a matroid több elemet
-tartalmaz válaszunk ki $r$ lineárisan függetlent. Ekkor a jobb oldali alakra
+tartalmaz válasszunk ki $r$ lineárisan függetlent. Ekkor a jobb oldali alakra
 hozható $A$ mátrix, ettől még ugyanazt a matroidot koordinázza:
 
 \[
@@ -160,7 +160,7 @@ r &  & & r&&\\
 
 A bizonyitáshoz hozzuk a matroid mátrixát oly alakra, hogy a mátrix bal oldalán
 egy egységmátrix alakuljon ki. Legyen ennek $r$ sorra, ekkor $E_r$ egységmátrix
-M egy bázisa, míg $A_0$ oszlopai a többi elemek. Megprobáljuk belátni, hogy $A'=(-A_0^T|E_{n-r})$
+M egy bázisa, míg $A_0$ oszlopai a többi elemek. Megpróbáljuk belátni, hogy $A'=(-A_0^T|E_{n-r})$
 is reprezentálja a duális matroidot.
 
 \[ 
@@ -186,7 +186,7 @@ M^*=
 \end{array} 
 \]
 
-$M$ matroid és a duálisának a mátrixa természetes modón megfelelhetőek
+$M$ matroid és a duálisának a mátrixa természetes módon megfelelhetőek
 egymásnak, az ábrán balról jobbra az oszlopcsoportok megfelelnek egymásnak.
 Válaszunk ki az $M$ valamely bázisának megfelelő részmátrixot $A$--ban.
 Feltehető, hogy ennek első $t$ oszlopa éppen $E_r$ utolsó $t$ oszlopa, míg a
