@@ -5,7 +5,7 @@ Az ütemezési feladat megfogalmazható mint:
 \[
 \begin{rcases}
 J_i \mbox{ -- munkák} \\
-P_i \mbox{ -- megmunkálási idő} \\
+p_i \mbox{ -- megmunkálási idő} \\
 w_i \mbox{ -- súly} \\
 d_i \mbox{ -- határidő} \\
 r_i \mbox{ -- rendelkezésre álló idő} \\
@@ -35,7 +35,7 @@ Egy halmazfeladat gyors leírására a következő struktúrát használjuk:
   \item \emph{prec} -- létezik egy irányított a--ciklikus gráf amely
   meghatározza, hogy a munka elkezdéséhez mely munkák kellet már befejeződjenek.
   \item $r_j$ -- egy--egy munkának tudjuk, hogy mely időponttól áll rendelkezésünkre.
-  \item $P_j$ -- tudjuk, hogy egy--egy munka elvégzése mennyi időt vesz igénybe
+  \item $p_j$ -- tudjuk, hogy egy--egy munka elvégzése mennyi időt vesz igénybe
   (ez mindig adott).
 \end{itemize}
   \item[optimalizálási kritérium] arra vonatkozik, hogy a célfüggvényben mire
@@ -64,7 +64,7 @@ létezik pont a gráfban. Ez polinomiális időben optimális megoldást ad.
 
 \subsubsection{Topologikus sorrend meghatározása}
 
-Adjunk hozzá a bemeneti DAG--hoz egy extra $s$ élet amelyet a végén törölni
+Adjunk hozzá a bemeneti DAG--hoz egy extra $s$ csúcsot amelyet a végén törölni
 fogunk. Minden $s \mapsto v, v \in V$ élt rakjuk be a gráfba. Minden pontra két
 címkét vezessünk: az egyik azt mutatja, hogy a pont elért e, és ha igen mely
 csúcsból; a másik érték meg azt jelzi, hogy a csúcs átvizsgált már e vagy sem.
@@ -82,23 +82,7 @@ Amig létezik elért, de még nem átvizsgált él addig ismételjük:
 
 Az átvizsgálási sorrend lesz a topologikus sorrend, ha $s$ nem tagja az eredeti
 gráfnak töröljük azt. Ha megfelelő adatstruktúrát használunk mindez az élszámmal
-arányos időt vesz igénybe. Példa feladat:
-
-
-\[
-\begin{rcases}
-G(V,E) &\mbox{összefüggő gráf} \\
-c:E \mapsto \mathbb{R}^+ &\mbox{költségfüggvény} \\
-V = \{ &T\mbox{--beli terminálok}, \\
-	   &S\mbox{--beli Steiner pontok}\}
-\end{rcases}
-\parbox[L]{7cm}{ Keressünk minimális költségű fát $G$--ben, ami az összes
-terminált tartalmazza és esetleg pár Steiner pontot is.} \]
-
-Ha $T=V$ (tehát a gráfban nem léteznek Steiner pontok) akkor a feladat mohó
-algoritmussal megoldható, egyébként meg NP--nehéz. A metrikus Steiner fában
-a költségfüggvény kielégíti a háromszög egyenlőtlenséget:
-
+arányos időt vesz igénybe.
 
 \[ \parbox[l]{4cm}{
 \begin{tikzpicture}[scale=0.7]

@@ -16,8 +16,6 @@ ellenőrizhető. MPP$_k \in$ coNP, mert ha a feladatnak nem létezik megoldása,
 adhatunk rá egy $X \subseteq E$ halmazt, ami biztosan összefüggő az összegben, azaz 
 $\sum r_i (X) < |X|$.
 
-
-
 \subsection{Algoritmikus megoldás}
 
 Most adunk erre egy algoritmust amely megoldja a feladatott, ehhez kiindul üres
@@ -60,7 +58,7 @@ Az algoritmus egy $n+k$ pontú segédgráffal dolgozik ($|E|=n$ csúcs a halmazo
 gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
 
 \begin{figure}[htbp]
-\caption{Segéd gráf}
+\caption{Segéd gráf két halmazra}
 \label{fig:MPP_graf}
 \centering \begin{tikzpicture}[scale=1]
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.6cm},
@@ -89,7 +87,7 @@ gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
 \begin{itemize}
   \item  $\begin{rcases}
   x \in E \\
-  y = p_i  \\
+  y = \{ p_i \}  \\
   x \not \in E_i\\
   E_i \cup  \{x\}  \in  F_i \end{rcases}
   \parbox[t]{11cm}{Egy ilyen él azt jelenti, hogy $x$-et hozzávehetjük $E_i$-hez
@@ -122,21 +120,11 @@ gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
     irányított úton elérhető pontok halmaza.
 \end{enumerate} 
 
-Lássuk be, hogy az algoritmus által megadott nemleges tanú valobban egy jó
-ellenpélda, indirekten. Tehát:
-\[ 
-|X| \sum_{i=1}^k |X \cap E_i| = \sum_{i=1}^k r_i(X \cap E_i) = \sum_{i=1}^k r_i(X) 
-\]
-
-$r_i(X) \leq r_i(X \cap E_i)$ mert ha $r_i(X) > r_i(X \cap E_i)$  lenne akkor
-(F$_3$) miatt $X \cap E_i$ kiegészíthető lenne egy $u \in X - E_i$ elemmel úgy,
-hogy $F_i$-ben továbbra is független legyen. Ugyanakkor $r_i(X) \geq r_i(X \cap
-E_i)$ triviális, tehát $\forall i$-re $r_i(X \cap E_i) = r_i(X)$.
-
-\begin{figure}[htbp]
-\caption{A halmazok}
+\begin{figure}[H]
+\caption{Általános alakban}
 \label{fig:MPP_halm}
-\centering \begin{tikzpicture}
+\centering 
+\begin{tikzpicture}[scale=0.8]
 	\tikzstyle{vertex}=[draw,circle,fill=white,minimum size=3pt, inner sep=0pt]
  	\begin{scope}
 		\draw (0,0) -- ++(6cm,0)
@@ -179,23 +167,6 @@ E_i)$ triviális, tehát $\forall i$-re $r_i(X \cap E_i) = r_i(X)$.
 	\end{scope}
 \end{tikzpicture}\end{figure}
 
-Tehát $(X \cap E_i) \cup \{u\} \in F_i$, ezért:
-
-\begin{itemize}
-  \item vagy $E_i \cup \{u\} \in F_i$, ekkor $u \rightarrow p_i$ él be lenne
-  húzva a gráfba és mivel $u$ elérhető $E - \bigcup_i E_i$-ből ($X$ definíciója
-  miatt), ezért $p_i$ is, tehát nem álltunk volna meg, ellentmondás.
-  \item vagy $E_i \cup \{u\} \not\in F_i$, akkor van benne kör, ez a kör csak
-  olyan lehet, ami $E_i-X$-be belemetsz (mivel ha $X$-ben lenne az egész kör,
-  akkor $(E_i \cup \{u\})\cap X = (X \cap E_i) \cup \{u\}$ is összefüggő lenne,
-  de nem az). Legyen a körnek egy $E_i-X$-beli eleme $v$, ekkor $E_i \cup \{u\}
-  - \{v\}$ független (mert független + 1 elemű halmazban csak egy kör lehet, ha
-  ezt megszüntetjük, újra független lesz), tehát lenne $u \rightarrow v$ él a
-  gráfban. Ez ellentmondás, mert akkor $v$ $X$-beli lenne.
-\end{itemize}
-
-Mindkét eset ellentmondás, tehát $r_i(X) = r_i(X \cap E_i)$, így $X$ tényleg jó
-tanú arra, hogy nincs jó partíció.
 
 \subsection{2-matroid-metszet probléma}
 

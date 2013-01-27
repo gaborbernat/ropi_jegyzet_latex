@@ -27,6 +27,12 @@ tehát csak F$3$--at látjuk be indirekt. Tegyük fel, hogy nem igaz, $X,Y \in F
 halmazokank mindig létezzik $X=X_1 \cup X_2~(X_1, X_2 \in F_1)$ és $Y=Y_1 \cup
 Y_2~(Y_1, Y_2 \in F_2)$ felbontása.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.4\linewidth]{./kepek/matroidosszeg.png}
+\caption{Matroid összeg bizonyitás}\label{fig:Unif}
+\end{figure}
+
 Válasszunk egy olyan felbontást, hogy a részhalmazok diszjunktak legyenek,
 $|X_1|>|Y_1|$ és az $|X_1 \cap Y_2|+|X_2+Y_1|$ összeg minimális értéket vegyen
 fel. Ekkor $M_1$ matroidra alkalmazva az F$3$--at: létezzik $x \in X_1-Y_1$,
@@ -54,7 +60,7 @@ MMP$_2 \in $P.
 \vspace{0.4cm}
 
 A bizonyitáshoz induljunk ki egy adott $M_1=(E,F_1)$ és $M_2=(E,F_2)$ matroid
-párból és legyen $p$ a halmazrendszerek metszetébben keresett halmazok méret.
+párból és legyen $p$ a halmazrendszerek metszetébben keresett halmazok mérete.
 Ha $p>min(r_1, r_2)$ akkor a válasz nem, ilyen méretű halmaz nem létezik.
 Másképpen csonkoljuk a két matroidot amig rangjuk min$(r_1,r_2, p)$--re nem
 csökken:
@@ -88,7 +94,8 @@ MMP\textsubscript{$k$} bonyolultsága ha $k \geq 3$--ra NP teljes. A feladatt
 NP--beli mert a $p$ elembeli halmaz közös tanú a két halmazrendszerre.
 
 Az NP teljeséghez figyeljük meg, hogy MMP\textsubscript{$3$} visszavezethető
-Hamilton út keresésére (amiről tudjuk, hogy egy NP teljes probléma). Legyen:
+Hamilton út keresésére (amiről tudjuk, hogy egy NP teljes probléma). Legyen $G$
+írányitott gráfban $u$ és $v$ között Hamilton út keresés:
 
 \[
 \begin{cases}
@@ -103,13 +110,12 @@ M_2=(E,F_2) \\
 X \subseteq E \\
 X \in F_2
 \end{rcases} &\Leftrightarrow \parbox[t]{10cm} {$X$ részgráfban minden pont
-kifoka kisebb vagy egyenlő eggyel egy és a $v$ kifoka nulla.} \\
-M_3 &\parbox[t]{10cm} { a gráf körmatroidja.}
+kifoka kisebb vagy egyenlő eggyel egy és a $v$ kifoka nulla.} 
 \end{cases}
 \]
 
-Ekkor M$_1$, M$_2$, M$_3$ közös $|V|-1$ elemű bázisai $G$ irányított Hamilton
-útjai.
+Ekkor M$_3$  a gráf körmatroidja, és M$_1$, M$_2$, M$_3$ közös $|V|-1$ elemű
+bázisai $G$ gráf irányított Hamilton útjai.
 
 \vspace{0.4cm}
 \emph{MMP$_k$, ha $k>3$ NP teljes.} 

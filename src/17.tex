@@ -4,7 +4,7 @@
 Adott egy $G$ teljes gráf és egy $c:V \mapsto \mathbb{R}^+$ él súlyozás,
 keressünk minimális összsúlyú Hamilton--kört. A probléma NP--nehéz. Az általános
 utazóügynök problémára nem létezik $k$--approximációs algoritmus (feltéve, hogy
-P$\ne$NP), mivel a probléma visszavezethető egy nem teljes gráfban Hamilton--kör
+P$\ne$NP), mivel a probléma visszavezethető egy teljes gráfban Hamilton--kör
 keresésére.
 
 Legyen egy $n$--pontú $G$ (nem teljes) gráf, a bemenet, hozzá tartozó $G'$ pedig
@@ -68,20 +68,19 @@ Ebben keressük az Euler kört.
 
 Tudjuk, hogy $F$ súlya $\leq$OPT. Tehát ahhoz, hogy az approximáció igaz legyen
 a fenti procedúrával kapott párosítás legfeljebb $\frac{1}{2}$OPT értékű lehet.
-Jelöljük a minimális Hamilton-kört $G$ gráfban $H$--val, $G'$ segédgráfban
-$H'$--vel. 
+Ez azt jelenti, hogy $c(H) \leq \frac{\mbox{OPT}}{2}$.
 
-$c(H') \leq$OPT, mert $H$--t levágásokkal át tudjuk alakítani úgy, hogy csak
-$G'$--beli csúcsokat tartalmazzon, miközben nem nő az összköltsége, és az így
-kapott $G'$--beli Hamilton-körnél $H'$ nyilván nem nagyobb súlyú.
-
-A minimális összsúlyú teljes párosítás pedig legfeljebb $\frac{c(H')}{2}$
-költségű, mert $H'$ páros élei és páratlan élei is teljes párosítást alkotnak, a
-kettő költségének összege $c(H')$, tehát van legfeljebb $\frac{c(H')}{2}$
-összköltségű párosítás, aminél nem nagyobb a minimális összsúlyú teljes
-párosítás.
+Ez igaz mert, ha kapunk egy minimális Hamilton-kört fessük át piros és kékre,
+minden második elemet. Ezzel megadtunk két teljes párositást, ahol az olcsobb
+költsége $\leq \frac{OPT}{2}$. Használjuk ezt az teljes párositást az
+algoritmushoz.
 
 Mig a $2$--approximáció idő igénye $cn^2$, addig a Christofidesé $cn^3$.
-Láthatjuk, hogy a jobb közelítés ára a nagyobb idő igény. A Hamilton--kör
-további javításával a pontosság még tovább csiszolható, például a Lin--Kernighan
-módszerrel $1-2$~\% is elérhető. 
+Láthatjuk, hogy a jobb közelítés ára a nagyobb idő igény. Az euklideszi utazó 
+ügynők problémára nem létezzik teljes appróximációs séma, de a metrikus utazó 
+ügynők problémára igen. 
+
+A gyakorlatban gyakran heurisztikus megkőzelitéseket használunk, amelyekre nem
+létezzik bizonyitás, hogy matematikailag helyes, de gyakorlatban jó eredményt
+ad. Ilyen a Lin--Kernighan módszer, amelyel $1-2$\% --os megkőzelités is
+elérhető.

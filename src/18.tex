@@ -41,8 +41,8 @@ Ez az algoritmus gyakorlatilag nem más, mint egy „brute-force” megoldó, am
 minden lehetséges részösszeget kiszámol. Legyen $a_1 \leq a_2 \leq \cdots \leq
 a_n$. Definiáljunk két halmazsorozatot:
 \begin{align*}
-L_i' = \{ I + a_i | I \in L_i\}, \mbox{ ahol } L_0 = \{ 0\} \\
-L_i+1=L_i \cup L_i'
+L_i' = \{ I + a_i | I \in L_i\}, & \mbox{ ahol } L_0 = \{ 0\} \\
+L_{i+1}=L_i \cup L_i' & \\
 \end{align*} 
 
 Az optimális részletösszeg max$\{I|I \in L_n \mbox{ és } I \leq t\}$ lesz.
@@ -105,13 +105,16 @@ approximációs séma követelményeit teljesíti, azaz megoldása $\geq
 A kapott válasz relatív hibájának kis értékére való bizonyításához vegyük
 figyelembe, hogy $L_i$ lista ritkításakor legfeljebb $\frac{\epsilon}{n}$
 nagyságú hibát okozunk a megmaradó képviselő érték és a ritkítás előtti érték
-között. $i$--re vonatkozó teljes indukcióval bizonyítható, hogy:
+között. $i$--re vonatkozó teljes indukcióval bizonyítható, hogy ezzel
+eredményünk az optimum $(1+ \frac{\epsilon}{2n})^n$ hányada lesz. Ez meg teljes
+appróximáció lesz mert:
 
-\[ L = \frac{\mbox{OPT}}{(1+ \frac{\epsilon}{2n})^n} \leq \mbox{ kapott érték }
-\leq \mbox{ OPT. }\]
+\[ \underbrace{\frac{\mbox{OPT}}{1+\epsilon}}_{\mbox{teljes approximáció}} \leq
+\underbrace{\frac{\mbox{OPT}}{(1+ \frac{\epsilon}{2n})^n}}_{\mbox{amennyit max
+rontunk}} \leq \mbox{ kapott érték } \leq \mbox{ OPT. }\]
 
-Ahhoz, hogy a bal oldal teljesüljön $(1+\frac{\epsilon}{2n})^n \leq 1 + \epsilon$ 
-is igaz kell legyen. Lássuk be, hogy ez igaz:
+Ahhoz, hogy ez igaz legyen bizonyitanunk kell, hogy $(1+\frac{\epsilon}{2n})^n
+\leq 1 + \epsilon$ is igaz:
 
 \begin{align*}
 \left(1+\frac{\epsilon}{2n}\right)^n &= 

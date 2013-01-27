@@ -24,8 +24,8 @@ elemek átlagos költsége) minimális.
 
 Legyen $p(e)=\frac{c(S_i)}{|S_i-C|}$, ahol $S_i$ az a halmaz amely először fedte
 le az $e$ elemet. Ugyanakkor legyen az elemek lefedési sorrendje $e_1, e_2,
-\cdots, e_n$. Állítjuk, hogy az $e_k$ elemek ára legfeljebb
-$p(e_k)=\frac{\mbox{OPT}}{n-k+1}$, minden $k=\overline{1,n}$--ra.
+\cdots, e_n$. Állítjuk, hogy az $e_k$ elemek ára 
+$p(e_k) \leq \frac{\mbox{OPT}}{n-k+1}$, minden $k=\overline{1,n}$--ra.
 
 Egy
 optimális fedés során bármely pillanatban igaz, hogy a még fedetlen halmazok
@@ -126,7 +126,7 @@ helyettesítjük $p_t,p_1$--el. Mindezt addig ismételjük amíg vissza nem jutu
 $p_1$ terminálhoz. 
 
 A háromszög egyenlőtlenségnek köszönhetően a levágásosok nem növelik a séta
-költségét, ezért a kapott Hamilton kör valamennyi élét kitörölve egy ikyab
+költségét, ezért a kapott Hamilton kör valamenyi élét kitörölve egy oly
 Hamilton utat kapunk a terminálok halmazán, melynek költsége legfeljebb
 $2\cdot$OPT. Ez az út a terminálokon feszítőfa, így legalább $c(F)$ költségű.
 Tehát $c(F) \leq 2 \cdot$OPT. A $2$ approximációs algoritmus a metrikus esetben
