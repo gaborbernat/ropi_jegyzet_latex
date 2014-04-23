@@ -2,10 +2,10 @@
 		 {A k-matroid partíciós probléma}}
 			 
 Adott $k$ darab $M_i = (E, F_i),$ ahol $i={\overline{1,k}}$ matroid. A kérdés,
-hogy a matroidok összege ($\vee_{i=1}^{k}M_i$) a szabad matroidot ($E,2^E$) adja
-e? Másképp megfogalmazva előáll e az alaphalmaz $E$ az $\cup_{i=1}^{k} E_i$ alakban,
-ha $\forall i$-re $E_i \in F_i$. Feltehető, hogy az $E_i$ halmazok diszjunktak, így 
-egy partíciós problémához jutottunk.
+hogy a matroidok összege ($\vee_{i=1}^{k}M_i$) a szabad matroidot ($E,2^E$)
+adja--e? Másképp megfogalmazva előáll--e az alaphalmaz $E$ az $\cup_{i=1}^{k}
+E_i$ alakban, ha $\forall i$-re $E_i \in F_i$. Feltehető, hogy az $E_i$ halmazok 
+diszjunktak, így egy partíciós problémához jutottunk.
 
 \vspace{0.4cm}
 \emph{MPP$_k$ P-beli probléma.}
@@ -20,8 +20,8 @@ $\sum r_i (X) < |X|$.
 
 Most adunk erre egy algoritmust amely megoldja a feladatott, ehhez kiindul üres
 halmazokból és addig bővíti azokat amíg uniójuk $E$ nem lesz. Ha egy adott
-pontnál nem bővíthető tovább egyik halmaz sem, akkor az lesz a  keresett ellen
-példa, ami bizonyítás arra, hogy a matroidok nem particionálhatók.
+pontnál nem bővíthető tovább egyik halmaz sem, akkor az lesz a keresett ellenpélda, 
+ami bizonyítás arra, hogy a matroidok nem particionálhatók.
 
 \begin{figure}[htbp]
 \caption{Példa, hogy a mohó algoritmus miért nem működik: 
@@ -55,10 +55,10 @@ példa, ami bizonyítás arra, hogy a matroidok nem particionálhatók.
 
 Az algoritmus egy $n+k$ pontú segédgráffal dolgozik ($|E|=n$ csúcs a halmazoknak
 és $k$ csúcs a partícióknak), tehát $V' = E \cup \{p_1, p_2, \ldots, p_k\}$. A
-gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
+gráf éleit definiáljuk, mint $(\overrightarrow{xy}) \in E'$ ahol:
 
 \begin{figure}[htbp]
-\caption{Segéd gráf két halmazra}
+\caption{Segédgráf két halmazra}
 \label{fig:MPP_graf}
 \centering \begin{tikzpicture}[scale=1]
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.6cm},
@@ -107,10 +107,10 @@ gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
     \setcounter{enumi}{-1}
     \item $\forall~i~E_i = \emptyset$ kezdeti állapot ($i=\overline{1,n}$). Erre
     igaz, hogy $E_i \in F_i$.
-    \item Keressük meg a legrövidebb irányított utat $E-\cup_{i}E_i$--ből
+    \item Keressük meg a legrövidebb irányított utat $E-\cup_{i}E_i$--ból
     $\left\{ p_1, \cdots, p_k \right\}$--ba.
     
-    \item Ha létezik irányított út akkor ez meghatároz egy módosítás-sorozatot,
+    \item Ha létezik irányított út akkor ez meghatároz egy módosítás--sorozatot,
     hogy melyik $E_i$-t hogyan kell módosítanunk. Az út utolsó éle egy $p_j$-be
     megy, a többi $E$-beli elemek között, vagyis összesen 1-gyel növeljük
     $E_i$-k elem számát.  Ha egy {\it legrövidebb} ilyen út mentén javítunk,
@@ -171,8 +171,8 @@ gráf éleit definiáljuk mint $(\overrightarrow{xy}) \in E'$ ahol:
 \subsection{2-matroid-metszet probléma}
 
 Adott $k$ matroid ($M_i=(E,F_i)$, ahol $i=\overline{1,k}$) és egy $p$ egész szám.
-A kérdés, hogy létezik e $F_i$--nek legalább $p$ méretű közös eleme?
+A kérdés, hogy létezik--e $F_i$--nek legalább $p$ méretű közös eleme?
 
 Az így megfogalmazott probléma $k=2$--re MMP$_2$ komplexitása P--beli.
-MPP$_k$--ra már beláttuk, hogy $P$--beli, MMP$_2$-őt meg megfogalmazhatjuk mint a
-$M_1 \vee M_2^*$ összeg szabad matroid e?
+MPP$_k$--ra már beláttuk, hogy $P$--beli, MMP$_2$-őt pedig megfogalmazhatjuk
+mint a $M_1 \vee M_2^*$ összeg szabad matroid--e?

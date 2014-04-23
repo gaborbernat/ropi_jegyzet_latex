@@ -5,7 +5,7 @@ Elöszőr is határozzuk meg, hogy mit nevezzünk folyamnak:
 \[	
 \begin{rcases}
 G(V,E) \mbox{ irányított gráf} \\
-s,t \in V \mbox{ két kitűntet csúcs} \\
+s,t \in V \mbox{ két kitüntet csúcs} \\
 c : E \mapsto \mathbb{R}^+ \mbox{ nem negatív kapacitásfüggvény}\\
 \rho_x(v) \mbox{ -- } v\mbox{--be belépő élek összege } x \mbox{ szerint} \\
 \delta_x(v) \mbox{ -- } v\mbox{--ből kilépő élek összege } x \mbox{ szerint}\\
@@ -44,11 +44,11 @@ Azaz a folyamban a pontokban érték elvesztődhet, de nem keletkezik új.
 Vegyünk fel $\forall v \in V-\{s,t\}$ csúcshoz egy új terminálba mutató élet,
 amelyekhez hozzárendeljük az $x'(e)=\rho_x(v)-\delta_x(v) \geq 0$
 egyenlőtlenséget (a belépők többségbe vannak a kilépőkhöz képest, és ami
-eltünnik az e új élen távozzik a terminálba). A többi élen maradjon meg a
+eltűnik az e új élen távozzik a terminálba). A többi élen maradjon meg a
 korábbi értékek, $x(e)=x'(e)$.
 
-Az így konstruált $x$ folyamhoz tartozzik egy $G'$ gráf.  Mivel ez is folyam igaz,
-hogy:
+Az így konstruált $x$ folyamhoz tartozzik egy $G'$ gráf.  Mivel ez is folyam,
+így igaz, hogy:
 
 \[\rho_{x}(t) \geq \delta_{x}(s) = \delta_{x'}(s) \geq \rho_{x'}(t) \geq 
 \rho_{x}(t)\]. 
@@ -102,7 +102,7 @@ $\delta_x(v) - \rho_x(v) \leq 0 $ amit átrendezve kapjuk, hogy $ \delta_x(v)
 Továbbá a forrás és a terminál sorai alapján $\begin{rcases} \delta_x(s)-\mu
 \leq 0 \\
 \mu - \rho_x(t) \leq 0 \end{rcases} \Rightarrow \delta_x(s) \leq \mu \leq
-\rho_x(t)$. Ezzel felírtúk az előző lemma összes feltételét, tehát $x$ egy
+\rho_x(t)$. Ezzel felírtuk az előző lemma összes feltételét, tehát $x$ egy
 folyam, ahol e $e^*$ élen a folyam teljes átvitele átfolyik,
 $\delta_x(s)=\mu=\rho_x(t)$, és a folyam értéke $\mu$.
 
@@ -149,12 +149,12 @@ c\\
 \vspace{-1.3cm}
 \end{center}
 \end{wrapfigure}
-E szerint meg a maximális folyam felírható mint max$\{ (0, \cdots,0,1)x^* : B^*x^* \leq
+E szerint a maximális folyam felírható mint max$\{ (0, \cdots,0,1)x^* : B^*x^* \leq
 0; x^* \geq 0;$ $x \leq c \}$. Az utolsó feltételt is hozzávesszük a mátrixhoz,
 mint az $E$ egy egységvektor és a hozzá tartozó $c$ rész az $M$ vektorban.
 
 A duális feladat megfogalmazható mint egy min$\{ yM :yB^* \geq (0, 0, \cdots, 0,
-1);$ $y \geq 0 \}$ optimalizálás. Láthatjuk, hogy ebből könyedén nem tudunk egy
+1);$ $y \geq 0 \}$ optimalizálás. Láthatjuk, hogy ebből könnyedén nem tudunk egy
 vágás fogalmat hozzárandelni. Ezért fejezzük ki ebből $y$--t $\left(
 \pi\left(v\right) | w\left(e\right)\right)$ alakban. Ekkor a duál feladat
 megegyezik az alábbi egyenletrendszerrel:
@@ -171,7 +171,7 @@ w(e)c(e)\right\}$ alak minimalizálása. Állítjuk, hogy ez megegyezik a háló
 folyam minimális vágásának értékével (legyen ez $m_{\text{C}}$). 
 
 A bizonyitáshoz belátjuk, hogy $(A)~m_{\mbox{DLP}} \leq m_{\mbox{C}}$ és, hogy
-$(B)~m_{\mbox{DLP}} \geq m_{\mbox{C}}$ amiből következzik, hogy $ m_{\mbox{DLP}}
+$(B)~m_{\mbox{DLP}} \geq m_{\mbox{C}}$ amiből következik, hogy $ m_{\mbox{DLP}}
 = m_{\mbox{C}}$.
 
 $(A)$ Bármely adott $m_{\mbox{C}}$ vágáshoz könnyen készíthető olyan $\pi$ és $w$
@@ -209,10 +209,10 @@ Ekkor $(\pi',w')$--re $(1)$ és $(3)$ teljesül. A $(2)$-öt indirekt bizonyítj
 Tegyük fel, hogy egy adott $e=(u,v)$ él esetén ez nem tejlesül, azaz
 $\pi'(u)-\pi'(w)+w'(e)<0$. Ekkor a $0-1$ értékűségük miatt $\pi'(u)=w'(e)=0$ és
 $\pi'(v)=1$ esetben valósulna meg. $\pi'$ definíciója miatt ebben az esetben
-$\pi(v) > \pi(s) \geq \pi(u)$, ami ellentmondana $(2)$--nek, hisszen $w'$
+$\pi(v) > \pi(s) \geq \pi(u)$, ami ellentmondana $(2)$--nek, hiszen $w'$
 definíciójábból adodik, hogy $w(e)=0$ (ami azt jelentené, hogy $u$--ból $v$--be
-úgy nőt a potenciál, hogy $w=0$). A megoldás optimális mert $\sum w'(e)c(e) \leq
-\sum w(e)c(e)$, mivel $w'(e) \leq w(e)$. Tehát $(1), (2), (3)$ teljesül és az így
+úgy nőtt a potenciál, hogy $w=0$). A megoldás optimális mert $\sum w'(e)c(e)
+\leq \sum w(e)c(e)$, mivel $w'(e) \leq w(e)$. Tehát $(1), (2), (3)$ teljesül és az így
 felírott $\pi', w'$ egy helyes átírás.
 
 Most visszatérve az $S$ és $T$ halmazainkra legyen, $S=\{v \in V: \pi'(v)=0\} $
@@ -228,8 +228,8 @@ Ezzel egy általános bizonyítást adtunk a Ford--Fulkerson tételre, amely az 
 \subsection{Minimális költségű folyam keresése}
 
 Minden élhez rendeljünk egy k költséget, amely kifejezi, hogy egy egységnyi folyam
-átviteli azon menyibe kerül. Ekkor kitűzhető egy olyan feladat, ami a legalább $m$
-nagyságú folyamok között keres minimális költségűt. Lineáris programozás alakban:
+átvitele azon menyibe kerül. Ekkor kitűzhető egy olyan feladat, ami a legalább
+$m$ nagyságú folyamok között keres minimális költségűt. Lineáris programozás alakban:
 
 \[ \mbox{min} \left\{kx: B^*x^* \leq 0, x^* \geq 0, x \leq c,\mu \geq m \right\}. \]
 
@@ -250,5 +250,5 @@ hozzárendelni, megmondva, hogy az egyes termékből ott éppen mennyi halad át
 Erre az esetre is alkalmazható a lineáris programozás, sőt a legalább két
 termékes folyamoknál már az egyetlen ismert hatékony algoritmus ($k=1$--re a
 javító utas algoritmus egész értékű megoldást ad polinomiális időben). Az egész
-értékű feladat viszont már itt is NP nehéz (mivel a feladatott leíró mátrix nem
+értékű feladat viszont már itt is NP nehéz (mivel a feladatot leíró mátrix nem
 totálisan unimoduláris ekkor).

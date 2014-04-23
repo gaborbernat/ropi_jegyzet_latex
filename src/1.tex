@@ -6,7 +6,7 @@ hogyan rendelünk egymáshoz két halmaz elemeit valamilyen optimum kritérium
 szerint? Ilyen kritériumok lehetnek a maximális párosítás~\footnote{ Párosításnak
 nevezünk egy $M$ élhalmazt, ha semelyik két élnek nincs közös pontja (független
 él halmaz). Egy párosítás teljes, ha a gráf minden pontját lefedi.}, minimális
-idő igény és így tovább. Grafikusan ábrázolva, legyen:
+időigény és így tovább. Grafikusan ábrázolva, legyen:
 
 \begin{figure}[ht]
 \caption{Egy optimális hozzárendelés probléma}
@@ -83,8 +83,8 @@ hiányzó és negatív súlyú éleken (a két halmazt közt) legyen $w=0$.
 \subsection{Magyar módszer}
 
 Megoldás ad a maximális párosítás problémára polinomiális időben. Induljunk ki
-bármilyen meglévő párositásból, egy ilyent \aref{fig:MagyModHelyeseg} ábra mutat
-be.
+bármilyen meglévő párositásból, egy ilyet \aref{fig:MagyModHelyeseg} ábra
+mutat be.
 
 \colorlet{ColorPink}{red!20}
 \colorlet{ColorBlue}{blue!20}
@@ -142,7 +142,7 @@ be.
 \end{tikzpicture} 
 \end{figure} 
 
-Egy ilyen gráfon végezzük el a következő definiciókat: 
+Egy ilyen gráfon definiálhatóak a következőek: 
 
 \begin{description}
   \item[Alternáló út] olyan él sorozat (séta) amely $A$-ból indul és minden második 
@@ -256,21 +256,21 @@ Az algoritmus helyességének alátámasztásához be kell látnunk, hogy:
   \end{tabular}
   
   Ugyanakkor a $\sigma > 0 $, hiszen $A_1 \cup A_2$ és $B_1 \cup B_3$ között
-  vezető élek között nem lehet piros él. Tehát a címkézés csak egy helyt csökken
-  (ami elronthatná a címkézést), de itt csak a maximális csökkenthető értékkel
+  vezető élek között nem lehet piros él. Tehát a címkézés csak egy helyen
+  csökken (ami elronthatná a címkézést), de itt csak a maximális csökkenthető értékkel
   csökken, tehát a címkézés tulajdonsága megmarad.
  
   \item Ahol $\sigma$ minimális ott egy piros él keletkezik, ezáltal a piros
   részgráf is megváltozik. Ha az $\in B_1$ nő a párosítás mérete, mivel ha a
   párja $A_1$--ben van akkor simán összeköthető, ha meg $A2$--ben akkor az
-  $A_1-B_2-A_2-B_1$ utón elérhető és ez hosszab mint az eredeti. 
+  $A_1-B_2-A_2-B_1$ úton elérhető és ez hosszabb mint az eredeti. 
   
   Ellenben, ha a piros él $B_3$--beli akkor $A_3$ és $B_2$ között megszűnik egy
   piros él, de ez nem befolyásolja a párositást, hiszen az új piros és $B_3$
   --beli végpontja elérhető lesz alternáló úton, ezért átkerül az $B_2$--be.
   
-  Tehát $B_3$ legfeljebb $n$ lépésből elfogy. A  következő lépésben $B_1$--belli
-  a piros él, tehát nő a párosítás $\Rightarrow n^2$ iterációba legfeljebb
+  Tehát $B_3$ legfeljebb $n$ lépésből elfogy. A  következő lépésben $B_1$--beli
+  a piros él, tehát nő a párosítás $\Rightarrow n^2$ iteráció alatt legfeljebb
   megvagyunk. Egy iteráció időigénye $O(e)$ (a $\sigma$ kiszámolása és $A_1 \cup
   A_2$ előállitása), tehát az algoritmus komplexitása $O(n^2e)$.
   \end{enumerate}

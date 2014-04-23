@@ -12,8 +12,8 @@ DIP &: \left\{ \mbox{min }{yb: yA=c, y \geq 0, y \mbox{ egész}}\right\}
 A feladat bonyolultságának meghatározásához fogalmazzuk át eldöntési problémára:
 $\exists?~Ax \leq b,~ x$ egész között olyan vektor, amelyre $cx \geq t?$ Az IP
 feladat NP--teljes. NP--beli mert x tanú. A dualitás tétel nem alkalmazható
-mivel max(IP)~$<$~min(DIP) fent állhat, tehát a probléma nem coNP--beli. \emph{NP
-teljes}, mivel visszavezethető a $3$--SAT problémára.
+mivel max(IP)~$<$~min(DIP) fennállhat, tehát a probléma nem coNP--beli.
+\emph{NP teljes}, mivel visszavezethető a $3$--SAT problémára.
 
 A bizonyításhoz megadjuk a visszavezetést: definiálunk egy eljárást, amely tetszőleges
 logikai függvényhez megad egy olyan IP problémát, melyre akkor és csak akkor igenlő a
@@ -22,8 +22,8 @@ válasz, ha a függvény kielégíthető. A függvény alakja:
 \[ f(x_1, x_2, \cdots, x_k) = \bigwedge_{i=1}^{d}{\left( x_{i_1}^{e_{i_1}} \vee 
 x_{i_2}^{e_{i_2}} \vee x_{i_3}^{e_{i_3}}\right).} 
 \]
-Az IP probléma ismeretlenjei legyen $z_{i=\overline{1,k}}$ egyenlőtlenségek, ahol 
-$0 \leq z_{i=\overline{1,k}} \leq 1$. Továbbá minden diszjunkcióra is felírunk egy
+Az IP probléma ismeretlenjei legyenek $z_{i=\overline{1,k}}$ egyenlőtlenségek,
+ahol $0 \leq z_{i=\overline{1,k}} \leq 1$. Továbbá minden diszjunkcióra is felírunk egy
 egyenlőtlenséget:
 
 
@@ -44,7 +44,7 @@ változónak.
 
 Eközben a $\sum_{i=1}^{k}{z_i}$ összeg értétek valahol $0$ és $k$ között adódik,
 tehát $c$--enk $(1,1,\cdots,1)$ választással tulajdonképpen a \emph{,,Van-e a fenti
-egyenlőtlenség renszerek feltételeit kielégítő (egész) vektorok között olyan,
+egyenlőtlenségrenszerek feltételeit kielégítő (egész) vektorok között olyan,
 melyre $cz \geq 0$?''} kérdést tesszük fel. Az így kapott IP feladatra a válasz
 akkor és csak akkor igenlő, ha az f kielégíthető.
 
@@ -52,7 +52,7 @@ akkor és csak akkor igenlő, ha az f kielégíthető.
 
 Alakja $\mbox{max} \left\{cx:Ax \leq b, f \leq x \leq g| x,f,g \in \mathbb{Z}^n
 \right\},$ ahol az $f$ és $g$ korlátok, amelyek biztosítják, hogy a feladat véges
-lépésben megoldható. A metódus kulcs gondolata, hogy az IP feladat megoldásához először
+lépésben megoldható. A metódus kulcsgondolata, hogy az IP feladat megoldásához először
 megoldjuk mint LP, ha az eredmény egész megvagyunk, egyébként tovább bontjuk két kisebb
 IP feladatra. Legyen $w^*=cx^*$, az egyenlőtlenség mindig $Ax \leq b$ marad.
 
@@ -68,10 +68,10 @@ Az algoritmus folyamata:
   \item Ha $L=\emptyset \Rightarrow$ \emph{vége} és a megoldás az aktuális $w^*$
   és $x^*$.
   
-  Egyébként $L$--ből vegyük ki IP$_i$ feladatott $\Rightarrow (f_i, g_i, w_i)$.
+  Egyébként $L$--ből vegyük ki IP$_i$ feladatot $\Rightarrow (f_i, g_i, w_i)$.
   \item Ha $w_i \leq w^*$, IP$_i$--nek a megoldása nem lehet $w^*$--nál jobb,
   folytassuk az első ponttól (ez a \emph{Bound} lépés).
-  \item Oldjuk meg a relaxált IP$_i$ feladatott (LP$_i$--t).
+  \item Oldjuk meg a relaxált IP$_i$ feladatot (LP$_i$--t).
   \\ Ha $\not \exists$ megoldás visszalépünk az első ponthoz.
   \\ Egyébként: $w^{LP}_{i}$ -- maximum érték,  $x_i$ -- maximum hely.
   \item Ha $w^{LP}_{i} \leq w^*$, IP$_i$ feladat és rész feladatai maximum értéke is
@@ -92,7 +92,7 @@ optimális részt indirekt bizonyítjuk: legyen $w_0$ az optimum, de az eljárá
 $w^*<w_0$--t kapta.
 
 Állítjuk, hogy $L$--ben mindig kellet, hogy legyen olyan IP$_i$ feladat amelynek
-az optimum értéke $w_0$. Ez kezdetben fent áll, és az algoritmus egy ilyen IP
+az optimum értéke $w_0$. Ez kezdetben fennáll, és az algoritmus egy ilyen IP
 feladattal a $5.$--ik vagy $6.$--ik lépéshez jut el. Ha az ötödikbe jut akkor az
 algoritmus mégis csak megtalálja a $w_0$ optimumot, ami ellentmondás.
 
@@ -110,7 +110,7 @@ hogy az eljárás során a lista sosem ürült ki, de ekkor az algoritmus sose
   \item Elágazásnál a legkevésbé egész $x_j$--t válasszuk elágazási változónak
   (ez a relaxált IP feladatt megoldásának helyvektora, azaz azt az indexet ahol
   e vektor elemének törtrésze $\frac{1}{2}$-höz legközelebb van), közbülső
-  értéknek pedig ennek egész értékét (lefele kerekitve) válasszuk. Ez azt
+  értéknek pedig ennek egész értékét (lefelé kerekitve) válasszuk. Ez azt
   jelenti, hogy az $f$ és a $g$ vektorban csak ez az indexen levő értéket
   modósitsuk,a többi feltétel marad a korábbi.
   
@@ -151,8 +151,8 @@ hogy az eljárás során a lista sosem ürült ki, de ekkor az algoritmus sose
   5 \\
   6 
   \end{bmatrix}
-  \] A fenti példában $x_0$ a talált optimum helyvektora. A $0.5$-hőz leggközeleb a
-  $3.6$ van, ez a második változó indexet jelenti, és értéke lekerekitve $3$. A
-  többi megkőtés ($f$ és $g$ vektor elemei) marad a korábbi. Tehát $t=3$ és $f$ és 
-  $g$ vektort ennek megfelelően modósitjúk $t$ és $t+1$ értékkekel. 
+  \] A fenti példában $x_0$ a talált optimum helyvektora. A $0.5$-höz
+  legközelebb a $3.6$ van, ez a második változó indexet jelenti, és értéke lekerekitve $3$. A
+  többi megkötés ($f$ és $g$ vektor elemei) marad a korábbi. Tehát $t=3$ és $f$
+  és $g$ vektort ennek megfelelően módosítjúk $t$ és $t+1$ értékekkel. 
 \end{itemize}

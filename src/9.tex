@@ -16,8 +16,8 @@ sulyú elemeket csökenő sorrendbe véve (amik nem sértik a halmaz
 függetlenségét).}
 \vspace{0.4cm}
 
-A bizonyitás indirekt történik, tegyük fel, hogy nem. Legyen ekkor $Y$ az
-optimumot meghatározó halmaz, $X$ pedig amit a mohó algoritmus adott. Tudjuk,
+A bizonyitás indirekt történik, tegyük fel, hogy az állítás nem igaz. Legyen
+ekkor $Y$ az optimumot meghatározó halmaz, $X$ pedig amit a mohó algoritmus adott. Tudjuk,
 hogy $X$ és $Y$ is maximálisan független, tehát az F$3$ alapján $|X|=|Y|=n$. A
 két halmaz elemeit rendezzük csökkenő sorrendbe, és írjuk fel őket mint
 $X=\{a_1, a_2, \cdots, a_n\}$ és $Y=\{b_1, b_2, \cdots, b_n\}$, ahol:
@@ -27,9 +27,9 @@ w(a_1) \geq w(a_2) \geq \cdots \geq w(a_n) \\
 w(b_1) \geq w(b_2) \geq \cdots \geq w(b_n) \\
 \end{align*}
 
-A mohó algoritmus a legnagyobb sulyú elemmet vesszi, amely esetén a
+A mohó algoritmus a legnagyobb sulyú elemet veszi, amely esetén a
 függetlenségi tulajdonság nem sérül, tehát az első elem a legnagyobb elem lesz,
-azaz $w(a_1) \geq w(b_1)$. Mivel a két halmaz különböző egymástol, ezért lesz
+azaz $w(a_1) \geq w(b_1)$. Mivel a két halmaz különböző egymástól, ezért lesz
 egy $i$ index amire ez a feltétel megfordul, azaz $ w(b_i)> w(a_i)$, egyébbként
 a mohó is az optimumot kapta volna meg. Amely lépésben ez előfordul a két halmaz
 felírható mint:
@@ -45,7 +45,7 @@ B=\{b_1, \cdots, b_{i}\}
 Az $A$ halmaz elemei csökkenő sorrendbe vannak rendezve, tehát $w(b_j) \geq
 w(b_i)$, de ugyanakkor itt $w(b_i) > w(a_i)$. De ez ellentmondás, mert ekkor a
 mohó algoritmus a $b_j$ elemet választotta volna, nem peddig az $a_i$--t, tehát
-feltevéssünk hamis volt, a mohó algoritmus megadja az optimális megoldást.
+feltevésünk hamis volt, a mohó algoritmus megadja az optimális megoldást.
 
 \vspace{0.4cm}
 \emph{Ha a mohó algoritmus optimális megoldást ad és F$1$,F$2$ függetlenségi axiómák
@@ -67,7 +67,7 @@ r + \frac{1-r}{2} & e \in X-Y, \\
 \end{cases}
 \end{rcases}\Rightarrow
 \parbox[L]{8.25cm}{
-Az algoritmus elöszőr kiválasztja $Y$ elemeket, de ezután már csak nulla sulyút
+Az algoritmus elöszőr kiválasztja $Y$ elemeket, de ezután már csak nulla súlyút
 választhatna. Így az összsúly ekkor $|Y|\cdot 1$. $X$ összsúly visszont $|X \cap
 Y| + |X-Y|\cdot(r+\frac{1-r}{2})$, ami nagyobb. De így egy optimálisabb megoldást
 kaptunk, azaz a mohó nem az optimumot adta meg. De ez elentmond a kiinduló feltételünknek,
@@ -129,12 +129,12 @@ Ez meghatározza $F^*$--ot, és duális matroidot mint $M^*=(E,F^*)$ jelöljük.
 
 Bizonyitanunk kell, hogy az $M^*$ matroidra teljesülnek a függetlenségi axiómák.
 F$1$ és F$2$ nyilvánvaló. F$3$--at kell belátni, azaz, hogy $X,Y \in F^*$ és
-$|X|>|Y|$ esetébben létezzik $x \in X-Y$, hogy $Y+x \in F^*$. Legyen $B_X
+$|X|>|Y|$ esetében létezik $x \in X-Y$, hogy $Y+x \in F^*$. Legyen $B_X
 \subseteq E-X$ és $B_Y\subseteq E-Y$ egy--egy $M$--beli bázis, amelyek a
 definició alpaján léteznek.
 
-Ha létezzik $X$--beli elem amely nincs benne $Y$--ban és $B_Y$--ban se, akkor
-ezt hozzávéve $Y$--hoz ismét $F^*$--beli halmazt kapnánk. Ha ilyen nem létezzik akkor 
+Ha létezik $X$--beli elem amely nincs benne $Y$--ban és $B_Y$--ban se, akkor
+ezt hozzávéve $Y$--hoz ismét $F^*$--beli halmazt kapnánk. Ha ilyen nem létezik akkor 
 $X \subseteq B_Y \cup Y$ és
 
 \[
@@ -144,7 +144,7 @@ $X \subseteq B_Y \cup Y$ és
 $B_X$ és $B_Y$ mérete megegyezik ($|B_X|=|B_Y|$), tehát $|B_Y-X| < |B_X-Y|$.
 Most e két halmazra alkalmazzuk F$3$--at, azaz $\exists~z \in (B_X-Y)-(B_Y-X)$
 eleme amelyre $(B_Y-X)+z$ független $M$--ben. Ezt a független halmazt egészitsük
-ki bázisá, úgy, hogy $B_Y$--ból vesszünk hozzá új elemeket, jelöljük ezt
+ki bázissá, úgy, hogy $B_Y$--ból vesszünk hozzá új elemeket, jelöljük ezt
 $B'$--el. $B'$ bázisába létezik elem $E-B_Y$--ból, tehát létezik olyan $B_Y$--beli elem 
 amely nincs benne $B'$--ben. Legyen ez az elem $u$. E $u$ elemre $Y+u \subseteq E - B'$,
 tehát $Y+u \in F^*$. Megkaptuk az elemet amire mindig igaz lesz F$3$, tehát a bizonyitás

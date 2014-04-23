@@ -21,8 +21,8 @@ $F_2$--beli elemek uniójáként.
 \emph{Matroidok összege is matroid.}
 \vspace{0.4cm}
 
-A bizonyitáshoz ellenőrizük a függetlenségi axiómákat. F$1$ és F$2$ nyilvánvaló,
-tehát csak F$3$--at látjuk be indirekt. Tegyük fel, hogy nem igaz, $X,Y \in F'$
+A bizonyitáshoz ellenőrizzük a függetlenségi axiómákat. F$1$ és F$2$
+nyilvánvaló, tehát csak F$3$--at látjuk be indirekt. Tegyük fel, hogy nem igaz, $X,Y \in F'$
 és $|X|>|Y|$, de nem létezik $x \in X-Y$, hogy $Y+x \in F$. $X$ és $Y$
 halmazokank mindig létezzik $X=X_1 \cup X_2~(X_1, X_2 \in F_1)$ és $Y=Y_1 \cup
 Y_2~(Y_1, Y_2 \in F_2)$ felbontása.
@@ -35,7 +35,7 @@ Y_2~(Y_1, Y_2 \in F_2)$ felbontása.
 
 Válasszunk egy olyan felbontást, hogy a részhalmazok diszjunktak legyenek,
 $|X_1|>|Y_1|$ és az $|X_1 \cap Y_2|+|X_2+Y_1|$ összeg minimális értéket vegyen
-fel. Ekkor $M_1$ matroidra alkalmazva az F$3$--at: létezzik $x \in X_1-Y_1$,
+fel. Ekkor $M_1$ matroidra alkalmazva az F$3$--at: létezik $x \in X_1-Y_1$,
 hogy $Y_1+x \in F_1$.
 
 Ha $x \not \in Y_2$ akkor $x+Y $ benne van az összegben $(\in F')$, ami
@@ -43,7 +43,7 @@ ellentmondana az indukciós feltevésünknek. Tehát $x \in Y_2$, amiből követ
 hogy létezik egy másik felbontás $Y=(Y_1+x) \cup (Y_2 -x)=Y_1^* \cup Y_2^*$.
 Erre viszont a $|X_1\cap Y_2^*|+|X_2 \cap Y_1^*|$ összeg egyel kevesebb, ami
 elentmond annak, hogy mi már a lehető legkisebbet választottuk korábban. Tehát a
-feltvéssünk hamis volt, F$3$ igaz.
+feltvésünk hamis volt, F$3$ igaz.
 
 \vspace{0.4cm}
 \emph{$M=(E,F)$ matroid szabadmatroid, ha bármely részhalmaza független.}
@@ -74,7 +74,7 @@ p \geq 1
 $(E,F')~M$ csonkolat matroidja} \]
 
 Ezzel a problémát redukáltuk a közös bázis megkeresésére. $r_1=r_2=p$--re a
-válasz akkor és csak akkor igenlő ha létezzik ilyen méretű közös bázis, azaz ha
+válasz akkor és csak akkor igenlő ha létezik ilyen méretű közös bázis, azaz ha
 $M_1 \vee M_2^*=(E,2^E)$ szabad matroid.
 
 $\Rightarrow$ Ha $M_1$ és $M_2$--nek van egy közös $B$ bázisa, akkor $M^*$--ban
@@ -90,12 +90,12 @@ $M_2$ matroidnak.
 
 \subsection{Bonyolultság}
 
-MMP\textsubscript{$k$} bonyolultsága ha $k \geq 3$--ra NP teljes. A feladatt
+MMP\textsubscript{$k$} bonyolultsága ha $k \geq 3$--ra NP teljes. A feladat
 NP--beli mert a $p$ elembeli halmaz közös tanú a két halmazrendszerre.
 
-Az NP teljeséghez figyeljük meg, hogy MMP\textsubscript{$3$} visszavezethető
+Az NP teljességhez figyeljük meg, hogy MMP\textsubscript{$3$} visszavezethető
 Hamilton út keresésére (amiről tudjuk, hogy egy NP teljes probléma). Legyen $G$
-írányitott gráfban $u$ és $v$ között Hamilton út keresés:
+irányított gráfban $u$ és $v$ között Hamilton út keresés:
 
 \[
 \begin{cases}
@@ -104,7 +104,7 @@ M_1=(E,F_1) \\
 X \subseteq E \\
 X \in F_1
 \end{rcases} &\Leftrightarrow \parbox[t]{10cm} {$X$ részgráfban minden pont
-befoka legfejlebb egy és az $u$ befoka nulla.} \\
+befoka legfejlebb egy, és az $u$ befoka nulla.} \\
 \begin{rcases}
 M_2=(E,F_2) \\
 X \subseteq E \\

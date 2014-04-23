@@ -68,12 +68,13 @@ műveleteket:
 		\draw (1.3,-1.0) node[anchor=mid]{$c$};
 	\end{scope}
 \end{tikzpicture}
-\caption{Elhagyás és összehuzás művelet grafikus matroidban}\label{fig:ElhagyOssze}
+\caption{Elhagyás és összehúzás művelet grafikus
+matroidban}\label{fig:ElhagyOssze}
 \end{figure}
 
 
-Az elagyások és az összehúzás műveletek prioritása azonos, tehát felcserélhető. $M$ matroid 
-\emph{minora} annak egy elhagyás és összehúzás sorozata. Bármely matroid minora előáll
+Az elhagyás és az összehúzás műveletek prioritása azonos, tehát felcserélhető.
+$M$ matroid \emph{minora} annak egy elhagyás és összehúzás sorozata. Bármely matroid minora előáll
 $N=(M \setminus A) / B$ alakban, ahol $A$ és $B$ diszjunkt halmazok.
 
 \emph{Az elhagyás és az összehúzás duális művelet: $\begin{cases}
@@ -81,7 +82,7 @@ M^*/X=(M \setminus X)^*, \\
 M^* \setminus X = (M / X)^*.
 \end{cases}$}
 
-A bizonyitáshoz elég az elsőt belátni, mert ha az igaz, mindkét oldal duálisát
+A bizonyításhoz elég az elsőt belátni, mert ha az igaz, mindkét oldal duálisát
 véve és $M$ helyet $M^*$--ra alkalmazva azt következik a második kijelentés.
 Tudjuk tehát, hogy az duális matroid összehúzásának ($M^*/X$) rangfüggvénye
 (legyen ez $r_1$):
@@ -112,7 +113,8 @@ matroid megegyezik, s ezzel bizonyitásunk teljes.
   \item[$M=(E,F)$ reprezentálható] T test felett, ha bármely elem az alaphalmazból
   $T$ feletti vektor. 
   \item[$M$ matroid koordinázható]T test felett, ha létezik olyan mátrix, amelynek oszlopai
-  $T$ felett vektorok, és az ezek által meghatározott lináris matroid izomor $M$--el. 
+  $T$ felett vektorok, és az ezek által meghatározott lináris matroid izomorf
+  $M$--el.
 \end{description}
 
 Bármely $r=r(E), n=|E|$ matroidra létezik $A \in \mathbb{M}_{r\times n}$ mátrix
@@ -158,8 +160,8 @@ r &  & & r&&\\
 
 \emph{Ha $M=(E,F)$ matroid reprezentálható $T$ test felett akkor a duálisa ($M*$) is.}
 
-A bizonyitáshoz hozzuk a matroid mátrixát oly alakra, hogy a mátrix bal oldalán
-egy egységmátrix alakuljon ki. Legyen ennek $r$ sorra, ekkor $E_r$ egységmátrix
+A bizonyitáshoz hozzuk a matroid mátrixát olyan alakra, hogy a mátrix bal
+oldalán egy egységmátrix alakuljon ki. Legyen ennek $r$ sora, ekkor $E_r$ egységmátrix
 M egy bázisa, míg $A_0$ oszlopai a többi elemek. Megpróbáljuk belátni, hogy $A'=(-A_0^T|E_{n-r})$
 is reprezentálja a duális matroidot.
 

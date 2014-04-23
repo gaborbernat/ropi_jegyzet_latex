@@ -17,7 +17,7 @@ alakja):
   \end{align*}
 \end{enumerate}
 
-Legyen az alábbi mérettel rendelkező mátrixok:
+Legyenek az alábbi mérettel rendelkező mátrixok:
 \[
 \overbrace{\begin{bmatrix} 1 &  \cdots &  n \end{bmatrix}}^{\hbox{y}} 
 \overbrace{\begin{bmatrix} 1 & \cdots & n \\ \vdots & \ddots & \vdots \\ m  & \cdots & 0 \end{bmatrix}}^{\hbox{A}}
@@ -27,7 +27,7 @@ Legyen az alábbi mérettel rendelkező mátrixok:
 
 \subsection{1--es alak}
 Az első alak két egyenletrendszere nem megoldható egyidőben mert:
-\[ 0 = 0x = (yA) \cdot x = y(Ax) \leq yb.\] Az átcsoportositást megtehetjük a
+\[ 0 = 0x = (yA) \cdot x = y(Ax) \leq yb.\] Az átcsoportosítást megtehetjük a
 szorzás asszociativitása miatt, míg az utolsó egyenlőtlenséget is át kell
 gondolni: \[ Ax \leq b \Rightarrow y(Ax) \leq yb.\] Szerencsére ez igaz lesz
 mivel $Ax$ elemei legyenek $\alpha_i$, $b$ elemei $\beta_i$ és $y$ elemei
@@ -37,15 +37,15 @@ mivel adott $y \geq 0$ feltétel (tehát $\gamma_i \geq 0$). Majd tovább futtat
 korábbi gondolatunkat $yb<0$ amely ellentmond a kiinduló feltételeknek ($0=yAx \leq yb<0$). 
 
 Vizsgáljuk meg, hogy mi történik, ha $A1$ nem megoldható (ezt tegyük fel),
-következik e ebből, hogy az $A2$ igen? Definiáljuk a következő $C$ halmazt,
+következik-e ebből, hogy az $A2$ igen? Definiáljuk a következő $C$ halmazt,
 amely egy sorvektorok halmaza, és az $A2$ alak egyenleteire épül: \[ C= \left\{
 z \in \mathbb{R}^{n+1} | z = y (A|b), y \geq 0 \right\}\].
 
 Célunk bizonyítani, hogy létezik $C$-ben $(0, \cdots, 0 , <0)$ alakú sorvektor
-(ez azt jelentené, hogy az $A2$--nek létezzik egy $y$ megoldása), ha az $A1$
-($Ax \leq b$) egyenletrendszer nem megoldható.A megoldáshoz indukciót
+(ez azt jelentené, hogy az $A2$--nek létezik egy $y$ megoldása), ha az $A1$
+($Ax \leq b$) egyenletrendszer nem megoldható. A megoldáshoz indukciót
 használunk, felhasználva a Fourier--Motzkin eliminációt. Lássuk be, hogy az
-elimináció során felhasznált műveletek (szorzás pozítiv skalárral és vektorok
+elimináció során felhasznált műveletek (szorzás pozitív skalárral és vektorok
 összeadása) nem vezetnek ki a halmazból.
 
 A halmaz zártságára az alábbi lemmák igazak ($z_1, z_2 \in C, \lambda>0$):
@@ -58,7 +58,7 @@ A halmaz zártságára az alábbi lemmák igazak ($z_1, z_2 \in C, \lambda>0$):
   z=y(A|b) \Rightarrow \lambda z = \lambda y (A|b)$ ahol igaz, hogy $\lambda y \geq 0$.
 \end{itemize}
 
-Bizonyitjuk, hogy az eliminációval párhuzamosan mindig létre tudunk hozni ilyen
+Bizonyitjuk, hogy az eliminációval párhuzamosan mindíg létre tudunk hozni ilyen
 elemet a $C$--ben, ha $A1$--nek nincs megoldása (mint a kezdeti halmaz elemek
 egy lineáris kombinációja). Kiindulunk kezdeti $(A|b)$ mátrixból, amely sorai
 $\in C$, mert $y_i=1$--el (máshol a vektor $0$) felvételt nyernek $C$--be. Most
@@ -101,7 +101,7 @@ A &  & &  &b \\
 \end{displaymath}
 
 A zártsági lemma miatt az elimináció során a mátrix sorai $C$ halmazon belül
-maradnak. Végezzük el az eliminációt ismét és ismét amíg egy változós alakra nem
+maradnak. Végezzük el az eliminációt újra és újra amíg egy változós alakra nem
 jutunk. Ha a feladat eredetileg nem volt megoldható, ezt a tulajdonságot az
 elimináció megtartja, a végén sem lesz az, ez meg két feltétel melett történhet meg:
 
@@ -129,7 +129,7 @@ egy időben indirekt bizonyítjuk. Legyen $x,y$ egy--egy megoldás:
 		  y\underbrace{(Ax)}_{\mbox{oszlopvektor}}}
 		  _{\mbox{nem triviális lépés}}=yb<0\] ahol ellentmondáshoz jutunk.
 
-Az hogy ha az egyik nem megoldható a másik igen visszavezetéssel bizonyítjuk az
+Az hogy ha az egyik nem megoldható a másik igen, visszavezetéssel bizonyítjuk az
 $1$--es alakra. Ehhez először is kibontjuk a $B1$ alakot:
 \[ 
 \begin{rcases}
@@ -253,7 +253,7 @@ Az alábbi három kijelentés ekvivalens:
 A tétel bizonyítását \aref{fig:KorBizKor} ábra szerint fogjuk belátni.
  
 \begin{figure}[htbp]
-\caption{A korlátosság bizonyítási kőrre}
+\caption{A korlátosság bizonyítási köre}
 \label{fig:KorBizKor}
 \centering \begin{tikzpicture}[scale=1.7]
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.3cm},

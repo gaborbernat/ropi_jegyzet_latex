@@ -21,8 +21,8 @@ Az elemek méretei:
 \begin{bmatrix} 1 \\ \vdots \\  m \end{bmatrix}.
 \end{displaymath}
 
-Ha az egyenletnek, vagy a feladat más alakban van megadva átalakítható az
-következő összefűggések alapján:
+Ha az egyenletek, vagy a feladat más alakban van megadva átalakítható az
+következő összefüggések alapján:
 \begin{align*}
 \alpha x \geq \beta  \Rightarrow  &-\alpha x \leq -\beta \\
 \alpha x  =    \beta \Rightarrow  & \begin{cases}
@@ -57,7 +57,7 @@ megoldás halmazt.
 \caption{Kétváltozós feladat grafikus megoldása} \label{fig:KetValtGraf}
 \end{figure}
 
-Ha a célfüggvényt különböző $x$--re felrajzoljuk meghatározható az optimális
+Ha a célfüggvényt különböző $x$--re felrajzoljuk, meghatározható az optimális
 megoldás és az ehhez tartozó $x$ értékek. Egy alternativ megkőzelités, hogy
 vesszük célfügvény irányvektor normálját és ennek irányából pásztázunk végig a
 meghatározott konvex sokszögben, a metszőpontok mentén. A megoldást az utolsó
@@ -98,7 +98,7 @@ egyenletrendszert nem kapunk; erre könnyű megoldhatóságot vizsgálni. A foly
   	x_1 			  &\leq \beta - \alpha x' 
   	\end{align*} 
     Ekkor válasszuk úgy $x_1$--t, olyan kicsire hogy az összes sora e feltétel
-    teljesüljön. Ezután $A_+$ teljes sorai elhagyható, továbbá elég $A_0$
+    teljesüljön. Ezután $A_+$ teljes sorai elhagyhatóak, továbbá elég $A_0$
     sorait vizsgálni, elhagyva a baloldalon található nulla oszlopot ($n-1$
     változós eset).
   	
@@ -110,9 +110,9 @@ egyenletrendszert nem kapunk; erre könnyű megoldhatóságot vizsgálni. A foly
   	Ekkor válasszuk úgy $x_1$--t, olyan nagyra hogy e feltétel teljesüljön.
   	Ezután $A_-$ elhagyható.
   	\item Ha $A_- \neq \emptyset$ és $A_+ \neq \emptyset$ akkor legyen 
-  	$i \in A_-$ egy sora, $j \in A_+$ egy sora, és képezzük az összes sora az
-  	alábbi ősszeget (ez exponenciális egyenlet szaporodást jelent, e miatt az algoritmus
-  	futási ideje is exponenciális):
+  	$i \in A_-$ egy sora, $j \in A_+$ egy sora, és képezzük az összes sorra az
+  	alábbi összeget (ez exponenciális egyenlet szaporodást jelent, e miatt az
+  	algoritmus futási ideje is exponenciális):
   	\[
   	\left( \alpha_i + \alpha_j \right) \cdot x' \leq b_i + b_j 
   	\]

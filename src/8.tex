@@ -1,6 +1,6 @@
 \section{Matroid definiciója és a rangfüggvény szubmodularitása}
 
-A matroidot definiálhatjuk a függetlenségi axiómákkal mint, legyen $E$ egy
+A matroidot definiálhatjuk a függetlenségi axiómákkal úgy, mint legyen $E$ egy
 tetszőleges és véges alaphalmaz. Ugyanakkor $F \subseteq  2^E$ egy halmaz
 rendszer. Egy adott $M=(E,F)$ struktúra matroid, ha teljesül, hogy:
 
@@ -19,7 +19,7 @@ X,Y \in F\\
 |X| > |Y| \\
 \end{rcases} \Rightarrow\parbox[t]{10.5cm}{ $\exists~x \in X-Y$,~hogy $Y \cup \{x\}
 \in F~($\emph{szubmodularitás, kölcsönösen bővithetőség} -- legyen két halmazrendszer
-a matroidból, ahol ez egyik számoságban több elemet tartalmaz; ha e több
+a matroidból, ahol ez egyik számosságban több elemet tartalmaz; ha e több
 eleműben létezik olyan elem amely a kisebbikben nincs, akkor ezzel a kisebbiket
 kiegésztive szintén $F$--beli elemet kapunk).}
 \end{cases}
@@ -46,9 +46,9 @@ Egy $M=(E,F)$ matroidban:
 
 \emph{Legyen $M=(E,F)$ matroid ahol $A\subseteq E$ és $X_1,X_2 \in A$ maximális
 független halmazok $A$--ban (bázisok), akkor $|X_1|=|X_2|$}. A bizonyitás
-indirket megy, legyen $|X_1| > |X_2| \Rightarrow \exists e \in X_1-X_2$, ahol
-F$3$ miatt $X_1\cup \{e\} \in F \Rightarrow X_1$ nem maximális. De ez
-ellentmondás, tehát a feltevéssünk is hamis volt.
+indirekt történik, legyen $|X_1| > |X_2| \Rightarrow \exists e \in X_1-X_2$,
+ahol F$3$ miatt $X_1\cup \{e\} \in F \Rightarrow X_1$ nem maximális. De ez
+ellentmondás, tehát a feltevésünk is hamis volt.
 
 \begin{table}[htbp]
 \begin{center}
@@ -130,7 +130,7 @@ $
 \end{table}
  \begin{description}
   \item[Grafikus matroid] egy $G$ gráf által leírt $M=(G$ élei, $G$ --beli erdők). A bázis fogalma
-  megfelel a feszítő erdőnek. Jelőlése $M(G)$ és még körmatroidnak is nevezzük.
+  megfelel a feszítő erdőnek. Jelölése $M(G)$, körmatroidnak is nevezzük.
   \item[Lineáris matroid] egy mátrix által indukált matroid $M=(A$ oszlopai, $A$ lineárisan
   független oszlopai). Mátrixmatroid név alatt is ismeretes.
   \item[Uniform matroid] egy $M=($ tetszőleges véges halmaz, a halmaz lefeljebb
@@ -202,13 +202,13 @@ rangfüggvénye, akkor:
 \end{cases}
 \]
 
-Azaz (fordítva), ha $r$ egy egészérrtékű függvény $E$ részhalmazain, amelyre
+Azaz (fordítva), ha $r$ egy egészértékű függvény $E$ részhalmazain, amelyre
 teljesül a fenti négy tulajdonság, akkor $r$ egy $M=(E,F)$ matroid rangfüggvénye,
 ahol:
 \[F=\left\{ H : r(H)=|H| \right\}. \]
 
 Az első három tulajdonság bizonyitása rögtön adódik a rang definiciójából. Az
-R$4$--re meg (ami a rangfüggvény szubmodularitása) legyen egy $X,Y \in E$. $A$
+R$4$--re (ami a rangfüggvény szubmodularitása) legyen egy $X,Y \in E$. $A$
 egy maximálisan független halmaz $X \cap Y$--ban ($A \subseteq X \cap Y),$ amely
 számossága $\alpha$. 
 

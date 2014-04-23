@@ -47,14 +47,14 @@ b_{i_{\in V}j_{\in E}}=
 
 Irányított illeszkedési mátrixnál az oszlopban $1$ van, amely pontból indul az
 él, $-1$ ahova mutat; hurok--él esetében egyetlen $1$--es található. A
-bizonyítást teljes indukcióval. Legyen $M \in \mathbb{M}_{k\times k}$ méretű
+bizonyítás teljes indukcióval. Legyen $M \in \mathbb{M}_{k\times k}$ méretű
 részmátrix. Ha $k=1$ az állítás nyilvánvaló. Ha $k \geq 2$ és létezik egy darab
 oszlop, amelybe legfeljebb egy nem nulla elem van, akkor kifejtés a szerint és
 az indukció adja a többit (a kifejtés alapján $-1\cdot detM_{n-1\times n-1}$
 lesz a determináns, ami $1,0$ vagy $-1$).
 
 Másképp minden oszlopában egy darab $+1$ és egy darab $-1$ van, és a többi
-nulla. Így $M$ sorainak összege null vektor, előállitható mint nem triviális
+nulla. Így $M$ sorainak összege null vektor, előállítható mint nem triviális
 lineáris kombináció, azaz a sorok összefűggöek, és ezért $\Rightarrow$ det$M=0$.
 
 \subsection{Maximális összsúlyú párosítás IP feladatként}
@@ -69,7 +69,7 @@ Mutasson minden él $A$--ból $B$--be. Irányított gráf illeszkedési mátrixa
 eredeti illeszkedési mátrixának megkapásához $B$ csúcsainak megfelelő sorokat
 $-1$--el szorozzuk.
 
-Legyen $x$ indikátor, hogy az él benne van e párosításban, $w$ egy tetszőleges
+Legyen $x$ indikátor, hogy az él benne van-e párosításban, $w$ egy tetszőleges
 él súlyfüggvény és $B$ az illeszkedési mátrix (amely páros gráf lévén totálisan
 unimoduláris). A \emph{feladat}, megfogalmazható, mint max$\left\{ wx:Bx \leq (1,
 \cdots, 1)^T, x \geq 0 \right\}$. Az $x \geq 0 $ feltételt bevisszük $B$
@@ -95,8 +95,8 @@ algoritmusa is:
 
 \subsection{Intervallumgráf}
 
-A számegyenes véges sok intervallum alkossa egy gráf csúcshalmazát, és két csúcs
-akkor legyen szomszédos, ha a megfelelő intervallumok metszők; az így
+A számegyenes véges sok intervalluma alkossa egy gráf csúcshalmazát, és két
+csúcs akkor legyen szomszédos, ha a megfelelő intervallumok metszők; az így
 meghatározott gráf az intervallumgráf. Feltehető, hogy a gráfot meghatározó
 intervallumok $n$--re az $[1,n]$ egész végpontú, zárt részintervallumai.
 Legyen az $I=\left\{I_1, I_2, \cdots, I_m\right\}$ intervallumrendszer.
@@ -118,22 +118,22 @@ minden más helyen álljon $0$.
 A bizonyításhoz kiválasztunk egy tetszőleges $k \times k$ részmátrixot, majd
 teljes indukciót használunk az egyesek darabszáma szerint. Ha nulla darab
 egyesből áll a mátrix az nyilván TU. Ha van benne két oszlop, amelyben az első
-egyes azonos helyen áll, akkor a nagyobb egyes darabszámúból kivonjuk, a kisebb
+egyes azonos helyen áll, akkor a nagyobb egyes darabszámúból kivonjuk a kisebb
 darabszámot. Ez az egyesek darabszámát csökkenti, de a determinánsát nem
 változtatja.
 
 Ha nincs ilyen oszlop, de van csupa nulla oszlop, akkor a determináns nulla. Ha
 egyik sem teljesül, akkor pedig be tudjuk rendezni az oszlopokat úgy, hogy az
 alsóháromszög mátrixot kapunk oszlop cserével. Ez a művelet a determinánst csak
-előjelbe változtatja meg, így a determináns $1$ vagy $-1$ marad.
+előjelben változtatja meg, így a determináns $1$ vagy $-1$ marad.
 \vspace{0.4cm}
 
 \emph{Tétel. Az intervallumgráfok tetszőleges k színre megszínezhetőek
 egyenletesen.}
 \vspace{0.4cm}
 
-Az egyenletesen alatt azt értjük, hogy ha $i$--t tartalmazó intervallumok száma
-$d_i$, akkor ezek közül minden felhasznált szín esetén az ilyen színű
+Az ``egyenletesen'' alatt azt értjük, hogy ha $i$--t tartalmazó intervallumok
+száma $d_i$, akkor ezek közül minden felhasznált szín esetén az ilyen színű
 intervallumok száma $\lceil \frac{d_i}{k} \rceil$~\footnote{felső egész rész}
 vagy $\lfloor \frac{d_i}{k} \rfloor$~\footnote{alsó egész rész}.
 
