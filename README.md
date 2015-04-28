@@ -1,3 +1,5 @@
-A projektet érdemes TeXlipse-el szerkeszteni (Eclipse plugin: http://marketplace.eclipse.org/content/texlipse)
+[![PDF Status](https://www.sharelatex.com/github/repos/gaborbernat/ropi_jegyzet_latex/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/gaborbernat/ropi_jegyzet_latex/builds/latest/output.pdf)
+
+A projektet Ã©rdemes TeXlipse-szel szerkeszteni (Eclipse plugin: http://marketplace.eclipse.org/content/texlipse)
 <hr>
-A projekt build-hez (build.bat) kell pdflatex, ami a miktex-ben van benne: (http://miktex.org/download)
+A projekt buildhez (build.bat) kell `pdflatex`, ami a MikTeX-ben van benne: (http://miktex.org/download)
