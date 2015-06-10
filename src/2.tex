@@ -101,7 +101,9 @@ egyenletrendszert nem kapunk; erre könnyű megoldhatóságot vizsgálni. A foly
     teljesüljön. Ezután $A_+$ teljes sorai elhagyhatóak, továbbá elég $A_0$
     sorait vizsgálni, elhagyva a baloldalon található nulla oszlopot ($n-1$
     változós eset).
-  	
+  	Magyarul mivel nincs alsó korlát, mondhatjuk azt, hogy választunk egy nagyon
+  	kicsi számot, ami biztos jó lesz, és innentől nem foglalkozunk az
+  	egyenlettel.
   	\item Ha $A_+$ üres ($=\emptyset$): 
   	\begin{align*}
   	-1 \cdot x_1 + \alpha x'     &\leq \beta \\
@@ -109,6 +111,8 @@ egyenletrendszert nem kapunk; erre könnyű megoldhatóságot vizsgálni. A foly
   	\end{align*} 
   	Ekkor válasszuk úgy $x_1$--t, olyan nagyra hogy e feltétel teljesüljön.
   	Ezután $A_-$ elhagyható.
+  	Az előzőhöz hasonlóan olyan nagyra választjuk, hogy ne kelljen foglalkozni
+  	vele.
   	\item Ha $A_- \neq \emptyset$ és $A_+ \neq \emptyset$ akkor legyen 
   	$i \in A_-$ egy sora, $j \in A_+$ egy sora, és képezzük az összes sorra az
   	alábbi összeget (ez exponenciális egyenlet szaporodást jelent, e miatt az
@@ -125,7 +129,9 @@ egyenletrendszert nem kapunk; erre könnyű megoldhatóságot vizsgálni. A foly
  \mbox{másképp igaz, hogy } x_1 \leq \beta_+ \mbox{ és } x_1 \geq \beta_-
  &\Rightarrow \mbox{megoldható ha } \mbox{max}(-\beta_-) \leq min(\beta_+)
  \end{align*} 
-  Ha $n \geq 1$ folytassuk a $2$--es lépéstől.
+ Magyarul ha az egyenletekben marad $0 x_1 \leq \beta$ $\beta < 0$ formájú,
+  akkor az egyenletnek nincs megoldása.
+ Ha $n \geq 1$ folytassuk a $2$--es lépéstől.
 \end{enumerate} 
 
 A Gauss eliminációval szemben itt csak pozítiv skalárral szorozhatjuk be a sort,
