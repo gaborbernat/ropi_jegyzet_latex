@@ -5,7 +5,7 @@ Az optimális hozzárendelés problémája a következő kérdésre keresi a vá
 hogyan rendelünk egymáshoz két halmaz elemeit valamilyen optimum kritérium
 szerint? Ilyen kritériumok lehetnek a maximális párosítás~\footnote{ Párosításnak
 nevezünk egy $M$ élhalmazt, ha semelyik két élnek nincs közös pontja (független
-él halmaz). Egy párosítás teljes, ha a gráf minden pontját lefedi.}, minimális
+élhalmaz). Egy párosítás teljes, ha a gráf minden pontját lefedi.}, minimális
 időigény és így tovább. Grafikusan ábrázolva, legyen:
 
 \begin{figure}[ht]
@@ -77,7 +77,7 @@ ahol $x \in A$ és $ y \in B$. Megkülönböztetünk $3$ fajta helyzetet:
 
 A maximális súlyú párosítás problémája \emph{visszavezethető} a maximális tejles
 súlyú párosítás problémájára. A transzformációhoz a kevesebb csúcsú halmazt ($A$
-és $B$ közül) egészítsük ki, hogy a két halmaz számossága megegyezen. Majd a
+és $B$ közül) egészítsük ki, hogy a két halmaz számossága megegyezzen. Majd a
 hiányzó és negatív súlyú éleken (a két halmazt közt) legyen $w=0$. 
 
 \subsection{Magyar módszer}
@@ -165,15 +165,15 @@ Ekkor a magyar módszer algoritmus lépései:
 Az algoritmus helyességének belátásához térjünk vissza \aref{fig:MagyModHelyeseg} ábrához,
 amely egy köztes állapotot szemléltet. Legyen:
 \begin{description}
-  \item[$(A_1)$] -- azon csúcsok halmaza, amelyet az $M$ párosítás le nem fedett $A$--ban.
+  \item[$(A_1)$] -- azon csúcsok halmaza, amelyet az $M$ párosítás nem fedett le $A$--ban.
   \item[$(B_2)$] -- $A_1$--ből alternáló úton elérhető csúcsok halmaza,
   \item[$(A_2)$] -- $B_2$--hőz tartozó párosítás, 
 \end{description}
 
-Amennyiben az algoritmus leállt $B_2$ halmaz csúcsainak végpontja $A_2$ és $A_1$
-halmazból induló élek, azaz $B_2$ lefogó pontja~\footnote{A lefogó ponthalmaz egy
-adott G (rész)gráf minden élének legalább egyik végpontját tartalmazza.} az $A_1
-\cup A_2$ halmaznak. Azaz elmondható, hogy $A_3$ és $B_2$ lefogó pontja a
+Amennyiben az algoritmus leállt, $B_2$ halmaz csúcsainak végpontja $A_2$ és
+$A_1$ halmazból induló élek, azaz $B_2$ lefogó ponthalmaza~\footnote{A lefogó
+ponthalmaz egy adott G (rész)gráf minden élének legalább egyik végpontját tartalmazza.} az $A_1
+\cup A_2$ halmaznak. Azaz elmondható, hogy $A_3$ és $B_2$ lefogó ponthalmaza a
 gráfnak, ugyanakkor $A_3$ és $B_2$ elem--száma megegyezik a párosítás számával.
 A \emph{König tétel}~\footnote{ A tétel Kőnig Dénestől származik. Legyen egy $G$
 páros gráf, ekkor $\nu(G)=\tau(G)$ (azaz a legnagyobb független él halmaznak
@@ -188,13 +188,13 @@ párosítás maximális ($ |M|=|A_3 \cup B_2| \Rightarrow \nu(G) = \tau(G)$
 Az Egerváry~\footnote{Egerváry Jenő} algoritmus súlyozott páros gráfokra megadja
 a maximális összsúlyú teljes párosítást. Ehhez az algoritmus először definiálja
 a címkézés műveletet: minden csúcshoz rendel egy valós értéket ($c:V \rightarrow
-\mathbb{R}$) úgy, hogy minden él pár esetén ($\forall \left\{x,y\right\} \in E |
+\mathbb{R}$) úgy, hogy minden élpár esetén ($\forall \left\{x,y\right\} \in E |
 x \in A, y \in B$) igaz a következő kifejezés: $c(x)+c(y) \geq w(e)$. Amennyiben
 $c(x)+c(y)=w(e)$ legyen az él ,,piros.'' E címkézés mellet: $\sum_Mw(e) \leq
 \sum_Vc(v)$, azaz a maximális összsúlyú teljes párosítás összsúlya kisebb, mint
 a címkézés ősszege.
 
-Bizonyítás, adódik a definicióból:
+Bizonyítás, adódik a definícióból:
 
 \begin{displaymath}
 \sum_M{w} \leq \sum_M{\left[c(x)+c(y)\right]} = \sum_V{c(v)}
@@ -263,7 +263,7 @@ Az algoritmus helyességének alátámasztásához be kell látnunk, hogy:
   \item Ahol $\sigma$ minimális ott egy piros él keletkezik, ezáltal a piros
   részgráf is megváltozik. Ha az $\in B_1$ nő a párosítás mérete, mivel ha a
   párja $A_1$--ben van akkor simán összeköthető, ha meg $A2$--ben akkor az
-  $A_1-B_2-A_2-B_1$ úton elérhető és ez hosszabb mint az eredeti. 
+  $A_1-B_2-A_2-B_1$ úton elérhető, és ez hosszabb mint az eredeti. 
   
   Ellenben, ha a piros él $B_3$--beli akkor $A_3$ és $B_2$ között megszűnik egy
   piros él, de ez nem befolyásolja a párositást, hiszen az új piros és $B_3$
