@@ -13,8 +13,29 @@ A feladat bonyolultságának meghatározásához fogalmazzuk át eldöntési pro
 $\exists?~Ax \leq b,~ x$ egész között olyan vektor, amelyre $cx \geq t?$ Az IP
 feladat NP--teljes. NP--beli mert x tanú. A dualitás tétel nem alkalmazható
 mivel max(IP)~$<$~min(DIP) fennállhat, tehát a probléma nem coNP--beli.
-\emph{NP teljes}, mivel visszavezethető a $3$--SAT problémára.
+\emph{NP teljes}, mivel visszavezethető a $3$--SAT problémára, és a maximális
+független ponthalmazra (elég az egyik is).
 
+\subsubsection{Maximális független ponthalmaz}
+
+$ \begin{cases}
+input: \mbox{G(v,e) gráf, h szám} \\
+output: \alpha (G) >= h? \\
+	\mbox{Minden csúcsra: }
+	\forall x_i 0 <= x_i <= 1, x_i \in \mathbb{Z}
+	\xRightarrow{}
+	x_i = \begin{cases}
+		\mbox{1, ha az i-edik csúcs bekerül} \\
+		\mbox{0, ha nem}
+	\end{cases} \\
+\mbox{Minden élre: }
+x_i + x_j <= 1 \\
+max: x_1 + x_2 \ldots + x_n
+\end{cases}$
+
+Ezzel az IP segítségével megoldottuk a max. ftl. problémát, tehát az NP-teljes.
+
+\subsubsection{$3$--SAT}
 A bizonyításhoz megadjuk a visszavezetést: definiálunk egy eljárást, amely tetszőleges
 logikai függvényhez megad egy olyan IP problémát, melyre akkor és csak akkor igenlő a
 válasz, ha a függvény kielégíthető. A függvény alakja:
