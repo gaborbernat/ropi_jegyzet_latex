@@ -117,7 +117,8 @@ Legyen egy $f(X)$ minimalizálandó célfüggvény $X_I$ halmazon, amely $I$ bem
 problémát, ha bármely $I$--re polinom időben ad egy $y_I \in X_I$ megoldást, amire teljesül, hogy:
 
 \[
-f(y_I) = \underbrace{(\mbox{min}_{X \in X_I} f(X))}_{\mbox{optimum}} + \underbrace{c}_{\mbox{hiba}}.
+f(y_I) \leq \underbrace{(\mbox{min}_{X \in X_I} f(X))}_{\mbox{optimum}} +
+\underbrace{c}_{\mbox{hiba}}.
 \]
 
 Például  határozzuk meg egy $G$ gráfban (amelybe nincs hurokél, többszörös él és
