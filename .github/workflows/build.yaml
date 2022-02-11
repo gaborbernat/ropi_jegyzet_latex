@@ -1,0 +1,24 @@
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: 📕 Compile LaTeX document 📕
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+
+      - name: ©️ Copy to build folder ©️
+        run: bash -c 'mkdir build && cp main.pdf build/main.pdf'
+
+      - name: 🚀 Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          SINGLE_COMMIT: true
