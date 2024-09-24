@@ -1,4 +1,4 @@
-\skiptooddpage 
+\skiptooddpage
 \section{Az utazóügynök probléma}
 
 Adott egy $G$ teljes gráf és egy $c:V \mapsto \mathbb{R}^+$ él súlyozás,
@@ -10,7 +10,7 @@ keresésére.
 Legyen egy $n$--pontú $G$ (nem teljes) gráf, a bemenet, hozzá tartozó $G'$ pedig
 teljes gráf. Ha $G$-ben szomszédos két pont, akkor $G$-ben egységnyi az élsúly,
 egyébként $kn$. Ha $G$-ben van Hamilton-kör, akkor $G'$-ben a minimális
-összsúlyú Hamilton-kör összsúlya $n$, egyébként legalább $n-1+kn$. 
+összsúlyú Hamilton-kör összsúlya $n$, egyébként legalább $n-1+kn$.
 
 Mivel ez több, mint az optimum $k$--szorosa, ezért nincs ilyen közelítés.
 Egyébként az algoritmus meg tudná különböztetni a Hamilton-körrel rendelkező és
@@ -21,19 +21,19 @@ approximáció sem létezik.
 \subsection{Metrikus utazó ügynök}
 
 \emph{A problémát egészítsük ki azzal a kikötéssel, hogy a háromszög
-egyenlőtlenség a pontok közti élre teljesül (csúcs $\mapsto$ sík pontjai, élek
-súlya $\mapsto$ pontok közti távolság). Erre már létezik approximációs
-algoritmus.}
+	egyenlőtlenség a pontok közti élre teljesül (csúcs $\mapsto$ sík pontjai, élek
+	súlya $\mapsto$ pontok közti távolság). Erre már létezik approximációs
+	algoritmus.}
 
 \subsubsection{$2$-approximációs algoritmus}
 
 Ha egy $n$ pontú teljes gráfban ($G$):
 \begin{enumerate}
-  \item vesszünk egy minimális $F$ feszítőfát\footnote{\emph{Kruskall algoritmusa} -- 
-rendezzük az éleket növekvő sorrendbe, majd csökkenő sorrendbe vegyünk be $n-1$ élet
-amely a gráfban nem hoz létre kört.},
-  \item duplázzuk meg $F$ éleit, majd keresünk egy Euler--kört,
-  \item az ismétlődő pontokat a körből vágjuk le, elkészítve egy Hamilton-kört.
+	\item vesszünk egy minimális $F$ feszítőfát\footnote{\emph{Kruskall algoritmusa} --
+		      rendezzük az éleket növekvő sorrendbe, majd csökkenő sorrendbe vegyünk be $n-1$ élet
+		      amely a gráfban nem hoz létre kört.},
+	\item duplázzuk meg $F$ éleit, majd keresünk egy Euler--kört,
+	\item az ismétlődő pontokat a körből vágjuk le, elkészítve egy Hamilton-kört.
 \end{enumerate}
 
 Ha létezik a Hamilton--kör legyen ennek költsége OPT. Ebből, ha elhagyunk egy
@@ -46,11 +46,11 @@ hosszát az elhagyások csak csökkenteni tudják (a háromszög feltétel miatt
 tehát az algoritmus által talált összköltség $\leq 2 \cdot$OPT.
 
 \begin{align*}
- c(\mbox{talált Hamilton-kör}) &\leq c(\mbox{Euler--kör})		         \\ 
- 						       &= 2  \cdot c(\mbox{minimális feszítőfa})       \\
- 							   & \leq 2 \cdot c(\mbox{minimális Hamilton-út}) \\ 
- 							   & < 2\cdot c(\mbox{minimális Hamilton-kör)}    \\ 
- 							   & = 2\cdot OPT 								  \\
+	c(\mbox{talált Hamilton-kör}) & \leq c(\mbox{Euler--kör})                    \\
+	                              & = 2  \cdot c(\mbox{minimális feszítőfa})     \\
+	                              & \leq 2 \cdot c(\mbox{minimális Hamilton-út}) \\
+	                              & < 2\cdot c(\mbox{minimális Hamilton-kör)}    \\
+	                              & = 2\cdot OPT                                 \\
 \end{align*}
 
 \subsubsection{Christofides algoritmusa}
@@ -58,12 +58,12 @@ tehát az algoritmus által talált összköltség $\leq 2 \cdot$OPT.
 \emph{egy $\frac{3}{2}$-approximációs algoritmus}. Ez a második lépést két részre bontja:
 
 \begin{enumerate}[(a)]
-\item vegyük a feszitőfa páratlan foku pontjait. Ebből $2m$ darab van, tehát
-páros sok. $G$--ből elhagyjuk azon pontjait amelyek nincsenek benne ebben a
-halmazban. Legyen $H$ az így kapott gráf.
-\item keressünk egy minimális összsúlyú teljes párosítást $H$--ban. A párosítás
-éleit egészítsük ki (adjuk hozzá) a feszitőfához. $F$ most egy $n-1+m$ élű gráf.
-Ebben keressük az Euler kört.
+	\item vegyük a feszitőfa páratlan foku pontjait. Ebből $2m$ darab van, tehát
+	      páros sok. $G$--ből elhagyjuk azon pontjait amelyek nincsenek benne ebben a
+	      halmazban. Legyen $H$ az így kapott gráf.
+	\item keressünk egy minimális összsúlyú teljes párosítást $H$--ban. A párosítás
+	      éleit egészítsük ki (adjuk hozzá) a feszitőfához. $F$ most egy $n-1+m$ élű gráf.
+	      Ebben keressük az Euler kört.
 \end{enumerate}
 
 Tudjuk, hogy $F$ súlya $\leq$OPT. Tehát ahhoz, hogy az approximáció igaz legyen
@@ -76,9 +76,9 @@ költsége $\leq \frac{OPT}{2}$. Használjuk ezt az teljes párositást az
 algoritmushoz.
 
 Mig a $2$--approximáció idő igénye $cn^2$, addig a Christofidesé $cn^3$.
-Láthatjuk, hogy a jobb közelítés ára a nagyobb idő igény. Az euklideszi utazó 
-ügynők problémára nem létezzik teljes appróximációs séma, de a metrikus utazó 
-ügynők problémára igen. 
+Láthatjuk, hogy a jobb közelítés ára a nagyobb idő igény. Az euklideszi utazó
+ügynők problémára nem létezzik teljes appróximációs séma, de a metrikus utazó
+ügynők problémára igen.
 
 A gyakorlatban gyakran heurisztikus megkőzelitéseket használunk, amelyekre nem
 létezzik bizonyitás, hogy matematikailag helyes, de gyakorlatban jó eredményt

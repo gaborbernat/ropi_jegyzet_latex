@@ -8,8 +8,8 @@ rendszer. Egy adott $M=(E,F)$ struktúra matroid, ha teljesül, hogy:
 \begin{cases}
 \mbox{F1}) &\emptyset \in F \\
 \mbox{F2}) &\begin{rcases}
-X \in F \\ 
-Y \subseteq X 
+X \in F \\
+Y \subseteq X
 \end{rcases} \Rightarrow \parbox[L]{11cm}{$Y \in F$
 ($F$ \emph{leszálló halmazrendszer} -- ha egy halmaz benne van $F$--ben akkor annak összes
 részhalmaza is benne van $F$--ben, ehhez szükséges az F$1$ axióma).
@@ -25,7 +25,7 @@ kiegésztive szintén $F$--beli elemet kapunk).}
 \end{cases}
 \]
 
-Egy $M=(E,F)$ matroidban: 
+Egy $M=(E,F)$ matroidban:
 
 \begin{description}
   \item[független halamaznak] nevezzük $E$ alaphalmaz $F$--hez tartozó
@@ -38,7 +38,7 @@ Egy $M=(E,F)$ matroidban:
   amely nem független, de amelyből bárhogy veszünk el egy elemet a művelet
   függetlené tesszi.
   \item[körnek] nevezzük a minimálisan összefüggő halmazt.
-  \item[hurok] az egyelemű kör. 
+  \item[hurok] az egyelemű kör.
   \item[a halmaz rangja] egy $X\subseteq E$ halmaznak az $X$ maximális
   független részhalmazának mérete, elemszáma. Jelölése: $r(X)$.
   \item[a matroid rangja] az alaphalmaz rangja, azaz $r(E)$, ahol $r:2^E \mapsto \mathbb{Z}^+$.
@@ -66,10 +66,10 @@ $ &
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.3cm},
   }
   \node[p] (1) at (0, 0) {};
-  \node[p] (2) at (0, -1) {}; 
-  
+  \node[p] (2) at (0, -1) {};
+
   % the connection between the dots
-  \draw[bend left,-]  (1) to node [midway, right] {$a$} (2); 
+  \draw[bend left,-]  (1) to node [midway, right] {$a$} (2);
   \draw[bend right,-]  (1) to node [midway, left] {$b$} (2);
 \end{tikzpicture}
 & $U_{2,1}$ \\ \hline
@@ -84,12 +84,12 @@ $ &
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.3cm},
   }
   \node[p] (1) at (0, -3) {};
-  \node[p] (2) at (-1, -1) {}; 
+  \node[p] (2) at (-1, -1) {};
   \node[p] (3) at (+1 , -1) {};
-  
+
   % the connection between the dots
-  \draw[-] (1) -- (2) node [midway, above] {$c$}; 
-  \draw[-] (2) -- (3) node [midway, below] {$b$}; 
+  \draw[-] (1) -- (2) node [midway, above] {$c$};
+  \draw[-] (2) -- (3) node [midway, below] {$b$};
   \draw[-] (3) -- (1) node [midway, above] {$a$};
 \end{tikzpicture}
 & $U_{3,2}$ \\ \hline
@@ -104,14 +104,14 @@ $
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.3cm},
   }
   \node[p] (1) at (0, -3) {};
-  \node[p] (2) at (-1, -1) {}; 
+  \node[p] (2) at (-1, -1) {};
   \node[p] (3) at (+1 , -1) {};
   \node[p] (4) at (+1 , -1) {};
   \node[p] (5) at (+1 , -1) {};
-  
+
   % the connection between the dots
-  \draw[-] (1) -- (2) node [midway, above] {$c$}; 
-  \draw[-] (2) -- (3) node [midway, below] {$b$}; 
+  \draw[-] (1) -- (2) node [midway, above] {$c$};
+  \draw[-] (2) -- (3) node [midway, below] {$b$};
   \draw[-] (3) -- (1) node [midway, above] {$a$};
   \draw[bend left,-]  (3) to node [auto] {$d$} (1);
    \path (2) edge[loop left] node[left] {e} (2);
@@ -155,8 +155,8 @@ $
 	\end{scope}
  	\begin{scope}[yshift=-2cm]
 		\begin{scope}[xshift=-0.45cm]
-		\draw (0,0) node[vertex] (1){} 
-			-- ++(0:1cm) node[vertex] (2){} 
+		\draw (0,0) node[vertex] (1){}
+			-- ++(0:1cm) node[vertex] (2){}
 			-- ++(-72:1cm) node[vertex] {}
 			-- ++(-2*72:1cm) node[vertex] {}
 			-- ++(-3*72:1cm) node[vertex] {}
@@ -210,7 +210,7 @@ ahol:
 Az első három tulajdonság bizonyitása rögtön adódik a rang definiciójából. Az
 R$4$--re (ami a rangfüggvény szubmodularitása) legyen egy $X,Y \subseteq E$. $A$
 egy maximálisan független halmaz $X \cap Y$--ban ($A \subseteq X \cap Y),$ amely
-számossága $\alpha$. 
+számossága $\alpha$.
 
 Nyilván $A$ kiterjeszthető egy B halmazzá úgy, hogy az maximálisan független
 legyen $X \cup Y$--ban. Ehhez $X$--ből $\beta$ új elemet rakunk hozzá, és
@@ -220,10 +220,10 @@ r(X \cap Y) &= \alpha \\
 r(X \cup Y) &= \alpha + \beta + \gamma
 \end{align*}
 
-E számok korlátot szabnak $X$ és $Y$ rangjára is mint: 
+E számok korlátot szabnak $X$ és $Y$ rangjára is mint:
 
 \begin{align*}
-r(X) &\geq \alpha + \beta \\ 
+r(X) &\geq \alpha + \beta \\
 r(Y) &\geq \alpha + \gamma \\
 r(X) + r(Y) &\geq \underbrace{\alpha + \beta + \gamma}_{r(X \cup Y)} + \underbrace{\alpha}_{r(X \cap Y)} \\
 r(X) + r(Y) &\geq r(X \cup Y) + r(X \cap Y) \\
@@ -237,17 +237,17 @@ Példa arra, hogy az egyenlőség nem mindig áll fent:
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.3cm},
   }
   \node[p] (1) at (0, -3) {};
-  \node[p] (2) at (-1, -1) {}; 
+  \node[p] (2) at (-1, -1) {};
   \node[p] (3) at (+1 , -1) {};
-  
+
   % the connection between the dots
-  \draw[-] (1) -- (2) node [midway, above] {$c$}; 
-  \draw[-] (2) -- (3) node [midway, below] {$b$}; 
+  \draw[-] (1) -- (2) node [midway, above] {$c$};
+  \draw[-] (2) -- (3) node [midway, below] {$b$};
   \draw[-] (3) -- (1) node [midway, above] {$a$};
-\end{tikzpicture} 
+\end{tikzpicture}
 & $
 \begin{cases}
-X=(a,b), &r(X)=2 \\ 
+X=(a,b), &r(X)=2 \\
 Y=(a,c) &r(Y)=2  \\
 X \cup Y, &r(X \cup Y)=2 \\
 X \cap Y, &r(X \cap Y) = 1
