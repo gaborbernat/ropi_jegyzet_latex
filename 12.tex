@@ -1,21 +1,21 @@
 \section{Matroidok összege, k-matroid-metszet probléma és bonyolultsága}
 
 \[
-\begin{rcases}
-M_1=(E,F_1), \\
-M_2=(E,F_2)
-\end{rcases} 
-\Rightarrow
-M_1 \vee M_2  = (E,F'), X \in F' \Leftrightarrow X_1, X_2 
-\begin{cases}
-X=X_1 \cup X_2 \\
-X_1 \in F_1\\
-X_2 \in F_2
-\end{cases}
+	\begin{rcases}
+		M_1=(E,F_1), \\
+		M_2=(E,F_2)
+	\end{rcases}
+	\Rightarrow
+	M_1 \vee M_2  = (E,F'), X \in F' \Leftrightarrow X_1, X_2
+	\begin{cases}
+		X=X_1 \cup X_2 \\
+		X_1 \in F_1    \\
+		X_2 \in F_2
+	\end{cases}
 \]
 
 Tehát a matroid összegében azon elemek jelenek meg amelyek előállnak $F_1$ és
-$F_2$--beli elemek uniójáként. 
+$F_2$--beli elemek uniójáként.
 
 \vspace{0.4cm}
 \emph{Matroidok összege is matroid.}
@@ -25,12 +25,12 @@ A bizonyitáshoz ellenőrizzük a függetlenségi axiómákat. F$1$ és F$2$
 nyilvánvaló, tehát csak F$3$--at látjuk be indirekt. Tegyük fel, hogy nem igaz, $X,Y \in F'$
 és $|X|>|Y|$, de nem létezik $x \in X-Y$, hogy $Y+x \in F$. $X$ és $Y$
 halmazokank mindig létezik $X=X_1 \cup X_2$ és $Y=Y_1
-\cup Y_2 ~(X_1, Y_1 \in F_1, X_2, Y_2 \in F_2)$ felbontása.
+	\cup Y_2 ~(X_1, Y_1 \in F_1, X_2, Y_2 \in F_2)$ felbontása.
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.4\linewidth]{./kepek/matroidosszeg.png}
-\caption{Matroid összeg bizonyitás}\label{fig:Unif}
+	\centering
+	\includegraphics[width=0.4\linewidth]{./kepek/matroidosszeg.png}
+	\caption{Matroid összeg bizonyitás}\label{fig:Unif}
 \end{figure}
 
 Válasszunk egy olyan felbontást, hogy a részhalmazok diszjunktak legyenek,
@@ -49,7 +49,7 @@ feltvésünk hamis volt, F$3$ igaz.
 \emph{$M=(E,F)$ matroid szabadmatroid, ha bármely részhalmaza független.}
 
 \subsection{\texorpdfstring{Matroid metszet probléma -- MMP\textsubscript{$k$}}
-			{Matroid metszet probléma -- MMPk}}
+	{Matroid metszet probléma -- MMPk}}
 
 Adott $k$ darab matroid közös alaphalmazon: $M_i=(E,F_i)_{i=\overline{1,k}}$. A
 kérédés amire keressük a választ, hogy létezik e $p \in \mathbb{N}$ konstansra
@@ -66,12 +66,12 @@ Másképpen csonkoljuk a két matroidot amig rangjuk min$(r_1,r_2, p)$--re nem
 csökken:
 
 \[ \begin{rcases}
-M=(E,F) \mbox{ egy p rangú matroid} \\
-0 \leq k \leq p \\ 
-p \geq 1 
-\end{rcases} \parbox[t]{5.5cm}
-{$F' = \left\{ X \subseteq E: X \in F, |X| \leq k \right\}$ 
-$(E,F')~M$ csonkolat matroidja} \]
+		M=(E,F) \mbox{ egy p rangú matroid} \\
+		0 \leq k \leq p                     \\
+		p \geq 1
+	\end{rcases} \parbox[t]{5.5cm}
+	{$F' = \left\{ X \subseteq E: X \in F, |X| \leq k \right\}$
+		$(E,F')~M$ csonkolat matroidja} \]
 
 Ezzel a problémát redukáltuk a közös bázis megkeresésére. $r_1=r_2=p$--re a
 válasz akkor és csak akkor igenlő ha létezik ilyen méretű közös bázis, azaz ha
@@ -98,26 +98,26 @@ Hamilton út keresésére (amiről tudjuk, hogy egy NP teljes probléma). Legyen
 irányított gráfban $u$ és $v$ között Hamilton út keresés:
 
 \[
-\begin{cases}
-\begin{rcases}
-M_1=(E,F_1) \\
-X \subseteq E \\
-X \in F_1
-\end{rcases} &\Leftrightarrow \parbox[t]{10cm} {$X$ részgráfban minden pont
-befoka legfejlebb egy, és az $u$ befoka nulla.} \\
-\begin{rcases}
-M_2=(E,F_2) \\
-X \subseteq E \\
-X \in F_2
-\end{rcases} &\Leftrightarrow \parbox[t]{10cm} {$X$ részgráfban minden pont
-kifoka kisebb vagy egyenlő eggyel egy és a $v$ kifoka nulla.} 
-\end{cases}
+	\begin{cases}
+		\begin{rcases}
+			M_1=(E,F_1)   \\
+			X \subseteq E \\
+			X \in F_1
+		\end{rcases} & \Leftrightarrow \parbox[t]{10cm} {$X$ részgráfban minden pont
+		befoka legfejlebb egy, és az $u$ befoka nulla.}                              \\
+		\begin{rcases}
+			M_2=(E,F_2)   \\
+			X \subseteq E \\
+			X \in F_2
+		\end{rcases} & \Leftrightarrow \parbox[t]{10cm} {$X$ részgráfban minden pont
+			kifoka kisebb vagy egyenlő eggyel egy és a $v$ kifoka nulla.}
+	\end{cases}
 \]
 
 Ekkor M$_3$  a gráf körmatroidja, és M$_1$, M$_2$, M$_3$ közös $|V|-1$ elemű
 bázisai $G$ gráf irányított Hamilton útjai.
 
 \vspace{0.4cm}
-\emph{MMP$_k$, ha $k>3$ NP teljes.} 
+\emph{MMP$_k$, ha $k>3$ NP teljes.}
 A bizonyitáshoz az imént konstruált struktúrához vegyünk hozzá $k-3$ darab
 szabad matroidot.

@@ -117,7 +117,7 @@
 % isn't enough for us, because it is processed
 % after \usepackage[magyar]{babel}, but we need the options information
 % earlier. And also it cannot contain `='.
-% 
+%
 
 %** `\dMf foo-bar {...}' is `\def\foo-bar{...}' where `-' is a letter
 \def\dMf#1 {\expandafter\def\csname#1\endcsname}
@@ -904,7 +904,7 @@
   \ifx#1\hfuzz\else
     %%\typeout{(#1#2)=(#3)}%
     % vvv wastes some heap (\csname), but never mind
-  \fi    
+  \fi
 }
 
 
@@ -1182,7 +1182,7 @@
 %** @param #1 tokens, will be \edef\vfuzz'ed
 \def\@@magyar@az@vfuzzedef#1{%
   \begingroup
-  \@safe@activestrue% allow active `:' inside labels; 
+  \@safe@activestrue% allow active `:' inside labels;
   \def\hyper@@link[##1]##2##3##4{##4}% Dat: \def\b@abook{\hyper@@link [cite]{}{cite.sokt}{2}}% with hyperref.sty
   \let\romannumeral\number% by pts@fazekas.hu at Mon Oct 27 23:44:06 CET 2003
   % Dat: deliberately no \autoref for hyperref.sty !! (why??)
@@ -1576,7 +1576,7 @@
 
 \if0\magyar@opt@@captions\@@magyar@skiplong\fi
 \@namedef{captions\CurrentOption}{%
-  % Dat: inputenc isn't known, so we just use the safe \'a for accented letters 
+  % Dat: inputenc isn't known, so we just use the safe \'a for accented letters
   \def\prefacename{El\H osz\'o}%
   \def\refname{Hivatkoz\'asok}%
   \def\abstractname{Kivonat}%
@@ -2216,7 +2216,7 @@
     % [pts] We definitely want \numberline to emit table number in \listoftables as
     % `5.6.' instead of the default `5.6', but we don't want to redefine \@caption,
     % because the # args \addcontentsline adds to \contentsline depends on whether
-    % nameref.sty (hyperref.sty) is loaded (no nameref: 3, w/ nameref: 4); this 
+    % nameref.sty (hyperref.sty) is loaded (no nameref: 3, w/ nameref: 4); this
     % would cause the strange `Package hyperref Warning: No destination for
     % bookmark of \addcontentsline'.
     %   So we rather redefine \numberline. But we cannot simply add a dot, because
@@ -2666,7 +2666,7 @@
 
 %** Call \@@magyar@shorthand@... For example: {`tty} and
 %** {\@@magyar@shorthand tty} are interchangeable.
-%** @param #1 a char token. 
+%** @param #1 a char token.
 \def\@@magyar@shorthand#1{%
   \expandafter\ifx\csname @@magyar@shorthand@\string#1\endcsname\relax
     \@@magyar@error{Unknown shorthand: \string#1 }%
@@ -2684,7 +2684,7 @@
   \def\magyar@thinspaced#1{%
     % Dat: `!' at the end of the word is OK, but at the beginning it makes the
     %      word unhyphenatable. Imp: maybe \nobreak\hskip\z@skip?
-    % Dat: this is math-mode safe, because \ifhmode is false in math mode 
+    % Dat: this is math-mode safe, because \ifhmode is false in math mode
     \ifhmode% \ifhmode and \ifmmode are never true
       \ifdim\lastskip>\z@
         \unskip\penalty\@M\kern.1em% \thinspace is .16667em
@@ -3777,7 +3777,7 @@
 %** @param #1 \ref id or with \told
 %** (@param #2 1 to prefix with 1\ref{...}.~' in Hungarian order)
 %** @example \refstruc{sec:foo}
-%** @example \refstruc{sec:foo+as+an} 
+%** @example \refstruc{sec:foo+as+an}
 %** May not touch \reserved@a
 \def\@@magyar@refstruc@name#1{%
   \begingroup
@@ -4033,7 +4033,7 @@
 %** @example A mai dátum: [\emitdate{b}{\today}].
 %** @example [\emitdate[e]{g}{1848.15.3}] a nap, mikor elhangzott a Nemzeti dal.
 %** @example [\emitdate{b}{1956-10-23}]
-%** @example \told{\@@magyar@date@g{1848}{3}{115}}+a{} 
+%** @example \told{\@@magyar@date@g{1848}{3}{115}}+a{}
 %** @param SUFFIX any suffix for \told, e.g `e' or `adik+an'
 %** @param DATE date in any format, will be expanded
 %** @param FMT a single letter, specifies the format of the emitted date
@@ -4162,7 +4162,7 @@
     %     the very first run. Fine.
     \reserved@a
     }%\endgroup
-  }  
+  }
 
   \let\magyar@fo@resetzero\relax
 
@@ -4279,7 +4279,7 @@
   %     till \shipout.
   % (4) Put a \footnoterule (1/3\textwidth or 1/4\textwidth) if footnote is
   %     continued from previous page.
-  % [4] Not supported. Imp: how to?      
+  % [4] Not supported. Imp: how to?
   % (5) Multiple short footnotes may be put into a single line.
   % [5] \usepackage[para]{footmisc} or \usepackage{fnpara}
   % (6) Footnotes for \begin{figure} and \begin{table} must be put just under
@@ -4289,7 +4289,7 @@
   % [7] Use \footnotestyle{marksize=max-normal}
   % (8) It is possible to use either \parindent or \item when starting a
   %     footnote.
-  % [8] Use \footnotestyle{indent=hulist} 
+  % [8] Use \footnotestyle{indent=hulist}
   % (9) The footnotemark must be followed by a thin space (only at BOP).
   % [9] OK, see \@makefntext
   % (10) Don't emit too much stars. Recommended: * ** *** + ++ +++
@@ -4328,7 +4328,7 @@
   \@namedef{fos@reset=page-resume}{%
     \fos@resume \csname fos@reset=page\endcsname
   }
-  %** Resume to the previous footnote number at the end of the group. (Default: don't resume)	       
+  %** Resume to the previous footnote number at the end of the group. (Default: don't resume)
   %** \footnotestyle{resume,reset=page} is the correct order
   \def\fos@resume{%
     \aftergroup\global
@@ -4372,7 +4372,7 @@
   \def\fos@starplain{\fos@huplain\csname fos@reset=page\endcsname\csname fos@mark=stars-max\endcsname}%
   %\def\fos@editor{\fos@resume\fos@starplain}%
   \def\fos@editor{\fos@huplain\csname fos@reset=page-cont\endcsname\csname fos@mark=stars-max\endcsname}%
-  
+
   \def\footnotestyle#1{%
     \@for\reserved@a:=#1\do{%
       \@ifundefined{fos@\reserved@a}{\@latex@error{Undefined footnote style: \reserved@a}\@ehc}%
@@ -4525,7 +4525,7 @@
     \fi
     \catcode`#112
   }
-  %** \newmcodes@ defined in amsopn.sty doesn't work (triggered by 
+  %** \newmcodes@ defined in amsopn.sty doesn't work (triggered by
   %** \DeclareMathOperator{\tg}{tg} $\tg$) because it wants to assign
   %** \mathchardef\std@minus\mathcode`\-, which is "8000, which is a bad
   %** matchar. We fix that by prepending \mathcode`-45 to \newmcodes@ .
@@ -4649,7 +4649,7 @@
   %** Inspired by Donald Aresenau
   %** @param #1 the
   %** @param #2 character
-  %** @example The sample in your article would be typed 
+  %** @example The sample in your article would be typed
   %**   \[  F_{i}(x,y) = y^i + 1,3x \qquad x,y \in A,\ i = 1, 2, 3,\ldots \]
   \edef\@@magyar@hucomma@lowa#1#2 #3#4 #5#6\hfuzz{%
     \noexpand\ifnum9<1#5 \noexpand\if#1t\noexpand\if#3c%
@@ -4676,7 +4676,7 @@
 
 % --- mathmuskips=
 
-% 
+%
 \if1\magyar@opt@@mathmuskips% =latex, as defined in latex.ltx
   \thickmuskip 5mu plus 5mu
   \medmuskip   4mu plus 2mu minus 4mu
@@ -5437,8 +5437,8 @@
 %      Solution #2: (won't convert any heading to uppercase)
 %        % change the definition of \ps@headings, remove \MakeUppercase
 %        \makeatletter \def\ps@headings{%
-%          \let\@oddfoot\@empty \let\@mkboth\markboth  
-%          \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%  
+%          \let\@oddfoot\@empty \let\@mkboth\markboth
+%          \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
 %          \def\sectionmark##1{\markright {\iffalse\MakeUppercase\fi{%
 %            \ifnum \c@secnumdepth >\m@ne \thesection\quad \fi##1}}}}
 \if0\magyar@opt@@cjhebrewfix \@@magyar@skiplong\fi
@@ -5492,7 +5492,7 @@
 \if0\magyar@opt@@varioref \@@magyar@skiplong\fi
 \expandafter\addto\csname extras\CurrentOption\endcsname{%
   \@@magyar@setup@varioref} % Dat: we are we late enough so we override varioref.sty
-% vvv don't apply changes if varioref.sty wasn't loaded 
+% vvv don't apply changes if varioref.sty wasn't loaded
 \AtBeginDocument{\expandafter\ifx\csname vpagerefrange\endcsname\relax
   \let\@@magyar@setup@varioref\@empty\fi}
 \def\@@magyar@setup@varioref{% Dat: must be a separate macro for suggestions= not to find our \reftextfaceafter etc.
@@ -5688,15 +5688,15 @@
 % !! hyperref.sty bugfix when turning hyperref.sty on, \ref is spoiled:
 %    w/ or w/o magyar.ldf
 %    ! Argument of \@fifthoffive has an extra }.
-%    <inserted text> 
-%                    \par 
+%    <inserted text>
+%                    \par
 %    l.48 Ld. \ref{tab}
 % !! >    Kipróbáltam, s tényleg pontosan ugyanaz a fájl magyar.ldf (texmf fában) és
 %    > magyar-0510.ldf (aktuális könyvtárban) néven más eredményt ad.
 %    (cjhebrew)
 % !! a4wide.sty doesn't compile
 %    \documentclass[12pt,a4paper]{article}
-%    \usepackage{t1enc}                   
+%    \usepackage{t1enc}
 %    \usepackage{times}% Imp: math mode
 %    \usepackage[magyar]{babel}
 %    \usepackage{graphicx}
@@ -5716,13 +5716,13 @@
 % Dat:  \mathchardef\comma="613B  % a veszõ (,) ami matematikai módban elválasztó karakterként használható
 % Dat: additive \PassOptionsToPackage{foo=bar}{magyar.ldf}
 % Dat: for book.cls and article.cls: the user has to run \pagestyle{headings} after \selectlanguage{magyar} -- for performance reasons
-% Dat: doc: \let\@@magyar@setup@psheadings\relax maybe needed in the preamble 
+% Dat: doc: \let\@@magyar@setup@psheadings\relax maybe needed in the preamble
 % Dat: \pagestyle{headings} is forced \AtBeginDocument -- user should change it later
 % Dat: babel.def assumes we have: \textquotedblright \textquoteright \ll \gg
 %      < >
 % Dat: babel.def defines for OT1 and others: \quotedblbase \quotesinglbase
 %      \guillemotleft \guillemotright \guilsinglleft \guilsinglright \ij \IJ
-%      \dj \DJ \SS 
+%      \dj \DJ \SS
 % Dat: babel.def defines the following robust commands in math and text modes:
 %      \glq \grq \glqq \grqq \flq \frq \flqq \frqq
 % Dat: OT1 encoding respects accents=low (\umlauthigh and \umlautlow), but T1
@@ -5744,7 +5744,7 @@
 %    $\displaystyle{1\over3}-{1\over 4}={1\over 12}$,
 %    $\displaystyle{1\over 2}-{1\over 4}={1\over 4}$ és
 %    $\displaystyle{1\over 4}+\bigg({1\over 2}-{1\over 3}\bigg)={1\over 4}+{1\over 6}}=\displaystyle{5\over 12}$
-%    területegység. 
+%    területegység.
 % OK: doc in magyarldf-doc.tex: enumeration in math, see $a,\ b$ in nath.sty
 % OK: mathbrk=fix +\\+ (all binary ops and relations) in math, \nobreak\cdot, \nobreak\slash
 % OK: footnote text indented, asterisks on pages

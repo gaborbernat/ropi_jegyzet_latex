@@ -18,7 +18,7 @@ van teljesen P approximációs séma.
 \begin{rcases}
 A=\{a_1, a_2, \cdots a_n\} \\
 a_{i=\overline{1,n}},~t \in F
-\end{rcases} \Rightarrow \exists ?~B \subseteq A,  \mbox{ hogy } \sum b_i =t 
+\end{rcases} \Rightarrow \exists ?~B \subseteq A,  \mbox{ hogy } \sum b_i =t
 \]
 
 Partíciós problémáról beszélünk, ha $t = \frac{\sum a_i}{2}$. Mindkét esetben a
@@ -32,7 +32,7 @@ NP-teljes.
 \vspace{0.4cm}
 \emph{A részösszeg probléma probléma teljesen polinomiális sémával közelíthető.}
  \vspace{0.4cm}
- 
+
 A bizonyítás egy konkrét algoritmus lesz:
 
 \begin{enumerate}
@@ -43,22 +43,22 @@ a_n$. Definiáljunk két halmazsorozatot:
 \begin{align*}
 L_i' = \{ I + a_i | I \in L_i\}, & \mbox{ ahol } L_0 = \{ 0\} \\
 L_{i+1}=L_i \cup L_i' & \\
-\end{align*} 
+\end{align*}
 
 Az optimális részletösszeg max$\{I|I \in L_n \mbox{ és } I \leq t\}$ lesz.
 
 Például, ha $a_1=3~a_2=5~a_3=7$:
-{ 
+{
 \begin{align*}
     &&~L_0 &= \{ 0 \} \\
 L_0'&= \{ 3 \} &~ L_1 &= \{ 0, 3\} \\
 L_1'&= \{ 5,8 \} &~ L_2 &= \{ 0, 3, 5, 8\} \\
 L_2'&= \{ 7, 10, 12, 15 \} &~ L_3 &= \{ 0, 3, 5, 7, 8, 10, 12, 15\} \\
-\end{align*}}  
+\end{align*}}
   \item \emph{Polinomiális közelítő algoritmus} \\
   Egyrészt vegyük észre, hogy az $L_i'$ halmazokból nincs szükségünk a $t$--nél
   nagyobb elemekre. Töröljük ki ezeket: $L_i' = (L_i+a_i) \cap [0 \cdots t]$.
-  
+
   Ugyanakkor, ritkítsuk a halmazt $\delta$--val: legyen $L$ a növekvő sorrendbe
   rendezett halmaz. Ezután a halmaz minden elemét vizsgáljuk meg, növekvő
   sorrendben, ha létezik kisebb elem ($m$) az aktuálisnál ($l$) amelyre
@@ -79,7 +79,7 @@ meg a következő lemmát:
 Ha $X=0$ mindkét oldal nulla lesz, tehát az állítás igaz. Ha $X \geq 0$:
 
 \[ \left( \ln{(1+X)} - \frac{X}{1+X}\right)' = \frac{1}{1+X} - \frac{(1+X)-X}{(1+X)^2} =
-\frac{1}{1+X} - \frac{1}{(1+X)^2} > 0 
+\frac{1}{1+X} - \frac{1}{(1+X)^2} > 0
 \]
 Tehát a derivált pozitív, amiből következik, hogy a függvény monotonan nő, tehát
 a lemma igaz.
@@ -87,7 +87,7 @@ a lemma igaz.
 Most az algoritmus lépészámát vizsgálva, a kapott halmaz mérete:
 
 \[ \log_{1+\delta}{t}=\log_{1+\frac{\epsilon}{2n} }{t} = \frac{\ln{t}}{\ln(1+\frac{\epsilon}{2n})}
-\leq \frac{\ln{t}}{\frac{\frac{\epsilon}{2n}}{1+\frac{\epsilon}{2n}}} 
+\leq \frac{\ln{t}}{\frac{\frac{\epsilon}{2n}}{1+\frac{\epsilon}{2n}}}
 = \left(1 + \frac{\epsilon}{2n} \right) \cdot 2n \cdot \frac{\ln{t}}{\epsilon} \]
 
 Az egyenlőtlenséghez felhasználtuk a lemmát $\left(\ln(1+\dfrac{\epsilon}{2n})
@@ -117,8 +117,8 @@ Ahhoz, hogy ez igaz legyen bizonyitanunk kell, hogy $(1+\frac{\epsilon}{2n})^n
 \leq 1 + \epsilon$ is igaz:
 
 \begin{align*}
-\left(1+\frac{\epsilon}{2n}\right)^n &= 
-\sum_{i=0}^{n}\left(\frac{\epsilon}{2n}\right)^i \cdot 1^{n-i} \cdot \binom{n}{i} = 
+\left(1+\frac{\epsilon}{2n}\right)^n &=
+\sum_{i=0}^{n}\left(\frac{\epsilon}{2n}\right)^i \cdot 1^{n-i} \cdot \binom{n}{i} =
  \sum_{i=0}^{n}\left(\frac{\epsilon}{2n}\right)^i \cdot \frac{n!}{i!(n-i)!}
  \leq 1 + \sum_{i=0}^{n}\left(\frac{\epsilon}{2n}\right)^i \cdot n^i \\
  &\leq 1 + \sum_{i=1}^{n}\left(\frac{\epsilon}{2}\right)^i = 1 + \frac{\epsilon}{2}

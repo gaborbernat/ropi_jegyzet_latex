@@ -1,64 +1,64 @@
-\skiptooddpage 
+\skiptooddpage
 \section[A lineáris programozás dualitás tétele]{A lineáris programozás dualitás
-tétele (két alakban), a lineáris programozás alapfeladatának bonyolultsága}
+  tétele (két alakban), a lineáris programozás alapfeladatának bonyolultsága}
 
 \subsection{A lineáris programozás dualitás tétele (két alakban)}
-A tétel kijelenti, hogy ha: 
+A tétel kijelenti, hogy ha:
 
 $ \begin{rcases}
-\mbox{LP: max}\left\{cx:Ax \leq b\right\} \\
-\mbox{megoldható} \\
-\mbox{felülről korlátos}
-\end{rcases} \Rightarrow$ $\begin{cases}
-\circled{1} \begin{cases}
-\mbox{DP: min} \left\{ yb:yA = c, y \geq 0 \right\} \\
-	\mbox{megoldható} \\ 
-	\mbox{alulról korlátos}  
-\end{cases} \\
-\circled{2} \begin{cases}
-\mbox{LP--nek } \exists \mbox{ maximuma} \\
-\mbox{DP--nek } \exists \mbox{ minimuma} 
-\end{cases}\\
-\circled{3} \mbox{ maximum } = \mbox{ minimum}
-\end{cases}$
+		\mbox{LP: max}\left\{cx:Ax \leq b\right\} \\
+		\mbox{megoldható}                         \\
+		\mbox{felülről korlátos}
+	\end{rcases} \Rightarrow$ $\begin{cases}
+		\circled{1} \begin{cases}
+			            \mbox{DP: min} \left\{ yb:yA = c, y \geq 0 \right\} \\
+			            \mbox{megoldható}                                   \\
+			            \mbox{alulról korlátos}
+		            \end{cases} \\
+		\circled{2} \begin{cases}
+			            \mbox{LP--nek } \exists \mbox{ maximuma} \\
+			            \mbox{DP--nek } \exists \mbox{ minimuma}
+		            \end{cases}            \\
+		\circled{3} \mbox{ maximum } = \mbox{ minimum}
+	\end{cases}$
 
 Ezzel ekvivalens alakja az LP és a DP-nek a:
 \begin{align*}
-\mbox{LP: max} &\left\{ cx:Ax \leq b, x \geq 0 \right\} \\
-\mbox{DP: min} &\left\{ yb:yA \geq c, y \geq 0 \right\}.
+	\mbox{LP: max} & \left\{ cx:Ax \leq b, x \geq 0 \right\}  \\
+	\mbox{DP: min} & \left\{ yb:yA \geq c, y \geq 0 \right\}.
 \end{align*}
 
-Az \circled{1}--est bizonyítottuk az LP korlátosságánál, a \circled{2} és 
+Az \circled{1}--est bizonyítottuk az LP korlátosságánál, a \circled{2} és
 \circled{3}--hoz felhasználjuk a következő \emph{lemmát}:
 
 \[
-\begin{rcases}
-Ax \leq b \mbox{ megoldható} \\
-t \in \mathbb{R} \\
-Ax \leq b \mbox{--nek } \not \exists~x \mbox{ megoldása, hogy } cx \geq t
-\end{rcases} \Rightarrow
-\parbox[t]{6cm}{
-$\{yA=c, y \geq 0\}$--nak $\exists$ olyan megoldása amelyre  $yb < t$.}
+	\begin{rcases}
+		Ax \leq b \mbox{ megoldható} \\
+		t \in \mathbb{R}             \\
+		Ax \leq b \mbox{--nek } \not \exists~x \mbox{ megoldása, hogy } cx \geq t
+	\end{rcases} \Rightarrow
+	\parbox[t]{6cm}{
+		$\{yA=c, y \geq 0\}$--nak $\exists$ olyan megoldása amelyre  $yb < t$.}
 \] A lemma \emph{bizonyításhoz}, átfogalmazzuk a bal oldalt mint egy Farkas
 lemma alak:
 $\begin{cases} Ax \leq b \\
--cx \leq -t \end{cases}$, és tudjuk, hogy a rendszer nem megoldható (nem
+		-cx \leq -t\end{cases}$, és tudjuk, hogy a rendszer nem megoldható (nem
 létezik $x$ ami teljesiti). Alkalmazzuk rá a Farkas--lemmát, ennek második
 alakja felírható, mint ($\lambda \geq 0, y
-\geq 0$):
+	\geq 0$):
 \begin{align*}
-\begin{bmatrix} y & \lambda\end{bmatrix}
-\begin{bmatrix} A \\ -c \end{bmatrix} = yA - \lambda c = 0 &\Rightarrow 
-yA = \lambda c, \\
-\begin{bmatrix} y & \lambda\end{bmatrix}
-\begin{bmatrix} b \\ -t \end{bmatrix} =yb~ - \lambda t < 0 &\Rightarrow 
-yb < \lambda t
+	\begin{bmatrix} y & \lambda\end{bmatrix}
+	\begin{bmatrix} A \\ -c \end{bmatrix} = yA - \lambda c = 0 & \Rightarrow
+	yA = \lambda c,                                                          \\
+	\begin{bmatrix} y & \lambda\end{bmatrix}
+	\begin{bmatrix} b \\ -t \end{bmatrix} =yb~ - \lambda t < 0 & \Rightarrow
+	yb < \lambda t
 \end{align*}
 
 Ha $\lambda=0 \Rightarrow \begin{rcases}
-yA = 0, \\
-y \geq 0, \\
-yb <  0 \end{rcases} \xRightarrow{\text{Farkas--lemma}}$ $Ax \leq b$ nem
+		yA = 0,   \\
+		y \geq 0, \\
+		yb <  0\end{rcases} \xRightarrow{\text{Farkas--lemma}}$ $Ax \leq b$ nem
 megoldható, de ez ellentmondás az állításnak, tehát $\lambda$ nem lehet nulla
 ($\lambda \neq 0$). Legyen $y'=\frac{1}{\lambda}y$ így az egyenletrendszer
 $y'A=c,~y'\geq0,~y'b<t$ alakú lesz és ezzel megadtunk minden $y$--ra egy
@@ -79,15 +79,15 @@ bizonyításhoz használjuk fel az LP bizonyítást, átírva a feladatott max--
 -- egység mátrix):
 
 \[ max \left\{ (-b)^T y^T :
-\begin{cases}
-(~~A^T)y^T    &\leq~~c^T \\
-(-A^T) y^T &\leq -c^T \\
-(-E~~)y^T    &\leq~~0 \\
-\end{cases}  \right\} \]
- 
+	\begin{cases}
+		(~~A^T)y^T & \leq~~c^T \\
+		(-A^T) y^T & \leq -c^T \\
+		(-E~~)y^T  & \leq~~0   \\
+	\end{cases}  \right\} \]
+
 A \circled{3} \emph{bizonyításához} már láttuk, hogy a \[ \mbox{max}\left\{
-cx:Ax \leq b \right\} \leq
-   \mbox{min}\left\{ yb:yA = c, y \geq 0 \right\}
+	cx:Ax \leq b \right\} \leq
+	\mbox{min}\left\{ yb:yA = c, y \geq 0 \right\}
 \] fennáll. Legyen $t=\mbox{min}\{ yb:yA~=~c, y~\geq~0 \}$ és tegyük fel, hogy a
 fenti egyenlőtlenségben nem egyenlőség áll.  Tehát ekkor az LP--nek
 $\not\exists~cx \geq t$ kifejezést teljesítő megoldása, amiből következik,
@@ -97,15 +97,15 @@ választásának, tehát feltevésünk hamis volt.
 \subsection{LP bonyolultság}
 
 Az LP feladat megfogalmazható, mint eldöntési probléma: $\exists?$ az $Ax \leq
-b$--t kielégítő x vektor amelyre $cx\geq t$? A probléma NP--beli. Tanú egy ilyen
+	b$--t kielégítő x vektor amelyre $cx\geq t$? A probléma NP--beli. Tanú egy ilyen
 $x$. Ugyanakkor coNP--beli is, a duális feladat megoldása tanú erre. $x, y$
 mérete véges.
 
 \begin{description}
-  \item[1947 -- Dantzig -- Szimplex módszer] Hatékony gyakorlati feladatokon, de
-  exponenciális komplexitású.
-  \item[1979 --  Hacsijan -- ellipszoid módszer] Polinomiális komplexitás, de
-  gyakorlatban lassú.
-  \item[1984 --  Karmakar -- belső pontos módszer]  Polinomiális, hatékonyabb az
-  ellipszoidnál, de ez is a gyakorlatban lassabb a szimplexnél.
+	\item[1947 -- Dantzig -- Szimplex módszer] Hatékony gyakorlati feladatokon, de
+	      exponenciális komplexitású.
+	\item[1979 --  Hacsijan -- ellipszoid módszer] Polinomiális komplexitás, de
+	      gyakorlatban lassú.
+	\item[1984 --  Karmakar -- belső pontos módszer]  Polinomiális, hatékonyabb az
+	      ellipszoidnál, de ez is a gyakorlatban lassabb a szimplexnél.
 \end{description}

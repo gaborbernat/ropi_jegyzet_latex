@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/cmhughes/latexindent.pl
+    rev: V3.24.4
+    hooks:
+      - id: latexindent
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: "v3.3.3"
+    hooks:
+      - id: prettier
+        args: ["--print-width=120", "--prose-wrap=always"]

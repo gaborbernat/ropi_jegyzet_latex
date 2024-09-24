@@ -4,8 +4,8 @@
 \subsection{Egészértékű programozás}
 A feladat:
 \begin{align*}
-IP &: \left\{\mbox{max }{cx: Ax \leq b, x \mbox{ egész}}\right\} \\
-DIP &: \left\{ \mbox{min }{yb: yA=c, y \geq 0, y \mbox{ egész}}\right\}
+	IP  & : \left\{\mbox{max }{cx: Ax \leq b, x \mbox{ egész}}\right\}       \\
+	DIP & : \left\{ \mbox{min }{yb: yA=c, y \geq 0, y \mbox{ egész}}\right\}
 \end{align*}
 \[ \mbox{max(IP)} \leq \mbox{max(LP)}= \mbox{min(DLP)} \leq \mbox{min(DIP)} \]
 
@@ -19,19 +19,19 @@ független ponthalmazra (elég az egyik is).
 \subsubsection{Maximális független ponthalmaz}
 
 $ \begin{cases}
-input: \mbox{G(v,e) gráf, h szám} \\
-output: \alpha (G) >= h? \\
-	\mbox{Minden csúcsra: }
-	\forall x_i 0 <= x_i <= 1, x_i \in \mathbb{Z}
-	\xRightarrow{}
-	x_i = \begin{cases}
-		\mbox{1, ha az i-edik csúcs bekerül} \\
-		\mbox{0, ha nem}
-	\end{cases} \\
-\mbox{Minden élre: }
-x_i + x_j <= 1 \\
-max: x_1 + x_2 \ldots + x_n
-\end{cases}$
+		input: \mbox{G(v,e) gráf, h szám}          \\
+		output: \alpha (G) >= h?                   \\
+		\mbox{Minden csúcsra: }
+		\forall x_i 0 <= x_i <= 1, x_i \in \mathbb{Z}
+		\xRightarrow{}
+		x_i = \begin{cases}
+			      \mbox{1, ha az i-edik csúcs bekerül} \\
+			      \mbox{0, ha nem}
+		      \end{cases} \\
+		\mbox{Minden élre: }
+		x_i + x_j <= 1                             \\
+		max: x_1 + x_2 \ldots + x_n
+	\end{cases}$
 
 Ezzel az IP segítségével megoldottuk a max. ftl. problémát, tehát az NP-teljes.
 
@@ -40,8 +40,8 @@ A bizonyításhoz megadjuk a visszavezetést: definiálunk egy eljárást, amely
 logikai függvényhez megad egy olyan IP problémát, melyre akkor és csak akkor igenlő a
 válasz, ha a függvény kielégíthető. A függvény alakja:
 
-\[ f(x_1, x_2, \cdots, x_k) = \bigwedge_{i=1}^{d}{\left( x_{i_1}^{e_{i_1}} \vee 
-x_{i_2}^{e_{i_2}} \vee x_{i_3}^{e_{i_3}}\right).} 
+\[ f(x_1, x_2, \cdots, x_k) = \bigwedge_{i=1}^{d}{\left( x_{i_1}^{e_{i_1}} \vee
+	x_{i_2}^{e_{i_2}} \vee x_{i_3}^{e_{i_3}}\right).}
 \]
 Az IP probléma ismeretlenjei legyenek $z_{i=\overline{1,k}}$ egyenlőtlenségek,
 ahol $0 \leq z_{i=\overline{1,k}} \leq 1$. Továbbá minden diszjunkcióra is felírunk egy
@@ -49,14 +49,14 @@ egyenlőtlenséget:
 
 
 \begin{align*}
-z_{i_1} &+ z_{i_2} &+      z_{i_3}  &\geq 1 & \mbox{ ha }~~x_{i_1} \vee~~x_{i_2}\vee~~x_{i_3}& \\
-z_{i_1} &+ z_{i_2} &+ (1 - z_{i_3}) &\geq 1 & \mbox{ ha }~~x_{i_1} \vee~~x_{i_2} \vee \neg x_{i_3}& \\
-z_{i_1} &+ (1-z_{i_2}) &+ (1 - z_{i_3})  &\geq 1 & \mbox{ ha }~~x_{i_1} \vee \neg x_{i_2} \vee\neg x_{i_3}&\\
-(1-z_{i_1}) &+ (1-z_{i_2}) &+ (1 - z_{i_3})  &\geq 1 & \mbox{ ha } \neg x_{i_1} \vee \neg x_{i_2} \vee \neg x_{i_3}&
+	z_{i_1}     & + z_{i_2}     & +      z_{i_3}  & \geq 1 & \mbox{ ha }~~x_{i_1} \vee~~x_{i_2}\vee~~x_{i_3}              & \\
+	z_{i_1}     & + z_{i_2}     & + (1 - z_{i_3}) & \geq 1 & \mbox{ ha }~~x_{i_1} \vee~~x_{i_2} \vee \neg x_{i_3}         & \\
+	z_{i_1}     & + (1-z_{i_2}) & + (1 - z_{i_3}) & \geq 1 & \mbox{ ha }~~x_{i_1} \vee \neg x_{i_2} \vee\neg x_{i_3}      & \\
+	(1-z_{i_1}) & + (1-z_{i_2}) & + (1 - z_{i_3}) & \geq 1 & \mbox{ ha } \neg x_{i_1} \vee \neg x_{i_2} \vee \neg x_{i_3} &
 \end{align*}
 
 Ha $f$ kielégíthető, akkor $z_i=1 \Leftrightarrow x_i=$ ,,igaz''. Ez lesz az
-egyenletrendszer egészértékű megoldása. 
+egyenletrendszer egészértékű megoldása.
 
 Megfordítva, ha az egyenlőtlenség--rendszert egész $z_i$ értékkel ki tudjuk
 elégíteni akkor -- mivel minden egész vagy $0$, vagy $1$ -- az $x_i$=,,igaz''
@@ -65,14 +65,14 @@ változónak.
 
 Eközben a $\sum_{i=1}^{k}{z_i}$ összeg értétek valahol $0$ és $k$ között adódik,
 tehát $c$--enk $(1,1,\cdots,1)$ választással tulajdonképpen a \emph{,,Van-e a fenti
-egyenlőtlenségrenszerek feltételeit kielégítő (egész) vektorok között olyan,
-melyre $cz \geq 0$?''} kérdést tesszük fel. Az így kapott IP feladatra a válasz
+	egyenlőtlenségrenszerek feltételeit kielégítő (egész) vektorok között olyan,
+	melyre $cz \geq 0$?''} kérdést tesszük fel. Az így kapott IP feladatra a válasz
 akkor és csak akkor igenlő, ha az f kielégíthető.
 
 \subsection{A korlátozás és szétválasztás az IP feladatra}
 
 Alakja $\mbox{max} \left\{cx:Ax \leq b, f \leq x \leq g| x,f,g \in \mathbb{Z}^n
-\right\},$ ahol az $f$ és $g$ korlátok, amelyek biztosítják, hogy a feladat véges sok
+	\right\},$ ahol az $f$ és $g$ korlátok, amelyek biztosítják, hogy a feladat véges sok
 lépésben megoldható. A metódus kulcsgondolata, hogy az IP feladat megoldásához először
 megoldjuk mint LP, ha az eredmény egész megvagyunk, egyébként tovább bontjuk két kisebb
 IP feladatra. Legyen $w^*=cx^*$, az egyenlőtlenség mindig $Ax \leq b$ marad.
@@ -80,31 +80,31 @@ IP feladatra. Legyen $w^*=cx^*$, az egyenlőtlenség mindig $Ax \leq b$ marad.
 Az algoritmus folyamata:
 
 \begin{enumerate}
-  \setcounter{enumi}{-1}
-  \item $\overbrace{L=\left\{ \left(
-  \overbrace{f}^{\text{alsó}},\overbrace{g}^{\text{felső}},\overbrace{\infty}^{w
-  \text{ -- maximum értéke}} \right) \right\}}^{\text{IP részfeladatok}},
-  \overbrace{w^*=-\infty}^{\text{eddigi legjobb célfüggvény érték}},
-  \overbrace{x^*}^{\text{legjobb megoldás}}$
-  \item Ha $L=\emptyset \Rightarrow$ \emph{vége} és a megoldás az aktuális $w^*$
-  és $x^*$.
-  
-  Egyébként $L$--ből vegyük ki IP$_i$ feladatot $\Rightarrow (f_i, g_i, w_i)$.
-  \item Ha $w_i \leq w^*$, IP$_i$--nek a megoldása nem lehet $w^*$--nál jobb,
-  folytassuk az első ponttól (ez a \emph{Bound} lépés).
-  \item Oldjuk meg a relaxált IP$_i$ feladatot (LP$_i$--t).
-  \\ Ha $\not \exists$ megoldás visszalépünk az első ponthoz.
-  \\ Egyébként: $w^{LP}_{i}$ -- maximum érték,  $x_i$ -- maximum hely.
-  \item Ha $w^{LP}_{i} \leq w^*$, IP$_i$ feladat és rész feladatai maximum értéke is
-  legfeljebb $w^*$, lépjünk vissza az első ponthoz.
-  \item Ha $w^{LP}_{i} > w^* \mbox{ és } x_i \in \mathbb{Z}^{n}$ akkor $ w^* = w^{LP}_{i}, x^* =
-  x_i$ (adat frissítés) és visszalépünk az első ponthoz.
-  \item Választunk egy közbenső értéket $(f_{i_j} \leq t \leq g_{i_j})$ és egy
-  ezt meghatározó $x_j$ elágazás változót $x_i$--ből ($j$ egy pozíció $x$
-  vektorban, $i$ az IP feladat sorszámát jelöli). Ezután $L$--ben elhelyezzünk
-  két új feladatott:  $(t+1, g, w^{LP}_{i})$ és $(f, t, w^{LP}_{i})$. Lépjünk vissza az első
-  ponthoz (\emph{Branch} lépés).
-\end{enumerate} 
+	\setcounter{enumi}{-1}
+	\item $\overbrace{L=\left\{ \left(
+			      \overbrace{f}^{\text{alsó}},\overbrace{g}^{\text{felső}},\overbrace{\infty}^{w
+				      \text{ -- maximum értéke}} \right) \right\}}^{\text{IP részfeladatok}},
+		      \overbrace{w^*=-\infty}^{\text{eddigi legjobb célfüggvény érték}},
+		      \overbrace{x^*}^{\text{legjobb megoldás}}$
+	\item Ha $L=\emptyset \Rightarrow$ \emph{vége} és a megoldás az aktuális $w^*$
+	      és $x^*$.
+
+	      Egyébként $L$--ből vegyük ki IP$_i$ feladatot $\Rightarrow (f_i, g_i, w_i)$.
+	\item Ha $w_i \leq w^*$, IP$_i$--nek a megoldása nem lehet $w^*$--nál jobb,
+	      folytassuk az első ponttól (ez a \emph{Bound} lépés).
+	\item Oldjuk meg a relaxált IP$_i$ feladatot (LP$_i$--t).
+	      \\ Ha $\not \exists$ megoldás visszalépünk az első ponthoz.
+	      \\ Egyébként: $w^{LP}_{i}$ -- maximum érték,  $x_i$ -- maximum hely.
+	\item Ha $w^{LP}_{i} \leq w^*$, IP$_i$ feladat és rész feladatai maximum értéke is
+	      legfeljebb $w^*$, lépjünk vissza az első ponthoz.
+	\item Ha $w^{LP}_{i} > w^* \mbox{ és } x_i \in \mathbb{Z}^{n}$ akkor $ w^* = w^{LP}_{i}, x^* =
+		      x_i$ (adat frissítés) és visszalépünk az első ponthoz.
+	\item Választunk egy közbenső értéket $(f_{i_j} \leq t \leq g_{i_j})$ és egy
+	      ezt meghatározó $x_j$ elágazás változót $x_i$--ből ($j$ egy pozíció $x$
+	      vektorban, $i$ az IP feladat sorszámát jelöli). Ezután $L$--ben elhelyezzünk
+	      két új feladatott:  $(t+1, g, w^{LP}_{i})$ és $(f, t, w^{LP}_{i})$. Lépjünk vissza az első
+	      ponthoz (\emph{Branch} lépés).
+\end{enumerate}
 
 Az algoritmus véges sok lépésben leáll és megtalálja a feladat optimumát. A
 véges sok lépést $f$ és $g$ vektor garantálja, hiszen a kezdetben kitűzött
@@ -125,55 +125,55 @@ hogy az eljárás során a lista sosem ürült ki, de ekkor az algoritmus sose
 
 \subsection{Gyakorlati tanácsok}
 \begin{itemize}
-  \item LIFO alapú új feladat választás $L$--ből, mert a megoldás várhatóan
-  mélyen van a fába és ez tud legmélyebbre leggyorsabban lenyúlni. Ugyanakkor a
-  duál szimplex módszerrel lehetséges így a korábbi számitások újra felhasználása.
-  \item Elágazásnál a legkevésbé egész $x_j$--t válasszuk elágazási változónak
-  (ez a relaxált IP feladatt megoldásának helyvektora, azaz azt az indexet ahol
-  e vektor elemének törtrésze $\frac{1}{2}$-höz legközelebb van), közbülső
-  értéknek pedig ennek egész értékét (lefelé kerekitve) válasszuk. Ez azt
-  jelenti, hogy az $f$ és a $g$ vektorban csak ez az indexen levő értéket
-  modósitsuk,a többi feltétel marad a korábbi.
-  
-  \[
-  f=\begin{bmatrix}
-  1 \\
-  2 \\
-  3 
-  \end{bmatrix},
-  g = \begin{bmatrix}
-  4 \\
-  5 \\
-  6 
-  \end{bmatrix},
-  x_0 = \begin{bmatrix}
-  1.2 \\
-  3.6 \\
-  5.7 
-  \end{bmatrix}
-  \Rightarrow
-  f_b=\begin{bmatrix}
-  1 \\
-  2 \\
-  3 
-  \end{bmatrix},
-  g_b = \begin{bmatrix}
-  4 \\
-  3 \\
-  6 
-  \end{bmatrix},
-  f_j=\begin{bmatrix}
-  1 \\
-  4 \\
-  3 
-  \end{bmatrix},
-  g_j = \begin{bmatrix}
-  4 \\
-  5 \\
-  6 
-  \end{bmatrix}
-  \] A fenti példában $x_0$ a talált optimum helyvektora. A $0.5$-höz
-  legközelebb a $3.6$ van, ez a második változó indexet jelenti, és értéke lekerekitve $3$. A
-  többi megkötés ($f$ és $g$ vektor elemei) marad a korábbi. Tehát $t=3$ és $f$
-  és $g$ vektort ennek megfelelően módosítjúk $t$ és $t+1$ értékekkel. 
+	\item LIFO alapú új feladat választás $L$--ből, mert a megoldás várhatóan
+	      mélyen van a fába és ez tud legmélyebbre leggyorsabban lenyúlni. Ugyanakkor a
+	      duál szimplex módszerrel lehetséges így a korábbi számitások újra felhasználása.
+	\item Elágazásnál a legkevésbé egész $x_j$--t válasszuk elágazási változónak
+	      (ez a relaxált IP feladatt megoldásának helyvektora, azaz azt az indexet ahol
+	      e vektor elemének törtrésze $\frac{1}{2}$-höz legközelebb van), közbülső
+	      értéknek pedig ennek egész értékét (lefelé kerekitve) válasszuk. Ez azt
+	      jelenti, hogy az $f$ és a $g$ vektorban csak ez az indexen levő értéket
+	      modósitsuk,a többi feltétel marad a korábbi.
+
+	      \[
+		      f=\begin{bmatrix}
+			      1 \\
+			      2 \\
+			      3
+		      \end{bmatrix},
+		      g = \begin{bmatrix}
+			      4 \\
+			      5 \\
+			      6
+		      \end{bmatrix},
+		      x_0 = \begin{bmatrix}
+			      1.2 \\
+			      3.6 \\
+			      5.7
+		      \end{bmatrix}
+		      \Rightarrow
+		      f_b=\begin{bmatrix}
+			      1 \\
+			      2 \\
+			      3
+		      \end{bmatrix},
+		      g_b = \begin{bmatrix}
+			      4 \\
+			      3 \\
+			      6
+		      \end{bmatrix},
+		      f_j=\begin{bmatrix}
+			      1 \\
+			      4 \\
+			      3
+		      \end{bmatrix},
+		      g_j = \begin{bmatrix}
+			      4 \\
+			      5 \\
+			      6
+		      \end{bmatrix}
+	      \] A fenti példában $x_0$ a talált optimum helyvektora. A $0.5$-höz
+	      legközelebb a $3.6$ van, ez a második változó indexet jelenti, és értéke lekerekitve $3$. A
+	      többi megkötés ($f$ és $g$ vektor elemei) marad a korábbi. Tehát $t=3$ és $f$
+	      és $g$ vektort ennek megfelelően módosítjúk $t$ és $t+1$ értékekkel.
 \end{itemize}

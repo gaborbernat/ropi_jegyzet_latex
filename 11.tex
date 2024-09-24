@@ -1,7 +1,7 @@
-\skiptooddpage 
+\skiptooddpage
 \section{Matroid osztályok}
 
-A következő matroid osztályokat különböztetjük meg: 
+A következő matroid osztályokat különböztetjük meg:
 
 \begin{table}[htbp]
 \begin{tabular}{|l|ll|}
@@ -21,7 +21,7 @@ Típus& Definició & Példa\\
 \end{table}
 
 Ugyanakkor igaz, az osztályokra, hogy grafikus, kografikus $\subseteq$ reguláris
-$\subseteq$ bináris $\subseteq$ lineáris $\subseteq$ összes. 
+$\subseteq$ bináris $\subseteq$ lineáris $\subseteq$ összes.
 
 
 \begin{wrapfigure}{l}{0.35\textwidth}
@@ -32,33 +32,33 @@ $\subseteq$ bináris $\subseteq$ lineáris $\subseteq$ összes.
   }
   \draw [semithick,blue] (0,0) circle (1);
   \node[p] (1) at (0.85, 0.53)   {4};
-  \node[p] (2) at (0, -1)        {6}; 
+  \node[p] (2) at (0, -1)        {6};
   \node[p] (3) at (-1.6 , -1)    {1};
   \node[p] (4) at (-0.85 , 0.53) {5};
   \node[p] (5) at (1.6 , -1)     {2};
   \node[p] (6) at (0 , 2)        {3};
   \node[p] (7) at (0 , 0)        {7};
-  
-  
+
+
   % the connection between the dots
-  \draw[-] (1) -- (5); 
+  \draw[-] (1) -- (5);
   \draw[-] (1) -- (6);
   \draw[-] (1) -- (7);
-  
+
   \draw[-] (2) -- (3);
   \draw[-] (2) -- (5);
   \draw[-] (2) -- (7);
-  
+
   \draw[-] (3) -- (4);
   \draw[-] (3) -- (7);
-  
+
   \draw[-] (4) -- (6);
   \draw[-] (4) -- (7);
-  
+
   \draw[-] (5) -- (7);
-  
+
   \draw[-] (6) -- (7);
-\end{tikzpicture} 
+\end{tikzpicture}
 \end{wrapfigure}
 
 A Fano matroid egy olyan matroid, amelyben az alaphalmaz mérete $7$ és minden
@@ -90,7 +90,7 @@ kivonjuk egyébként -- $1$ vagy $-1$ együtthatók).
 $\Leftarrow$ Fordítva, vegyünk egy összefüggő vektorhalmazt és ennek egy olyan X
 nemüres részhalmazát amely olyan lineáris kombinációja ad nullát, ahol semelyik
 együtható nem nulla. Az élvektor azokon a koordinátákon nem nulla, amelyik
-pontokat összeköt. 
+pontokat összeköt.
 
 Ahhoz, hogy a nullvektor kijöjjön minden ponthoz két darab nem nulla koordináta
 kell, hogy létezzen. Azaz egy pontra két él illeszkedik, amely szerint minden
@@ -100,7 +100,7 @@ nagyobb mint kettő, biztosan létezik kör.
 \subsection{Tutte tételei}
 
 M matroid $\begin{cases}
-\mbox{bináris} &\Leftrightarrow \mbox{ nem tartalmazza minorként: } U_{4,2}. \\ 
+\mbox{bináris} &\Leftrightarrow \mbox{ nem tartalmazza minorként: } U_{4,2}. \\
 \mbox{reguláris} &\Leftrightarrow \mbox{ nem tartalmazza minorként: } U_{4,2}, F_7, F_7^*. \\
 \mbox{grafikus} &\Leftrightarrow \mbox{ nem tartalmazza minorként: } \parbox[t]{4cm}{
 $U_{4,2},$ $F_7$, $F_7^*$, $M^*(K_5)$, $M^*(K_{3,3})$.} \\
@@ -126,5 +126,5 @@ kografikus.
 1 & 0& 0& 1 & 1 & 0 & 1 & 1 & 0 & 1\\
 0 & 1& 0& 1 & 0 & 1 & 1 & 0 & 1 & 1\\
 0 & 0& 1& 0 & 1 & 1 & 0 & 1 & 1 & 1\\
-};\end{tikzpicture} 
-\end{figure} 
+};\end{tikzpicture}
+\end{figure}
