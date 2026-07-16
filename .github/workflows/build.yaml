@@ -6,7 +6,6 @@ on:
   pull_request:
   schedule:
     - cron: "0 8 * * *"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +20,6 @@ jobs:
         with:
           name: cv
           path: main.pdf
-
   deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
