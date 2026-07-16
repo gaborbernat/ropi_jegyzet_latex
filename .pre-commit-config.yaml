@@ -8,8 +8,17 @@ repos:
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
-  - repo: https://github.com/rbubley/mirrors-prettier
-    rev: "v3.3.3"
+  - repo: https://github.com/google/yamlfmt
+    rev: "v0.21.0"
     hooks:
-      - id: prettier
-        args: ["--print-width=120", "--prose-wrap=always"]
+      - id: yamlfmt
+  - repo: local
+    hooks:
+      - id: mdformat
+        name: mdformat
+        entry: mdformat --wrap 120
+        language: python
+        types: [markdown]
+        additional_dependencies:
+          - mdformat-gfm>=1
+          - mdformat-ruff>=0.1.3
