@@ -10,8 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions: {}
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
       - name: 🛎️ Checkout 🛎️
         uses: actions/checkout@v7
       - name: 📕 Compile LaTeX document 📕
