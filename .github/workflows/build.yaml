@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1
       - name: 🛎️ Checkout 🛎️
