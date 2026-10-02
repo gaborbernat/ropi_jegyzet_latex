@@ -8,7 +8,7 @@ on:
     - cron: "0 8 * * *"
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     permissions: {}
     steps:
@@ -23,7 +23,7 @@ jobs:
           name: cv
           path: main.pdf
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     if: github.ref == 'refs/heads/main'
     needs:
       - build
