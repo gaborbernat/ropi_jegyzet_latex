@@ -1,10 +1,10 @@
 repos:
   - repo: https://github.com/cmhughes/latexindent.pl
-    rev: V3.24.4
+    rev: V4.0.2
     hooks:
       - id: latexindent
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
