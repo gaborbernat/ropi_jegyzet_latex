@@ -11,11 +11,11 @@ Elöszőr is határozzuk meg, hogy mit nevezzünk folyamnak:
 		\delta_x(v) \mbox{ -- } v\mbox{--ből kilépő élek összege } x \mbox{ szerint} \\
 		\mbox{Legyen }x : E \mapsto \mathbb{R}^+ \mbox{ tetszőleges függvény}
 	\end{rcases} \parbox[c]{6.2cm}{
-		\begin{itemize}
-			\item $x$ függvény akkor \emph{folyam}, ha \\ $\forall~v~\in~V - \{s,t\}$--re: \\ $\rho_x(v)=\delta_x(v)$
-			\item $x$ megengedett, ha $\forall e \in E$--re $x(e) \leq c(e)$
-			\item A folyam értéke: \\ $\delta_x(s)-\rho_x(s)=\rho_x(t)-\delta_x(t)$
-		\end{itemize}
+	\begin{itemize}
+	\item $x$ függvény akkor \emph{folyam}, ha \\ $\forall~v~\in~V - \{s,t\}$--re: \\ $\rho_x(v)=\delta_x(v)$
+	\item $x$ megengedett, ha $\forall e \in E$--re $x(e) \leq c(e)$
+	\item A folyam értéke: \\ $\delta_x(s)-\rho_x(s)=\rho_x(t)-\delta_x(t)$
+	\end{itemize}
 	}
 \]
 
@@ -99,7 +99,7 @@ csúcshoz tartozik egy sor, amelyre teljesül a $b_vx\leq 0$ feltétel (azaz a
 belépő élek összege nagyobb, mint a kilépőké, mert a $b_vx$ ha kifejtjük
 $\delta_x(v) - \rho_x(v) \leq 0 $ amit átrendezve kapjuk, hogy $ \delta_x(v)
 	\leq \rho_x(v)$).
-Továbbá a forrás és a terminál sorai alapján $\begin{rcases} \delta_x(s)-\mu
+Továbbá a forrás és a terminál sorai alapján $\begin{rcases}\delta_x(s)-\mu
 		\leq 0 \\
 		\mu - \rho_x(t) \leq 0\end{rcases} \Rightarrow \delta_x(s) \leq \mu \leq
 	\rho_x(t)$. Ezzel felírtuk az előző lemma összes feltételét, tehát $x$ egy

@@ -19,8 +19,8 @@ független ponthalmazra (elég az egyik is).
 \subsubsection{Maximális független ponthalmaz}
 
 $ \begin{cases}
-		input: \mbox{G(v,e) gráf, h szám}          \\
-		output: \alpha (G) >= h?                   \\
+		input: \mbox{G(v,e) gráf, h szám}           \\
+		output: \alpha (G) >= h?                    \\
 		\mbox{Minden csúcsra: }
 		\forall x_i 0 <= x_i <= 1, x_i \in \mathbb{Z}
 		\xRightarrow{}
@@ -29,7 +29,7 @@ $ \begin{cases}
 			      \mbox{0, ha nem}
 		      \end{cases} \\
 		\mbox{Minden élre: }
-		x_i + x_j <= 1                             \\
+		x_i + x_j <= 1                              \\
 		max: x_1 + x_2 \ldots + x_n
 	\end{cases}$
 
@@ -41,7 +41,7 @@ logikai függvényhez megad egy olyan IP problémát, melyre akkor és csak akko
 válasz, ha a függvény kielégíthető. A függvény alakja:
 
 \[ f(x_1, x_2, \cdots, x_k) = \bigwedge_{i=1}^{d}{\left( x_{i_1}^{e_{i_1}} \vee
-	x_{i_2}^{e_{i_2}} \vee x_{i_3}^{e_{i_3}}\right).}
+		x_{i_2}^{e_{i_2}} \vee x_{i_3}^{e_{i_3}}\right).}
 \]
 Az IP probléma ismeretlenjei legyenek $z_{i=\overline{1,k}}$ egyenlőtlenségek,
 ahol $0 \leq z_{i=\overline{1,k}} \leq 1$. Továbbá minden diszjunkcióra is felírunk egy
