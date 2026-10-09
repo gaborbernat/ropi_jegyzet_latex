@@ -1,3 +1,5 @@
+default_language_version:
+  python: python3.15
 repos:
   - repo: https://github.com/cmhughes/latexindent.pl
     rev: V4.0.2
