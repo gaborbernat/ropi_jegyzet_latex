@@ -29,9 +29,10 @@ jobs:
       - build
     environment:
       name: release
-      url: https://gaborbernat.github.io/cv/main.pdf
+      url: https://gaborbernat.github.io/ropi_jegyzet_latex/main.pdf
     permissions:
       contents: write
+      pages: read
     steps:
       - name: 🛎️ Checkout 🛎️
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -45,3 +46,23 @@ jobs:
         with:
           folder: built
           single-commit: true
+      - name: 🔍 Verify published PDF 🔍
+        env:
+          URL: https://gaborbernat.github.io/ropi_jegyzet_latex/main.pdf
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          want=$(sha256sum built/main.pdf | cut -d' ' -f1)
+          head=$(gh api "repos/$GITHUB_REPOSITORY/branches/gh-pages" --jq .commit.sha)
+          for i in $(seq 1 80); do
+            sleep 15
+            build=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '"\(.commit) \(.status)"') || build=unknown
+            if [ "$build" != "$head built" ]; then
+              echo "pages build is '$build', waiting for '$head built'"
+              continue
+            fi
+            got=$(curl -fsSL --retry 3 "$URL?run=$GITHUB_RUN_ID-$i" | sha256sum | cut -d' ' -f1) || continue
+            [ "$got" = "$want" ] && exit 0
+            echo "serving $got, want $want"
+          done
+          echo "::error::$URL did not serve the freshly built PDF within 20 minutes"
+          exit 1
