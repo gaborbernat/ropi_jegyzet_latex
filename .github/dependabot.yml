@@ -20,5 +20,8 @@ updates:
       pre-commit:
         patterns:
           - "*"
+    ignore:
+      # Dependabot fails on the upper-case `V` tags of latexindent.pl (unknown_error); other hooks still update.
+      - dependency-name: "https://github.com/cmhughes/latexindent.pl"
     cooldown:
       default-days: 7
