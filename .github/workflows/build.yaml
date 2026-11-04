@@ -6,63 +6,12 @@ on:
   pull_request:
   schedule:
     - cron: "0 8 * * *"
+permissions: {}
 jobs:
-  build:
-    runs-on: ubuntu-26.04
-    timeout-minutes: 10
-    permissions: {}
-    steps:
-      - name: 🛎️ Checkout 🛎️
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: 📕 Compile LaTeX document 📕
-        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # 4.1.0
-        with:
-          root_file: main.tex
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: cv
-          path: main.pdf
-  deploy:
-    runs-on: ubuntu-26.04
-    if: github.ref == 'refs/heads/main'
-    needs:
-      - build
-    environment:
-      name: release
-      url: https://gaborbernat.github.io/ropi_jegyzet_latex/main.pdf
+  pdf:
+    uses: tox-dev/github-workflows/.github/workflows/latex-to-pages.yaml@bceb5c005e19823dc8835f536f53f172ae223927 # 6.5.0
     permissions:
       contents: write
       pages: read
-    steps:
-      - name: 🛎️ Checkout 🛎️
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Download all the dists
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          name: cv
-          path: built
-      - name: 🚀 Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4.9.0
-        with:
-          folder: built
-          single-commit: true
-      - name: 🔍 Verify published PDF 🔍
-        env:
-          URL: https://gaborbernat.github.io/ropi_jegyzet_latex/main.pdf
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          want=$(sha256sum built/main.pdf | cut -d' ' -f1)
-          head=$(gh api "repos/$GITHUB_REPOSITORY/branches/gh-pages" --jq .commit.sha)
-          for i in $(seq 1 80); do
-            sleep 15
-            build=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '"\(.commit) \(.status)"') || build=unknown
-            if [ "$build" != "$head built" ]; then
-              echo "pages build is '$build', waiting for '$head built'"
-              continue
-            fi
-            got=$(curl -fsSL --retry 3 "$URL?run=$GITHUB_RUN_ID-$i" | sha256sum | cut -d' ' -f1) || continue
-            [ "$got" = "$want" ] && exit 0
-            echo "serving $got, want $want"
-          done
-          echo "::error::$URL did not serve the freshly built PDF within 20 minutes"
-          exit 1
+    with:
+      root-file: main.tex
