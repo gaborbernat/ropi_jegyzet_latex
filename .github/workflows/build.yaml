@@ -14,10 +14,17 @@ jobs:
     steps:
       - name: 🛎️ Checkout 🛎️
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 🕰️ Pin the build clock to the commit 🕰️
+        id: epoch
+        run: echo "epoch=$(git log -1 --format=%ct)" >> "$GITHUB_OUTPUT"
       - name: 📕 Compile LaTeX document 📕
         uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # 4.1.0
         with:
           root_file: main.tex
+          # the action runs latexmk in a container that only forwards its own env, so step env: never reaches pdflatex
+          pre_compile: export SOURCE_DATE_EPOCH=${{ steps.epoch.outputs.epoch }} FORCE_SOURCE_DATE=1
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: cv
@@ -36,6 +43,8 @@ jobs:
     steps:
       - name: 🛎️ Checkout 🛎️
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Download all the dists
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
