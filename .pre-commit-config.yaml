@@ -24,3 +24,9 @@ repos:
         additional_dependencies:
           - mdformat-gfm>=1
           - mdformat-ruff>=0.1.3
+      # needs chktex on PATH; TeX Live ships it. -I0 lints each file once instead of following \input.
+      - id: chktex
+        name: chktex
+        entry: chktex --quiet -I0
+        language: system
+        types: [tex]

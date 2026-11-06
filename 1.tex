@@ -9,8 +9,7 @@ szerint? Ilyen kritériumok lehetnek a maximális párosítás~\footnote{ Páros
 időigény és így tovább. Grafikusan ábrázolva, legyen:
 
 \begin{figure}[ht]
-	\caption{Egy optimális hozzárendelés probléma}
-	\label{fig:OptHozProb}
+	\caption{Egy optimális hozzárendelés probléma}\label{fig:OptHozProb}
 	\centering \begin{tikzpicture}[scale=1.7]
 		\tikzset{ p/.style={circle,yellow,fill=red,inner sep=0pt,minimum size=0.15cm},
 		}
@@ -54,8 +53,7 @@ ahol $x \in A$ és $ y \in B$. Megkülönböztetünk $3$ fajta helyzetet:
 \end{description}
 
 \begin{figure}[htb]
-	\caption{Maximális összsúlyú és teljes párosítás probléma}
-	\label{fig:OptMaxNemEkv}
+	\caption{Maximális összsúlyú és teljes párosítás probléma}\label{fig:OptMaxNemEkv}
 	\centering
 	\begin{tikzpicture}[scale=1.7]
 		\tikzset{
@@ -90,8 +88,7 @@ mutat be.
 \colorlet{ColorBlue}{blue!20}
 
 \begin{figure}[htbp]
-	\caption{Magyar módszer helyessége}
-	\label{fig:MagyModHelyeseg}
+	\caption{Magyar módszer helyessége}\label{fig:MagyModHelyeseg}
 	\centering
 	\begin{tikzpicture}[font=\small,scale=1.7]
 		\tikzset{
@@ -190,8 +187,8 @@ a maximális összsúlyú teljes párosítást. Ehhez az algoritmus először de
 a címkézés műveletet: minden csúcshoz rendel egy valós értéket ($c:V \rightarrow
 	\mathbb{R}$) úgy, hogy minden élpár esetén ($\forall \left\{x,y\right\} \in E |
 	x \in A, y \in B$) igaz a következő kifejezés: $c(x)+c(y) \geq w(e)$. Amennyiben
-$c(x)+c(y)=w(e)$ legyen az él ,,piros.'' E címkézés mellet: $\sum_Mw(e) \leq
-	\sum_Vc(v)$, azaz a maximális összsúlyú teljes párosítás összsúlya kisebb, mint
+$c(x)+c(y)=w(e)$ legyen az él ,,piros.'' E címkézés mellet: $\sum_{M}w(e) \leq
+	\sum_{V}c(v)$, azaz a maximális összsúlyú teljes párosítás összsúlya kisebb, mint
 a címkézés ősszege.
 
 Bizonyítás, adódik a definícióból:

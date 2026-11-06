@@ -27,8 +27,7 @@ ami bizonyítás arra, hogy a matroidok nem particionálhatók.
 \caption{Példa, hogy a mohó algoritmus miért nem működik:
 		  $E_1 = \{2\}$, $E_2 = \{3\}$ állapotban nem tudunk újabb élt
 		  belevenni egyik halmazba sem. Egy jó particionálás pedig a
-		  $E_1 = \{ 1 \}$, $E_2 = \{ 2, 3 \}$ felosztás.}
-\label{fig:MPPMohoNem}
+		  $E_1 = \{ 1 \}$, $E_2 = \{ 2, 3 \}$ felosztás.}\label{fig:MPPMohoNem}
 \centering \begin{tikzpicture}[scale=0.8]
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.3cm},
   }
@@ -58,8 +57,7 @@ Az algoritmus egy $n+k$ pontú segédgráffal dolgozik ($|E|=n$ csúcs a halmazo
 gráf éleit definiáljuk, mint $(\overrightarrow{xy}) \in E'$ ahol:
 
 \begin{figure}[htbp]
-\caption{Segédgráf két halmazra}
-\label{fig:MPP_graf}
+\caption{Segédgráf két halmazra}\label{fig:MPP_graf}
 \centering \begin{tikzpicture}[scale=1]
   \tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.6cm},
   }
@@ -121,8 +119,7 @@ gráf éleit definiáljuk, mint $(\overrightarrow{xy}) \in E'$ ahol:
 \end{enumerate}
 
 \begin{figure}[H]
-\caption{Általános alakban}
-\label{fig:MPP_halm}
+\caption{Általános alakban}\label{fig:MPP_halm}
 \centering
 \begin{tikzpicture}[scale=0.8]
 	\tikzstyle{vertex}=[draw,circle,fill=white,minimum size=3pt, inner sep=0pt]
@@ -165,7 +162,7 @@ gráf éleit definiáljuk, mint $(\overrightarrow{xy}) \in E'$ ahol:
 
 		\end{scope}
 	\end{scope}
-\end{tikzpicture}\end{figure}
+\end{tikzpicture}\end{figure} % chktex 31: false positive after a nested tikzpicture
 
 
 \subsection{2-matroid-metszet probléma}
