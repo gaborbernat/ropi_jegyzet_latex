@@ -13,7 +13,7 @@ Elöszőr is határozzuk meg, hogy mit nevezzünk folyamnak:
 	\end{rcases} \parbox[c]{6.2cm}{
 	\begin{itemize}
 	\item $x$ függvény akkor \emph{folyam}, ha \\ $\forall~v~\in~V - \{s,t\}$--re: \\ $\rho_x(v)=\delta_x(v)$
-	\item $x$ megengedett, ha $\forall e \in E$--re $x(e) \leq c(e)$
+	\item $x$ megengedett, ha $\forall e \in E$--re $x(e) \leq c(e)$ % chktex 1: false positive, this is math mode
 	\item A folyam értéke: \\ $\delta_x(s)-\rho_x(s)=\rho_x(t)-\delta_x(t)$
 	\end{itemize}
 	}
@@ -95,8 +95,8 @@ Az LP felíráshoz először is egészítsük ki a gráfot egy $e^*=(t,s)$ pszeu
 	\end{center}
 \end{wrapfigure}
 Az így kapott gráf illeszkedési mátrixa legyen $B^*$. Minden $v \in V - \{s,t\}$
-csúcshoz tartozik egy sor, amelyre teljesül a $b_vx\leq 0$ feltétel (azaz a
-belépő élek összege nagyobb, mint a kilépőké, mert a $b_vx$ ha kifejtjük
+csúcshoz tartozik egy sor, amelyre teljesül a $b_{v}x\leq 0$ feltétel (azaz a
+belépő élek összege nagyobb, mint a kilépőké, mert a $b_{v}x$ ha kifejtjük
 $\delta_x(v) - \rho_x(v) \leq 0 $ amit átrendezve kapjuk, hogy $ \delta_x(v)
 	\leq \rho_x(v)$).
 Továbbá a forrás és a terminál sorai alapján $\begin{rcases}\delta_x(s)-\mu

@@ -1,4 +1,4 @@
-\skiptooddpage
+\skiptooddpage%
 \section{Ütemezési algoritmusok}
 
 Az ütemezési feladat megfogalmazható mint:
@@ -48,13 +48,13 @@ Egy halmazfeladat gyors leírására a következő struktúrát használjuk:
 	      \end{itemize}
 \end{description}
 
-\subsection{ \texorpdfstring {$ 1||C_{max} $} {1||Cmax} }
+\subsection{ \texorpdfstring{$ 1||C_{max} $} {1||Cmax} }
 
 Egy gépre teljes átfutási idő szerint optimizálunk. $C_{\mbox{max}}=\sum_{i=1}^{n}
 	P_i \Rightarrow$ tehát csak felrakjuk a munkákat sorba, ügyelve arra, hogy ne
 létezzen pillanat amikor a gép áll és optimális megoldást kapunk.
 
-\subsection{ \texorpdfstring {$ 1|prec|C_{max} $} {1|prec|Cmax} }
+\subsection{ \texorpdfstring{$ 1|prec|C_{max} $} {1|prec|Cmax} }
 
 Most olyan sorrendben végezzük el a felrakást, hogy ne legyen munka amire a
 függőség még nem fejeződőt be. Ez a sorrend egy irányított a--ciklikus gráfban
@@ -107,7 +107,7 @@ arányos időt vesz igénybe.
 			\draw[-latex] (11) -- (9) node [midway, above] {};
 			\draw[-latex] (11) -- (10) node [midway, above] {};
 			\draw[-latex] (8) -- (9) node [midway, above] {};
-		\end{tikzpicture}}
+		\end{tikzpicture}} % chktex 31: false positive after a nested tikzpicture
 	\parbox[l]{10cm}{
 		Az itt látható gráfnak több topologikus rendezése is van:
 
@@ -119,7 +119,7 @@ arányos időt vesz igénybe.
 		\end{itemize}
 	}\]
 
-\subsection{ \texorpdfstring {$ 1||\sum C_j$} {1||SumCj} }
+\subsection{ \texorpdfstring{$ 1||\sum C_j$} {1||SumCj} }
 
 \begin{description}
 	\item[Shortest--Processing--Time -- SPT] minél rövidebb egy munka annál korábban
@@ -137,7 +137,7 @@ Látszik, hogy az összegen ekkor csak $C_i$ és $C_{i+1}$ változik meg. Tehát
 felcserélés végre hajtásával a $\sum C_j$ csökken, de ez ellentmondás a
 feltevésünknek, tehát az SPT optimális.
 
-\subsection{ \texorpdfstring {$ P_2||C_{max}$} {P2||Cmax} }
+\subsection{ \texorpdfstring{$ P_2||C_{max}$} {P2||Cmax} }
 
 Ez egy NP--nehéz feladatt mivel visszavezethető a partíció problémára. Legyen
 $a_1, a_2, \cdots, a_n \in \mathbb{Z}^*$. A kérdés, hogy létezik e $I \subseteq
@@ -149,7 +149,7 @@ szám sorozatnak jó partíció.
 Tehát nem létezik hatékony algoritmus a feladatra, ezért a problémának speciális
 eseteit és approximációs megoldásokat vizsgálunk meg.
 
-\subsection{ \texorpdfstring {$ P||C_{max}$} {P||Cmax} }
+\subsection{ \texorpdfstring{$ P||C_{max}$} {P||Cmax} }
 
 \begin{description}
 	\item[List Scheduling -- LS -- listás ütemezés] Legyen $k$ gép és
@@ -198,7 +198,7 @@ Az LPT ütemezés approximációs faktora $\left( \dfrac{4}{3} - \dfrac{1}{3m}
 	\right)$. E jó approximációs közelítés annak köszönhető, hogy a gépek egyforma
 gyorsak, tudásuk azonos.
 
-\subsection{ \texorpdfstring {$ P|prec|C_{max} $} {P|prec|Cmax} -- Graham}
+\subsection{ \texorpdfstring{$ P|prec|C_{max} $} {P|prec|Cmax} -- Graham}
 
 Rendezzük listába a munkákat. Egy gép megkap egy munkát, ha áll és a következő
 munka elkezdhető. Ez egy $2-\frac{1}{m}$ approximáció. Ezen való javítás kulcsa,
@@ -305,7 +305,7 @@ $\frac{3}{2}$ approximáció mert az optimális és kapott arány $\frac{17}{11}
 	\end{tikzpicture}
 \end{figure}
 
-\subsection{ \texorpdfstring {$ P|prec,p_i=1|C_{max} $} {P|prec,pi=1|Cmax}}
+\subsection{ \texorpdfstring{$ P|prec,p_i=1|C_{max} $} {P|prec,pi=1|Cmax}}
 
 Ebben az alakban a feladat NP--nehéz. Ha $m=2$ gép áll rendelkezésünkre a
 \emph{Coffman-Graham} algoritmus optimális megoldást ad. $D$ precedencia gráfon
@@ -361,7 +361,7 @@ A kapott számozás szerint csökkenő sorrendbe rakjuk fel a gépekre a munkák
 egy listás ütemezés. Ez optimális megoldást ad.
 
 
-\subsection{ \texorpdfstring {$ P|in\_tree, p_j=1|C_{max} $} {P|in-tree,pj=1|Cmax} -- Hu algoritmusa}
+\subsection{ \texorpdfstring{$ P|in\_tree, p_j=1|C_{max} $} {P|in-tree,pj=1|Cmax} -- Hu algoritmusa}
 
 Ha $D$ precedencia gráf egy $s$ gyökerű $F$--befenyő~\footnote{A befenyő egy
 	olyan irányított gyökeres fa, aminek az élei a gyökér felé vannak irányítva.},

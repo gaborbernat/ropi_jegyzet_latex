@@ -1,0 +1,35 @@
+# Each muted warning flags a habit of these notes whose fix would change the printed PDF.
+CmdLine
+{
+    # superscripts on parentheses, as in (M \setminus X)^*; bracing them moves the exponent
+    -n3
+    # one {\it ...} lacks an italic correction; adding \/ widens the gap after it
+    -n6
+    # Hungarian compounds and suffixes use en dashes throughout (NP--nehéz, $G$--t)
+    -n8
+    # item labels such as \mbox{R1)} and a few formulas print unmatched parentheses
+    -n9
+    -n10
+    -n15
+    -n17
+    # lists use \cdots, which sits higher than \ldots
+    -n11
+    # abbreviations and capitals before a period (max., OPT.) keep their current spacing
+    -n12
+    -n13
+    # the source puts spaces before punctuation, next to parentheses and before footnotes, and they print
+    -n26
+    -n36
+    -n37
+    -n42
+    # operator names typed as letters (max, min, ln) print in italics, \max would set them upright
+    -n35
+    # Hungarian quotes close after the period: ,,piros.''
+    -n38
+    # one double tie (a~~$...$); dropping a tie narrows the gap
+    -n39
+    # moving punctuation across a math boundary changes its font and spacing
+    -n40
+    # the tables use \hline and vertical rules; booktabs would restyle every table
+    -n44
+}

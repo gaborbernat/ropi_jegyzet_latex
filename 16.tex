@@ -1,4 +1,4 @@
-\skiptooddpage
+\skiptooddpage%
 \section{Halmazfedés és a Steiner--fa}
 
 \subsection{Halmazfedés}
@@ -15,8 +15,8 @@ A minimális összköltségű fedés problémára adunk egy közelítő algoritm
 		|U| = n                      \\
 		S_1, \cdots, S_k \subseteq U \\
 		c : \{ S_i\} \mapsto \mathbb{R}^+ \mbox{ költségfüggvény}\end{rcases}
-	\parbox[L]{9cm} { Legyen $C\subseteq U$ az $U$ halmazból már lefedett elemek
-		részhalmaza. Amig $C \neq U$ (van fedetlen elem) válasszuk azt az $S_i$ halmazt
+	\parbox[L]{9cm} { Legyen $C\subseteq U$ az $U$ halmazból már lefedett elemek % chktex 1: false positive, this is math mode
+		részhalmaza. Amig $C \neq U$ (van fedetlen elem) válasszuk azt az $S_i$ halmazt % chktex 1: false positive, this is math mode
 		amelyre $\frac{c(S_i)}{|S_i-C|}$ (az illető elem hozzávétele után lefedett új
 		elemek átlagos költsége) minimális.
 	}
@@ -81,7 +81,7 @@ a költségfüggvény kielégíti a háromszög egyenlőtlenséget:
 			\draw[-latex] (2) -- (1) node [midway, above] {};
 			\draw[-latex] (2) -- (3) node [midway, below] {};
 			\draw[-latex] (1) -- (3) node [midway, above] {};
-		\end{tikzpicture}} \Rightarrow
+		\end{tikzpicture}} \Rightarrow % chktex 31: false positive after a nested tikzpicture
 	c(u,v) \leq c(u,w)+c(w,v).
 \]
 

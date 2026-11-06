@@ -3,28 +3,28 @@
 \usepackage[a4paper]{geometry}
 \usepackage[T1]    {fontenc }% Allow accented output charachters
 \usepackage[utf8]  {inputenc}% Allow accented input charachters
-\usepackage        {lmodern }% Modern output font
+\usepackage{lmodern}% Modern output font
 \def\magyarOptions{suggestions=no}
 \usepackage[magyar]{babel}	   % Set document language to use
-\usepackage		 {amsmath}%Math mode additions
-\usepackage		 {amsfonts}
+\usepackage{amsmath}%Math mode additions
+\usepackage{amsfonts}
 \usepackage{MnSymbol}
 \usepackage{amsthm}
-\usepackage		 {floatrow}% Append additional information to images (source)
-\usepackage		{mathtools}
+\usepackage{floatrow}% Append additional information to images (source)
+\usepackage{mathtools}
 \usepackage[pdftex]{graphicx}% Adds the ability to include images
-\usepackage		 {xcolor   }% Colors are fun :)
-\usepackage        {colortbl}% Named even more.
-\usepackage        {url     }% Makes urls clickable
-\usepackage		{array}
-\usepackage		 {tikz	  }% Latex drawn figures
+\usepackage{xcolor}% Colors are fun :)
+\usepackage{colortbl}% Named even more.
+\usepackage{url}% Makes urls clickable
+\usepackage{array}
+\usepackage{tikz}% Latex drawn figures
 \usetikzlibrary{shapes,calc,positioning,decorations, trees}
-\usepackage		{wrapfig}
+\usepackage{wrapfig}
 \usepackage{fixltx2e}
-\usepackage		{relsize}
-\usetikzlibrary	 {matrix  }
-\usepackage		{textcomp}
-\usepackage        {scalefnt }% Scale the latex drawn figure elements
+\usepackage{relsize}
+\usetikzlibrary{matrix}
+\usepackage{textcomp}
+\usepackage{scalefnt}% Scale the latex drawn figure elements
 \usepackage[pdf]{pstricks}
 \usepackage{subfigure}
 \usepackage{enumerate}
@@ -78,9 +78,9 @@ backref=false]{biblatex} \DeclareSourcemap{ % Unfortunetly the
 
 \usepackage{changepage,ifthen}
 \newcommand\skiptooddpage{%
-   \checkoddpage
+   \checkoddpage%
    \ifthenelse{\boolean{oddpage}}%
-      {\null\clearpage \null \clearpage}%
+      {\null\clearpage\null\clearpage}%
       {\null\clearpage}%
 }
 
