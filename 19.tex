@@ -13,7 +13,7 @@ Az ütemezési feladat megfogalmazható mint:
 	\end{rcases}
 	\Rightarrow
 	\parbox[t]{9cm}{ $+$ egy adott időben egy gépen egy munka folyik \\
-		és létezik egy célfügvény amire nézve optimális ütemezést keresünk.}
+	és létezik egy célfügvény amire nézve optimális ütemezést keresünk.}
 \]
 
 Egy halmazfeladat gyors leírására a következő struktúrát használjuk:
@@ -85,38 +85,38 @@ gráfnak töröljük azt. Ha megfelelő adatstruktúrát használunk mindez az �
 arányos időt vesz igénybe.
 
 \[ \parbox[l]{4cm}{
-		\begin{tikzpicture}[scale=0.7]
-			\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
-			}
-			\node[p] (7) at (-2, 2) {$7$};
-			\node[p] (5) at (0, 2) {$5$};
-			\node[p] (3) at (2, 2) {$3$};
-			\node[p] (11) at (-1, 0) {$11$};
-			\node[p] (8) at (1, 0) {$8$};
-			\node[p] (2) at (-2, -2) {$2$};
-			\node[p] (9) at (0, -2) {$9$};
-			\node[p] (10) at (2, -2) {$10$};
+	\begin{tikzpicture}[scale=0.7]
+	\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
+	}
+	\node[p] (7) at (-2, 2) {$7$};
+	\node[p] (5) at (0, 2) {$5$};
+	\node[p] (3) at (2, 2) {$3$};
+	\node[p] (11) at (-1, 0) {$11$};
+	\node[p] (8) at (1, 0) {$8$};
+	\node[p] (2) at (-2, -2) {$2$};
+	\node[p] (9) at (0, -2) {$9$};
+	\node[p] (10) at (2, -2) {$10$};
 
-			% the connection between the dots
-			\draw[-latex] (7) -- (11) node [midway, above] {};
-			\draw[-latex] (7) -- (8) node [midway, above] {};
-			\draw[-latex] (5) -- (11) node [midway, above] {};
-			\draw[-latex] (3) -- (8) node [midway, above] {};
-			\draw[-latex] (7) -- (11) node [midway, above] {};
-			\draw[-latex] (11) -- (2) node [midway, above] {};
-			\draw[-latex] (11) -- (9) node [midway, above] {};
-			\draw[-latex] (11) -- (10) node [midway, above] {};
-			\draw[-latex] (8) -- (9) node [midway, above] {};
-		\end{tikzpicture}} % chktex 31: false positive after a nested tikzpicture
+	% the connection between the dots
+	\draw[-latex] (7) -- (11) node [midway, above] {};
+	\draw[-latex] (7) -- (8) node [midway, above] {};
+	\draw[-latex] (5) -- (11) node [midway, above] {};
+	\draw[-latex] (3) -- (8) node [midway, above] {};
+	\draw[-latex] (7) -- (11) node [midway, above] {};
+	\draw[-latex] (11) -- (2) node [midway, above] {};
+	\draw[-latex] (11) -- (9) node [midway, above] {};
+	\draw[-latex] (11) -- (10) node [midway, above] {};
+	\draw[-latex] (8) -- (9) node [midway, above] {};
+	\end{tikzpicture}} % chktex 31: false positive after a nested tikzpicture
 	\parbox[l]{10cm}{
-		Az itt látható gráfnak több topologikus rendezése is van:
+	Az itt látható gráfnak több topologikus rendezése is van:
 
-		\begin{itemize}
-			\item $7,~5,~3,~11,~8,~2,~10,~9$
-			\item $7,~5,~11,~2,~3,~10,~8,~9$
-			\item $3,~7,~8,~5,~11,~10,~9,~2$
-			\item $3,~5,~7,~11,~10,~2,~8,~9$
-		\end{itemize}
+	\begin{itemize}
+	\item $7,~5,~3,~11,~8,~2,~10,~9$
+	\item $7,~5,~11,~2,~3,~10,~8,~9$
+	\item $3,~7,~8,~5,~11,~10,~9,~2$
+	\item $3,~5,~7,~11,~10,~2,~8,~9$
+	\end{itemize}
 	}\]
 
 \subsection{ \texorpdfstring{$ 1||\sum C_j$} {1||SumCj} }
@@ -313,33 +313,33 @@ végezzük el a tranzitív redukciót:
 
 \[ \parbox[l]{5cm}{
 
-		\begin{tikzpicture}[scale=0.7]
-			\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
-			}
+	\begin{tikzpicture}[scale=0.7]
+	\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
+	}
 
-			\node[p] (A) at (-2, 0) {$A$};
-			\node[p] (B) at (0, 2) {$B$};
-			\node[p] (C) at (2, 0) {$C$};
+	\node[p] (A) at (-2, 0) {$A$};
+	\node[p] (B) at (0, 2) {$B$};
+	\node[p] (C) at (2, 0) {$C$};
 
-			\draw[-latex] (A) -- (B) node [midway, above] {};
-			\draw[-latex] (B) -- (C) node [midway, above] {};
-			\draw[-latex] (A) -- (C) node [midway, above] {};
-		\end{tikzpicture}
+	\draw[-latex] (A) -- (B) node [midway, above] {};
+	\draw[-latex] (B) -- (C) node [midway, above] {};
+	\draw[-latex] (A) -- (C) node [midway, above] {};
+	\end{tikzpicture}
 	}
 	\Rightarrow
 	\parbox[l]{5cm}{
 
-		\begin{tikzpicture}[scale=0.7]
-			\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
-			}
+	\begin{tikzpicture}[scale=0.7]
+	\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
+	}
 
-			\node[p] (A) at (-2, 0) {$A$};
-			\node[p] (B) at (0, 2) {$B$};
-			\node[p] (C) at (2, 0) {$C$};
+	\node[p] (A) at (-2, 0) {$A$};
+	\node[p] (B) at (0, 2) {$B$};
+	\node[p] (C) at (2, 0) {$C$};
 
-			\draw[-latex] (A) -- (B) node [midway, above] {};
-			\draw[-latex] (B) -- (C) node [midway, above] {};
-		\end{tikzpicture}
+	\draw[-latex] (A) -- (B) node [midway, above] {};
+	\draw[-latex] (B) -- (C) node [midway, above] {};
+	\end{tikzpicture}
 	}
 \]
 
