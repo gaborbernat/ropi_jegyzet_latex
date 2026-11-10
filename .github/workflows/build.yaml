@@ -9,7 +9,7 @@ on:
 permissions: {}
 jobs:
   pdf:
-    uses: tox-dev/github-workflows/.github/workflows/latex-to-pages.yaml@bceb5c005e19823dc8835f536f53f172ae223927 # 6.5.0
+    uses: tox-dev/github-workflows/.github/workflows/latex-to-pages.yaml@bf1c3ab0aa137d307a07aad844d507af73039387 # 6.8.0
     permissions:
       contents: write
       pages: read
