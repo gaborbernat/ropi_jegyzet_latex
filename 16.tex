@@ -16,9 +16,9 @@ A minimális összköltségű fedés problémára adunk egy közelítő algoritm
 		S_1, \cdots, S_k \subseteq U \\
 		c : \{ S_i\} \mapsto \mathbb{R}^+ \mbox{ költségfüggvény}\end{rcases}
 	\parbox[L]{9cm} { Legyen $C\subseteq U$ az $U$ halmazból már lefedett elemek % chktex 1: false positive, this is math mode
-		részhalmaza. Amig $C \neq U$ (van fedetlen elem) válasszuk azt az $S_i$ halmazt % chktex 1: false positive, this is math mode
-		amelyre $\frac{c(S_i)}{|S_i-C|}$ (az illető elem hozzávétele után lefedett új
-		elemek átlagos költsége) minimális.
+	részhalmaza. Amig $C \neq U$ (van fedetlen elem) válasszuk azt az $S_i$ halmazt % chktex 1: false positive, this is math mode
+	amelyre $\frac{c(S_i)}{|S_i-C|}$ (az illető elem hozzávétele után lefedett új
+	elemek átlagos költsége) minimális.
 	}
 \]
 
@@ -46,8 +46,8 @@ Innen meg a fedés összköltsége:
 egyelemű halmazból, valamint az $U$--ból. A költségfüggvény:
 
 \[ c:E \mapsto \mathbb{R}^+ \begin{cases} c({u_i})=\frac{1}{i}, & \forall~
-              i=\overline{1,n}                                          \\
-              c(U)=1 + \epsilon,    & \epsilon \mbox{ kis pozitív szám}\end{cases}\]
+	              i=\overline{1,n}                                          \\
+	              c(U)=1 + \epsilon,    & \epsilon \mbox{ kis pozitív szám}\end{cases}\]
 
 Ekkor az algoritmus az $n$ elemű halmazt válassza ki, pedig az optimális maga
 az $U$ halmaz lenne.
@@ -62,7 +62,7 @@ az $U$ halmaz lenne.
 		                         & S\mbox{--beli Steiner pontok}\}
 	\end{rcases}
 	\parbox[L]{7cm}{ Keressünk minimális költségű fát $G$--ben, ami az összes
-		terminált tartalmazza és esetleg pár Steiner pontot is.} \]
+	terminált tartalmazza és esetleg pár Steiner pontot is.} \]
 
 Ha $T=V$ (tehát a gráfban nem léteznek Steiner pontok) akkor a feladat mohó
 algoritmussal megoldható, egyébként meg NP--nehéz. A metrikus Steiner fában
@@ -138,52 +138,52 @@ példa bizonyítja:
 
 \[
 	\parbox[l]{3cm}{
-		\begin{tikzpicture}[scale=1]
-			\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
-			}
-			\node[p,fill=black] (T1) at (-1,  1) {$T_1$};
-			\node[p,fill=black] (T2) at (-1, -1) {$T_2$};
-			\node[p,fill=black] (T3) at (+1 , -1) {$T_3$};
-			\node[p] (S) at (+1 , 1) {S};
+	\begin{tikzpicture}[scale=1]
+	\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
+	}
+	\node[p,fill=black] (T1) at (-1,  1) {$T_1$};
+	\node[p,fill=black] (T2) at (-1, -1) {$T_2$};
+	\node[p,fill=black] (T3) at (+1 , -1) {$T_3$};
+	\node[p] (S) at (+1 , 1) {S};
 
-			% the connection between the dots
-			\draw[-] (T1) -- (T3) node [at start, below] {$2$};
-			\draw[-] (T1) -- (T2) node [midway, left] {$2$};
-			\draw[-] (T2) -- (T3) node [midway, below] {$2$};
+	% the connection between the dots
+	\draw[-] (T1) -- (T3) node [at start, below] {$2$};
+	\draw[-] (T1) -- (T2) node [midway, left] {$2$};
+	\draw[-] (T2) -- (T3) node [midway, below] {$2$};
 
-			\draw[-,gray] (T1) -- (S) node [midway, above] {$1$};
-			\draw[-,gray] (T2) -- (S) node [at end, below] {$1$};
-			\draw[-,gray] (T3) -- (S) node [midway, right] {$1$};
-		\end{tikzpicture}
+	\draw[-,gray] (T1) -- (S) node [midway, above] {$1$};
+	\draw[-,gray] (T2) -- (S) node [at end, below] {$1$};
+	\draw[-,gray] (T3) -- (S) node [midway, right] {$1$};
+	\end{tikzpicture}
 	}
 	\xRightarrow{\mbox{OPT}}
 	\parbox[l]{3cm}{
-		\begin{tikzpicture}[scale=1]
-			\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
-			}
-			\node[p,fill=black] (T1) at (-1,  0) {$T_1$};
-			\node[p,fill=black] (T2) at (0, 0) {$T_2$};
-			\node[p,fill=black] (T3) at (+1 , 0) {$T_3$};
-			\node[p] (S) at (0 , 2) {S};
+	\begin{tikzpicture}[scale=1]
+	\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
+	}
+	\node[p,fill=black] (T1) at (-1,  0) {$T_1$};
+	\node[p,fill=black] (T2) at (0, 0) {$T_2$};
+	\node[p,fill=black] (T3) at (+1 , 0) {$T_3$};
+	\node[p] (S) at (0 , 2) {S};
 
-			\draw[-,gray] (T1) -- (S) node [midway, left] {$1$};
-			\draw[-,gray] (T2) -- (S) node [midway, left] {$1$};
-			\draw[-,gray] (T3) -- (S) node [midway, right] {$1$};
-		\end{tikzpicture}
+	\draw[-,gray] (T1) -- (S) node [midway, left] {$1$};
+	\draw[-,gray] (T2) -- (S) node [midway, left] {$1$};
+	\draw[-,gray] (T3) -- (S) node [midway, right] {$1$};
+	\end{tikzpicture}
 	}
 	n=3 \mbox{ és}
 	\parbox[l]{3cm}{
-		\begin{tikzpicture}[scale=1]
-			\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
-			}
-			\node[p,fill=black] (T1) at (-1,  0) {$T_1$};
-			\node[p,fill=black] (T2) at (0, 2) {$T_2$};
-			\node[p,fill=black] (T3) at (+1 , 0) {$T_3$};
+	\begin{tikzpicture}[scale=1]
+	\tikzset{ p/.style={circle,white,fill=gray,inner sep=0pt,minimum size=0.5cm},
+	}
+	\node[p,fill=black] (T1) at (-1,  0) {$T_1$};
+	\node[p,fill=black] (T2) at (0, 2) {$T_2$};
+	\node[p,fill=black] (T3) at (+1 , 0) {$T_3$};
 
-			% the connection between the dots
-			\draw[-] (T1) -- (T2) node [midway, right] {$2$};
-			\draw[-] (T2) -- (T3) node [midway, left] {$2$};
-		\end{tikzpicture}
+	% the connection between the dots
+	\draw[-] (T1) -- (T2) node [midway, right] {$2$};
+	\draw[-] (T2) -- (T3) node [midway, left] {$2$};
+	\end{tikzpicture}
 	}2(n-1)=4
 \]
 
